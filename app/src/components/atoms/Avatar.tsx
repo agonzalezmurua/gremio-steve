@@ -5,7 +5,7 @@ type AvatarProps = {
 };
 
 const Avatar = styled.img<AvatarProps>`
-  ${tw`rounded inline-block bg-white`}
+  ${tw`rounded-lg inline-block bg-white border-white`}
 
   ${({size}) => {
     switch (size) {

@@ -1,0 +1,18 @@
+- request:
+    url: ^/api/beatmaps$
+    method: GET
+  response:
+    - status: 200
+      latency: 300
+      headers:
+        content-type: application/json
+      file: beatmaps/search.json
+- request:
+    url: ^/api/user/myself$
+    method: GET
+  response:
+    - status: 200
+      latency: 300
+      headers:
+        content-type: application/json
+      file: user/profile.json
