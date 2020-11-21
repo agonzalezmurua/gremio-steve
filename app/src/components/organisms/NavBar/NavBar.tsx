@@ -3,7 +3,7 @@ import tw, { styled } from "twin.macro";
 
 import UserInfo from "./UserInfo";
 import { NavigationList } from "./NavigationList";
-import SearchBeatmap from "./SearchBeatmap";
+import SearchBeatmap from "../../molecules/SearchJourney";
 
 export const NavigationItem = styled.li`
   ${tw`flex items-center space-x-4 hover:bg-gray-300 p-2 cursor-pointer rounded`}
@@ -14,9 +14,9 @@ export const NavigationItem = styled.li`
 
 const NavBar: React.FunctionComponent = (props) => {
   return (
-    <section tw="flex h-screen text-gray-900">
+    <section tw="flex h-screen w-screen text-gray-900">
       {/* Sidebar */}
-      <section tw="p-6 pr-1 space-y-4">
+      <section tw="p-6 pr-1 space-y-4 w-72">
         {/* User Info */}
         <section>
           <UserInfo username="Ferret" role="Admin" />

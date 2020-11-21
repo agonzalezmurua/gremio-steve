@@ -1,0 +1,17 @@
+env:
+  browser: true
+  node: true
+parser: '@typescript-eslint/parser'
+plugins:
+  - '@typescript-eslint'
+extends:
+  - plugin:@typescript-eslint/recommended
+  - plugin:react/recommended
+  - prettier
+rules:
+  react/prop-types: 0
+  '@typescript-eslint/no-var-requires': 0
+  '@typescript-eslint/explicit-module-boundary-types': 0
+settings:
+  react:
+    version: '17'

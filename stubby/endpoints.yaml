@@ -1,12 +1,12 @@
 - request:
-    url: ^/api/beatmaps$
+    url: ^/api/journeys$
     method: GET
   response:
     - status: 200
-      latency: 300
+      latency: 1000
       headers:
         content-type: application/json
-      file: beatmaps/search.json
+      file: journeys/search.json
 - request:
     url: ^/api/user/myself$
     method: GET

@@ -9,7 +9,7 @@ import NavBar from "@components/organisms/NavBar";
 
 const App: React.FunctionComponent = () => {
   return (
-    <div tw="h-screen">
+    <HashRouter tw="h-screen">
       <GlobalStyles />
       <AppGlobalStyles />
       <NavBar>
@@ -17,7 +17,7 @@ const App: React.FunctionComponent = () => {
           <Route path="/" exact component={HomePage} />
         </HashRouter>
       </NavBar>
-    </div>
+    </HashRouter>
   );
 };
 

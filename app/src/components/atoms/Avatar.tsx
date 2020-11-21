@@ -1,28 +1,28 @@
-import tw, { styled } from "twin.macro";
+import tw, { styled } from 'twin.macro';
 
 type AvatarProps = {
-  size?: "jumbo" | "big" | "medium" | "small";
+  size?: 'jumbo' | 'big' | 'medium' | 'small';
 };
 
 const Avatar = styled.img<AvatarProps>`
   ${tw`rounded-lg inline-block bg-white border-white`}
 
-  ${({size}) => {
+  ${({ size }) => {
     switch (size) {
-      case "small":
+      case 'small':
         return tw`w-8 h-8`;
-      case "medium":
-        return tw`w-12 h-12`
-      case "big":
-        return tw`w-16 h-16`
-      case "jumbo":
-        return tw`w-24 h-24`
+      case 'medium':
+        return tw`w-12 h-12`;
+      case 'big':
+        return tw`w-16 h-16`;
+      case 'jumbo':
+        return tw`w-24 h-24`;
     }
   }}
 `;
 
 Avatar.defaultProps = {
-  size: "medium",
+  size: 'medium',
 };
 
 export default Avatar;

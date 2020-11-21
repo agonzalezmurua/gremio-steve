@@ -6,6 +6,6 @@ export default {
       const url = new URL('/api/beatmaps', URI);
       url.searchParams.append('search', search);
       return url.toString();
-    }
-  }
+    },
+  },
 };
