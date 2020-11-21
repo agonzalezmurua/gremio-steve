@@ -50,6 +50,7 @@
       "@assets/*": ["../assets/*"],
       "@globals/*": ["globals/*"],
       "@hooks/*": ["hooks/*"],
+      "@hocs/*": ["hocs/*"],
       "@api": ["services/api"]
     },
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */

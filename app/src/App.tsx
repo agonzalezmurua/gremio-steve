@@ -1,23 +1,29 @@
-import React from "react";
-import { HashRouter, Route } from "react-router-dom";
-import { GlobalStyles } from "twin.macro";
+import React from 'react';
+import { HashRouter, Route, Switch } from 'react-router-dom';
+import { GlobalStyles } from 'twin.macro';
 
-import AppGlobalStyles from "@globals/AppGlobalStyle";
+import AppGlobalStyles from '@globals/AppGlobalStyle';
+import NavBar from '@components/organisms/NavBar';
 
-import HomePage from "@pages/Home";
-import NavBar from "@components/organisms/NavBar";
+import Indexpage from '@pages/index';
+import JourneyPage from '@pages/journeys/:id';
+import NotFoundPage from '@pages/NotFound';
 
 const App: React.FunctionComponent = () => {
   return (
-    <HashRouter tw="h-screen">
+    <>
       <GlobalStyles />
       <AppGlobalStyles />
-      <NavBar>
-        <HashRouter>
-          <Route path="/" exact component={HomePage} />
-        </HashRouter>
-      </NavBar>
-    </HashRouter>
+      <HashRouter tw="h-screen">
+        <NavBar>
+          <Switch>
+            <Route path="/" exact component={Indexpage} />
+            <Route path="/journeys/:id" component={JourneyPage} />
+            <Route component={NotFoundPage} />
+          </Switch>
+        </NavBar>
+      </HashRouter>
+    </>
   );
 };
 

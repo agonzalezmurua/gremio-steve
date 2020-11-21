@@ -1,16 +1,9 @@
-import React from "react";
-import tw, { styled } from "twin.macro";
+import React from 'react';
+import tw, { styled } from 'twin.macro';
 
-import UserInfo from "./UserInfo";
-import { NavigationList } from "./NavigationList";
-import SearchBeatmap from "../../molecules/SearchJourney";
-
-export const NavigationItem = styled.li`
-  ${tw`flex items-center space-x-4 hover:bg-gray-300 p-2 cursor-pointer rounded`}
-  > svg {
-    ${tw`h-6 w-6`}
-  }
-`;
+import UserInfo from '@components/molecules/UserInfo';
+import NavigationList from '@components/molecules/NavigationList';
+import SearchBeatmap from '../molecules/SearchJourney';
 
 const NavBar: React.FunctionComponent = (props) => {
   return (

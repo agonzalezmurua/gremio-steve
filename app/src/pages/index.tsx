@@ -29,4 +29,6 @@ const HomePage: React.FunctionComponent = () => (
   </main>
 );
 
+HomePage.displayName = 'HomePage';
+
 export default HomePage;
