@@ -3,7 +3,7 @@
     "__id": "1",
     "title": "Chinatown Blues [feat. Megpoid Gumi]",
     "artist": "OIDDEO + Karma Wears White Tiers",
-    "owner": {
+    "organizer": {
       "__id": "2",
       "name": "Cloudchaser"
     },
@@ -11,6 +11,13 @@
     "image": {
       "url": "https://via.placeholder.com/150"
     },
+    "metadata": {
+      "genre": "pop",
+      "bpm": [90, 120],
+      "closure": "2020-11-21T18:58:05.142Z",
+      "duration": 2100
+    },
+    "status": "open",
     "banner": {
       "url": "https://via.placeholder.com/150"
     }
@@ -19,7 +26,7 @@
     "__id": "2",
     "title": "Totally legit Quest",
     "artist": "The questing",
-    "owner": {
+    "organizer": {
       "__id": "1",
       "name": "Ferret"
     },
@@ -27,6 +34,7 @@
     "image": {
       "url": "https://via.placeholder.com/150"
     },
+    "status": "closed",
     "banner": {
       "url": "https://via.placeholder.com/150"
     }

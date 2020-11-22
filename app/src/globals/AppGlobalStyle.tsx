@@ -10,6 +10,10 @@ const AppGlobalStyle = createGlobalStyle`
     ${tw`text-gray-900`}
   }
 
+  a:hover {
+    text-decoration: underline;
+  }
+
   p ~ p {
     ${tw`mt-6`}
   };

@@ -1,8 +1,8 @@
-import React from "react";
-import "twin.macro";
+import React from 'react';
+import 'twin.macro';
 
-import Avatar from "@components/atoms/Avatar";
-import DotsVerticalIcon from "@assets/icons/solid/dots-vertical.svg";
+import Avatar from '@components/atoms/Avatar';
+import DotsVerticalIcon from '@assets/icons/solid/dots-vertical.svg';
 
 type UserHeaderProps = {
   username: string;
@@ -15,7 +15,7 @@ const UserHeader: React.FunctionComponent<UserHeaderProps> = (props) => {
       <Avatar
         tw="border"
         size="medium"
-        src="https://avataaars.io/?avatarStyle=Transparent&topType=LongHairNotTooLong&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=ShirtVNeck&clotheColor=Blue03&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Pale'"
+        src="https://a.ppy.sh/1869277?1462143398.jpg"
       />
       {/* Name */}
       <section tw="flex flex-grow flex-col items-start">

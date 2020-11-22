@@ -15,4 +15,4 @@ rules:
   '@typescript-eslint/no-non-null-assertion': 0
 settings:
   react:
-    version: '17'
+    version: '16'

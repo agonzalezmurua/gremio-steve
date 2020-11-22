@@ -7,17 +7,35 @@ declare type Journey = {
   image: {
     url: string;
   };
+  banner: {
+    url: string;
+  };
   metadata: {
     genre: string;
-    bpm: number;
-    closure?: Date;
+    bpm: number | number[];
+    closure: string;
     duration: number;
   };
   asginees: User[];
-  open: number;
+  description: string;
+  status: 'open' | 'clossed' | 'suspended';
+  maps: DifficultyMap[];
+};
+
+declare type DifficultyMap = {
+  __id: string;
+  index: number;
+  name: string;
+  type: 'std' | 'taiko' | 'ctb';
+  difficulty: 'easy' | 'normal' | 'hard' | 'very_hard' | 'insane';
+  status: 'ready' | 'pending' | 'alert';
+  assignee: User;
 };
 
 declare type User = {
   __id: string;
   name: string;
+  avatar: {
+    url: string;
+  };
 };

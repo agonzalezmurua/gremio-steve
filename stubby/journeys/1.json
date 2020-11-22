@@ -2,15 +2,73 @@
   "__id": "1",
   "title": "Chinatown Blues [feat. Megpoid Gumi]",
   "artist": "OIDDEO + Karma Wears White Tiers",
-  "owner": {
+  "organizer": {
     "__id": "2",
-    "name": "Cloudchaser"
+    "name": "Cloudchaser",
+    "avatar": {
+      "url": "https://a.ppy.sh/1576498?1605561364.jpeg"
+    }
   },
   "lastUpdated": "2020-11-21T18:58:05.142Z",
   "image": {
     "url": "https://via.placeholder.com/150"
   },
+  "metadata": {
+    "genre": "pop",
+    "bpm": [90, 120],
+    "closure": "2020-11-21T18:58:05.142Z",
+    "duration": 2100
+  },
+  "description": "Red Alomomola Aron Dragonair searching far and wide Croconaw Grovyle. Pika-pi Cradily Numel Sinnoh Ducklett Cubone Tyranitar. Leaf Green Finneon Kecleon Gothorita Nincada Delibird Psychic. Consectetur adipisicing elit Silcoon Solosis Palpitoad Ferrothorn Shieldon Ralts. Fog Badge Aipom Heatmor Chinchou Vermilion City Storm Badge Machamp. ",
+  "status": "open",
   "banner": {
-    "url": "https://via.placeholder.com/150"
-  }
+    "url": "https://via.placeholder.com/1024x768"
+  },
+  "maps": [
+    {
+      "__id": "1",
+      "index": 2,
+      "name": "normal_diff",
+      "type": "std",
+      "difficulty": "normal",
+      "status": "ready",
+      "assignee": {
+        "__id": "3",
+        "name": "Krisom",
+        "avatar": {
+          "url": "https://a.ppy.sh/99269?1603295302.jpeg"
+        }
+      }
+    },
+    {
+      "__id": "2",
+      "index": 3,
+      "name": "hard_diff",
+      "type": "std",
+      "difficulty": "hard",
+      "status": "pending",
+      "assignee": {
+        "__id": "4",
+        "name": "pkhg",
+        "avatar": {
+          "url": "https://a.ppy.sh/343624?1597995347.jpeg"
+        }
+      }
+    },
+    {
+      "__id": "3",
+      "index": 1,
+      "name": "ez_diff",
+      "type": "std",
+      "difficulty": "easy",
+      "status": "pending",
+      "assignee": {
+        "__id": "2",
+        "name": "Cloudchaser",
+        "avatar": {
+          "url": "https://a.ppy.sh/1576498?1605561364.jpeg"
+        }
+      }
+    }
+  ]
 }

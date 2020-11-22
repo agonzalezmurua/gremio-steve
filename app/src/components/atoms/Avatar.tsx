@@ -11,7 +11,7 @@ const Avatar = styled.img<AvatarProps>((props) => [
   props.size === 'medium' && tw`w-12 h-12`,
   props.size === 'big' && tw`w-16 h-16`,
   props.size === 'jumbo' && tw`w-24 h-24`,
-  props.isSkeleton && tw`animate-pulse border-0 bg-gray-500`,
+  props.isSkeleton && !props.src && tw`animate-pulse border-0 bg-gray-500`,
 ]);
 
 Avatar.defaultProps = {
