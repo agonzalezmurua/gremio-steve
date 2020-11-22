@@ -19,7 +19,7 @@ const App: React.FunctionComponent = () => {
           <Switch>
             <Route path="/" exact component={Indexpage} />
             <Route path="/journeys/:id" component={JourneyPage} />
-            <Route component={NotFoundPage} />
+            <Route path={['*', '/not-found']} component={NotFoundPage} />
           </Switch>
         </NavBar>
       </HashRouter>

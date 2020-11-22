@@ -8,6 +8,15 @@
         content-type: application/json
       file: journeys/search.json
 - request:
+    url: ^/api/journeys/1$
+    method: GET
+  response:
+    - status: 200
+      latency: 100000
+      headers:
+        content-type: application/json
+      file: journeys/1.json
+- request:
     url: ^/api/user/myself$
     method: GET
   response:

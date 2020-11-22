@@ -10,6 +10,9 @@
     "lastUpdated": "2020-11-21T18:58:05.142Z",
     "image": {
       "url": "https://via.placeholder.com/150"
+    },
+    "banner": {
+      "url": "https://via.placeholder.com/150"
     }
   },
   {
@@ -22,6 +25,9 @@
     },
     "lastUpdated": "2020-11-21T18:58:05.142Z",
     "image": {
+      "url": "https://via.placeholder.com/150"
+    },
+    "banner": {
       "url": "https://via.placeholder.com/150"
     }
   }

@@ -2,8 +2,13 @@ import endpoints from './__endpoints';
 import axios from 'axios';
 
 const api = {
-  searchJourneys(searchTerm: string) {
-    return axios.get<Journey[]>(endpoints.beatmaps.search(searchTerm));
+  journeys: {
+    search(searchTerm: string) {
+      return axios.get<Journey[]>(endpoints.journeys.search(searchTerm));
+    },
+    getById(id: string) {
+      return axios.get<Journey>(endpoints.journeys.byId(id));
+    },
   },
 };
 

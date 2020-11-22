@@ -14,7 +14,7 @@ const SearchBeatmap: React.FunctionComponent = () => {
   const [{ loading, value: beatmaps }, searchBeatmaps] = useAsyncFn(
     async (search: string): Promise<Journey[]> => {
       if (search) {
-        const { data } = await api.searchJourneys(search);
+        const { data } = await api.journeys.search(search);
         return data;
       }
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -55,7 +55,7 @@ const SearchBeatmap: React.FunctionComponent = () => {
               __id={beatmap.__id}
               artist={beatmap.artist}
               title={beatmap.title}
-              owner={beatmap.owner}
+              organizer={beatmap.organizer}
               lastUpdated={beatmap.lastUpdated}
               image={beatmap.image}
             />

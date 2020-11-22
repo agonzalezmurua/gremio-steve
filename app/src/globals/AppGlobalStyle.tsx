@@ -19,7 +19,7 @@ const AppGlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-size: 2.75rem;
+    font-size: 2.25rem;
   }
   h2 {
     font-size: 1.75rem;
