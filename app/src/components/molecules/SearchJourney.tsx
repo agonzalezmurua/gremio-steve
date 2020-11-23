@@ -17,7 +17,6 @@ const SearchBeatmap: React.FunctionComponent = () => {
         const { data } = await api.journeys.search(search);
         return data;
       }
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       return beatmaps!;
     },
     [search],
