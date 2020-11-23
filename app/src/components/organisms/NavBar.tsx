@@ -11,7 +11,7 @@ const NavBar: React.FunctionComponent = (props) => {
     <section tw="flex h-screen w-screen text-gray-900">
       {/* Sidebar */}
       <section tw="p-6 pr-1 space-y-4 w-84">
-        <section>
+        <section tw="border-b pb-2">
           <NavigationControls />
         </section>
         {/* User Info */}

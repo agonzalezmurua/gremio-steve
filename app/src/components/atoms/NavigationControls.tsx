@@ -19,7 +19,7 @@ const NavigationControls = (props) => {
 
 export default styled(NavigationControls)`
   button {
-    ${tw`p-1 hover:text-gray-500`}
+    ${tw`p-1 hover:text-gray-700`}
     > svg {
       ${tw`h-5 w-5`}
     }
