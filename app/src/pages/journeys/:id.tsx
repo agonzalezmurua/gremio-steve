@@ -11,7 +11,7 @@ import Avatar from '@components/atoms/Avatar';
 import JourneyMetadata from '@components/atoms/JourneyMetadata';
 import JourneyStatus from '@components/atoms/JourneyStatus';
 import JourneyBanner from '@components/atoms/JourneyBanner';
-import MapsList from '@components/molecules/MapsList';
+import MapsList from '@components/molecules/MapsLists';
 
 type RouteProps = {
   id: string;

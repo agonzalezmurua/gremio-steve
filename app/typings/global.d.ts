@@ -27,8 +27,8 @@ declare type DifficultyMap = {
   index: number;
   name: string;
   type: 'std' | 'taiko' | 'ctb';
-  difficulty: 'easy' | 'normal' | 'hard' | 'very_hard' | 'insane';
-  status: 'ready' | 'pending' | 'alert';
+  difficulty: 'easy' | 'normal' | 'hard' | 'insane' | 'expert' | 'expert+';
+  status: 'ready' | 'pending' | 'alert' | 'problem';
   assignee: User;
 };
 
