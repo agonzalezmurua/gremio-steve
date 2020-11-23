@@ -4,12 +4,16 @@ import 'twin.macro';
 import UserInfo from '@components/molecules/UserInfo';
 import NavigationList from '@components/molecules/NavigationList';
 import SearchBeatmap from '../molecules/SearchJourney';
+import NavigationControls from '@components/atoms/NavigationControls';
 
 const NavBar: React.FunctionComponent = (props) => {
   return (
     <section tw="flex h-screen w-screen text-gray-900">
       {/* Sidebar */}
       <section tw="p-6 pr-1 space-y-4 w-84">
+        <section>
+          <NavigationControls />
+        </section>
         {/* User Info */}
         <section>
           <UserInfo username="Ferret" role="Admin" />
