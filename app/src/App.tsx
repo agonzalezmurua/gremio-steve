@@ -6,7 +6,7 @@ import AppGlobalStyles from '@globals/AppGlobalStyle';
 import NavBar from '@components/organisms/NavBar';
 
 import Indexpage from '@pages/index';
-import JourneyPage from '@pages/journeys/:id';
+import JourneyPage from '@pages/journeys/id';
 import NotFoundPage from '@pages/NotFound';
 
 const App: React.FunctionComponent = () => {
