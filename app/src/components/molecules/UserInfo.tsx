@@ -2,7 +2,7 @@ import React from 'react';
 import 'twin.macro';
 
 import Avatar from '@components/atoms/Avatar';
-import DotsVerticalIcon from '@assets/icons/solid/dots-vertical.svg';
+import Cog from '@assets/icons/solid/cog.svg';
 
 type UserHeaderProps = {
   username: string;
@@ -23,7 +23,7 @@ const UserHeader: React.FunctionComponent<UserHeaderProps> = (props) => {
         {props.role && <span tw="text-xs">{props.role}</span>}
       </section>
       {/* Actions */}
-      <DotsVerticalIcon tw="w-5 h-5 self-center" />
+      <Cog tw="w-5 h-5 self-center" />
     </section>
   );
 };

@@ -17,12 +17,6 @@ const NavigationItem = styled.li`
 export const NavigationList: React.FunctionComponent = () => {
   return (
     <ul tw="space-y-2">
-      <Link to="/">
-        <NavigationItem>
-          <Home />
-          <span>Home</span>
-        </NavigationItem>
-      </Link>
       <NavigationItem>
         <Collection />
         <span>My Queue</span>
