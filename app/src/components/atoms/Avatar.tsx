@@ -6,7 +6,7 @@ type AvatarProps = {
 };
 
 const Avatar = styled.img<AvatarProps>((props) => [
-  tw`rounded-lg inline-block bg-white border-white`,
+  tw`rounded-lg inline-block bg-gray-100`,
   props.size === 'small' && tw`w-8 h-8`,
   props.size === 'medium' && tw`w-12 h-12`,
   props.size === 'big' && tw`w-16 h-16`,

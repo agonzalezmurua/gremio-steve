@@ -2,7 +2,7 @@ import 'twin.macro';
 import React from 'react';
 
 const HomePage: React.FunctionComponent = () => (
-  <main>
+  <main tw="p-4">
     <h1>About home</h1>
     <p>
       Snover sudowoodo kyurem raikou blitzle tyranitar metang. Charizard lapras

@@ -14,7 +14,7 @@ const BeatmapResultCard: React.FunctionComponent<
   ]);
 
   return (
-    <li tw="hover:bg-gray-300 rounded">
+    <li tw="hover:bg-gray-300 rounded transition-colors duration-200 ease-in-out">
       <Link to={link} tw="flex flex-row items-center space-x-2 h-24 p-2">
         <img src={props.image.url} tw="h-full rounded bg-gray-300" />
         <section tw="flex flex-col flex-grow h-full justify-around space-y-1 text-xs truncate">

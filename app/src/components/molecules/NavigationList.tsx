@@ -8,7 +8,7 @@ import Bookmark from '@assets/icons/outline/bookmark.svg';
 import Home from '@assets/icons/outline/home.svg';
 
 const NavigationItem = styled.li`
-  ${tw`flex items-center space-x-4 hover:bg-gray-300 p-2 cursor-pointer rounded`}
+  ${tw`flex items-center space-x-4 hover:bg-gray-300 p-2 cursor-pointer rounded transition-colors duration-200 ease-in-out`}
   > svg {
     ${tw`h-6 w-6`}
   }

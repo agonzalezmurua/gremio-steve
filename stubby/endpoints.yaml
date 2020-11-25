@@ -12,7 +12,7 @@
     method: GET
   response:
     - status: 200
-      latency: 500
+      latency: 1000
       headers:
         content-type: application/json
       file: journeys/1.json

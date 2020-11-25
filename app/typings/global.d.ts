@@ -16,7 +16,6 @@ declare type Journey = {
     closure: string;
     duration: number;
   };
-  asginees: User[];
   description: string;
   status: 'open' | 'clossed' | 'suspended';
   maps: DifficultyMap[];
@@ -29,7 +28,7 @@ declare type DifficultyMap = {
   type: 'std' | 'taiko' | 'ctb';
   difficulty: 'easy' | 'normal' | 'hard' | 'insane' | 'expert' | 'expert+';
   status: 'ready' | 'pending' | 'alert' | 'problem';
-  assignee: User;
+  assignee?: User;
 };
 
 declare type User = {

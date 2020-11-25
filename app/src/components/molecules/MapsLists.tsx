@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 import tw, { styled } from 'twin.macro';
 import { Link } from 'react-router-dom';
 
+import links from '@links';
+
 import Standard from '@assets/icons/steve/standard.svg';
 import CatchTheBeat from '@assets/icons/steve/catch_the_beat.svg';
 import Taiko from '@assets/icons/steve/taiko.svg';
@@ -11,7 +13,7 @@ import Neutral from '@assets/icons/steve/neutral.svg';
 import Tick from '@assets/icons/steve/tick.svg';
 
 import Avatar from '@components/atoms/Avatar';
-import links from '@links';
+import Button from '@components/atoms/Button';
 
 type MapsProps = {
   maps: DifficultyMap[];
@@ -47,19 +49,27 @@ const MapTypeItem: React.FC<DifficultyMap> = (props) => {
   }, [props.status]);
 
   return (
-    <li tw="grid grid-cols-2 p-1">
+    <li tw="grid grid-cols-3 gap-4 p-1">
       {/* Status */}
-      <section tw="flex items-center space-x-2" className="status">
+      <section tw="flex col-span-2 items-center space-x-2" className="status">
         <span>{Status}</span>
         {/* Assignee */}
         <span>
-          <Avatar size="small" src={props.assignee.avatar.url} />
+          <Avatar size="small" src={props.assignee?.avatar.url} />
         </span>
-        <span>
-          <Link to={links.user[':id']({ id: props.__id })}>
-            {props.assignee.name}
-          </Link>
+        <span tw="flex-grow">
+          {(props.assignee && (
+            <Link to={links.user[':id']({ id: props.assignee?.__id })}>
+              {props.assignee.name}
+            </Link>
+          )) ||
+            'Unasigned'}
         </span>
+        {!props.assignee && (
+          <Button color="blue" tw="justify-self-end self-end">
+            Apply
+          </Button>
+        )}
       </section>
       {/* Difficulty */}
       <section tw="flex items-center space-x-2" className="difficulty">

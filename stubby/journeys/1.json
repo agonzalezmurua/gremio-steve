@@ -69,6 +69,15 @@
           "url": "https://a.ppy.sh/1576498?1605561364.jpeg"
         }
       }
+    },
+    {
+      "__id": "4",
+      "index": 4,
+      "name": "boom_boom",
+      "type": "taiko",
+      "difficulty": "hard",
+      "status": "pending",
+      "assignee": null
     }
   ]
 }

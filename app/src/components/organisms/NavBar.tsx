@@ -10,7 +10,7 @@ const NavBar: React.FunctionComponent = (props) => {
   return (
     <section tw="flex h-screen w-screen text-gray-900">
       {/* Sidebar */}
-      <section tw="p-6 pr-1 space-y-4 w-84">
+      <section tw="flex-shrink p-6 pr-2 space-y-4">
         <section tw="border-b pb-2">
           <NavigationControls />
         </section>
