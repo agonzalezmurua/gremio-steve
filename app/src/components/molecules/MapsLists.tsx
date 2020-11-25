@@ -13,7 +13,7 @@ import Neutral from '@assets/icons/steve/neutral.svg';
 import Tick from '@assets/icons/steve/tick.svg';
 
 import Avatar from '@components/atoms/Avatar';
-import Button from '@components/atoms/Button';
+import Button from '@components/atoms/form-controls/Button';
 
 type MapsProps = {
   maps: DifficultyMap[];
