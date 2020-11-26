@@ -34,6 +34,8 @@ const SearchBeatmap: React.FunctionComponent = () => {
   return (
     <>
       <Input
+        aria-label="Search for journey"
+        name="journey-search"
         icon={
           loading ? (
             <Spinner tw="animate-spin w-5 h-5" />

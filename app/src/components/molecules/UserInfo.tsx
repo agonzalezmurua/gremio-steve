@@ -16,6 +16,7 @@ const UserHeader: React.FunctionComponent<UserHeaderProps> = (props) => {
         tw="border"
         size="medium"
         src="https://a.ppy.sh/1869277?1462143398.jpg"
+        alt="Current user profile image"
       />
       {/* Name */}
       <section tw="flex flex-grow flex-col items-start">

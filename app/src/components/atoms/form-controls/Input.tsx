@@ -2,7 +2,7 @@ import React from 'react';
 import 'twin.macro';
 
 type InputProps = {
-  icon: JSX.Element;
+  icon?: JSX.Element;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 const Input: React.FunctionComponent<InputProps> = ({ icon, ...props }) => (

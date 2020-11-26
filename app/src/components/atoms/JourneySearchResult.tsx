@@ -9,7 +9,7 @@ const BeatmapResultCard: React.FunctionComponent<
     'artist' | 'organizer' | 'title' | '__id' | 'lastUpdated' | 'image'
   >
 > = (props) => {
-  const link = useMemo(() => links.journeys[':id']({ id: props.__id }), [
+  const link = useMemo(() => links.journeys.id({ id: props.__id }), [
     props.__id,
   ]);
 

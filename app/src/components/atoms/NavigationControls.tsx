@@ -32,11 +32,16 @@ const NavigationControls = (props) => {
 
   return (
     <section className={props.className} tw="flex space-x-2 justify-between">
-      <button disabled={length === 1} onClick={history.goBack}>
+      <button
+        aria-label="Go back to previous page"
+        disabled={length === 1}
+        onClick={history.goBack}
+      >
         <ArrowLeft />
       </button>
       <Link to="/">
         <Home />
+        <span className="sr-only">Go to home page</span>
       </Link>
     </section>
   );

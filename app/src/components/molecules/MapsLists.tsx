@@ -66,9 +66,7 @@ const MapTypeItem: React.FC<DifficultyMap> = (props) => {
             'Unasigned'}
         </span>
         {!props.assignee && (
-          <Button color="blue" tw="justify-self-end self-end">
-            Apply
-          </Button>
+          <Button tw="justify-self-end self-end">Apply</Button>
         )}
       </section>
       {/* Difficulty */}

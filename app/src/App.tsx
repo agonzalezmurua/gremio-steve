@@ -8,6 +8,7 @@ import NavBar from '@components/organisms/NavBar';
 import Indexpage from '@pages/index';
 import JourneyPage from '@pages/journeys/id';
 import NotFoundPage from '@pages/NotFound';
+import NewJourneyPage from '@pages/journeys/new';
 
 const App: React.FunctionComponent = () => {
   return (
@@ -18,7 +19,8 @@ const App: React.FunctionComponent = () => {
         <NavBar>
           <Switch>
             <Route path="/" exact component={Indexpage} />
-            <Route path="/journeys/:id" component={JourneyPage} />
+            <Route path="/journeys/new" component={NewJourneyPage} />
+            <Route path="/journeys/:id)" component={JourneyPage} />
             <Route path={['*', '/not-found']} component={NotFoundPage} />
           </Switch>
         </NavBar>

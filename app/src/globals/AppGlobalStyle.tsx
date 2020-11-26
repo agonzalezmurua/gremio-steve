@@ -44,6 +44,14 @@ const AppGlobalStyle = createGlobalStyle`
   h6 {
     font-size: 0.75rem;
   }
+
+  .sr-only {
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+    position: absolute;
+    height: 1px;
+    width: 1px;
+  }
 `;
 
 export default AppGlobalStyle;
