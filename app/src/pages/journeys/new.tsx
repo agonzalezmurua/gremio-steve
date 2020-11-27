@@ -3,6 +3,7 @@ import 'twin.macro';
 
 import Input from '@components/atoms/form-controls/Input';
 import Label from '@components/atoms/form-controls/Label';
+import Editor from '@components/atoms/form-controls/Editor';
 import FormWithProgress from '@components/atoms/form-controls/FormWithProgress';
 
 const NewJourneyPage: React.FC = () => {
@@ -21,6 +22,12 @@ const NewJourneyPage: React.FC = () => {
 
             <Label text="Artist" htmlFor="artist">
               <Input id="artist" name="artist" type="text" required />
+            </Label>
+
+            <Label text="Description" htmlFor="description">
+              <section tw="h-16">
+                <Editor />
+              </section>
             </Label>
           </fieldset>
         </section>
