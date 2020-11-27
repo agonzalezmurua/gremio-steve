@@ -5,6 +5,7 @@ import Calendar from '@assets/icons/outline/calendar.svg';
 import MusicNote from '@assets/icons/outline/music-note.svg';
 import DocumentText from '@assets/icons/outline/document-text.svg';
 import Clock from '@assets/icons/outline/clock.svg';
+import useMs from '@hooks/useMs';
 
 const Base = styled.section`
   ${tw`flex items-center space-x-1`}
@@ -13,12 +14,18 @@ const Base = styled.section`
   }
 `;
 
-const Duration: React.FC<{ value: number }> = (props) => (
-  <Base>
-    <Clock id="journey-metadata-duration" />
-    <label htmlFor="journey-metadata-duration">{props.value}</label>
-  </Base>
-);
+const Duration: React.FC<{ value: number }> = (props) => {
+  const ms = useMs();
+
+  return (
+    <Base>
+      <Clock id="journey-metadata-duration" />
+      <label htmlFor="journey-metadata-duration">
+        {ms(props.value, { long: true })}
+      </label>
+    </Base>
+  );
+};
 
 const Genre: React.FC<{ value: string }> = (props) => (
   <Base>

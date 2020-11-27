@@ -10,6 +10,7 @@ function installExtensions() {
     REACT_DEVELOPER_TOOLS,
     REDUX_DEVTOOLS,
   } = require('electron-devtools-installer');
+
   [REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS].map((extension) =>
     install(extension)
       .then((extension) => console.log(`Installed: ${extension}`))

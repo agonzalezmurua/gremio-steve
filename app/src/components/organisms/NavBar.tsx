@@ -10,7 +10,7 @@ const NavBar: React.FunctionComponent = (props) => {
   return (
     <section tw="flex h-screen w-screen text-gray-900">
       {/* Sidebar */}
-      <section tw="flex-shrink p-6 pr-2 space-y-4">
+      <section tw="flex-shrink p-6 pr-2 space-y-4 w-72">
         <section tw="border-b pb-2">
           <NavigationControls />
         </section>
@@ -28,7 +28,7 @@ const NavBar: React.FunctionComponent = (props) => {
       </section>
       {/* Content */}
       <section tw="flex-grow p-2">
-        <section tw="bg-white rounded-lg h-full overflow-y-auto shadow">
+        <section tw="bg-white border rounded-lg h-full overflow-y-auto shadow-xl xl:(mx-auto w-2/3) lg:(mx-auto w-5/6)">
           {props.children}
         </section>
       </section>
