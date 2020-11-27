@@ -80,6 +80,7 @@
     "react-markdown": "^5.0.3",
     "react-router-dom": "^5.2.0",
     "react-use": "^15.3.4",
+    "remark-gfm": "^1.0.0",
     "styled-components": "^5.2.1"
   },
   "babelMacros": {

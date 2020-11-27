@@ -1,6 +1,8 @@
 /* eslint-disable react/no-children-prop */
 import React, { useRef, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
+import gfm from 'remark-gfm';
+
 import 'twin.macro';
 
 import Button from './Button';
@@ -21,11 +23,13 @@ const Editor: React.FC<EditorProps> = (props) => {
       />
 
       <section
-        aria-role=""
         tw="flex-grow w-full overflow-y-scroll"
         hidden={mode !== 'preview'}
       >
-        <ReactMarkdown children={props.value || areaRef.current?.value || ''} />
+        <ReactMarkdown
+          plugins={[gfm]}
+          children={props.value || areaRef.current?.value || ''}
+        />
       </section>
 
       <section tw="border-t space-x-1">
