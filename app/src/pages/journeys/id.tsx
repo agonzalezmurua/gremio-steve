@@ -3,6 +3,7 @@ import React from 'react';
 import { generatePath } from 'react-router';
 import { Link, Redirect, RouteComponentProps } from 'react-router-dom';
 import { useAsync } from 'react-use';
+import ReactMarkdown from 'react-markdown';
 import 'twin.macro';
 
 import Skeleton from '@components/atoms/Skeleton';
@@ -92,7 +93,10 @@ const JourneyPage: React.FC<RouteComponentProps<RouteProps>> = (props) => {
               )) || <Skeleton tw="w-48 h-12" />}
             </section>
             <section>
-              {<p>{journey?.description}</p> || <Skeleton tw="w-full h-64" />}
+              {(journey?.description && (
+                // eslint-disable-next-line react/no-children-prop
+                <ReactMarkdown children={journey?.description} />
+              )) || <Skeleton tw="w-full h-64" />}
             </section>
           </section>
 

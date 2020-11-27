@@ -7,6 +7,7 @@ const packageName = path.basename(__dirname);
 const rootPath = path.resolve(__dirname, '../..');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -67,5 +68,8 @@ module.exports = {
       template: path.resolve(__dirname, 'src/template.html'),
     }),
     new FriendlyErrorsWebpackPlugin(),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
   ],
 };
