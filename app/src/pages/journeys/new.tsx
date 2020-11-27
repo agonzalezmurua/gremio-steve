@@ -25,7 +25,7 @@ const NewJourneyPage: React.FC = () => {
             </Label>
 
             <Label text="Description" htmlFor="description">
-              <section tw="h-16">
+              <section tw="h-72">
                 <Editor />
               </section>
             </Label>

@@ -6,7 +6,7 @@ type InputProps = {
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 const Input: React.FunctionComponent<InputProps> = ({ icon, ...props }) => (
-  <section tw="flex bg-white rounded shadow items-center">
+  <section tw="flex bg-white rounded border items-center">
     {icon && (
       <section aria-hidden tw="p-2">
         {icon}
