@@ -5,7 +5,7 @@ import Input from '@components/atoms/form-controls/Input';
 import Label from '@components/atoms/form-controls/Label';
 import Editor from '@components/atoms/form-controls/Editor';
 import FormWithProgress from '@components/atoms/form-controls/FormWithProgress';
-import Select from '@components/atoms/form-controls/Select';
+import MapModeSelect from '@components/molecules/MapModeSelect';
 
 const NewJourneyPage: React.FC = () => {
   return (
@@ -13,6 +13,19 @@ const NewJourneyPage: React.FC = () => {
       <FormWithProgress
         steps={['Basic information', 'Maps', 'Finishing touches']}
       >
+        <section>
+          <fieldset tw="space-y-4">
+            <legend>Maps</legend>
+
+            <Label text="Mode" htmlFor="diff">
+              <MapModeSelect
+                onSelect={(value) => {
+                  console.log(value);
+                }}
+              />
+            </Label>
+          </fieldset>
+        </section>
         <section>
           <fieldset tw="space-y-4">
             <legend>Basic Information</legend>
@@ -29,16 +42,6 @@ const NewJourneyPage: React.FC = () => {
               <section tw="h-72">
                 <Editor />
               </section>
-            </Label>
-          </fieldset>
-        </section>
-
-        <section>
-          <fieldset tw="space-y-4">
-            <legend>Maps</legend>
-
-            <Label text="Difficulty" htmlFor="diff">
-              <Select options={[{ value: '', label: 'kkck' }]} />
             </Label>
           </fieldset>
         </section>

@@ -81,14 +81,14 @@ export default styled(FormProgress)`
       ${tw`rounded bg-gray-300`}
     }
     &::-webkit-progress-value {
-      ${tw`bg-purple-500`}
+      ${tw`bg-blue-500`}
       transition : width 300ms ease-in-out;
     }
   }
   svg {
     &[name='progress-circle'] {
       &[data-active='true'] {
-        ${tw`text-purple-500`}
+        ${tw`text-blue-500`}
       }
       &[data-active='false'] {
         ${tw`text-white text-gray-300 transition-colors duration-500`}

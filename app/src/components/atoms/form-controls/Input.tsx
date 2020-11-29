@@ -1,18 +1,19 @@
 import React from 'react';
 import 'twin.macro';
+import InputStyles from './Input.styles';
 
 type InputProps = {
   icon?: JSX.Element;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 const Input: React.FunctionComponent<InputProps> = ({ icon, ...props }) => (
-  <section tw="flex bg-white rounded border items-center">
+  <section css={[InputStyles.Wrapper]}>
     {icon && (
-      <section aria-hidden tw="p-2">
+      <section aria-hidden css={[InputStyles.Icon]}>
         {icon}
       </section>
     )}
-    <input tw="bg-transparent pl-2 pr-2 text-sm flex-grow h-8" {...props} />
+    <input css={[InputStyles.Input]} {...props} />
   </section>
 );
 

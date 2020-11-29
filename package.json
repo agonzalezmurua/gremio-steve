@@ -55,7 +55,6 @@
     "postcss": "^8.1.10",
     "stubby": "^5.0.0",
     "style-loader": "^2.0.0",
-    "tailwind.macro": "^1.0.0-alpha.10",
     "tailwindcss": "^2.0.1",
     "ts-node": "^9.0.0",
     "tsconfig-paths-webpack-plugin": "^3.3.0",
