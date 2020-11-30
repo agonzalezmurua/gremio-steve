@@ -7,7 +7,7 @@ import InputStyles from '@components/atoms/form-controls/Input.styles';
 
 import SelectStyles from './Select.styles';
 
-type Option = {
+export type SelectOption = {
   icon?: React.FC;
   value: any;
   label: string;
@@ -16,18 +16,18 @@ type Option = {
 export type SelectProps = {
   name?: string;
   value?: any;
-  options: Option[];
+  options: SelectOption[];
 } & React.HtmlHTMLAttributes<HTMLSelectElement>;
 
 const Select: React.FC<SelectProps> = (props) => {
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const [selected, setSelected] = useState<Option | undefined>();
+  const [selected, setSelected] = useState<SelectOption | undefined>();
   const [displaying, setDisplaying] = useState(false);
   const handleListDisplay = useCallback(() => {
     setDisplaying(true);
   }, []);
   const handleItemClick = useCallback(
-    (option: Option) => () => {
+    (option: SelectOption) => () => {
       // If controlled
       props.onSelect && props.onSelect(option.value);
       setSelected(option);
@@ -76,7 +76,7 @@ const Select: React.FC<SelectProps> = (props) => {
       {/* Options */}
       <section
         hidden={displaying === false}
-        tw="bg-white absolute w-full shadow-md rounded border"
+        tw="bg-white absolute w-full shadow-md rounded border z-50"
       >
         {props.options.map((option) => (
           <section
