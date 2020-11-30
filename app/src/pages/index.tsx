@@ -1,9 +1,17 @@
 import 'twin.macro';
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 
 const HomePage: React.FunctionComponent = () => (
   <main tw="p-4">
     <h1>About home</h1>
+    <p>
+      <FormattedMessage
+        id="myMessage"
+        defaultMessage="Hello fellow mappers"
+        description="Test message"
+      />
+    </p>
     <p>
       Snover sudowoodo kyurem raikou blitzle tyranitar metang. Charizard lapras
       ampharos phione stunky. Bouffalant shellder vulpix spoink koffing pawniard
