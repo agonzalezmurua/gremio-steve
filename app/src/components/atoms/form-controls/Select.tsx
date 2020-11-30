@@ -14,6 +14,7 @@ type Option = {
 };
 
 export type SelectProps = {
+  name?: string;
   value?: any;
   options: Option[];
 } & React.HtmlHTMLAttributes<HTMLSelectElement>;
@@ -53,6 +54,7 @@ const Select: React.FC<SelectProps> = (props) => {
       tw="flex-col relative"
       ref={wrapperRef}
     >
+      <input className="sr-only" name={props.name} value={selected?.value} />
       {/* Interactable */}
       <section
         onClick={handleListDisplay}

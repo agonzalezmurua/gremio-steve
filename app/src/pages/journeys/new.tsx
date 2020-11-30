@@ -17,12 +17,12 @@ const NewJourneyPage: React.FC = () => {
           <fieldset tw="space-y-4">
             <legend>Maps</legend>
 
-            <Label text="Mode" htmlFor="diff">
-              <MapModeSelect
-                onSelect={(value) => {
-                  console.log(value);
-                }}
-              />
+            <Label text="Mode" htmlFor="mode">
+              <MapModeSelect />
+            </Label>
+
+            <Label text="Difficulty" htmlFor="difficulty">
+              <MapModeSelect />
             </Label>
           </fieldset>
         </section>
