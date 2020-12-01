@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import { IntlProvider } from 'react-intl';
 import { useAsync } from 'react-use';
@@ -7,10 +8,10 @@ import { GlobalStyles } from 'twin.macro';
 import AppGlobalStyles from '@globals/AppGlobalStyle';
 import NavBar from '@components/organisms/NavBar';
 
-import Indexpage from '@pages/index';
-import JourneyPage from '@pages/journeys/id';
-import NotFoundPage from '@pages/NotFound';
-import NewJourneyPage from '@pages/journeys/new';
+import Indexpage from '@pages/index.page';
+import NotFoundPage from '@pages/not_found.page';
+import JourneyPage from '@pages/journeys/id.page';
+import NewJourneyPage from '@pages/journeys/new.page';
 import useLocalePreference from '@hooks/useLocalePreference';
 
 function loadMessages(locale: string) {
@@ -36,6 +37,7 @@ const App: React.FC = () => {
         <IntlProvider
           locale={locale}
           key={locale}
+          // @ts-ignore
           messages={messages}
           defaultLocale="en"
         >

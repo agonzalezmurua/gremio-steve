@@ -1,37 +1,37 @@
 /* eslint-disable react/no-children-prop */
 import React, { useRef, useState } from 'react';
+import { FormattedMessage } from 'react-intl';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 
-import tw, { css } from 'twin.macro';
+import 'twin.macro';
 
 import Button from './Button';
+import Styles from './MarkdownEditor.styles';
 
 type EditorProps = { value?: string } & React.HTMLProps<HTMLTextAreaElement>;
 
-const previewStyles = tw`flex-grow w-full resize-none overflow-y-scroll p-2`;
-
-const Editor: React.FC<EditorProps> = (props) => {
+const MarkdownEditor: React.FC<EditorProps> = (props) => {
   const [mode, setMode] = useState<'edit' | 'preview'>('edit');
   const areaRef = useRef<HTMLTextAreaElement>(null);
 
   return (
-    <section tw="flex flex-col h-full w-full border rounded">
+    <section css={[Styles.Wrapper]}>
       <textarea
-        css={[previewStyles]}
+        css={[Styles.Preview]}
         {...props}
         ref={areaRef}
         hidden={mode !== 'edit'}
       />
 
-      <section css={[previewStyles]} hidden={mode !== 'preview'}>
+      <section css={[Styles.Preview]} hidden={mode !== 'preview'}>
         <ReactMarkdown
           plugins={[gfm]}
           children={props.value || areaRef.current?.value || ''}
         />
       </section>
 
-      <section tw="border-t">
+      <section css={[Styles.ButtonWrapper]}>
         <Button
           variant="small"
           tw="border-none rounded-none"
@@ -39,7 +39,10 @@ const Editor: React.FC<EditorProps> = (props) => {
           onClick={() => setMode('edit')}
           name={`set ${props.name} to edit mode`}
         >
-          Edit
+          <FormattedMessage
+            description="Set markdown editor into edit mode"
+            defaultMessage="Edit"
+          />
         </Button>
         <Button
           variant="small"
@@ -48,11 +51,14 @@ const Editor: React.FC<EditorProps> = (props) => {
           onClick={() => setMode('preview')}
           name={`set ${props.name} to preview mode`}
         >
-          Preview
+          <FormattedMessage
+            description="Set markdown editor into preview mode"
+            defaultMessage="Preview"
+          />
         </Button>
       </section>
     </section>
   );
 };
 
-export default Editor;
+export default MarkdownEditor;

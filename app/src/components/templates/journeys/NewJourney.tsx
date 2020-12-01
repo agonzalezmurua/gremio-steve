@@ -3,30 +3,22 @@ import 'twin.macro';
 
 import Input from '@components/atoms/form-controls/Input';
 import Label from '@components/atoms/form-controls/Label';
-import Editor from '@components/atoms/form-controls/Editor';
+import MarkdownEditor from '@components/atoms/form-controls/MarkdownEditor';
 import Progress from '@components/atoms/form-controls/Progress';
-import GameMapModeSelect from '@components/molecules/GameMapModeSelect';
-import GameMapDifficultySelect from '@components/molecules/GameMapDifficultySelect';
+import { GameMapFormPart } from '../../organisms/GameMapFormFragment';
 
-const NewJourneyPage: React.FC = () => {
+type NewJourneyTemplateProps = {
+  onSave: () => void;
+};
+
+const NewJourneyTemplate: React.FC<NewJourneyTemplateProps> = () => {
   return (
     <main tw="p-4">
       <Progress steps={['Basic information', 'Maps', 'Finishing touches']}>
         <section>
           <fieldset tw="space-y-4">
             <legend>Maps</legend>
-
-            <Label text="Name" htmlFor="difficulty">
-              <Input id="title" name="title" type="text" required />
-            </Label>
-
-            <Label text="Mode" htmlFor="mode">
-              <GameMapModeSelect />
-            </Label>
-
-            <Label text="Difficulty" htmlFor="difficulty">
-              <GameMapDifficultySelect mode="ctb" />
-            </Label>
+            <GameMapFormPart />
           </fieldset>
         </section>
         <section>
@@ -43,7 +35,7 @@ const NewJourneyPage: React.FC = () => {
 
             <Label text="Description" htmlFor="description">
               <section tw="h-72">
-                <Editor />
+                <MarkdownEditor />
               </section>
             </Label>
           </fieldset>
@@ -53,4 +45,4 @@ const NewJourneyPage: React.FC = () => {
   );
 };
 
-export default NewJourneyPage;
+export default NewJourneyTemplate;

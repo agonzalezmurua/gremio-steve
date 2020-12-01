@@ -1,5 +1,6 @@
 import tw from 'twin.macro';
 import { createGlobalStyle } from 'styled-components';
+import ElementFocusStyle from './ElementFocusStyle';
 
 const AppGlobalStyle = createGlobalStyle`
   html, body {
@@ -51,6 +52,16 @@ const AppGlobalStyle = createGlobalStyle`
     position: absolute;
     height: 1px;
     width: 1px;
+  }
+
+  input, button, textarea {
+    ${tw`focus:outline-none`}
+  }
+
+  input, button {
+    &:focus {
+      ${ElementFocusStyle}
+    }
   }
 `;
 

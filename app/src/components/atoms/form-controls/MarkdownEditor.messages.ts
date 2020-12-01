@@ -1,6 +1,6 @@
 import { defineMessages } from 'react-intl';
 
-const MapModeSelectMessages = defineMessages({
+const MarkdownEditorMessages = defineMessages({
   catch: {
     description: 'Catch the beat option label',
     defaultMessage: 'Catch the beat',
@@ -15,4 +15,4 @@ const MapModeSelectMessages = defineMessages({
   },
 });
 
-export default MapModeSelectMessages;
+export default MarkdownEditorMessages;

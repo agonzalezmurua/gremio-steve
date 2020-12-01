@@ -13,6 +13,7 @@ const Button = styled.button<ButtonProps>(({ color, variant, active }) => [
     transition-colors
     duration-200
     ease-in-out
+    outline-none
   `,
   variant === 'normal' && tw`p-2 pl-4 pr-4`,
   variant === 'small' && tw`p-1 pl-2 pr-2`,
