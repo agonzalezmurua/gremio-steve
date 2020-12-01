@@ -4,26 +4,28 @@ import 'twin.macro';
 import Input from '@components/atoms/form-controls/Input';
 import Label from '@components/atoms/form-controls/Label';
 import Editor from '@components/atoms/form-controls/Editor';
-import FormWithProgress from '@components/atoms/form-controls/FormWithProgress';
-import MapModeSelect from '@components/molecules/MapModeSelect';
-import MapDifficultySelect from '@components/molecules/MapDifficultySelect';
+import Progress from '@components/atoms/form-controls/Progress';
+import GameMapModeSelect from '@components/molecules/GameMapModeSelect';
+import GameMapDifficultySelect from '@components/molecules/GameMapDifficultySelect';
 
 const NewJourneyPage: React.FC = () => {
   return (
     <main tw="p-4">
-      <FormWithProgress
-        steps={['Basic information', 'Maps', 'Finishing touches']}
-      >
+      <Progress steps={['Basic information', 'Maps', 'Finishing touches']}>
         <section>
           <fieldset tw="space-y-4">
             <legend>Maps</legend>
 
+            <Label text="Name" htmlFor="difficulty">
+              <Input id="title" name="title" type="text" required />
+            </Label>
+
             <Label text="Mode" htmlFor="mode">
-              <MapModeSelect />
+              <GameMapModeSelect />
             </Label>
 
             <Label text="Difficulty" htmlFor="difficulty">
-              <MapDifficultySelect />
+              <GameMapDifficultySelect mode="ctb" />
             </Label>
           </fieldset>
         </section>
@@ -46,7 +48,7 @@ const NewJourneyPage: React.FC = () => {
             </Label>
           </fieldset>
         </section>
-      </FormWithProgress>
+      </Progress>
     </main>
   );
 };

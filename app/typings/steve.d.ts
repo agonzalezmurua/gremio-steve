@@ -18,14 +18,14 @@ declare type Journey = {
   };
   description: string;
   status: 'open' | 'clossed' | 'suspended';
-  maps: DifficultyMap[];
+  maps: GameMap[];
 };
 
-declare type DifficultyMap = {
+declare type GameMap = {
   __id: string;
   index: number;
   name: string;
-  mode: 'std' | 'taiko' | 'ctb';
+  mode: 'std' | 'taiko' | 'ctb' | 'mania';
   difficulty: 'easy' | 'normal' | 'hard' | 'insane' | 'expert' | 'expert+';
   status: 'ready' | 'pending' | 'alert' | 'problem';
   assignee?: User;

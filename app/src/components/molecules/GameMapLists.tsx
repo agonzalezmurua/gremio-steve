@@ -16,10 +16,10 @@ import Avatar from '@components/atoms/Avatar';
 import Button from '@components/atoms/form-controls/Button';
 
 type MapsProps = {
-  maps: DifficultyMap[];
+  maps: GameMap[];
 };
 
-const MapTypeItem: React.FC<DifficultyMap> = (props) => {
+const GamemapTypeItem: React.FC<GameMap> = (props) => {
   const Icon = useMemo(() => {
     const iconProps = { 'data-difficulty': props.difficulty };
     switch (props.mode) {
@@ -78,12 +78,12 @@ const MapTypeItem: React.FC<DifficultyMap> = (props) => {
   );
 };
 
-const MapList: React.FC<{ maps: DifficultyMap[]; title: string }> = (props) => (
+const GameMapList: React.FC<{ maps: GameMap[]; title: string }> = (props) => (
   <section>
     <h3>{props.title}</h3>
     <ul>
       {props.maps.map((map) => (
-        <MapTypeItem
+        <GamemapTypeItem
           key={map.__id}
           __id={map.__id}
           mode={map.mode}
@@ -98,17 +98,19 @@ const MapList: React.FC<{ maps: DifficultyMap[]; title: string }> = (props) => (
   </section>
 );
 
-const MapsLists: React.FC<MapsProps> = (props) => {
+const GameMapLists: React.FC<MapsProps> = (props) => {
   const {
     ctb,
     std,
     taiko,
+    mania,
   }: {
-    [key in DifficultyMap['mode']]: DifficultyMap[];
+    [key in GameMap['mode']]: GameMap[];
   } = useMemo(() => {
-    const ctb: DifficultyMap[] = [];
-    const std: DifficultyMap[] = [];
-    const taiko: DifficultyMap[] = [];
+    const ctb: GameMap[] = [];
+    const std: GameMap[] = [];
+    const taiko: GameMap[] = [];
+    const mania: GameMap[] = [];
 
     const _maps = props.maps.sort((a, b) => {
       if (a.index > b.index) {
@@ -131,6 +133,9 @@ const MapsLists: React.FC<MapsProps> = (props) => {
         case 'taiko':
           taiko.push(diff);
           break;
+        case 'mania':
+          mania.push(diff);
+          break;
         default:
           break;
       }
@@ -140,20 +145,22 @@ const MapsLists: React.FC<MapsProps> = (props) => {
       ctb,
       std,
       taiko,
+      mania,
     };
   }, [props.maps]);
 
   return (
     <section {...props}>
       <h2>Maps</h2>
-      {Boolean(std.length) && <MapList title="Standard" maps={std} />}
-      {Boolean(taiko.length) && <MapList title="Taiko" maps={taiko} />}
-      {Boolean(ctb.length) && <MapList title="Catch the beat" maps={ctb} />}
+      {Boolean(std.length) && <GameMapList title="Standard" maps={std} />}
+      {Boolean(taiko.length) && <GameMapList title="Taiko" maps={taiko} />}
+      {Boolean(ctb.length) && <GameMapList title="Catch the beat" maps={ctb} />}
+      {Boolean(mania.length) && <GameMapList title="Mania" maps={ctb} />}
     </section>
   );
 };
 
-export default styled(MapsLists)`
+export default styled(GameMapLists)`
   li {
     .status svg {
       ${tw`h-5 w-5`}

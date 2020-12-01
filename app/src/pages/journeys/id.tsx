@@ -12,7 +12,7 @@ import Avatar from '@components/atoms/Avatar';
 import JourneyMetadata from '@components/atoms/JourneyMetadata';
 import JourneyStatus from '@components/atoms/JourneyStatus';
 import JourneyBanner from '@components/atoms/JourneyBanner';
-import MapsList from '@components/molecules/MapsLists';
+import GamemapLists from '@components/molecules/GameMapLists';
 
 type RouteProps = {
   id: string;
@@ -102,7 +102,7 @@ const JourneyPage: React.FC<RouteComponentProps<RouteProps>> = (props) => {
 
           {/* Maps */}
           <section tw="space-y-2">
-            {(journey?.maps && <MapsList maps={journey.maps} />) || (
+            {(journey?.maps && <GamemapLists maps={journey.maps} />) || (
               <>
                 <Skeleton tw="w-32 h-6" />
                 <Skeleton tw="w-full h-64" />

@@ -65,6 +65,8 @@ const Select: React.FC<SelectProps> = (props) => {
     >
       <input
         className="sr-only"
+        aria-hidden
+        tabIndex={-1}
         readOnly
         name={props.name}
         value={selected?.value || ''}
