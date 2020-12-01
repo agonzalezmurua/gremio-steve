@@ -9,8 +9,7 @@
     "build:app": "webpack --config app/webpack.config.js",
     "build:i18n": "node runtime-scripts/build/build-i18n.js",
     "start": "cross-env NODE_ENV=development run-p dev:start:**",
-    "i18n:extract": "npx formatjs extract 'app/src/**/*.ts*' --out-file=app/lang/en.json --id-interpolation-pattern=[sha512:contenthash:base64:6]'",
-    "dev:start:i18n": "node runtime-scripts/dev/watch-i18n.js",
+    "dev:start:i18n-build": "node runtime-scripts/dev/watch-i18n.js",
     "dev:start:app": "webpack serve --config app/webpack.config.ts",
     "dev:start:electron": "node runtime-scripts/dev/wait-on-app && electron electron/main.js",
     "dev:start:stubby": "stubby --watch  --data stubby/endpoints.yaml"
@@ -18,6 +17,9 @@
   "author": "",
   "license": "ISC",
   "private": true,
+  "languages": [
+    "en"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",

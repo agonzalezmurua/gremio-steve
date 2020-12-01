@@ -1,6 +1,14 @@
 {
-  "myMessage": {
-    "defaultMessage": "Hello fellow mappers!",
+  "5VpL9Z": {
+    "defaultMessage": "My name is {name}",
+    "description": "A message"
+  },
+  "YjMxG2": {
+    "defaultMessage": "Catch the beat",
+    "description": "Catch the beat option label"
+  },
+  "home.test": {
+    "defaultMessage": "Hello fellow mappers",
     "description": "Test message"
   }
 }

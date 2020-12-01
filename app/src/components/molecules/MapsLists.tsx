@@ -22,7 +22,7 @@ type MapsProps = {
 const MapTypeItem: React.FC<DifficultyMap> = (props) => {
   const Icon = useMemo(() => {
     const iconProps = { 'data-difficulty': props.difficulty };
-    switch (props.type) {
+    switch (props.mode) {
       case 'std':
         return <Standard {...iconProps} />;
       case 'ctb':
@@ -32,7 +32,7 @@ const MapTypeItem: React.FC<DifficultyMap> = (props) => {
       default:
         return null;
     }
-  }, [props.type]);
+  }, [props.mode]);
   const Status = useMemo(() => {
     const iconProps = { 'data-status': props.status };
     switch (props.status) {
@@ -86,7 +86,7 @@ const MapList: React.FC<{ maps: DifficultyMap[]; title: string }> = (props) => (
         <MapTypeItem
           key={map.__id}
           __id={map.__id}
-          type={map.type}
+          mode={map.mode}
           difficulty={map.difficulty}
           name={map.name}
           status={map.status}
@@ -104,7 +104,7 @@ const MapsLists: React.FC<MapsProps> = (props) => {
     std,
     taiko,
   }: {
-    [key in DifficultyMap['type']]: DifficultyMap[];
+    [key in DifficultyMap['mode']]: DifficultyMap[];
   } = useMemo(() => {
     const ctb: DifficultyMap[] = [];
     const std: DifficultyMap[] = [];
@@ -121,7 +121,7 @@ const MapsLists: React.FC<MapsProps> = (props) => {
     });
 
     _maps.map((diff) => {
-      switch (diff.type) {
+      switch (diff.mode) {
         case 'ctb':
           ctb.push(diff);
           break;

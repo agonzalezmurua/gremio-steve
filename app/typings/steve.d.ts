@@ -25,7 +25,7 @@ declare type DifficultyMap = {
   __id: string;
   index: number;
   name: string;
-  type: 'std' | 'taiko' | 'ctb';
+  mode: 'std' | 'taiko' | 'ctb';
   difficulty: 'easy' | 'normal' | 'hard' | 'insane' | 'expert' | 'expert+';
   status: 'ready' | 'pending' | 'alert' | 'problem';
   assignee?: User;

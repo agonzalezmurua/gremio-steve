@@ -7,7 +7,7 @@ const HomePage: React.FunctionComponent = () => (
     <h1>About home</h1>
     <p>
       <FormattedMessage
-        id="myMessage"
+        id="home.test"
         defaultMessage="Hello fellow mappers"
         description="Test message"
       />

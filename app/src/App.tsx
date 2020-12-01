@@ -1,5 +1,6 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
+import { useAsync } from 'react-use';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import { GlobalStyles } from 'twin.macro';
 
@@ -10,15 +11,14 @@ import Indexpage from '@pages/index';
 import JourneyPage from '@pages/journeys/id';
 import NotFoundPage from '@pages/NotFound';
 import NewJourneyPage from '@pages/journeys/new';
-import { useAsync } from 'react-use';
 import useLocalePreference from '@hooks/useLocalePreference';
-import FullScreenLoader from '@components/atoms/FullLoader';
 
 function loadMessages(locale: string) {
-  console.log(locale);
   switch (locale) {
-    default:
+    case 'en':
       return import('../compiled-lang/en.json');
+    default:
+      return Promise.resolve(undefined);
   }
 }
 
@@ -33,7 +33,12 @@ const App: React.FC = () => {
       <GlobalStyles />
       <AppGlobalStyles />
       {loading || (
-        <IntlProvider locale={locale} messages={messages} defaultLocale="en">
+        <IntlProvider
+          locale={locale}
+          key={locale}
+          messages={messages}
+          defaultLocale="en"
+        >
           <HashRouter tw="h-screen">
             <NavBar>
               <Switch>

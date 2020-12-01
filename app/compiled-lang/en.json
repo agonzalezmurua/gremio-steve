@@ -1,8 +1,24 @@
 {
-  "myMessage": [
+  "5VpL9Z": [
     {
       "type": 0,
-      "value": "Hello fellow mappers!"
+      "value": "My name is "
+    },
+    {
+      "type": 1,
+      "value": "name"
+    }
+  ],
+  "YjMxG2": [
+    {
+      "type": 0,
+      "value": "Catch the beat"
+    }
+  ],
+  "home.test": [
+    {
+      "type": 0,
+      "value": "Hello fellow mappers"
     }
   ]
 }

@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import 'twin.macro';
+import tw from 'twin.macro';
 import { useClickAway } from 'react-use';
 
 import ChevronDown from '@assets/icons/outline/chevron-down.svg';
-import InputStyles from '@components/atoms/form-controls/Input.styles';
 
 import SelectStyles from './Select.styles';
+import InputStyles from './Input.styles';
 
 export type SelectOption = {
   icon?: React.FC;
@@ -17,6 +17,7 @@ export type SelectProps = {
   name?: string;
   value?: any;
   options: SelectOption[];
+  disabled?: boolean;
 } & React.HtmlHTMLAttributes<HTMLSelectElement>;
 
 const Select: React.FC<SelectProps> = (props) => {
@@ -24,6 +25,9 @@ const Select: React.FC<SelectProps> = (props) => {
   const [selected, setSelected] = useState<SelectOption | undefined>();
   const [displaying, setDisplaying] = useState(false);
   const handleListDisplay = useCallback(() => {
+    if (props.disabled) {
+      return;
+    }
     setDisplaying(true);
   }, []);
   const handleItemClick = useCallback(
@@ -50,18 +54,34 @@ const Select: React.FC<SelectProps> = (props) => {
   return (
     <section
       role="listbox"
-      css={[InputStyles.Wrapper]}
+      css={[
+        InputStyles.Wrapper,
+        SelectStyles.Wrapper,
+        props.disabled && SelectStyles.DisabledBackground,
+      ]}
       tw="flex-col relative"
+      aria-disabled={props.disabled}
       ref={wrapperRef}
     >
-      <input className="sr-only" name={props.name} value={selected?.value} />
+      <input
+        className="sr-only"
+        readOnly
+        name={props.name}
+        value={selected?.value || ''}
+      />
       {/* Interactable */}
       <section
         onClick={handleListDisplay}
         css={[InputStyles.Input]}
         tw="flex items-center w-full"
       >
-        <span css={[SelectStyles.Selected]}>
+        <span
+          css={[
+            SelectStyles.Option,
+            tw`flex-grow p-0 hover:(bg-transparent)`,
+            props.disabled && SelectStyles.DisabledBackground,
+          ]}
+        >
           {(selected && (
             <>
               {selected.icon && <selected.icon />}
@@ -70,7 +90,7 @@ const Select: React.FC<SelectProps> = (props) => {
           )) ||
             props.placeholder}
         </span>
-        <ChevronDown tw="h-4 w-4" />
+        <ChevronDown css={[tw`h-4 w-4`, props.disabled && tw`text-gray-500`]} />
       </section>
 
       {/* Options */}
@@ -84,7 +104,7 @@ const Select: React.FC<SelectProps> = (props) => {
             role="option"
             onClick={handleItemClick(option)}
             aria-selected={selected?.value === option.value}
-            css={[SelectStyles.Item]}
+            css={[SelectStyles.Option]}
           >
             {option.icon && <option.icon />}
             <span>{option.label}</span>

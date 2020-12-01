@@ -29,7 +29,7 @@
       "__id": "1",
       "index": 2,
       "name": "normal_diff",
-      "type": "std",
+      "mode": "std",
       "difficulty": "normal",
       "status": "ready",
       "assignee": {
@@ -44,7 +44,7 @@
       "__id": "2",
       "index": 3,
       "name": "hard_diff",
-      "type": "std",
+      "mode": "std",
       "difficulty": "hard",
       "status": "pending",
       "assignee": {
@@ -59,7 +59,7 @@
       "__id": "3",
       "index": 1,
       "name": "ez_diff",
-      "type": "std",
+      "mode": "std",
       "difficulty": "easy",
       "status": "pending",
       "assignee": {
@@ -74,7 +74,7 @@
       "__id": "4",
       "index": 4,
       "name": "boom_boom",
-      "type": "taiko",
+      "mode": "taiko",
       "difficulty": "hard",
       "status": "pending",
       "assignee": null

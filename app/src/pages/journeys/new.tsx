@@ -6,6 +6,7 @@ import Label from '@components/atoms/form-controls/Label';
 import Editor from '@components/atoms/form-controls/Editor';
 import FormWithProgress from '@components/atoms/form-controls/FormWithProgress';
 import MapModeSelect from '@components/molecules/MapModeSelect';
+import MapDifficultySelect from '@components/molecules/MapDifficultySelect';
 
 const NewJourneyPage: React.FC = () => {
   return (
@@ -22,7 +23,7 @@ const NewJourneyPage: React.FC = () => {
             </Label>
 
             <Label text="Difficulty" htmlFor="difficulty">
-              <MapModeSelect />
+              <MapDifficultySelect />
             </Label>
           </fieldset>
         </section>

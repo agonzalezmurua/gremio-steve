@@ -1,6 +1,6 @@
 import tw, { css } from 'twin.macro';
 
-const Item = css`
+const Option = css`
   ${tw`relative text-sm cursor-pointer bg-white flex flex-row items-center h-8 space-x-1 px-2 hover:(bg-gray-300)`}
   &[aria-selected="true"] {
     ${tw`bg-blue-300`}
@@ -10,15 +10,19 @@ const Item = css`
   }
 `;
 
-const Selected = css`
-  ${Item}
+const Select = css``;
 
-  ${tw`flex-grow p-0 hover:(bg-transparent)`}
+const Wrapper = css``;
+
+const DisabledBackground = css`
+  ${tw`bg-gray-200`}
 `;
 
 const MapModeSelectStyles = {
-  Item: Item,
-  Selected: Selected,
+  Option: Option,
+  Wrapper: Wrapper,
+  Select: Select,
+  DisabledBackground: DisabledBackground,
 };
 
 export default MapModeSelectStyles;
