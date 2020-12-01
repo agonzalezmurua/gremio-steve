@@ -18,12 +18,12 @@ declare type Journey = {
   };
   description: string;
   status: 'open' | 'clossed' | 'suspended';
+  private: boolean;
   maps: GameMap[];
 };
 
 declare type GameMap = {
   __id: string;
-  index: number;
   name: string;
   mode: 'std' | 'taiko' | 'ctb' | 'mania';
   difficulty: 'easy' | 'normal' | 'hard' | 'insane' | 'expert' | 'expert+';

@@ -91,7 +91,6 @@ const GameMapList: React.FC<{ maps: GameMap[]; title: string }> = (props) => (
           name={map.name}
           status={map.status}
           assignee={map.assignee}
-          index={map.index}
         />
       ))}
     </ul>
@@ -112,13 +111,8 @@ const GameMapLists: React.FC<MapsProps> = (props) => {
     const taiko: GameMap[] = [];
     const mania: GameMap[] = [];
 
-    const _maps = props.maps.sort((a, b) => {
-      if (a.index > b.index) {
-        return 1;
-      }
-      if (a.index < b.index) {
-        return -1;
-      }
+    const _maps = props.maps.sort(() => {
+      // TODO: Sorting algorithm based on difficulty ordering
       return 0;
     });
 

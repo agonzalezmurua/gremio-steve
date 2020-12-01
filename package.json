@@ -32,6 +32,7 @@
     "@types/react-dom": "^16.9.9",
     "@types/react-router-dom": "^5.1.6",
     "@types/styled-components": "^5.1.4",
+    "@types/uuid": "^8.3.0",
     "@types/webpack": "^4.41.25",
     "@types/webpack-dev-server": "^3.11.1",
     "@typescript-eslint/eslint-plugin": "^4.8.1",
@@ -89,7 +90,8 @@
     "react-router-dom": "^5.2.0",
     "react-use": "^15.3.4",
     "remark-gfm": "^1.0.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "uuid": "^3.4.0"
   },
   "babelMacros": {
     "twin": {

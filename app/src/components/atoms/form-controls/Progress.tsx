@@ -3,13 +3,15 @@ import tw, { styled } from 'twin.macro';
 import Button from './Button';
 
 import Circle from '@assets/icons/steve/circle.svg';
+import { FormattedMessage } from 'react-intl';
 
-type FormProgressProps = {
+type ProgressProps = {
   className?: string;
   steps: string[];
+  onFinish?: () => void;
 };
 
-const FormProgress: React.FC<FormProgressProps> = (props) => {
+const Progress: React.FC<ProgressProps> = (props) => {
   const [currentStep, setCurrentStep] = useState(0);
   const isLastStep = useMemo(() => {
     return currentStep === props.steps.length - 1;
@@ -39,20 +41,33 @@ const FormProgress: React.FC<FormProgressProps> = (props) => {
       {/* Actions */}
       <section tw="flex justify-between space-x-2 w-full">
         <Button
-          name="previous form step"
+          name="back"
           type="button"
           disabled={currentStep === 0}
           onClick={() => setCurrentStep(currentStep - 1)}
         >
-          Back
+          <FormattedMessage
+            defaultMessage="Back"
+            description="Back one step, usually used on forms"
+          />
         </Button>
-        {(isLastStep && <Button type="submit">Save</Button>) || (
+        {(isLastStep && (
+          <Button type="submit" color="blue">
+            <FormattedMessage
+              defaultMessage="Finish"
+              description="Final step of progress, usually used on forms"
+            />
+          </Button>
+        )) || (
           <Button
-            name="next form step"
+            name="next"
             type="button"
             onClick={() => setCurrentStep(currentStep + 1)}
           >
-            Next
+            <FormattedMessage
+              defaultMessage="Next"
+              description="Next one step, usually used on forms"
+            />
           </Button>
         )}
       </section>
@@ -69,11 +84,11 @@ const FormProgress: React.FC<FormProgressProps> = (props) => {
   );
 };
 
-FormProgress.defaultProps = {
+Progress.defaultProps = {
   steps: [],
 };
 
-export default styled(FormProgress)`
+export default styled(Progress)`
   progress[value] {
     ${tw`h-1`}
     &::-webkit-progress-bar,

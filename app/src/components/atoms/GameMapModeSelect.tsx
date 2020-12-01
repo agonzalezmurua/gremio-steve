@@ -7,7 +7,7 @@ import CatchTheBeat from '@assets/icons/steve/catch_the_beat.svg';
 
 import Select, { SelectProps } from '@components/atoms/form-controls/Select';
 
-import Messages from './GameMapModeSelect.messages';
+import Messages from '../molecules/GameMapModeSelect.messages';
 
 const MapModeSelect: React.FC<
   Optional<SelectProps, 'options'> & WrappedComponentProps

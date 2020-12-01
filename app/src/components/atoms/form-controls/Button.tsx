@@ -2,7 +2,7 @@ import tw, { styled } from 'twin.macro';
 
 type ButtonProps = {
   color?: 'red' | 'white' | 'blue';
-  variant?: 'normal' | 'small';
+  variant?: 'normal' | 'small' | 'self-contained';
   active?: boolean;
 } & React.HTMLProps<HTMLButtonElement>;
 
