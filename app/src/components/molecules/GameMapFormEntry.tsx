@@ -21,7 +21,7 @@ const GameMapFormEntry: React.FC<GameMapFormEntryProps> = ({
   return (
     <React.Fragment>
       <Button
-        variant="self-contained"
+        kind="self-contained"
         tw=" h-8 px-2"
         color="red"
         onClick={() => onDelete && onDelete(id)}
