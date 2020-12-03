@@ -5,8 +5,8 @@ export type JourneyForm = Pick<
   Journey,
   'title' | 'artist' | 'description' | 'metadata' | 'private'
 > & {
-  banner?: File;
-  thumbnail?: File;
+  banner: string;
+  thumbnail: string;
   maps: Array<GameMapForm>;
 };
 
@@ -16,9 +16,9 @@ export const initialValues: JourneyForm = {
   title: '',
   artist: '',
   maps: [],
-  banner: undefined,
+  banner: '',
   description: '',
-  thumbnail: undefined,
+  thumbnail: '',
   metadata: { bpm: 90, duration: 30, genre: '' },
   private: true,
 };
@@ -26,9 +26,9 @@ export const initialValues: JourneyForm = {
 export const validationSchema = object().shape<JourneyForm>({
   title: string().required(),
   artist: string().required(),
-  banner: object<File>().required(),
-  description: string().required().min(0).max(500),
-  thumbnail: object<File>().required(),
+  banner: string().required(),
+  description: string().min(1).max(500).default(''),
+  thumbnail: string().required(),
   maps: array(
     object()
       .shape<GameMapForm>({

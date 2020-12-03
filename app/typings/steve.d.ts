@@ -16,7 +16,7 @@ declare type Journey = {
     closure?: string;
     duration: number;
   };
-  description: string;
+  description?: string;
   status: 'open' | 'clossed' | 'suspended';
   private: boolean;
   maps: GameMap[];

@@ -1,45 +1,52 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import tw from 'twin.macro';
 
 import Upload from '@assets/icons/outline/upload.svg';
 
 import InputStyles from './Input.styles';
+import { useFormikContext } from 'formik';
 
-type FileUploadProps = {
-  onChange: (event: { target: { name?: string; value: File } }) => void;
-  value?: File;
-};
-
-const FileUpload: React.FC<
-  React.HTMLProps<HTMLInputElement> & FileUploadProps
-> = ({ value, ...props }) => {
-  // const image = useRef<HTMLImageElement>(null);
+const FileUpload: React.FC<React.HTMLProps<HTMLInputElement>> = ({
+  name,
+  id,
+  accept,
+  ...props
+}) => {
+  const { setFieldValue } = useFormikContext();
+  const fileInput = useRef<HTMLInputElement>(null);
   const input = useRef<HTMLInputElement>(null);
+  const reader = useRef<FileReader>(new FileReader());
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.currentTarget.files![0];
     if (!file) {
       return;
     }
-    const reader = new FileReader();
-    // image.current!.title = file.name;
-    // reader.onload = function (event) {
-    //   image.current!.src = event.target!.result as string;
-    // };
-    reader.readAsDataURL(file);
 
-    props.onChange &&
-      props.onChange({ target: { name: props.name, value: file } });
+    input.current!.value = file.name;
+    reader.current.readAsDataURL(file);
   };
+  useEffect(() => {
+    reader.current!.onload = (item) => {
+      setFieldValue(name!, item.target!.result);
+    };
+  }, []);
 
   return (
-    <section css={[InputStyles.Wrapper]}>
-      <input {...props} onChange={handleChange} hidden ref={input} />
+    <section
+      css={[InputStyles.Wrapper]}
+      {...props}
+      onClickCapture={() => fileInput.current!.click()}
+    >
       <input
-        css={[InputStyles.Input]}
-        readOnly
-        onClick={() => input.current!.click()}
-        value={value?.name}
+        type="file"
+        name={name}
+        id={id}
+        accept={accept}
+        onChange={handleChange}
+        ref={fileInput}
+        hidden
       />
+      <input css={[InputStyles.Input]} readOnly ref={input} />
       <Upload tw="h-4 w-4 mx-2 my-auto text-gray-500" />
     </section>
   );

@@ -9,7 +9,6 @@ import Button from '@components/atoms/form-controls/Button';
 
 import Minus from '@assets/icons/outline/minus.svg';
 import { useField } from 'formik';
-import { GameMapForm } from '@components/templates/journeys/NewJourney.form';
 
 type GameMapFormEntryProps = {
   index: number;
@@ -41,7 +40,7 @@ const GameMapFormEntry: React.FC<GameMapFormEntryProps> = ({
         kind="self-contained"
         tw=" h-8 px-2"
         color="red"
-        onClick={() => onDelete && onDelete()}
+        onClick={onDelete}
       >
         <Minus tw="h-4 w-4" />
       </Button>

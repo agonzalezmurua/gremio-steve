@@ -20,6 +20,9 @@
   "languages": [
     "en"
   ],
+  "engines": {
+    "node": ">=15.3.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",

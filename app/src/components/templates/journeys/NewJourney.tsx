@@ -1,20 +1,19 @@
-import React from 'react';
-import { Formik, FormikProps, withFormik } from 'formik';
 import 'twin.macro';
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
+import { FormikProps, withFormik } from 'formik';
 
 import Input from '@components/atoms/form-controls/Input';
 import Label from '@components/atoms/form-controls/Label';
 import MarkdownEditor from '@components/atoms/form-controls/MarkdownEditor';
-import Progress from '@components/atoms/form-controls/Progress';
-import { GameMapFormList } from '../../organisms/GameMapFormList';
-import { FormattedMessage } from 'react-intl';
+import FileUpload from '@components/atoms/form-controls/FileUpload';
 import Button from '@components/atoms/form-controls/Button';
+import { GameMapFormList } from '@components/organisms/GameMapFormList';
 import {
   initialValues,
   validationSchema,
   JourneyForm,
 } from './NewJourney.form';
-import FileUpload from '@components/atoms/form-controls/FileUpload';
 
 const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
   handleSubmit,
@@ -37,17 +36,6 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
             />
           </Label>
 
-          <Label text="Banner" htmlFor="banner">
-            <FileUpload
-              id="banner"
-              name="banner"
-              type="file"
-              accept="image/jpeg, image/jpg"
-              onChange={handleChange}
-              value={values.banner}
-            />
-          </Label>
-
           <Label text="Artist" htmlFor="artist">
             <Input
               id="artist"
@@ -59,7 +47,7 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
           </Label>
 
           <section tw="flex flex-row space-x-2 ">
-            <Label text="BPM" htmlFor="bpm" tw="flex-grow">
+            <Label text="BPM" htmlFor="bpm" tw="w-1/6">
               <Input
                 id="bpm"
                 name="metada.bpm"
@@ -70,7 +58,7 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
                 onChange={handleChange}
               />
             </Label>
-            <Label text="Duration" htmlFor="duration" tw="flex-grow">
+            <Label text="Duration" htmlFor="duration" tw="w-1/6">
               <Input
                 id="duration"
                 name="metadata.duration"
@@ -81,13 +69,30 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
                 onChange={handleChange}
               />
             </Label>
-            <Label text="Genre" htmlFor="genre" tw="flex-grow">
+            <Label text="Genre" htmlFor="genre" tw="w-2/3">
               <Input
                 id="genre"
                 name="metadata.genre"
                 type="text"
                 value={values.metadata.genre}
                 onChange={handleChange}
+              />
+            </Label>
+          </section>
+
+          <section tw="flex space-x-2">
+            <Label text="Banner" htmlFor="banner" tw="w-1/2">
+              <FileUpload
+                id="banner"
+                name="banner"
+                accept="image/jpeg, image/jpg"
+              />
+            </Label>
+            <Label text="Thumbnail" htmlFor="thumbnail" tw="w-1/2">
+              <FileUpload
+                id="thumbnail"
+                name="thumbnail"
+                accept="image/jpeg, image/jpg"
               />
             </Label>
           </section>
@@ -131,11 +136,10 @@ export default withFormik<any, JourneyForm>({
   validationSchema: validationSchema,
   handleSubmit: (values, { setSubmitting }) => {
     setTimeout(() => {
-      alert(JSON.stringify(values, null, 2));
+      console.log(JSON.stringify(values, null, 2));
       setSubmitting(false);
     }, 1000);
   },
-  enableReinitialize: true,
   mapPropsToValues: () => {
     return initialValues;
   },

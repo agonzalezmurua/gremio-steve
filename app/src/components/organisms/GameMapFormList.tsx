@@ -17,20 +17,6 @@ export const GameMapFormList = () => {
       name="maps"
       render={(helpers) => (
         <section css={[Styles.Wrapper]}>
-          <Button
-            name="add"
-            onClick={() =>
-              helpers.push({ name: '', mode: 'std', difficulty: 'normal' })
-            }
-          >
-            <Plus />
-            <span>
-              <FormattedMessage
-                defaultMessage="Add Game Map"
-                description="Add a new GameMap"
-              />
-            </span>
-          </Button>
           <section css={[Styles.GameMaps]}>
             <ul>
               {values.maps.map((_, index) => {
@@ -45,6 +31,20 @@ export const GameMapFormList = () => {
               })}
             </ul>
           </section>
+          <Button
+            name="add"
+            onClick={() =>
+              helpers.push({ name: '', mode: 'std', difficulty: 'normal' })
+            }
+          >
+            <Plus />
+            <span>
+              <FormattedMessage
+                defaultMessage="Add Game Map"
+                description="Add a new GameMap"
+              />
+            </span>
+          </Button>
         </section>
       )}
     />

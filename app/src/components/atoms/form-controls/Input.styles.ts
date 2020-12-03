@@ -2,7 +2,7 @@ import ElementFocusStyle from '@globals/ElementFocusStyle';
 import tw, { css } from 'twin.macro';
 
 const Wrapper = css`
-  ${tw`flex bg-white rounded border items-center`} :focus-within {
+  ${tw`flex bg-white rounded border items-center relative`} :focus-within {
     ${ElementFocusStyle}
   }
 `;
