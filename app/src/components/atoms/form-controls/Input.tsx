@@ -1,10 +1,10 @@
 import 'twin.macro';
 import React from 'react';
-import InputStyles from './Input.styles';
+import Styles from './Input.styles';
 
 type InputProps = {
   icon?: JSX.Element;
-  error?: boolean;
+  error?: string;
   message?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
@@ -14,14 +14,16 @@ const Input: React.FunctionComponent<InputProps> = ({
   message,
   ...props
 }) => (
-  <section css={[InputStyles.Wrapper]}>
-    <input css={[InputStyles.Input]} {...props} />
+  <section css={[Styles.Wrapper, error && Styles.Error]}>
+    {(message || error) && (
+      <section css={[Styles.Messsage]}>{message || error}</section>
+    )}
+    <input css={[Styles.Input]} {...props} />
     {icon && (
-      <section aria-hidden css={[InputStyles.Icon]}>
+      <section aria-hidden css={[Styles.Icon]}>
         {icon}
       </section>
     )}
-    {message && <section>{message}</section>}
   </section>
 );
 

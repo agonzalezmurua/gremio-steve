@@ -6,13 +6,22 @@ const Wrapper = css`
     ${ElementFocusStyle}
   }
 `;
-const Input = tw`bg-transparent px-2 text-sm flex-grow h-8`;
+const Input = tw`bg-transparent px-2 flex-grow h-8 text-sm text-gray-900`;
 const Icon = tw`p-2`;
+const Error = tw`text-red-500 border-red-300 bg-red-50`;
+const Messsage = css`
+  ${tw`-top-5 absolute text-xs right-0 normal-case w-1/2 text-right truncate`}
+  &::first-letter {
+    ${tw`uppercase`}
+  }
+`;
 
 const InputStyles = {
   Wrapper: Wrapper,
   Input: Input,
   Icon: Icon,
+  Error: Error,
+  Messsage: Messsage,
 };
 
 export default InputStyles;

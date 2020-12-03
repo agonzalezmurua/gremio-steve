@@ -19,6 +19,7 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
   handleSubmit,
   handleChange,
   values,
+  errors,
 }) => {
   return (
     <main tw="p-4">
@@ -33,6 +34,7 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
               type="text"
               onChange={handleChange}
               value={values.title}
+              error={errors.title}
             />
           </Label>
 
@@ -43,22 +45,24 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
               type="text"
               onChange={handleChange}
               value={values.artist}
+              error={errors.artist}
             />
           </Label>
 
-          <section tw="flex flex-row space-x-2 ">
-            <Label text="BPM" htmlFor="bpm" tw="w-1/6">
+          <section tw="flex flex-row space-x-4 ">
+            <Label text="BPM" htmlFor="bpm" tw="w-1/3">
               <Input
                 id="bpm"
-                name="metada.bpm"
+                name="metadata.bpm"
                 type="number"
                 min="1"
                 max="500"
                 value={String(values.metadata.bpm)}
+                error={errors.metadata?.bpm}
                 onChange={handleChange}
               />
             </Label>
-            <Label text="Duration" htmlFor="duration" tw="w-1/6">
+            <Label text="Duration" htmlFor="duration" tw="w-1/3">
               <Input
                 id="duration"
                 name="metadata.duration"
@@ -66,15 +70,17 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
                 min="1"
                 max="120"
                 value={values.metadata.duration}
+                error={errors.metadata?.duration}
                 onChange={handleChange}
               />
             </Label>
-            <Label text="Genre" htmlFor="genre" tw="w-2/3">
+            <Label text="Genre" htmlFor="genre" tw="w-1/3">
               <Input
                 id="genre"
                 name="metadata.genre"
                 type="text"
                 value={values.metadata.genre}
+                error={errors.metadata?.genre}
                 onChange={handleChange}
               />
             </Label>
@@ -86,6 +92,7 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
                 id="banner"
                 name="banner"
                 accept="image/jpeg, image/jpg"
+                error={errors.banner}
               />
             </Label>
             <Label text="Thumbnail" htmlFor="thumbnail" tw="w-1/2">
@@ -93,6 +100,7 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
                 id="thumbnail"
                 name="thumbnail"
                 accept="image/jpeg, image/jpg"
+                error={errors.thumbnail}
               />
             </Label>
           </section>
@@ -103,6 +111,7 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
                 id="description"
                 name="description"
                 value={values.description}
+                error={errors.description}
                 onChange={handleChange}
               />
             </section>

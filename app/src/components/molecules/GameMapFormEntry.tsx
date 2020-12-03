@@ -27,7 +27,7 @@ const GameMapFormEntry: React.FC<GameMapFormEntryProps> = ({
     }),
     [index]
   );
-  const [name] = useField({
+  const [name, nameMeta] = useField({
     name: names.name,
     type: 'text',
   });
@@ -46,7 +46,7 @@ const GameMapFormEntry: React.FC<GameMapFormEntryProps> = ({
       </Button>
 
       <Label text="Name" htmlFor={`maps[${index}].name`}>
-        <Input {...name} />
+        <Input {...name} error={nameMeta.error} />
       </Label>
 
       <Label text="Mode" htmlFor={names.mode}>

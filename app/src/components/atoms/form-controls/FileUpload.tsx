@@ -3,15 +3,17 @@ import tw from 'twin.macro';
 
 import Upload from '@assets/icons/outline/upload.svg';
 
-import InputStyles from './Input.styles';
+import Styles from './Input.styles';
 import { useFormikContext } from 'formik';
 
-const FileUpload: React.FC<React.HTMLProps<HTMLInputElement>> = ({
-  name,
-  id,
-  accept,
-  ...props
-}) => {
+type FileUploadProps = {
+  error?: string;
+  message?: string;
+};
+
+const FileUpload: React.FC<
+  FileUploadProps & React.HTMLProps<HTMLInputElement>
+> = ({ name, id, accept, error, message, ...props }) => {
   const { setFieldValue } = useFormikContext();
   const fileInput = useRef<HTMLInputElement>(null);
   const input = useRef<HTMLInputElement>(null);
@@ -33,10 +35,13 @@ const FileUpload: React.FC<React.HTMLProps<HTMLInputElement>> = ({
 
   return (
     <section
-      css={[InputStyles.Wrapper]}
+      css={[Styles.Wrapper]}
       {...props}
       onClickCapture={() => fileInput.current!.click()}
     >
+      {(message || error) && (
+        <section css={[Styles.Messsage]}>{message || error}</section>
+      )}
       <input
         type="file"
         name={name}
@@ -46,7 +51,7 @@ const FileUpload: React.FC<React.HTMLProps<HTMLInputElement>> = ({
         ref={fileInput}
         hidden
       />
-      <input css={[InputStyles.Input]} readOnly ref={input} />
+      <input css={[Styles.Input]} readOnly ref={input} />
       <Upload tw="h-4 w-4 mx-2 my-auto text-gray-500" />
     </section>
   );

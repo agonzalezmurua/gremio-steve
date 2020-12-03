@@ -9,14 +9,25 @@ import 'twin.macro';
 import Button from './Button';
 import Styles from './MarkdownEditor.styles';
 
-type EditorProps = { value?: string } & React.HTMLProps<HTMLTextAreaElement>;
+type EditorProps = {
+  value?: string;
+  message?: string;
+  error?: string;
+} & React.HTMLProps<HTMLTextAreaElement>;
 
-const MarkdownEditor: React.FC<EditorProps> = (props) => {
+const MarkdownEditor: React.FC<EditorProps> = ({
+  message,
+  error,
+  ...props
+}) => {
   const [mode, setMode] = useState<'edit' | 'preview'>('edit');
   const areaRef = useRef<HTMLTextAreaElement>(null);
 
   return (
     <section css={[Styles.Wrapper]}>
+      {(message || error) && (
+        <section css={[Styles.Message]}>{message || error}</section>
+      )}
       <textarea
         css={[Styles.Preview]}
         {...props}
