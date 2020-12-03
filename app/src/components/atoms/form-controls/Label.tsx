@@ -18,4 +18,7 @@ const Label: React.FC<LabelProps> = ({ text, children, htmlFor, ...props }) => {
 
 export default styled(Label)`
   ${tw`space-y-1`}
+  label {
+    ${tw`font-semibold`}
+  }
 `;

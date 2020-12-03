@@ -13,6 +13,7 @@ const MarkdownEditorStyles = {
   ButtonWrapper: css`
     ${tw`border-t`}
     ${Button} {
+      ${tw`text-sm`}
       &:focus {
         box-shadow: none;
       }

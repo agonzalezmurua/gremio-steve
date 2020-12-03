@@ -4,7 +4,6 @@ import { injectIntl, WrappedComponentProps } from 'react-intl';
 import Taiko from '@assets/icons/steve/taiko.svg';
 import Standard from '@assets/icons/steve/standard.svg';
 import CatchTheBeat from '@assets/icons/steve/catch_the_beat.svg';
-
 import Select, { SelectProps } from '@components/atoms/form-controls/Select';
 
 import Messages from '../molecules/GameMapModeSelect.messages';
@@ -15,8 +14,8 @@ const MapModeSelect: React.FC<
   const options = useMemo(
     () => [
       {
-        label: intl.formatMessage(Messages.catch),
-        value: 'catch',
+        label: intl.formatMessage(Messages.ctb),
+        value: 'ctb',
         icon: CatchTheBeat,
       },
       {

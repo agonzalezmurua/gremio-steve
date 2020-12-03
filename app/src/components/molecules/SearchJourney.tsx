@@ -58,7 +58,7 @@ const SearchBeatmap: React.FunctionComponent = () => {
               title={beatmap.title}
               organizer={beatmap.organizer}
               lastUpdated={beatmap.lastUpdated}
-              image={beatmap.image}
+              thumbnail={beatmap.thumbnail}
             />
           ))}
         </ul>

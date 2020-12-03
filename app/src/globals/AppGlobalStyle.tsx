@@ -46,6 +46,10 @@ const AppGlobalStyle = createGlobalStyle`
     font-size: 0.75rem;
   }
 
+  legend {
+    ${tw`font-bold`}
+  }
+
   .sr-only {
     clip: rect(0 0 0 0);
     overflow: hidden;
@@ -56,12 +60,6 @@ const AppGlobalStyle = createGlobalStyle`
 
   input, button, textarea {
     ${tw`focus:outline-none`}
-  }
-
-  input, button {
-    &:focus {
-      ${ElementFocusStyle}
-    }
   }
 `;
 

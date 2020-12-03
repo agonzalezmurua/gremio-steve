@@ -30,12 +30,14 @@ const Button = styled.button<ButtonProps>(
       tw`
       text-white
       bg-red-600 hover:bg-red-700 active:bg-red-900
+      border-red-900
     `,
     color === 'red' && active && tw`bg-red-900`,
     color === 'blue' &&
       tw`
       text-white
       bg-blue-600 hover:bg-blue-700 active:bg-blue-900
+      border-blue-900
     `,
     color === 'blue' && active && tw`bg-blue-900`,
   ]
@@ -45,6 +47,7 @@ Button.defaultProps = {
   color: 'white',
   kind: 'normal',
   active: false,
+  type: 'button',
 };
 
 export default Button;

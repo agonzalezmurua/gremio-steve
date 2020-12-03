@@ -4,19 +4,12 @@ import { injectIntl, WrappedComponentProps } from 'react-intl';
 import Select, { SelectProps } from '@components/atoms/form-controls/Select';
 import MapModeSelectMessages from './GameMapDifficultySelect.messages';
 
+import { DIFFICULTIES } from '@globals/constants/GameMap';
+
 type MapDifficultySelectProps = {
   mode?: GameMap['mode'];
 } & Optional<SelectProps, 'options'> &
   WrappedComponentProps;
-
-const difficulties: Array<GameMap['difficulty']> = [
-  'easy',
-  'normal',
-  'hard',
-  'insane',
-  'expert',
-  'expert+',
-];
 
 const MapDifficultySelect: React.FC<MapDifficultySelectProps> = (props) => {
   const options = useMemo<SelectProps['options']>(() => {
@@ -24,7 +17,7 @@ const MapDifficultySelect: React.FC<MapDifficultySelectProps> = (props) => {
       return [];
     }
 
-    return difficulties.map((diff) => ({
+    return DIFFICULTIES.map((diff) => ({
       label: props.intl.formatMessage(
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
@@ -32,7 +25,7 @@ const MapDifficultySelect: React.FC<MapDifficultySelectProps> = (props) => {
       ),
       value: diff,
     }));
-  }, [props.lang]);
+  }, [props.lang, props.mode]);
   return (
     <Select disabled={options.length === 0} options={options} {...props} />
   );

@@ -1,8 +1,11 @@
 import NewJourneyTemplate from '@components/templates/journeys/NewJourney';
-import React from 'react';
+import React, { useCallback } from 'react';
 
 const NewJourneyPage: React.FC = () => {
-  return <NewJourneyTemplate onSave={() => console.log('saved!')} />;
+  const handleSubmit = useCallback((values) => {
+    console.log(JSON.stringify(values, null, 2));
+  }, []);
+  return <NewJourneyTemplate onSave={handleSubmit} />;
 };
 
 export default NewJourneyPage;

@@ -4,7 +4,7 @@ declare type Journey = {
   artist: string;
   organizer: User;
   lastUpdated: Date;
-  image: {
+  thumbnail: {
     url: string;
   };
   banner: {
@@ -13,7 +13,7 @@ declare type Journey = {
   metadata: {
     genre: string;
     bpm: number | number[];
-    closure: string;
+    closure?: string;
     duration: number;
   };
   description: string;

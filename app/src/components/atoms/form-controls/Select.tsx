@@ -32,22 +32,28 @@ const Select: React.FC<SelectProps> = (props) => {
   }, []);
   const handleItemClick = useCallback(
     (option: SelectOption) => () => {
-      // If controlled
-      props.onSelect && props.onSelect(option.value);
+      props.onChange &&
+        //@ts-ignore
+        props.onChange({ target: { name: props.name, value: option.value } });
       setSelected(option);
       setDisplaying(false);
     },
-    [props.onSelect]
+    [props.onChange]
   );
 
   useEffect(() => {
-    if (props.value !== selected?.value) {
+    if (props.value) {
+      // If controlled
       const _selected = props.options.find(
         (option) => option.value === props.value
       );
-      setSelected(_selected);
+      if (_selected) {
+        setSelected(_selected);
+      } else {
+        setSelected(undefined);
+      }
     }
-  }, [props.value]);
+  }, [props.value, props.options]);
 
   useClickAway(wrapperRef, () => setDisplaying(false));
 

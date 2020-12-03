@@ -1,17 +1,21 @@
 import { defineMessages } from 'react-intl';
 
 const MapModeSelectMessages = defineMessages({
-  catch: {
-    description: 'Catch the beat option label',
-    defaultMessage: 'Catch the beat',
+  ctb: {
+    description: 'Osu!catch option label',
+    defaultMessage: 'Catch',
   },
   taiko: {
-    description: 'Taiko option label',
+    description: 'Osu!taiko option label',
     defaultMessage: 'Taiko',
   },
   std: {
-    description: 'Standard option label',
+    description: 'Osu! option label',
     defaultMessage: 'Standard',
+  },
+  mania: {
+    description: 'Osu!mania option label',
+    defaultMessage: 'Mania',
   },
 });
 

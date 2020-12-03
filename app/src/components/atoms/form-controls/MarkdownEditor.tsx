@@ -38,6 +38,7 @@ const MarkdownEditor: React.FC<EditorProps> = (props) => {
           active={mode === 'edit'}
           onClick={() => setMode('edit')}
           name={`set ${props.name} to edit mode`}
+          tabIndex={-1}
         >
           <FormattedMessage
             description="Set markdown editor into edit mode"
@@ -50,6 +51,7 @@ const MarkdownEditor: React.FC<EditorProps> = (props) => {
           active={mode === 'preview'}
           onClick={() => setMode('preview')}
           name={`set ${props.name} to preview mode`}
+          tabIndex={-1}
         >
           <FormattedMessage
             description="Set markdown editor into preview mode"
