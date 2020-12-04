@@ -5,7 +5,7 @@ import { Link, Redirect, RouteComponentProps } from 'react-router-dom';
 import { useAsync } from 'react-use';
 import ReactMarkdown from 'react-markdown';
 import 'twin.macro';
-import JourneyTemplate from '@components/templates/journeys/JourneyTemplate';
+import JourneyTemplate from '@components/templates/journeys/Journey';
 
 type RouteProps = {
   id: string;

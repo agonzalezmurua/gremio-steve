@@ -21,17 +21,17 @@ const JourneyTemplate: React.FC<JourneyTemplateProps> = ({ journey }) => {
         {/* Title */}
         <JourneyBanner
           src={journey?.banner.url}
-          tw="flex flex-col p-4 bg-gray-300 space-y-1"
+          tw="flex flex-col p-4 bg-gray-300 space-y-1 bg-gray-900 relative"
         >
           {(journey?.title && <h1>{journey.title}</h1>) || (
             <Skeleton tw="w-72 h-12" />
           )}
-          {(journey?.artist && <span>{journey.artist}</span>) || (
-            <Skeleton tw="w-40 h-8" />
-          )}
+          {(journey?.artist && (
+            <span tw="font-semibold">{journey.artist}</span>
+          )) || <Skeleton tw="w-40 h-8" />}
         </JourneyBanner>
         {/* Meta */}
-        <section tw="flex h-16 p-4 bg-gray-200 space-x-4">
+        <section tw="flex h-16 p-4 bg-gray-100 space-x-4">
           {(journey?.metadata && (
             <>
               <JourneyMetadata.Genre value={journey.metadata.genre} />

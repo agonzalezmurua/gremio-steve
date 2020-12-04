@@ -5,7 +5,6 @@ type JourneyBanner = {
 };
 
 const JourneyBanner = styled.section<JourneyBanner>`
-  ${tw`bg-gray-900 relative`}
   background-image: url(${(props) => props.src});
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,7 +18,7 @@ const JourneyBanner = styled.section<JourneyBanner>`
     width: 100%;
     content: '';
     opacity: 0.65;
-    ${tw`bg-gray-500`}
+    ${tw`bg-gray-100`}
   }
   > * {
     position: relative;

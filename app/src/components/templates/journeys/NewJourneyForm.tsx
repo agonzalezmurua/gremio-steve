@@ -13,7 +13,7 @@ import {
   initialValues,
   validationSchema,
   JourneyForm,
-} from './NewJourney.form';
+} from './NewJourneyForm.formik';
 import BpmInput from '@components/atoms/form-controls/BpmInput';
 
 const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({

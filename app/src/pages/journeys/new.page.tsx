@@ -1,4 +1,4 @@
-import NewJourneyTemplate from '@components/templates/journeys/NewJourney';
+import NewJourneyTemplate from '@components/templates/journeys/NewJourneyForm';
 import React, { useCallback } from 'react';
 
 const NewJourneyPage: React.FC = () => {

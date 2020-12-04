@@ -12,7 +12,7 @@ declare type Journey = {
   };
   metadata: {
     genre: string;
-    bpm: [number, number?];
+    bpm: number[];
     closure?: string;
     duration: number;
   };

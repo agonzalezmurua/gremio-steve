@@ -19,7 +19,7 @@ export const initialValues: JourneyForm = {
   banner: '',
   description: '',
   thumbnail: '',
-  metadata: { bpm: 90, duration: 30, genre: '' },
+  metadata: { bpm: [90], duration: 30, genre: '' },
   private: true,
 };
 
@@ -42,7 +42,7 @@ export const validationSchema = object().shape<JourneyForm>({
     .required(),
   metadata: object()
     .shape({
-      bpm: number().min(1).max(500).required(),
+      bpm: array(number().min(1).max(500).required()).required(),
       duration: number().min(1).max(9999000).required(),
       genre: string().required(),
     })

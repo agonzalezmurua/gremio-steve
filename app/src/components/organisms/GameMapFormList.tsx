@@ -5,7 +5,7 @@ import { FieldArray, useFormikContext } from 'formik';
 import Plus from '@assets/icons/outline/plus.svg';
 import Button from '@components/atoms/form-controls/Button';
 import GameMapFormEntry from '@components/molecules/GameMapFormEntry';
-import { JourneyForm } from '@components/templates/journeys/NewJourney.form';
+import { JourneyForm } from '@components/templates/journeys/NewJourneyForm.formik';
 
 import Styles from './GameMapFormList.styles';
 
