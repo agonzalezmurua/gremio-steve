@@ -86,7 +86,7 @@ const Select: React.FC<SelectProps> = (props) => {
         <span
           css={[
             SelectStyles.Option,
-            tw`flex-grow p-0 hover:(bg-transparent)`,
+            tw`flex-grow p-0 hover:(bg-transparent) border-r border-gray-300 mr-2`,
             props.disabled && SelectStyles.DisabledBackground,
           ]}
         >

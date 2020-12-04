@@ -14,6 +14,7 @@ import {
   validationSchema,
   JourneyForm,
 } from './NewJourney.form';
+import BpmInput from '@components/atoms/form-controls/BpmInput';
 
 const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
   handleSubmit,
@@ -51,7 +52,7 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
 
           <section tw="flex flex-row space-x-4 ">
             <Label text="BPM" htmlFor="bpm" tw="w-1/3">
-              <Input
+              {/* <Input
                 id="bpm"
                 name="metadata.bpm"
                 type="number"
@@ -59,6 +60,11 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
                 max="500"
                 value={String(values.metadata.bpm)}
                 error={errors.metadata?.bpm}
+                onChange={handleChange}
+              /> */}
+              <BpmInput
+                name="metadata.bpm"
+                value={values.metadata?.bpm}
                 onChange={handleChange}
               />
             </Label>
@@ -149,6 +155,8 @@ export default withFormik<any, JourneyForm>({
       setSubmitting(false);
     }, 1000);
   },
+  validateOnBlur: false,
+  validateOnChange: false,
   mapPropsToValues: () => {
     return initialValues;
   },

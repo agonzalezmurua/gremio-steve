@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 import { createGlobalStyle } from 'styled-components';
-import ElementFocusStyle from './ElementFocusStyle';
+import FocusStyle from './ElementFocusStyle';
 
 const AppGlobalStyle = createGlobalStyle`
   html, body {

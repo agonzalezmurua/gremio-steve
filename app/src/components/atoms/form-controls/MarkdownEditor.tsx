@@ -8,6 +8,7 @@ import 'twin.macro';
 
 import Button from './Button';
 import Styles from './MarkdownEditor.styles';
+import InputStyles from '@components/atoms/form-controls/Input.styles';
 
 type EditorProps = {
   value?: string;
@@ -24,7 +25,7 @@ const MarkdownEditor: React.FC<EditorProps> = ({
   const areaRef = useRef<HTMLTextAreaElement>(null);
 
   return (
-    <section css={[Styles.Wrapper]}>
+    <section css={[Styles.Wrapper, error && InputStyles.Error]}>
       {(message || error) && (
         <section css={[Styles.Message]}>{message || error}</section>
       )}
