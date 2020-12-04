@@ -34,10 +34,10 @@ const Genre: React.FC<{ value: string }> = (props) => (
   </Base>
 );
 
-const Bpm: React.FC<{ value: number | number[] }> = (props) => {
+const Bpm: React.FC<{ value: [number, number?] }> = (props) => {
   const bpm = useMemo(() => {
-    if (typeof props.value === 'number') {
-      return props.value;
+    if (props.value.length === 1) {
+      return props.value[0];
     } else {
       return `${props.value[0]} ~ ${props.value[props.value.length - 1]}`;
     }
@@ -50,14 +50,16 @@ const Bpm: React.FC<{ value: number | number[] }> = (props) => {
   );
 };
 
-const Closure: React.FC<{ value: string }> = (props) => (
-  <Base>
-    <Calendar id="journey-metadata-closure" />
-    <label htmlFor="journey-metadata-closure">
-      {new Date(props.value).toDateString()}
-    </label>
-  </Base>
-);
+const Closure: React.FC<{ value?: string }> = (props) =>
+  (props.value && (
+    <Base>
+      <Calendar id="journey-metadata-closure" />
+      <label htmlFor="journey-metadata-closure">
+        {new Date(props.value).toDateString()}
+      </label>
+    </Base>
+  )) ||
+  null;
 
 const JourneyMetadata = {
   Closure,
