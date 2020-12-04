@@ -46,7 +46,6 @@ const MarkdownEditor: React.FC<EditorProps> = ({
       <section css={[Styles.ButtonWrapper]}>
         <Button
           kind="small"
-          tw="border-none rounded-none"
           active={mode === 'edit'}
           onClick={() => setMode('edit')}
           name={`set ${props.name} to edit mode`}
@@ -59,7 +58,6 @@ const MarkdownEditor: React.FC<EditorProps> = ({
         </Button>
         <Button
           kind="small"
-          tw="border-none rounded-none"
           active={mode === 'preview'}
           onClick={() => setMode('preview')}
           name={`set ${props.name} to preview mode`}

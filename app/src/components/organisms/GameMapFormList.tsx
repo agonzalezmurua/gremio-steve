@@ -5,32 +5,18 @@ import { FieldArray, useFormikContext } from 'formik';
 import Plus from '@assets/icons/outline/plus.svg';
 import Button from '@components/atoms/form-controls/Button';
 import GameMapFormEntry from '@components/molecules/GameMapFormEntry';
-import { JourneyForm } from '@components/templates/journeys/NewJourneyForm.formik';
+import { JourneyFormObject } from '@components/templates/journeys/JourneyForm.formik';
 
 import Styles from './GameMapFormList.styles';
 
 export const GameMapFormList = () => {
-  const { values } = useFormikContext<JourneyForm>();
+  const { values } = useFormikContext<JourneyFormObject>();
 
   return (
     <FieldArray
       name="maps"
       render={(helpers) => (
         <section css={[Styles.Wrapper]}>
-          <section css={[Styles.GameMaps]}>
-            <ul>
-              {values.maps.map((_, index) => {
-                return (
-                  <li key={index}>
-                    <GameMapFormEntry
-                      onDelete={() => helpers.remove(index)}
-                      index={index}
-                    />
-                  </li>
-                );
-              })}
-            </ul>
-          </section>
           <Button
             name="add"
             onClick={() =>
@@ -45,6 +31,20 @@ export const GameMapFormList = () => {
               />
             </span>
           </Button>
+          <section css={[Styles.GameMaps]}>
+            <ul>
+              {values.maps.map((_, index) => {
+                return (
+                  <li key={index}>
+                    <GameMapFormEntry
+                      onDelete={() => helpers.remove(index)}
+                      index={index}
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
         </section>
       )}
     />

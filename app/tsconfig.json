@@ -52,7 +52,8 @@
       "@hooks/*": ["hooks/*"],
       "@hocs/*": ["hocs/*"],
       "@api": ["services/api"],
-      "@links": ["services/links"]
+      "@links": ["services/links"],
+      "@utils": ["utils"]
     },
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */

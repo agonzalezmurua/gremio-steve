@@ -48,6 +48,7 @@ const AppGlobalStyle = createGlobalStyle`
 
   legend {
     ${tw`font-bold`}
+    font-size: 1.25rem;
   }
 
   .sr-only {
@@ -58,7 +59,7 @@ const AppGlobalStyle = createGlobalStyle`
     width: 1px;
   }
 
-  input, button, textarea {
+  input, button, textarea, section {
     ${tw`focus:outline-none`}
   }
 `;

@@ -14,7 +14,7 @@ const MarkdownEditorStyles = {
   ButtonWrapper: css`
     ${tw`border-t`}
     ${Button} {
-      ${tw`text-sm text-black`}
+      ${tw`text-sm text-black border-none rounded-none`}
       &:focus {
         box-shadow: none;
       }

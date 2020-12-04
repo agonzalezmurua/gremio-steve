@@ -1,11 +1,12 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import tw from 'twin.macro';
-import { useClickAway } from 'react-use';
+import { useClickAway, useKey } from 'react-use';
 
 import ChevronDown from '@assets/icons/outline/chevron-down.svg';
 
-import SelectStyles from './Select.styles';
-import InputStyles from './Input.styles';
+import Styles from './Select.styles';
+import { handleKey } from '@utils';
+import useKeyDownHotkey from '@hooks/useKeydownHotkey';
 
 export type SelectOption = {
   icon?: React.FC;
@@ -21,10 +22,11 @@ export type SelectProps = {
 } & React.HtmlHTMLAttributes<HTMLSelectElement>;
 
 const Select: React.FC<SelectProps> = (props) => {
-  const wrapperRef = useRef<HTMLDivElement>(null);
+  const wrapper = useRef<HTMLDivElement>(null);
+  const optionsWrapper = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState<SelectOption | undefined>();
-  const [displaying, setDisplaying] = useState(false);
-  const handleListDisplay = useCallback(() => {
+  const [isDisplaying, setDisplaying] = useState(false);
+  const diplayList = useCallback(() => {
     if (props.disabled) {
       return;
     }
@@ -33,6 +35,7 @@ const Select: React.FC<SelectProps> = (props) => {
   const handleItemClick = useCallback(
     (option: SelectOption) => () => {
       props.onChange &&
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         //@ts-ignore
         props.onChange({ target: { name: props.name, value: option.value } });
       setSelected(option);
@@ -55,40 +58,61 @@ const Select: React.FC<SelectProps> = (props) => {
     }
   }, [props.value, props.options]);
 
-  useClickAway(wrapperRef, () => setDisplaying(false));
+  const handleNavigation = useCallback((direction: 'up' | 'down') => {
+    const { current: el } = optionsWrapper;
+    if (el && el.hidden === false) {
+      if (el.contains(document.activeElement)) {
+        let element: HTMLDivElement | null;
+        switch (direction) {
+          case 'down':
+            element = document.activeElement?.nextSibling as HTMLDivElement;
+            break;
+          case 'up':
+            element = document.activeElement?.previousSibling as HTMLDivElement;
+            break;
+          default:
+            element = null;
+            break;
+        }
+        element?.focus();
+      } else {
+        (el.firstChild as HTMLDivElement).focus();
+      }
+    }
+  }, []);
+
+  useClickAway(wrapper, () => setDisplaying(false));
+  useKeyDownHotkey(wrapper, ' ', () => setDisplaying(true));
+  useKeyDownHotkey(wrapper, 'ArrowUp', () => handleNavigation('up'));
+  useKeyDownHotkey(wrapper, 'ArrowDown', () => handleNavigation('down'));
 
   return (
     <section
       role="listbox"
-      css={[
-        InputStyles.Wrapper,
-        SelectStyles.Wrapper,
-        props.disabled && SelectStyles.DisabledBackground,
-      ]}
-      tw="flex-col relative"
+      css={[Styles.Wrapper, props.disabled && Styles.DisabledBackground]}
       aria-disabled={props.disabled}
-      ref={wrapperRef}
+      ref={wrapper}
+      tabIndex={0}
+      onBlur={(event) => {
+        if (
+          event.relatedTarget &&
+          !wrapper.current!.contains(event.relatedTarget as Node)
+        ) {
+          setDisplaying(false);
+        }
+      }}
     >
       <input
-        className="sr-only"
-        aria-hidden
         tabIndex={-1}
+        className="sr-only"
         readOnly
         name={props.name}
         value={selected?.value || ''}
       />
-      {/* Interactable */}
-      <section
-        onClick={handleListDisplay}
-        css={[InputStyles.Input]}
-        tw="flex items-center w-full"
-      >
+      {/* Input */}
+      <section onClickCapture={diplayList} css={[Styles.ListBoxWrapper]}>
         <span
-          css={[
-            SelectStyles.Option,
-            tw`flex-grow p-0 hover:(bg-transparent) border-r border-gray-300 mr-2`,
-            props.disabled && SelectStyles.DisabledBackground,
-          ]}
+          css={[Styles.Selected, props.disabled && Styles.DisabledBackground]}
         >
           {(selected && (
             <>
@@ -102,17 +126,25 @@ const Select: React.FC<SelectProps> = (props) => {
       </section>
 
       {/* Options */}
+
       <section
-        hidden={displaying === false}
-        tw="bg-white absolute w-full shadow-md rounded border z-50"
+        role="select"
+        hidden={isDisplaying === false}
+        css={[Styles.OptionsWrapper]}
+        ref={optionsWrapper}
       >
         {props.options.map((option) => (
           <section
-            key={option.value}
             role="option"
-            onClick={handleItemClick(option)}
+            key={option.value}
+            css={[Styles.Option]}
             aria-selected={selected?.value === option.value}
-            css={[SelectStyles.Option]}
+            tabIndex={0}
+            onKeyDown={handleKey('Enter', () => {
+              handleItemClick(option)();
+              wrapper.current!.focus();
+            })}
+            onClick={handleItemClick(option)}
           >
             {option.icon && <option.icon />}
             <span>{option.label}</span>

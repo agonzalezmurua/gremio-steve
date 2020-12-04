@@ -7,7 +7,7 @@ import GameMapDifficultySelect from '@components/atoms/GameMapDifficultySelect';
 import GameMapModeSelect from '@components/atoms/GameMapModeSelect';
 import Button from '@components/atoms/form-controls/Button';
 
-import Minus from '@assets/icons/outline/minus.svg';
+import Trash from '@assets/icons/outline/trash.svg';
 import { useField } from 'formik';
 
 type GameMapFormEntryProps = {
@@ -42,7 +42,7 @@ const GameMapFormEntry: React.FC<GameMapFormEntryProps> = ({
         color="red"
         onClick={onDelete}
       >
-        <Minus tw="h-4 w-4" />
+        <Trash tw="h-4 w-4" />
       </Button>
 
       <Label text="Name" htmlFor={`maps[${index}].name`}>

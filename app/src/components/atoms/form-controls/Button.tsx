@@ -24,10 +24,10 @@ const Button = styled.button<ButtonProps>(
       tw`
       bg-white
       disabled:(text-gray-300 border-gray-300 bg-gray-100) 
-      active:(bg-gray-300)
+      active:(bg-gray-200)
       hover:(bg-gray-100)
     `,
-    color === 'white' && active && tw`bg-gray-300`,
+    color === 'white' && active && tw`bg-gray-200`,
     color === 'red' &&
       tw`
       text-white

@@ -1,29 +1,29 @@
 import { DIFFICULTIES, MODES } from '@globals/constants/GameMap';
 import { object, string, array, number, boolean } from 'yup';
 
-export type JourneyForm = Pick<
+export type JourneyFormObject = Pick<
   Journey,
   'title' | 'artist' | 'description' | 'metadata' | 'private'
 > & {
   banner: string;
   thumbnail: string;
-  maps: Array<GameMapForm>;
+  maps: Array<GameMapFormObject>;
 };
 
-export type GameMapForm = Pick<GameMap, 'difficulty' | 'mode' | 'name'>;
+export type GameMapFormObject = Pick<GameMap, 'difficulty' | 'mode' | 'name'>;
 
-export const initialValues: JourneyForm = {
+export const initialValues: JourneyFormObject = {
   title: '',
   artist: '',
   maps: [],
   banner: '',
   description: '',
   thumbnail: '',
-  metadata: { bpm: [90], duration: 30, genre: '' },
+  metadata: { bpm: [], duration: 30, genre: '' },
   private: true,
 };
 
-export const validationSchema = object().shape<JourneyForm>({
+export const validationSchema = object().shape<JourneyFormObject>({
   title: string().required(),
   artist: string().required(),
   banner: string().required(),
@@ -31,7 +31,7 @@ export const validationSchema = object().shape<JourneyForm>({
   thumbnail: string().required(),
   maps: array(
     object()
-      .shape<GameMapForm>({
+      .shape<GameMapFormObject>({
         difficulty: string().oneOf(DIFFICULTIES).required(),
         mode: string().oneOf(MODES).required(),
         name: string().required(),

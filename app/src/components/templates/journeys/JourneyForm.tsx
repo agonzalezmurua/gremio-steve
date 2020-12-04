@@ -12,11 +12,15 @@ import { GameMapFormList } from '@components/organisms/GameMapFormList';
 import {
   initialValues,
   validationSchema,
-  JourneyForm,
-} from './NewJourneyForm.formik';
+  JourneyFormObject,
+} from './JourneyForm.formik';
 import BpmInput from '@components/atoms/form-controls/BpmInput';
 
-const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
+type JourneyFormProps = {
+  onSubmit: (journey: JourneyFormObject) => Promise<void>;
+};
+
+const NewJourneyForm: React.FC<FormikProps<JourneyFormObject>> = ({
   handleSubmit,
   handleChange,
   values,
@@ -50,25 +54,16 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
             />
           </Label>
 
-          <section tw="flex flex-row space-x-4 ">
-            <Label text="BPM" htmlFor="bpm" tw="w-1/3">
-              {/* <Input
-                id="bpm"
-                name="metadata.bpm"
-                type="number"
-                min="1"
-                max="500"
-                value={String(values.metadata.bpm)}
-                error={errors.metadata?.bpm}
-                onChange={handleChange}
-              /> */}
+          <section tw="flex flex-row space-x-2 ">
+            <Label text="BPM" htmlFor="metadata.bpm" tw="w-1/2">
               <BpmInput
+                id="metadata.bpm"
                 name="metadata.bpm"
                 value={values.metadata?.bpm}
                 onChange={handleChange}
               />
             </Label>
-            <Label text="Duration" htmlFor="duration" tw="w-1/3">
+            <Label text="Duration" htmlFor="duration" tw="w-1/4">
               <Input
                 id="duration"
                 name="metadata.duration"
@@ -80,7 +75,7 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
                 onChange={handleChange}
               />
             </Label>
-            <Label text="Genre" htmlFor="genre" tw="w-1/3">
+            <Label text="Genre" htmlFor="genre" tw="w-1/4">
               <Input
                 id="genre"
                 name="metadata.genre"
@@ -136,7 +131,7 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
           </Label>
         </fieldset>
 
-        <Button color="blue" type="submit">
+        <Button color="blue" type="submit" onClick={() => handleSubmit()}>
           <FormattedMessage
             defaultMessage="Save"
             description="Submit new journey form"
@@ -147,17 +142,16 @@ const NewJourneyTemplate: React.FC<FormikProps<JourneyForm>> = ({
   );
 };
 
-export default withFormik<any, JourneyForm>({
+export default withFormik<JourneyFormProps, JourneyFormObject>({
   validationSchema: validationSchema,
-  handleSubmit: (values, { setSubmitting }) => {
-    setTimeout(() => {
-      console.log(JSON.stringify(values, null, 2));
-      setSubmitting(false);
-    }, 1000);
+  handleSubmit: async (values, { setSubmitting, props }) => {
+    setSubmitting(true);
+    await props.onSubmit(values);
+    setSubmitting(false);
   },
   validateOnBlur: false,
   validateOnChange: false,
   mapPropsToValues: () => {
     return initialValues;
   },
-})(NewJourneyTemplate);
+})(NewJourneyForm);
