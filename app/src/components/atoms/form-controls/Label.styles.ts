@@ -3,7 +3,7 @@ import tw, { css } from 'twin.macro';
 const Styles = {
   Wrapper: css`
     label {
-      ${tw`text-sm`}
+      ${tw`text-sm font-semibold`}
     }
   `,
 };
