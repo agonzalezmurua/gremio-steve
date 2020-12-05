@@ -3,7 +3,7 @@ import 'twin.macro';
 
 import UserInfo from '@components/molecules/UserInfo';
 import NavigationList from '@components/molecules/NavigationList';
-import SearchBeatmap from '../molecules/SearchJourney';
+import SearchJourney from '../molecules/SearchJourney';
 import NavigationControls from '@components/atoms/NavigationControls';
 
 const NavBar: React.FunctionComponent = (props) => {
@@ -23,7 +23,7 @@ const NavBar: React.FunctionComponent = (props) => {
           <NavigationList />
         </nav>
         <section tw="border-t pt-4 space-y-2">
-          <SearchBeatmap />
+          <SearchJourney />
         </section>
       </section>
       {/* Content */}

@@ -26,8 +26,8 @@ export const GameMapFormList = () => {
             <Plus />
             <span>
               <FormattedMessage
-                defaultMessage="Add Game Map"
-                description="Add a new GameMap"
+                defaultMessage="Add new"
+                description="Add a new Beatmap difficulty entry"
               />
             </span>
           </Button>

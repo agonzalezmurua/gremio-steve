@@ -120,7 +120,12 @@ const NewJourneyForm: React.FC<FormikProps<JourneyFormObject>> = ({
         </fieldset>
 
         <fieldset tw="space-y-4">
-          <legend>Maps</legend>
+          <legend>
+            <FormattedMessage
+              defaultMessage="Difficulties"
+              description="Difficulties header"
+            />
+          </legend>
           <GameMapFormList />
         </fieldset>
 

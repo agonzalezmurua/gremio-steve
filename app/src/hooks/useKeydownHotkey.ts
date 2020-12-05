@@ -9,16 +9,12 @@ const useKeyDownHotkey = <E extends React.KeyboardEvent<HTMLElement>>(
 ) => {
   const savedHandler = useRef(handler);
   useEffect(() => {
-    const handler = handleKey(
-      key,
-      (event: E) => {
-        const { current: el } = ref;
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        el && el.contains(event.target) && savedHandler.current(event);
-      },
-      true
-    );
+    const handler = handleKey(key, (event: E) => {
+      const { current: el } = ref;
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      el && el.contains(event.target) && savedHandler.current(event);
+    });
 
     on(document, 'keydown', handler);
 

@@ -1,10 +1,18 @@
 export const handleKey = <E extends React.KeyboardEvent<HTMLElement>>(
-  key: string,
-  handler: (event: E) => void,
-  preventsDefault?: true
+  keys: string | string[],
+  handler: (event: E) => void
 ) => (event: E) => {
-  if (event.key === key) {
-    preventsDefault && event.preventDefault();
-    handler(event);
+  function check(key: string) {
+    if (event.key === key) {
+      handler(event);
+    }
+  }
+
+  if (typeof keys === 'string') {
+    check(keys);
+  } else {
+    for (const key of keys) {
+      check(key);
+    }
   }
 };

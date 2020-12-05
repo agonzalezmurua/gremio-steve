@@ -82,9 +82,9 @@ const Select: React.FC<SelectProps> = (props) => {
   }, []);
 
   useClickAway(wrapper, () => setDisplaying(false));
-  useKeyDownHotkey(wrapper, ' ', () => setDisplaying(true));
-  useKeyDownHotkey(wrapper, 'ArrowUp', () => handleNavigation('up'));
-  useKeyDownHotkey(wrapper, 'ArrowDown', () => handleNavigation('down'));
+  useKeyDownHotkey(wrapper, ' ', () => setDisplaying(true), true);
+  useKeyDownHotkey(wrapper, 'ArrowUp', () => handleNavigation('up'), true);
+  useKeyDownHotkey(wrapper, 'ArrowDown', () => handleNavigation('down'), true);
 
   return (
     <section
@@ -140,10 +140,15 @@ const Select: React.FC<SelectProps> = (props) => {
             css={[Styles.Option]}
             aria-selected={selected?.value === option.value}
             tabIndex={0}
-            onKeyDown={handleKey('Enter', () => {
-              handleItemClick(option)();
-              wrapper.current!.focus();
-            })}
+            onKeyDown={handleKey(
+              ['Enter', ' '],
+              (event) => {
+                event.preventDefault();
+                handleItemClick(option)();
+                wrapper.current!.focus();
+              },
+              false
+            )}
             onClick={handleItemClick(option)}
           >
             {option.icon && <option.icon />}

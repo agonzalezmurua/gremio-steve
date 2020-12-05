@@ -9,15 +9,15 @@ import Spinner from '@assets/icons/steve/spinner.svg';
 import Input from '@components/atoms/form-controls/Input';
 import BeatmapResultCard from '@components/atoms/JourneySearchResult';
 
-const SearchBeatmap: React.FunctionComponent = () => {
+const SearchJourney: React.FunctionComponent = () => {
   const [search, setSearch] = useState('');
-  const [{ loading, value: beatmaps }, searchBeatmaps] = useAsyncFn(
+  const [{ loading, value: journeys }, searchJourneys] = useAsyncFn(
     async (search: string): Promise<Journey[]> => {
       if (search) {
         const { data } = await api.journeys.search(search);
         return data;
       }
-      return beatmaps!;
+      return journeys!;
     },
     [search],
     { loading: false, value: [] }
@@ -25,7 +25,7 @@ const SearchBeatmap: React.FunctionComponent = () => {
 
   useDebounce(
     () => {
-      searchBeatmaps(search);
+      searchJourneys(search);
     },
     500,
     [search]
@@ -48,9 +48,9 @@ const SearchBeatmap: React.FunctionComponent = () => {
         placeholder="Author, Artist, Group..."
         onChange={(event) => setSearch(event.target.value)}
       />
-      {beatmaps && (
+      {journeys && (
         <ul tw="space-y-2">
-          {beatmaps.map((beatmap) => (
+          {journeys.map((beatmap) => (
             <BeatmapResultCard
               key={beatmap.__id}
               __id={beatmap.__id}
@@ -67,4 +67,4 @@ const SearchBeatmap: React.FunctionComponent = () => {
   );
 };
 
-export default SearchBeatmap;
+export default SearchJourney;
