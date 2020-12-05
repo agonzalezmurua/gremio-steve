@@ -1,14 +1,166 @@
 {
-  "5VpL9Z": {
-    "defaultMessage": "My name is {name}",
-    "description": "A message"
+  "'+HtKQa'": {
+    "defaultMessage": "Overdose+",
+    "description": "Catch the beat Expert Plus difficulty name"
   },
-  "YjMxG2": {
+  "'+QyxNS'": {
+    "defaultMessage": "Expert+",
+    "description": "Mania Expert Plus difficulty name"
+  },
+  "'/4UWDw'": {
+    "defaultMessage": "Hard",
+    "description": "Standard Hard difficulty name"
+  },
+  "'5foBT7'": {
+    "defaultMessage": "Difficulties",
+    "description": "Difficulties header"
+  },
+  "'8KPwIy'": {
+    "defaultMessage": "Standard",
+    "description": "Osu! option label"
+  },
+  "'9JlYF+'": {
+    "defaultMessage": "Inner/Ura Oni",
+    "description": "Taiko Expert difficulty name"
+  },
+  "'AF2BFg'": {
+    "defaultMessage": "Standard",
+    "description": "Standard option label"
+  },
+  "'AYfXd0'": {
+    "defaultMessage": "Save",
+    "description": "Submit new journey form"
+  },
+  "'DkaGuM'": {
+    "defaultMessage": "Easy",
+    "description": "Mania Easy diffculty name"
+  },
+  "'EmBwty'": {
+    "defaultMessage": "Muzukashii",
+    "description": "Taiko Hard difficulty name"
+  },
+  "'GL31F/'": {
+    "defaultMessage": "Hello fellow mappers",
+    "description": "Test message"
+  },
+  "'GhXvgb'": {
+    "defaultMessage": "Salad",
+    "description": "Catch the beat Normal diffculty name"
+  },
+  "'Gw5xr9'": {
+    "defaultMessage": "Futsuu",
+    "description": "Taiko Normal diffculty name"
+  },
+  "'HJzoo1'": {
+    "defaultMessage": "Expert",
+    "description": "Mania Expert difficulty name"
+  },
+  "'Hg/FXy'": {
+    "defaultMessage": "Insane",
+    "description": "Mania Insane difficulty name"
+  },
+  "'KAfF3j'": {
+    "defaultMessage": "Normal",
+    "description": "Mania Normal diffculty name"
+  },
+  "'Lq7PzT'": {
+    "defaultMessage": "Platter",
+    "description": "Catch the beat Hard difficulty name"
+  },
+  "'MAIBBb'": {
+    "defaultMessage": "Finish",
+    "description": "Final step of progress, usually used on forms"
+  },
+  "'Mft5ED'": {
+    "defaultMessage": "Overdose",
+    "description": "Catch the beat Expert difficulty name"
+  },
+  "'NZtbPW'": {
+    "defaultMessage": "Edit",
+    "description": "Set markdown editor into edit mode"
+  },
+  "'OIFn1J'": {
+    "defaultMessage": "Taiko",
+    "description": "Osu!taiko option label"
+  },
+  "'Ot4jkB'": {
+    "defaultMessage": "Expert",
+    "description": "Standard Expert difficulty name"
+  },
+  "'OyQPAi'": {
+    "defaultMessage": "Cup",
+    "description": "Catch the beat Easy diffculty name"
+  },
+  "'P33wds'": {
+    "defaultMessage": "Title",
+    "description": "Home page Title"
+  },
+  "'PsOhSU'": {
+    "defaultMessage": "Next",
+    "description": "Next one step, usually used on forms"
+  },
+  "'R2F6cx'": {
+    "defaultMessage": "Oni",
+    "description": "Taiko Insane difficulty name"
+  },
+  "'TKU6aS'": {
+    "defaultMessage": "Kantan",
+    "description": "Taiko Easy diffculty name"
+  },
+  "'TrZzgp'": {
+    "defaultMessage": "Normal",
+    "description": "Standard Normal diffculty name"
+  },
+  "'U0+TYq'": {
+    "defaultMessage": "Hard",
+    "description": "Mania Hard difficulty name"
+  },
+  "'U7JA+Z'": {
+    "defaultMessage": "Expert+",
+    "description": "Standard Expert Plus difficulty name"
+  },
+  "'WLq4Wj'": {
+    "defaultMessage": "Back",
+    "description": "Back one step, usually used on forms"
+  },
+  "'YjMxG2'": {
     "defaultMessage": "Catch the beat",
     "description": "Catch the beat option label"
   },
-  "home.test": {
-    "defaultMessage": "Hello fellow mappers",
-    "description": "Test message"
+  "'aCJESl'": {
+    "defaultMessage": "Preview",
+    "description": "Set markdown editor into preview mode"
+  },
+  "'ciyYOi'": {
+    "defaultMessage": "Hell Oni",
+    "description": "Taiko Expert Plus difficulty name"
+  },
+  "'hL/xXk'": {
+    "defaultMessage": "Add new",
+    "description": "Add a new Beatmap difficulty entry"
+  },
+  "'kG4qxF'": {
+    "defaultMessage": "Easy",
+    "description": "Standard Easy diffculty name"
+  },
+  "'kaQO7w'": {
+    "defaultMessage": "Rain",
+    "description": "Catch the beat Insane difficulty name"
+  },
+  "'qBOURy'": {
+    "defaultMessage": "Taiko",
+    "description": "Taiko option label"
+  },
+  "'rRvq+p'": {
+    "defaultMessage": "Catch",
+    "description": "Osu!catch option label"
+  },
+  "'uZvnCq'": {
+    "defaultMessage": "Insane",
+    "description": "Standard Insane difficulty name"
+  },
+  "'xYnz1H'": {
+    "defaultMessage": "Mania",
+    "description": "Osu!mania option label"
   }
 }
