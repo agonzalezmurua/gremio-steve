@@ -16,7 +16,7 @@ const UserHeader: React.FunctionComponent<UserHeaderProps> = (props) => {
         tw="border"
         size="medium"
         src="https://a.ppy.sh/1869277?1462143398.jpg"
-        alt="Current user profile image"
+        alt="Current logged user profile image"
       />
       {/* Name */}
       <section tw="flex flex-grow flex-col items-start">
@@ -24,7 +24,7 @@ const UserHeader: React.FunctionComponent<UserHeaderProps> = (props) => {
         {props.role && <span tw="text-xs">{props.role}</span>}
       </section>
       {/* Actions */}
-      <Cog tw="w-5 h-5 self-center" />
+      <Cog tw="w-6 h-6 self-center transition-opacity hover:(opacity-75) cursor-pointer" />
     </section>
   );
 };

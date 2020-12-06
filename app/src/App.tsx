@@ -8,11 +8,12 @@ import { GlobalStyles } from 'twin.macro';
 import AppGlobalStyles from '@globals/AppGlobalStyle';
 import NavBar from '@components/organisms/NavBar';
 
-import Indexpage from '@pages/index.page';
-import NotFoundPage from '@pages/not_found.page';
-import JourneyPage from '@pages/journeys/id.page';
-import NewJourneyPage from '@pages/journeys/new.page';
+import Indexpage from '@pages/Index';
+import NotFoundPage from '@pages/NotFound';
+import JourneyPage from '@pages/journeys/Id';
+import NewJourneyPage from '@pages/journeys/New';
 import useLocalePreference from '@hooks/useLocalePreference';
+import MyqueuePage from '@pages/MyQueue';
 
 function loadMessages(locale: string) {
   switch (locale) {
@@ -47,6 +48,7 @@ const App: React.FC = () => {
                 <Route path="/" exact component={Indexpage} />
                 <Route path="/journeys/new" exact component={NewJourneyPage} />
                 <Route path="/journeys/:id" component={JourneyPage} />
+                <Route path="/my_queue" components={MyqueuePage} />
                 <Route path={['*', '/not-found']} component={NotFoundPage} />
               </Switch>
             </NavBar>
