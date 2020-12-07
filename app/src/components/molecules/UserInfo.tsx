@@ -18,7 +18,7 @@ const UserHeader: React.FunctionComponent = () => {
         alt="Current logged user profile image"
       />
       {/* Name */}
-      <section tw="flex flex-grow flex-col items-start">
+      <section tw="flex flex-grow flex-col items-start justify-center">
         <strong>{name}</strong>
       </section>
       {/* Actions */}
