@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gray: colors.warmGray,
+        gray: colors.blueGray,
       },
       keyframes: {
         fadeout: {

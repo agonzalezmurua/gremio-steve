@@ -1,10 +1,9 @@
-import api from '@api';
 import React from 'react';
-import { generatePath } from 'react-router';
-import { Link, Redirect, RouteComponentProps } from 'react-router-dom';
-import { useAsync } from 'react-use';
-import ReactMarkdown from 'react-markdown';
 import 'twin.macro';
+import api from '@api';
+import { Redirect, RouteComponentProps } from 'react-router-dom';
+import { useAsync } from 'react-use';
+
 import JourneyTemplate from '@components/templates/journeys/Journey';
 
 type RouteProps = {
@@ -25,7 +24,11 @@ const JourneyPage: React.FC<RouteComponentProps<RouteProps>> = (props) => {
   if (error) {
     return <Redirect to="/not-found" />;
   }
-  return <JourneyTemplate journey={journey} />;
+  return (
+    <main tw="h-full">
+      <JourneyTemplate journey={journey} />
+    </main>
+  );
 };
 
 JourneyPage.displayName = `JourneyPage`;

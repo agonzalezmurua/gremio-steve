@@ -7,7 +7,7 @@ import api from 'services/api';
 import SearchIcon from '@assets/icons/outline/search.svg';
 import Spinner from '@assets/icons/steve/spinner.svg';
 import Input from '@components/atoms/form-controls/Input';
-import BeatmapResultCard from '@components/atoms/JourneySearchResult';
+import JourneySmallCard from '@components/atoms/JourneySmallCard';
 
 const SearchJourney: React.FunctionComponent = () => {
   const [search, setSearch] = useState('');
@@ -51,15 +51,15 @@ const SearchJourney: React.FunctionComponent = () => {
       {journeys && (
         <ul tw="space-y-2">
           {journeys.map((beatmap) => (
-            <BeatmapResultCard
-              key={beatmap.__id}
-              __id={beatmap.__id}
-              artist={beatmap.artist}
-              title={beatmap.title}
-              organizer={beatmap.organizer}
-              lastUpdated={beatmap.lastUpdated}
-              thumbnail={beatmap.thumbnail}
-            />
+            <li tw="animate-fadein" key={beatmap.__id}>
+              <JourneySmallCard
+                __id={beatmap.__id}
+                artist={beatmap.artist}
+                title={beatmap.title}
+                organizer={beatmap.organizer}
+                thumbnail={beatmap.thumbnail}
+              />
+            </li>
           ))}
         </ul>
       )}

@@ -10,6 +10,11 @@ const api = {
       return axios.get<Journey>(endpoints.journeys.byId(id));
     },
   },
+  user: {
+    queue(id: string) {
+      return axios.get<User['queue']>(endpoints.user.queue(id));
+    },
+  },
 };
 
 export default api;

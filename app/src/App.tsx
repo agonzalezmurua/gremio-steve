@@ -12,8 +12,10 @@ import Indexpage from '@pages/Index';
 import NotFoundPage from '@pages/NotFound';
 import JourneyPage from '@pages/journeys/Id';
 import NewJourneyPage from '@pages/journeys/New';
+import QueuePage from '@pages/user/Queue';
+
 import useLocalePreference from '@hooks/useLocalePreference';
-import MyqueuePage from '@pages/MyQueue';
+import ActivityPage from '@pages/Activity';
 
 function loadMessages(locale: string) {
   switch (locale) {
@@ -48,7 +50,8 @@ const App: React.FC = () => {
                 <Route path="/" exact component={Indexpage} />
                 <Route path="/journeys/new" exact component={NewJourneyPage} />
                 <Route path="/journeys/:id" component={JourneyPage} />
-                <Route path="/my_queue" components={MyqueuePage} />
+                <Route path="/user/:id/queue" component={QueuePage} />
+                <Route path="/user/:id/activity" components={ActivityPage} />
                 <Route path={['*', '/not-found']} component={NotFoundPage} />
               </Switch>
             </NavBar>

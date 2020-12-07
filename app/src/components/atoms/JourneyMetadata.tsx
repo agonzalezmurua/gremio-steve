@@ -34,7 +34,7 @@ const Genre: React.FC<{ value: string }> = (props) => (
   </Base>
 );
 
-const Bpm: React.FC<{ value: [number, number?] }> = (props) => {
+const Bpm: React.FC<{ value: number[] }> = (props) => {
   const bpm = useMemo(() => {
     if (props.value.length === 1) {
       return props.value[0];

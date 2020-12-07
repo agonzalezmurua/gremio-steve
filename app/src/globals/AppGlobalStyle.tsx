@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 import { createGlobalStyle } from 'styled-components';
-import { FocusStyleString } from './ElementFocusStyle';
+import { FocusRingStyleString } from './ElementFocusStyle';
 
 const AppGlobalStyle = createGlobalStyle`
   html, body {
@@ -11,8 +11,10 @@ const AppGlobalStyle = createGlobalStyle`
     ${tw`text-gray-900`}
   }
 
-  a:hover {
-    text-decoration: underline;
+  a {
+    &:hover, &:focus{
+      text-decoration: underline;
+    }
   }
 
   p ~ p {
@@ -61,7 +63,7 @@ const AppGlobalStyle = createGlobalStyle`
 
   input, button, textarea, section {
     ${tw`focus:outline-none`}
-    ${FocusStyleString}
+    ${FocusRingStyleString}
   }
 `;
 

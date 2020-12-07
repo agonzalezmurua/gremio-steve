@@ -1,8 +1,14 @@
 import { generatePath } from 'react-router';
 
-const resourceName = 'user';
+const resource = 'user';
 
 export default {
-  ':id': (params: { id: string }) =>
-    generatePath(`/${resourceName}/:id`, params),
+  profile: (params: { id: string }) =>
+    generatePath(`/${resource}/:id/profile`, params),
+  queue: (params: { id: string }) =>
+    generatePath(`/${resource}/:id/queue`, params),
+  activity: (params: { id: string }) =>
+    generatePath(`/${resource}/:id/activity`, params),
+  bookmarks: (params: { id: string }) =>
+    generatePath(`/${resource}/:id/bookmarks`, params),
 };

@@ -14,4 +14,10 @@ export default {
       return url.toString();
     },
   },
+  user: {
+    queue: (id: string) => {
+      const url = new URL(`${basePath}/user/${id}/queue`, URI);
+      return url.toString();
+    },
+  },
 };

@@ -1,16 +1,14 @@
 import tw from 'twin.macro';
-import { css, theme } from 'twin.macro';
+import { css } from 'twin.macro';
 
-export const FocusStyleString = 'ring-2 transition-shadow duration-200';
+export const FocusRingStyleString = 'ring-2 transition-shadow duration-200';
 
-const FocusStyle = css`
-  ${tw`${FocusStyleString}`}
-`;
+export const FocusTwStyle = tw`${FocusRingStyleString}`;
 
-export const FocusStyleTW = css`
+export const FocusFlatStyle = css`
   :focus {
-    ${FocusStyle}
+    ${FocusTwStyle}
   }
 `;
 
-export default FocusStyle;
+export default FocusTwStyle;

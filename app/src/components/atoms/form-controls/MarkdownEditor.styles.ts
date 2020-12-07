@@ -1,4 +1,4 @@
-import FocusStyle from '@globals/ElementFocusStyle';
+import FocusTwStyle from '@globals/ElementFocusStyle';
 import tw, { css } from 'twin.macro';
 import Button from './Button';
 import InputStyles from './Input.styles';
@@ -8,7 +8,7 @@ const MarkdownEditorStyles = {
   Wrapper: css`
     ${tw`flex flex-col h-full w-full border rounded`}
     &:focus-within {
-      ${FocusStyle}
+      ${FocusTwStyle}
     }
   `,
   ButtonWrapper: css`

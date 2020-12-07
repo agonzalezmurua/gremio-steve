@@ -1,4 +1,4 @@
-import { FocusStyleTW } from '@globals/ElementFocusStyle';
+import { FocusFlatStyle } from '@globals/ElementFocusStyle';
 import tw, { styled } from 'twin.macro';
 
 type ButtonProps = {
@@ -17,7 +17,7 @@ const Button = styled.button<ButtonProps>(
     ease-in-out
     outline-none
   `,
-    FocusStyleTW,
+    FocusFlatStyle,
     variant === 'normal' && tw`p-2 pl-4 pr-4`,
     variant === 'small' && tw`p-1 pl-2 pr-2`,
     color === 'white' &&

@@ -59,7 +59,7 @@ const GamemapTypeItem: React.FC<GameMap> = (props) => {
         </span>
         <span tw="flex-grow">
           {(props.assignee && (
-            <Link to={links.user[':id']({ id: props.assignee?.__id })}>
+            <Link to={links.user.profile({ id: props.assignee?.__id })}>
               {props.assignee.name}
             </Link>
           )) ||

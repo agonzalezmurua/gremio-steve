@@ -2,7 +2,7 @@ import React from 'react';
 import 'twin.macro';
 
 import UserInfo from '@components/molecules/UserInfo';
-import NavigationList from '@components/molecules/NavigationList';
+import NavigationLinks from '@components/molecules/NavigationLinks';
 import SearchJourney from '../molecules/SearchJourney';
 import NavigationControls from '@components/atoms/NavigationControls';
 
@@ -16,11 +16,11 @@ const NavBar: React.FunctionComponent = (props) => {
         </section>
         {/* User Info */}
         <section>
-          <UserInfo username="Ferret" role="Admin" />
+          <UserInfo />
         </section>
         {/* Navigation */}
         <nav>
-          <NavigationList />
+          <NavigationLinks />
         </nav>
         <section tw="border-t pt-4 space-y-2">
           <SearchJourney />
@@ -28,7 +28,7 @@ const NavBar: React.FunctionComponent = (props) => {
       </section>
       {/* Content */}
       <section tw="flex-grow p-2">
-        <section tw="bg-white border rounded-lg h-full overflow-y-auto shadow-xl xl:(mx-auto w-2/3) lg:(mx-auto w-5/6)">
+        <section tw="bg-white border-2 rounded-lg h-full overflow-y-auto shadow-xl xl:(mx-auto w-2/3) lg:(mx-auto w-5/6)">
           {props.children}
         </section>
       </section>
