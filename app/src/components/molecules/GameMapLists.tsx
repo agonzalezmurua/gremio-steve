@@ -146,10 +146,14 @@ const GameMapLists: React.FC<MapsProps> = (props) => {
   return (
     <section {...props}>
       <h2>Maps</h2>
-      {Boolean(std.length) && <GameMapList title="Standard" maps={std} />}
-      {Boolean(taiko.length) && <GameMapList title="Taiko" maps={taiko} />}
-      {Boolean(ctb.length) && <GameMapList title="Catch the beat" maps={ctb} />}
-      {Boolean(mania.length) && <GameMapList title="Mania" maps={ctb} />}
+      <section tw="space-y-4">
+        {Boolean(std.length) && <GameMapList title="Standard" maps={std} />}
+        {Boolean(taiko.length) && <GameMapList title="Taiko" maps={taiko} />}
+        {Boolean(ctb.length) && (
+          <GameMapList title="Catch the beat" maps={ctb} />
+        )}
+        {Boolean(mania.length) && <GameMapList title="Mania" maps={ctb} />}
+      </section>
     </section>
   );
 };

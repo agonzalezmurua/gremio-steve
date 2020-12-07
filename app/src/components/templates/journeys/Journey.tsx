@@ -82,7 +82,7 @@ const JourneyTemplate: React.FC<JourneyTemplateProps> = ({ journey }) => {
         </section>
 
         {/* Maps */}
-        <section tw="space-y-2">
+        <section tw="space-y-4">
           {(journey?.maps && <GameMapLists maps={journey.maps} />) || (
             <>
               <Skeleton tw="w-32 h-6" />
