@@ -58,33 +58,41 @@ const Select: React.FC<SelectProps> = (props) => {
     }
   }, [props.value, props.options]);
 
-  const handleNavigation = useCallback((direction: 'up' | 'down') => {
-    const { current: el } = optionsWrapper;
-    if (el && el.hidden === false) {
-      if (el.contains(document.activeElement)) {
-        let element: HTMLDivElement | null;
-        switch (direction) {
-          case 'down':
-            element = document.activeElement?.nextSibling as HTMLDivElement;
-            break;
-          case 'up':
-            element = document.activeElement?.previousSibling as HTMLDivElement;
-            break;
-          default:
-            element = null;
-            break;
+  const handleNavigation = useCallback(
+    (direction: 'up' | 'down') => (event: React.KeyboardEvent<HTMLElement>) => {
+      const { current: el } = optionsWrapper;
+      if (el && el.hidden === false) {
+        event.preventDefault();
+        if (el.contains(document.activeElement)) {
+          let element: HTMLDivElement | null;
+          switch (direction) {
+            case 'down':
+              element = document.activeElement?.nextSibling as HTMLDivElement;
+              break;
+            case 'up':
+              element = document.activeElement
+                ?.previousSibling as HTMLDivElement;
+              break;
+            default:
+              element = null;
+              break;
+          }
+          element?.focus();
+        } else {
+          (el.firstChild as HTMLDivElement).focus();
         }
-        element?.focus();
-      } else {
-        (el.firstChild as HTMLDivElement).focus();
       }
-    }
-  }, []);
+    },
+    []
+  );
 
   useClickAway(wrapper, () => setDisplaying(false));
-  useKeyDownHotkey(wrapper, ' ', () => setDisplaying(true), true);
-  useKeyDownHotkey(wrapper, 'ArrowUp', () => handleNavigation('up'), true);
-  useKeyDownHotkey(wrapper, 'ArrowDown', () => handleNavigation('down'), true);
+  useKeyDownHotkey(wrapper, ' ', (event) => {
+    event.preventDefault();
+    setDisplaying(true);
+  });
+  useKeyDownHotkey(wrapper, 'ArrowUp', handleNavigation('up'));
+  useKeyDownHotkey(wrapper, 'ArrowDown', handleNavigation('down'));
 
   return (
     <section
@@ -140,15 +148,11 @@ const Select: React.FC<SelectProps> = (props) => {
             css={[Styles.Option]}
             aria-selected={selected?.value === option.value}
             tabIndex={0}
-            onKeyDown={handleKey(
-              ['Enter', ' '],
-              (event) => {
-                event.preventDefault();
-                handleItemClick(option)();
-                wrapper.current!.focus();
-              },
-              false
-            )}
+            onKeyDown={handleKey(['Enter', ' '], (event) => {
+              event.preventDefault();
+              handleItemClick(option)();
+              wrapper.current!.focus();
+            })}
             onClick={handleItemClick(option)}
           >
             {option.icon && <option.icon />}
