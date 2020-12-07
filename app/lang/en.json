@@ -15,6 +15,10 @@
     "defaultMessage": "Difficulties",
     "description": "Difficulties header"
   },
+  "'7Y5KkI'": {
+    "defaultMessage": "Activity",
+    "description": "Activity Page Header"
+  },
   "'8KPwIy'": {
     "defaultMessage": "Standard",
     "description": "Osu! option label"
@@ -162,5 +166,21 @@
   "'xYnz1H'": {
     "defaultMessage": "Mania",
     "description": "Osu!mania option label"
+  },
+  "hotkeys.app.history_goBack": {
+    "defaultMessage": "Go Back to previous page",
+    "description": "Global hotkey that goes to the previous page (if available)"
+  },
+  "hotkeys.app.history_goForward": {
+    "defaultMessage": "Go Forward to next page",
+    "description": "Global hotkey that navigates to next page (if available)"
+  },
+  "hotkeys.app.journey_new": {
+    "defaultMessage": "Create new Journey",
+    "description": "Global hotkey that navigates to new journey page"
+  },
+  "pages.user.queue": {
+    "defaultMessage": "Queue",
+    "description": "Queue Page Header"
   }
 }
