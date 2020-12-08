@@ -39,3 +39,23 @@ declare type User = {
   };
   queue: Journey[];
 };
+
+declare type CommentNode = {
+  __id: string;
+  journey: Pick<Journey, '__id'>;
+};
+
+declare type UserActivity = {
+  __id: string;
+  /** ISO-DATE */
+  when: string;
+  who: Pick<User, '__id' | 'name'>;
+  what: 'mention' | 'comment' | 'add' | 'remove' | 'edit' | 'create';
+  target: {
+    against: 'journey' | 'user' | 'edit' | 'comment';
+    user?: Pick<User, '__id' | 'name'>;
+    journey?: Pick<Journey, '__id' | 'title'>;
+    comment?: CommentNode;
+    content?: string;
+  };
+};

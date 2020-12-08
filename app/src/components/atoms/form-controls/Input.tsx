@@ -3,7 +3,7 @@ import React from 'react';
 import Styles from './Input.styles';
 
 type InputProps = {
-  icon?: JSX.Element;
+  icon?: JSX.Element | React.FC;
   error?: string;
   message?: string;
 } & React.InputHTMLAttributes<HTMLInputElement>;

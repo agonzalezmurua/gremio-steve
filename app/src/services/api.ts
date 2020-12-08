@@ -12,7 +12,10 @@ const api = {
   },
   user: {
     queue(id: string) {
-      return axios.get<User['queue']>(endpoints.user.queue(id));
+      return axios.get<Journey[]>(endpoints.user.queue(id));
+    },
+    activity(id: string) {
+      return axios.get<UserActivity[]>(endpoints.user.activity(id));
     },
   },
 };

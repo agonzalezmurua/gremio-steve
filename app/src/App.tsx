@@ -10,7 +10,7 @@ import JourneyPage from '@pages/journeys/Id';
 import NewJourneyPage from '@pages/journeys/New';
 import QueuePage from '@pages/user/Queue';
 
-import ActivityPage from '@pages/Activity';
+import ActivityPage from '@pages/user/Activity';
 import { useAppHotkeys } from '@hooks/useAppHotkeys';
 
 type Props = {
@@ -28,7 +28,7 @@ const App: React.FC<Props> = ({ loading }) => {
           <Route path="/journeys/new" exact component={NewJourneyPage} />
           <Route path="/journeys/:id" component={JourneyPage} />
           <Route path="/user/:id/queue" component={QueuePage} />
-          <Route path="/user/:id/activity" components={ActivityPage} />
+          <Route path="/user/:id/activity" component={ActivityPage} />
           <Route path={['*', '/not-found']} component={NotFoundPage} />
         </Switch>
       </NavBar>

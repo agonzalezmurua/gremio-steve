@@ -34,3 +34,12 @@
       headers:
         content-type: application/json
       file: user/queue.json
+- request:
+    url: ^/api/user/current_user_id/activity$
+    method: GET
+  response:
+    - status: 200
+      latency: 300
+      headers:
+        content-type: application/json
+      file: user/activity.json

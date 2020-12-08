@@ -36,13 +36,7 @@ const SearchJourney: React.FunctionComponent = () => {
       <Input
         aria-label="Search for journey"
         name="journey-search"
-        icon={
-          loading ? (
-            <Spinner tw="animate-spin w-5 h-5" />
-          ) : (
-            <SearchIcon tw="h-5 w-5" />
-          )
-        }
+        icon={loading ? <Spinner tw="animate-spin w-5 h-5" /> : <SearchIcon />}
         type="text"
         disabled={loading}
         placeholder="Author, Artist, Group..."

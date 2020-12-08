@@ -19,5 +19,9 @@ export default {
       const url = new URL(`${basePath}/user/${id}/queue`, URI);
       return url.toString();
     },
+    activity: (id: string) => {
+      const url = new URL(`${basePath}/user/${id}/activity`, URI);
+      return url.toString();
+    },
   },
 };
