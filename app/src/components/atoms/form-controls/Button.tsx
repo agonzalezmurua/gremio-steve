@@ -5,18 +5,20 @@ type ButtonProps = {
   color?: 'red' | 'white' | 'blue';
   kind?: 'normal' | 'small' | 'self-contained';
   active?: boolean;
+  fullWidth?: boolean;
 } & React.HTMLProps<HTMLButtonElement>;
 
 const Button = styled.button<ButtonProps>(
-  ({ color, kind: variant, active }) => [
+  ({ color, kind: variant, active, fullWidth: fullWidth }) => [
     tw`
-    border
-    rounded
-    transition-colors
-    duration-200
-    ease-in-out
-    outline-none
-  `,
+      border
+      rounded
+      transition-colors
+      duration-200
+      ease-in-out
+      outline-none
+    `,
+    fullWidth && tw`w-full`,
     FocusFlatStyle,
     variant === 'normal' && tw`p-2 pl-4 pr-4`,
     variant === 'small' && tw`p-1 pl-2 pr-2`,

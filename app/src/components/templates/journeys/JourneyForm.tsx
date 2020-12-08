@@ -29,7 +29,12 @@ const NewJourneyForm: React.FC<FormikProps<JourneyFormObject>> = ({
   return (
     <form onSubmit={handleSubmit} tw="space-y-8">
       <fieldset tw="space-y-4">
-        <legend>Essentials</legend>
+        <FormattedMessage
+          id="components.templates.journeysForm.essentialsLegend"
+          description="Journey template, title for new Journey form"
+          defaultMessage="Essentials"
+          tagName="legend"
+        />
 
         <Label text="Title" htmlFor="title">
           <Input
@@ -119,17 +124,22 @@ const NewJourneyForm: React.FC<FormikProps<JourneyFormObject>> = ({
       </fieldset>
 
       <fieldset tw="space-y-4">
-        <legend>
-          <FormattedMessage
-            defaultMessage="Difficulties"
-            description="Difficulties header"
-          />
-        </legend>
+        <FormattedMessage
+          id="components.templates.journeysForm.difficultiesLegend"
+          defaultMessage="Difficulties"
+          description="Difficulties legend"
+          tagName="legend"
+        />
         <GameMapFormList />
       </fieldset>
 
       <fieldset tw="space-y-4">
-        <legend>Extras</legend>
+        <FormattedMessage
+          id="components.templates.journeysForm.extrasLegend"
+          defaultMessage="Extras"
+          description="Extras legend"
+          tagName="legend"
+        />
         <Label text="Private" htmlFor="private">
           <input name="private" type="checkbox" />
         </Label>
@@ -137,6 +147,7 @@ const NewJourneyForm: React.FC<FormikProps<JourneyFormObject>> = ({
 
       <Button color="blue" type="submit" onClick={() => handleSubmit()}>
         <FormattedMessage
+          id="components.templates.journeysForm.saveButton"
           defaultMessage="Save"
           description="Submit new journey form"
         />

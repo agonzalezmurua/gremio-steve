@@ -24,12 +24,12 @@ export const GameMapFormList = () => {
             }
           >
             <Plus />
-            <span>
-              <FormattedMessage
-                defaultMessage="Add new"
-                description="Add a new Beatmap difficulty entry"
-              />
-            </span>
+            <FormattedMessage
+              id="components.organisms.gameMapForm.addNewDifficultyButton"
+              defaultMessage="Add new"
+              description="Add a new Beatmap difficulty entry"
+              tagName="span"
+            />
           </Button>
           <section css={[Styles.GameMaps]}>
             <ul>

@@ -15,7 +15,7 @@ type HotkeyContext = {
   intl: IntlShape;
 };
 
-export function useAppHotkeys() {
+export default function useAppHotkeys() {
   const intl = useIntl();
   const history = useHistory();
   const combos = ContextualizeCombos({ history, intl });

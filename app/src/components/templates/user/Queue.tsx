@@ -16,12 +16,6 @@ type QueueTemplateProps = {
 const QueueTemplate: React.FC<QueueTemplateProps> = (props) => {
   return (
     <section tw="space-y-4">
-      <FormattedMessage
-        id="pages.user.queue"
-        defaultMessage="Queue"
-        description="Queue Page Header"
-        tagName="h1"
-      />
       <section tw="space-y-4">
         <Input icon={<Search />} />
         <ul tw="space-y-2">

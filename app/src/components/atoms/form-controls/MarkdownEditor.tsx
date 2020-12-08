@@ -52,7 +52,8 @@ const MarkdownEditor: React.FC<EditorProps> = ({
           tabIndex={-1}
         >
           <FormattedMessage
-            description="Set markdown editor into edit mode"
+            id="components.atoms.form-controls.editButton"
+            description="Set markdown editor form component into edit mode"
             defaultMessage="Edit"
           />
         </Button>
@@ -64,7 +65,8 @@ const MarkdownEditor: React.FC<EditorProps> = ({
           tabIndex={-1}
         >
           <FormattedMessage
-            description="Set markdown editor into preview mode"
+            id="components.atoms.form-controls.previewButton"
+            description="Set markdown editor form component into preview mode"
             defaultMessage="Preview"
           />
         </Button>

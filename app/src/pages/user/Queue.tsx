@@ -20,7 +20,7 @@ const UserQueuePage: React.FC<RouteComponentProps<RouteProps>> = (props) => {
   return (
     <main tw="p-4">
       <FormattedMessage
-        id="pages.user.queue"
+        id="pages.user.queue.titleHeader"
         defaultMessage="Queue"
         description="Queue Page Header"
         tagName="h1"

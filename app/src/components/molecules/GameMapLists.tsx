@@ -14,6 +14,7 @@ import Tick from '@assets/icons/steve/tick.svg';
 
 import Avatar from '@components/atoms/Avatar';
 import Button from '@components/atoms/form-controls/Button';
+import { FormattedMessage } from 'react-intl';
 
 type MapsProps = {
   maps: GameMap[];
@@ -66,7 +67,13 @@ const GamemapTypeItem: React.FC<GameMap> = (props) => {
             'Unasigned'}
         </span>
         {!props.assignee && (
-          <Button tw="justify-self-end self-end">Apply</Button>
+          <Button tw="justify-self-end self-end">
+            <FormattedMessage
+              id="components.molecules.gameMapLists.applyButton"
+              description="Game map list, apply button"
+              defaultMessage="Apply"
+            />
+          </Button>
         )}
       </section>
       {/* Difficulty */}

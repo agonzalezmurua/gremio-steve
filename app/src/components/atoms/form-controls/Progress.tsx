@@ -47,15 +47,17 @@ const Progress: React.FC<ProgressProps> = (props) => {
           onClick={() => setCurrentStep(currentStep - 1)}
         >
           <FormattedMessage
+            id="components.atoms.form-controls.progress.backButton"
             defaultMessage="Back"
-            description="Back one step, usually used on forms"
+            description="Form progress indicator, back button"
           />
         </Button>
         {(isLastStep && (
           <Button type="submit" color="blue">
             <FormattedMessage
+              id="components.atoms.form-controls.progress.finishButton"
               defaultMessage="Finish"
-              description="Final step of progress, usually used on forms"
+              description="Form progress indicator, finish button"
             />
           </Button>
         )) || (
@@ -65,8 +67,9 @@ const Progress: React.FC<ProgressProps> = (props) => {
             onClick={() => setCurrentStep(currentStep + 1)}
           >
             <FormattedMessage
+              id="components.atoms.form-controls.progress.nextButton"
               defaultMessage="Next"
-              description="Next one step, usually used on forms"
+              description="Form progress indicator, next step button"
             />
           </Button>
         )}

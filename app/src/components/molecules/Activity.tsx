@@ -12,6 +12,8 @@ import Annotation from '@assets/icons/solid/annotation.svg';
 import AtSymbol from '@assets/icons/solid/at-symbol.svg';
 import Plus from '@assets/icons/solid/plus.svg';
 import Pencil from '@assets/icons/solid/pencil.svg';
+import Trash from '@assets/icons/solid/trash.svg';
+import EyeOff from '@assets/icons/solid/eye-off.svg';
 
 import Messages from './Activity.messages';
 
@@ -29,8 +31,11 @@ const Activity: React.FC<Props> = ({ entry }) => {
       case 'edit':
         return Pencil;
       case 'mention':
-      default:
         return AtSymbol;
+      case 'remove':
+        return Trash;
+      default:
+        return EyeOff;
     }
   }, [entry.what]);
   const message = useMemo(() => {
@@ -70,7 +75,6 @@ const Activity: React.FC<Props> = ({ entry }) => {
     }
     return Messages.default;
   }, []);
-  console.log(new Date(entry.when).getTime() - Date.now());
 
   return (
     <section tw="flex p-4">
@@ -120,8 +124,9 @@ const Activity: React.FC<Props> = ({ entry }) => {
                 })}
               >
                 <FormattedMessage
-                  id="generic.comment"
+                  id="components.molecules.activity.commenLink"
                   defaultMessage="{count, plural, =0 {no comments} one {comment} other {comments}}"
+                  description=""
                   values={{ count: 1 }}
                 />
               </Link>

@@ -9,6 +9,7 @@ import Plus from '@assets/icons/outline/plus.svg';
 import links from '@links';
 import AppContext from 'AppContext';
 import { FocusFlatStyle } from '@globals/ElementFocusStyle';
+import { FormattedMessage } from 'react-intl';
 
 const NavigationItem = styled.li`
   a {
@@ -32,25 +33,45 @@ export const NavigationList: React.FunctionComponent = () => {
       <NavigationItem>
         <Link to={links.user.queue({ id: __id })}>
           <Collection />
-          <span>My Queue</span>
+          <FormattedMessage
+            id="components.molecules.navigationLinks.myQueueLink"
+            description="Navigation links, name for link that redirects to 'My Queue'"
+            defaultMessage="My Queue"
+            tagName="span"
+          />
         </Link>
       </NavigationItem>
       <NavigationItem>
         <Link to={links.user.activity({ id: __id })}>
           <LightNingBolt />
-          <span>Activity</span>
+          <FormattedMessage
+            id="components.molecules.navigationLinks.activityLink"
+            description="Navigation links, name for link that redirects to 'My Activity'"
+            defaultMessage="Activity"
+            tagName="span"
+          />
         </Link>
       </NavigationItem>
       <NavigationItem>
         <Link to={links.user.bookmarks({ id: __id })}>
           <Bookmark />
-          <span>Bookmarks</span>
+          <FormattedMessage
+            id="components.molecules.navigationLinks.bookmarksLink"
+            description="Navigation links, name for link that redirects to 'Bookmarks'"
+            defaultMessage="Bookmarks"
+            tagName="span"
+          />
         </Link>
       </NavigationItem>
       <NavigationItem>
         <Link to={links.journeys.new()}>
           <Plus />
-          <span>New Journey</span>
+          <FormattedMessage
+            id="components.molecules.navigationLinks.newJourneyLink"
+            description="Navigation links, name for link that redirects to 'New Journey'"
+            defaultMessage="New Journey"
+            tagName="span"
+          />
         </Link>
       </NavigationItem>
     </ul>

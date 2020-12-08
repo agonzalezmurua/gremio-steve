@@ -9,7 +9,7 @@ import UserActivityTemplate from '@components/templates/user/Activity';
 
 const ActivityPage = () => {
   const { currentUser } = useContext(AppContext);
-  const { loading, value } = useAsync(async () => {
+  const { value: activity } = useAsync(async () => {
     const { data } = await api.user.activity(currentUser.__id);
     return data;
   }, []);
@@ -17,12 +17,12 @@ const ActivityPage = () => {
   return (
     <main tw="p-4 space-y-4">
       <FormattedMessage
-        id="page.user.activity"
+        id="pages.user.activity.titleHeader"
         defaultMessage="Activity"
         description="Activity Page Header"
         tagName="h1"
       />
-      <UserActivityTemplate activity={value} />
+      <UserActivityTemplate activity={activity} />
     </main>
   );
 };

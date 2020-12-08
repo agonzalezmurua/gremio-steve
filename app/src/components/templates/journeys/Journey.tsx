@@ -1,7 +1,7 @@
 import 'twin.macro';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
-import { generatePath, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Avatar from '@components/atoms/Avatar';
 import JourneyBanner from '@components/atoms/JourneyBanner';
@@ -9,6 +9,8 @@ import JourneyMetadata from '@components/atoms/JourneyMetadata';
 import JourneyStatus from '@components/atoms/JourneyStatus';
 import Skeleton from '@components/atoms/Skeleton';
 import GameMapLists from '@components/molecules/GameMapLists';
+import links from '@links';
+import { FormattedMessage } from 'react-intl';
 
 type JourneyTemplateProps = {
   journey: Journey | null;
@@ -29,6 +31,7 @@ const JourneyTemplate: React.FC<JourneyTemplateProps> = ({ journey }) => {
           <span tw="font-semibold">{journey.artist}</span>
         )) || <Skeleton tw="w-40 h-8" />}
       </JourneyBanner>
+
       {/* Meta */}
       <section tw="flex h-16 p-4 bg-gray-100 space-x-4">
         {(journey?.metadata && (
@@ -47,6 +50,7 @@ const JourneyTemplate: React.FC<JourneyTemplateProps> = ({ journey }) => {
           </>
         )}
       </section>
+
       {/* Status */}
       <section tw="flex w-full h-10 bg-gray-300 justify-center items-center">
         {(journey?.status && <JourneyStatus status={journey.status} />) || (
@@ -56,15 +60,21 @@ const JourneyTemplate: React.FC<JourneyTemplateProps> = ({ journey }) => {
       {/* Main Content */}
       <section tw="p-4 space-y-4">
         <section tw="space-y-2">
-          {(journey?.organizer && <h2>Organizer</h2>) || (
-            <Skeleton tw="w-32 h-6" />
-          )}
+          {(journey?.organizer && (
+            <FormattedMessage
+              id="components.templates.journeys.organizerHeader"
+              defaultMessage="Organizer"
+              description="Journey page, organizer header"
+              tagName="h2"
+            />
+          )) || <Skeleton tw="w-32 h-6" />}
+          {/* Organizer */}
           <section tw="flex space-x-2">
             <Avatar isSkeleton src={journey?.organizer.avatar.url} />
             {(journey?.organizer.name && (
               <section>
                 <Link
-                  to={generatePath('/user/:id', {
+                  to={links.user.profile({
                     id: journey.organizer.__id,
                   })}
                 >
@@ -73,6 +83,8 @@ const JourneyTemplate: React.FC<JourneyTemplateProps> = ({ journey }) => {
               </section>
             )) || <Skeleton tw="w-48 h-12" />}
           </section>
+
+          {/* Description */}
           <section>
             {(journey?.description && (
               // eslint-disable-next-line react/no-children-prop

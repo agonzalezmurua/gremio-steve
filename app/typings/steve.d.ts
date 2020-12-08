@@ -20,6 +20,7 @@ declare type Journey = {
   status: 'open' | 'clossed' | 'suspended';
   private: boolean;
   maps: GameMap[];
+  osuLink: string;
 };
 
 declare type GameMap = {
@@ -51,7 +52,7 @@ declare type UserActivity = {
   when: string;
   who: Pick<User, '__id' | 'name'>;
   what: 'mention' | 'comment' | 'add' | 'remove' | 'edit' | 'create';
-  to: 'journey' | 'user' | 'edit' | 'comment';
+  to: 'journey' | 'user' | 'comment';
   user?: Pick<User, '__id' | 'name'>;
   journey?: Pick<Journey, '__id' | 'title'>;
   comment?: CommentNode;

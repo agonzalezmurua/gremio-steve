@@ -41,7 +41,7 @@ const NavigationControls = (props) => {
       </button>
       <Link to="/">
         <Home />
-        <span className="sr-only">Go to home page</span>
+        <span className="visually-hidden">Go to home page</span>
       </Link>
     </section>
   );

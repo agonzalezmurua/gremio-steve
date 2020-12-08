@@ -1,6 +1,6 @@
 import tw from 'twin.macro';
 import { createGlobalStyle } from 'styled-components';
-import { FocusRingStyleString } from './ElementFocusStyle';
+import FocusTwStyle, { FocusRingStyleString } from './ElementFocusStyle';
 
 const AppGlobalStyle = createGlobalStyle`
   html, body {
@@ -12,8 +12,14 @@ const AppGlobalStyle = createGlobalStyle`
   }
 
   a {
+    ${tw`font-semibold outline-none rounded`}
+    * {
+      ${tw`font-normal`}
+    }
     &:hover, &:focus{
       text-decoration: underline;
+      ${FocusTwStyle}
+      ${tw`bg-blue-50`}
     }
   }
 
@@ -49,7 +55,7 @@ const AppGlobalStyle = createGlobalStyle`
     font-size: 1.25rem;
   }
 
-  .sr-only {
+  .visually-hidden {
     clip: rect(0 0 0 0);
     overflow: hidden;
     position: absolute;
