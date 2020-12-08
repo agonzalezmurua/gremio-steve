@@ -46,7 +46,7 @@ type Combos = {
 
 const ContextualizeCombos = (context: HotkeyContext): Combos => ({
   'history.goBack': {
-    combo: ['ctrl + left'],
+    combo: ['ctrl + left', 'command + left'],
     pressed: (event) => {
       event?.preventDefault();
       context.history.goBack();
@@ -59,7 +59,7 @@ const ContextualizeCombos = (context: HotkeyContext): Combos => ({
     }),
   },
   'history.goForward': {
-    combo: ['ctrl + right'],
+    combo: ['ctrl + right', 'command + right'],
     pressed: (event) => {
       event?.preventDefault();
       context.history.goForward();
@@ -71,7 +71,7 @@ const ContextualizeCombos = (context: HotkeyContext): Combos => ({
     }),
   },
   'journey.new': {
-    combo: ['ctrl + shift + n'],
+    combo: ['ctrl + shift + n', 'command + shift + n'],
     pressed: (event) => {
       event?.preventDefault();
       context.history.push(Links.journeys.new());
