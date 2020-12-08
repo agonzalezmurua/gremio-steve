@@ -3,7 +3,7 @@ import { defineMessages } from 'react-intl';
 const Messages = defineMessages({
   comment_on_journey: {
     id: 'generic.activity_feed.comment_on_journey',
-    defaultMessage: '{user} left a comment on {target}.',
+    defaultMessage: '{user} left a comment on {journey}.',
     description:
       'Activity message indicating that someone left a comment on one of your journeys',
   },
@@ -30,6 +30,18 @@ const Messages = defineMessages({
     defaultMessage: '{user} mentioned {journey} you a {comment}',
     description:
       'Activity message indicating that someone mentioned your Journey on a comment',
+  },
+  create_a_journey: {
+    id: 'generic.activity_feed.create_a_journey',
+    defaultMessage: '{user} created a new journey {journey}',
+    description:
+      'Activity message indicating that someone you follow created a new Journey',
+  },
+  edit_a_journey: {
+    id: 'generic.activity_feed.edit_a_journey',
+    defaultMessage: '{user} edited {journey}',
+    description:
+      'Activity message indicating that someone you edited a Journey you follow',
   },
   default: {
     id: 'generic.activity_feed.default',

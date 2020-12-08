@@ -51,11 +51,9 @@ declare type UserActivity = {
   when: string;
   who: Pick<User, '__id' | 'name'>;
   what: 'mention' | 'comment' | 'add' | 'remove' | 'edit' | 'create';
-  target: {
-    against: 'journey' | 'user' | 'edit' | 'comment';
-    user?: Pick<User, '__id' | 'name'>;
-    journey?: Pick<Journey, '__id' | 'title'>;
-    comment?: CommentNode;
-    content?: string;
-  };
+  to: 'journey' | 'user' | 'edit' | 'comment';
+  user?: Pick<User, '__id' | 'name'>;
+  journey?: Pick<Journey, '__id' | 'title'>;
+  comment?: CommentNode;
+  content?: string;
 };

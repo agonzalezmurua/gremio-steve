@@ -4,13 +4,14 @@ import {
   FormattedDate,
   FormattedMessage,
   FormattedRelativeTime,
-  FormattedTime,
 } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 import links from '@links';
 import Annotation from '@assets/icons/solid/annotation.svg';
 import AtSymbol from '@assets/icons/solid/at-symbol.svg';
+import Plus from '@assets/icons/solid/plus.svg';
+import Pencil from '@assets/icons/solid/pencil.svg';
 
 import Messages from './Activity.messages';
 
@@ -23,6 +24,10 @@ const Activity: React.FC<Props> = ({ entry }) => {
     switch (entry.what) {
       case 'comment':
         return Annotation;
+      case 'create':
+        return Plus;
+      case 'edit':
+        return Pencil;
       case 'mention':
       default:
         return AtSymbol;
@@ -31,7 +36,7 @@ const Activity: React.FC<Props> = ({ entry }) => {
   const message = useMemo(() => {
     switch (entry.what) {
       case 'comment':
-        switch (entry.target.against) {
+        switch (entry.to) {
           case 'journey':
             return Messages.comment_on_journey;
           case 'comment':
@@ -43,7 +48,7 @@ const Activity: React.FC<Props> = ({ entry }) => {
         }
         break;
       case 'mention':
-        switch (entry.target.against) {
+        switch (entry.to) {
           case 'comment':
             return Messages.mention_on_comment;
           case 'journey':
@@ -51,6 +56,17 @@ const Activity: React.FC<Props> = ({ entry }) => {
           default:
             break;
         }
+      case 'create':
+        switch (entry.to) {
+          case 'journey':
+            return Messages.create_a_journey;
+        }
+      case 'edit': {
+        switch (entry.to) {
+          case 'journey':
+            return Messages.edit_a_journey;
+        }
+      }
     }
     return Messages.default;
   }, []);
@@ -84,9 +100,9 @@ const Activity: React.FC<Props> = ({ entry }) => {
           tagName="section"
           tw="truncate"
           values={{
-            target: entry.target.journey && (
-              <Link to={links.journeys.id({ id: entry.target.journey.__id })}>
-                {entry.target.journey.title}
+            journey: entry.journey && (
+              <Link to={links.journeys.id({ id: entry.journey.__id })}>
+                {entry.journey.title}
               </Link>
             ),
             user: (
@@ -96,11 +112,11 @@ const Activity: React.FC<Props> = ({ entry }) => {
                 </Link>
               </strong>
             ),
-            comment: entry.target.comment && (
+            comment: entry.comment && (
               <Link
                 to={links.journeys.comment({
-                  id: entry.target.comment.journey.__id,
-                  commentNode: entry.target.comment.__id,
+                  id: entry.comment.journey.__id,
+                  commentNode: entry.comment.__id,
                 })}
               >
                 <FormattedMessage
@@ -124,9 +140,11 @@ const Activity: React.FC<Props> = ({ entry }) => {
             />
           </span>
         </section>
-        <section tw="mt-2 shadow border rounded-lg px-4 py-2 overflow-ellipsis">
-          {entry.target.content}
-        </section>
+        {entry.content && (
+          <section tw="mt-2 shadow border rounded-lg px-4 py-2 overflow-ellipsis">
+            {entry.content}
+          </section>
+        )}
       </section>
     </section>
   );
