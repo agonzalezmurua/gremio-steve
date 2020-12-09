@@ -17,7 +17,7 @@
         content-type: application/json
       file: journeys/1.json
 - request:
-    url: ^/api/user/myself$
+    url: ^/api/user/1$
     method: GET
   response:
     - status: 200
@@ -25,6 +25,15 @@
       headers:
         content-type: application/json
       file: user/profile.json
+- request:
+    url: ^/api/user/3$
+    method: GET
+  response:
+    - status: 200
+      latency: 300
+      headers:
+        content-type: application/json
+      file: user/profile_3.json
 - request:
     url: ^/api/user/current_user_id/queue$
     method: GET

@@ -11,6 +11,7 @@ import Skeleton from '@components/atoms/Skeleton';
 import GameMapLists from '@components/molecules/GameMapLists';
 import links from '@links';
 import { FormattedMessage } from 'react-intl';
+import Markdown from '@components/atoms/Markdown';
 
 type JourneyTemplateProps = {
   journey: Journey | null;
@@ -87,8 +88,7 @@ const JourneyTemplate: React.FC<JourneyTemplateProps> = ({ journey }) => {
           {/* Description */}
           <section>
             {(journey?.description && (
-              // eslint-disable-next-line react/no-children-prop
-              <ReactMarkdown children={journey?.description} />
+              <Markdown value={journey?.description} />
             )) || <Skeleton tw="w-full h-64" />}
           </section>
         </section>

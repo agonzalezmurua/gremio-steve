@@ -1,14 +1,13 @@
 /* eslint-disable react/no-children-prop */
 import React, { useRef, useState } from 'react';
 import { FormattedMessage } from 'react-intl';
-import ReactMarkdown from 'react-markdown';
-import gfm from 'remark-gfm';
 
 import 'twin.macro';
 
 import Button from './Button';
 import Styles from './MarkdownEditor.styles';
 import InputStyles from '@components/atoms/form-controls/Input.styles';
+import Markdown from '@components/atoms/Markdown';
 
 type EditorProps = {
   value?: string;
@@ -37,10 +36,7 @@ const MarkdownEditor: React.FC<EditorProps> = ({
       />
 
       <section css={[Styles.Preview]} hidden={mode !== 'preview'}>
-        <ReactMarkdown
-          plugins={[gfm]}
-          children={props.value || areaRef.current?.value || ''}
-        />
+        <Markdown value={props.value || areaRef.current?.value || ''} />
       </section>
 
       <section css={[Styles.ButtonWrapper]}>

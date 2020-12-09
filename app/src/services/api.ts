@@ -11,6 +11,9 @@ const api = {
     },
   },
   user: {
+    profile(id: string) {
+      return axios.get<User>(endpoints.user.default(id));
+    },
     queue(id: string) {
       return axios.get<Journey[]>(endpoints.user.queue(id));
     },

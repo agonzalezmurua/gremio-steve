@@ -1,4 +1,8 @@
 {
-  "name": "Ferret",
-  "__id": 1
+  "__id": "3",
+  "name": "Krissom",
+  "avatar": {
+    "url": "https://a.ppy.sh/343624?1597995347.jpeg"
+  },
+  "description": ""
 }

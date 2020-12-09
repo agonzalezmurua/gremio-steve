@@ -38,6 +38,7 @@ declare type User = {
   avatar: {
     url: string;
   };
+  description: string;
   queue: Journey[];
 };
 

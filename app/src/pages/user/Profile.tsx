@@ -1,16 +1,22 @@
 import 'twin.macro';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
+import { useAsync } from 'react-use';
+import { RouteComponentProps } from 'react-router-dom';
+import api from '@api';
+import UserProfileTemplate from '@components/templates/user/Profile';
 
-const UserProfilePage = () => {
+type Props = {
+  id: string;
+};
+
+const UserProfilePage: React.FC<RouteComponentProps<Props>> = (props) => {
+  const { value } = useAsync(async () => {
+    return (await api.user.profile(props.match.params.id)).data;
+  });
   return (
     <main tw="p-4">
-      <FormattedMessage
-        id="pages.user.profile.titleHeader"
-        defaultMessage="User"
-        description="User profile page header"
-        tagName="h1"
-      />
+      <UserProfileTemplate user={value} />
     </main>
   );
 };

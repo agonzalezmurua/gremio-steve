@@ -5,8 +5,7 @@ const basePath = '/api';
 export default {
   journeys: {
     byId: (id: string) => {
-      const url = new URL(`${basePath}/journeys/${id}`, URI);
-      return url.toString();
+      return new URL(`${basePath}/journeys/${id}`, URI).toString();
     },
     search: (search: string) => {
       const url = new URL(`${basePath}/journeys`, URI);
@@ -15,13 +14,14 @@ export default {
     },
   },
   user: {
+    default: (id: string) => {
+      return new URL(`${basePath}/user/${id}`, URI).toString();
+    },
     queue: (id: string) => {
-      const url = new URL(`${basePath}/user/${id}/queue`, URI);
-      return url.toString();
+      return new URL(`${basePath}/user/${id}/queue`, URI).toString();
     },
     activity: (id: string) => {
-      const url = new URL(`${basePath}/user/${id}/activity`, URI);
-      return url.toString();
+      return new URL(`${basePath}/user/${id}/activity`, URI).toString();
     },
   },
 };
