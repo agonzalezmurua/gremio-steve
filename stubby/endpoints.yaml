@@ -17,14 +17,14 @@
         content-type: application/json
       file: journeys/1.json
 - request:
-    url: ^/api/user/1$
+    url: ^/api/user/2$
     method: GET
   response:
     - status: 200
-      latency: 300
+      latency: 1000
       headers:
         content-type: application/json
-      file: user/profile.json
+      file: user/profile_2.json
 - request:
     url: ^/api/user/3$
     method: GET

@@ -10,7 +10,7 @@ const UserHeader: React.FunctionComponent = () => {
     currentUser: { avatar, name },
   } = useContext(AppContext);
   return (
-    <section tw="flex flex-grow space-x-4 w-64">
+    <section tw="flex space-x-2 items-center justify-center ">
       <Avatar
         tw="border"
         size="medium"
@@ -18,11 +18,11 @@ const UserHeader: React.FunctionComponent = () => {
         alt="Current logged user profile image"
       />
       {/* Name */}
-      <section tw="flex flex-grow flex-col items-start justify-center">
+      <section tw="flex-grow hidden md:(block)">
         <strong>{name}</strong>
       </section>
       {/* Actions */}
-      <Cog tw="w-6 h-6 self-center transition-opacity hover:(opacity-75) cursor-pointer" />
+      <Cog tw="w-6 h-6 self-center transition-opacity hover:(opacity-75) cursor-pointer hidden md:(block)" />
     </section>
   );
 };

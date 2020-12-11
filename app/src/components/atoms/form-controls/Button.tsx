@@ -1,15 +1,15 @@
-import { FocusFlatStyle } from '@globals/ElementFocusStyle';
+import { FocusRingFlatStyle } from '@globals/ElementFocusStyle';
 import tw, { styled } from 'twin.macro';
 
-type ButtonProps = {
+type ButtonProps = React.HTMLProps<HTMLButtonElement> & {
   color?: 'red' | 'white' | 'blue';
-  kind?: 'normal' | 'small' | 'self-contained';
+  variant?: 'normal' | 'small' | 'self-contained';
   active?: boolean;
   fullWidth?: boolean;
-} & React.HTMLProps<HTMLButtonElement>;
+};
 
 const Button = styled.button<ButtonProps>(
-  ({ color, kind: variant, active, fullWidth: fullWidth }) => [
+  ({ color, variant: size, active, fullWidth: fullWidth }) => [
     tw`
       border
       rounded
@@ -17,31 +17,33 @@ const Button = styled.button<ButtonProps>(
       duration-200
       ease-in-out
       outline-none
+      font-bold
+      text-gray-700
     `,
     fullWidth && tw`w-full`,
-    FocusFlatStyle,
-    variant === 'normal' && tw`p-2 pl-4 pr-4`,
-    variant === 'small' && tw`p-1 pl-2 pr-2`,
+    FocusRingFlatStyle,
+    size === 'normal' && tw`p-2 h-12`,
+    size === 'small' && tw`p-1 text-sm`,
     color === 'white' &&
       tw`
       bg-white
       disabled:(text-gray-300 border-gray-300 bg-gray-100) 
-      active:(bg-gray-200)
       hover:(bg-gray-100)
+      active:(bg-gray-200)
     `,
     color === 'white' && active && tw`bg-gray-200`,
     color === 'red' &&
       tw`
       text-white
-      bg-red-600 hover:bg-red-700 active:bg-red-900
-      border-red-900
+      bg-red-500 hover:bg-red-700 active:bg-red-900
+      border-red-700
     `,
     color === 'red' && active && tw`bg-red-900`,
     color === 'blue' &&
       tw`
       text-white
-      bg-blue-600 hover:bg-blue-700 active:bg-blue-900
-      border-blue-900
+      bg-blue-500 hover:bg-blue-700 active:bg-blue-900
+      border-blue-700
     `,
     color === 'blue' && active && tw`bg-blue-900`,
   ]
@@ -49,7 +51,7 @@ const Button = styled.button<ButtonProps>(
 
 Button.defaultProps = {
   color: 'white',
-  kind: 'normal',
+  variant: 'normal',
   active: false,
   type: 'button',
 };

@@ -1,14 +1,18 @@
 import tw from 'twin.macro';
 import { createGlobalStyle } from 'styled-components';
-import FocusTwStyle, { FocusRingStyleString } from './ElementFocusStyle';
+import FocusRingTwStyle, { FocusRingStyleString } from './ElementFocusStyle';
 
 const AppGlobalStyle = createGlobalStyle`
   html, body {
-    ${tw`text-gray-700 bg-gray-100`}
+    ${tw`bg-gray-100`}
   }
 
   h1, h2, h3, h4 ,h5 ,h6 {
     ${tw`text-gray-900`}
+  }
+
+  h1 {
+    ${tw`font-bold`}
   }
 
   a {
@@ -18,7 +22,7 @@ const AppGlobalStyle = createGlobalStyle`
     }
     &:hover, &:focus{
       text-decoration: underline;
-      ${FocusTwStyle}
+      ${FocusRingTwStyle}
       ${tw`bg-blue-50`}
     }
   }
@@ -32,22 +36,22 @@ const AppGlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    font-size: 2.25rem;
+    ${tw`text-3xl`}
   }
   h2 {
-    font-size: 1.75rem;
+    ${tw`text-2xl`}
   }
   h3 {
-    font-size: 1.5rem;
+    ${tw`text-xl`}
   }
   h4 {
-    font-size: 1.25rem;
+    ${tw`text-lg`}
   }
   h5 {
-    font-size: 1rem;
+    ${tw`text-base`}
   }
   h6 {
-    font-size: 0.75rem;
+    ${tw`text-sm`}
   }
 
   legend {

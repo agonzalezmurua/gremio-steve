@@ -1,3 +1,5 @@
+declare type Gamemodes = 'std' | 'taiko' | 'ctb' | 'mania';
+
 declare type Journey = {
   __id: string;
   title: string;
@@ -26,7 +28,7 @@ declare type Journey = {
 declare type GameMap = {
   __id: string;
   name: string;
-  mode: 'std' | 'taiko' | 'ctb' | 'mania';
+  mode: Gamemodes;
   difficulty: 'easy' | 'normal' | 'hard' | 'insane' | 'expert' | 'expert+';
   status: 'ready' | 'pending' | 'alert' | 'problem';
   assignee?: User;
@@ -38,6 +40,17 @@ declare type User = {
   avatar: {
     url: string;
   };
+  banner: {
+    url: string;
+  };
+  availability: {
+    mods: boolean;
+    guest_diffs: boolean;
+    playtesting: boolean;
+  };
+  communityRole: string;
+  preferences: Gamemodes[];
+  status: string;
   description: string;
   queue: Journey[];
 };

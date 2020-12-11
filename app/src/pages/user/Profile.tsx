@@ -15,7 +15,7 @@ const UserProfilePage: React.FC<RouteComponentProps<Props>> = (props) => {
     return (await api.user.profile(props.match.params.id)).data;
   });
   return (
-    <main tw="p-4">
+    <main>
       <UserProfileTemplate user={value} />
     </main>
   );

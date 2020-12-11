@@ -4,6 +4,10 @@ import tw, { styled } from 'twin.macro';
 import ArrowLeft from '@assets/icons/outline/arrow-left.svg';
 import Home from '@assets/icons/outline/home.svg';
 import { Link, useHistory } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
+import FocusRingTwStyle, {
+  FocusRingFlatStyle,
+} from '@globals/ElementFocusStyle';
 
 const NavigationControls = (props) => {
   const history = useHistory();
@@ -41,7 +45,13 @@ const NavigationControls = (props) => {
       </button>
       <Link to="/">
         <Home />
-        <span className="visually-hidden">Go to home page</span>
+        <span className="visually-hidden">
+          <FormattedMessage
+            id="components.atoms.navigationControls.goBackHome"
+            defaultMessage="Go to home page"
+            description="Accesible text that describes what the home button action"
+          />
+        </span>
       </Link>
     </section>
   );
@@ -51,6 +61,7 @@ export default styled(NavigationControls)`
   button,
   a {
     ${tw`p-1 hover:text-gray-700 disabled:text-gray-500 active:bg-gray-300 rounded transition-colors duration-200 ease-in-out`}
+    ${FocusRingFlatStyle}
     > svg {
       ${tw`h-5 w-5`}
     }

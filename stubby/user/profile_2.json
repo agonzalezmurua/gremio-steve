@@ -1,0 +1,20 @@
+{
+  "__id": "1",
+  "name": "Cloudchaser",
+  "avatar": {
+    "url": "https://a.ppy.sh/1576498?1605561364.jpeg"
+  },
+  "communityRole": "Beatmap Nominator",
+  "preferences": ["std", "taiko"],
+  "availability": {
+    "mods": true,
+    "guest_diffs": true,
+    "collab": false,
+    "playtesting": true
+  },
+  "banner": {
+    "url": "https://assets.ppy.sh/user-profile-covers/1576498/676f7c296b3d1b34aa52d002ba2c79d5b0732979e2677a9302565cbe0d15559e.jpeg"
+  },
+  "status": "Please only message me directly only if you need any additional explanation",
+  "description": "Please only message me directly only if you need any additional explanation on my mods"
+}
