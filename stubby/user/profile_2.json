@@ -15,6 +15,104 @@
   "banner": {
     "url": "https://assets.ppy.sh/user-profile-covers/1576498/676f7c296b3d1b34aa52d002ba2c79d5b0732979e2677a9302565cbe0d15559e.jpeg"
   },
+  "journeys": [
+    {
+      "__id": "1",
+      "title": "Chinatown Blues [feat. Megpoid Gumi]",
+      "artist": "OIDDEO + Karma Wears White Tiers",
+      "organizer": {
+        "__id": "2",
+        "name": "Cloudchaser",
+        "avatar": {
+          "url": "https://a.ppy.sh/1576498?1605561364.jpeg"
+        }
+      },
+      "gamemodes": ["std", "taiko"],
+      "lastUpdated": "2020-11-21T18:58:05.142Z",
+      "metadata": {
+        "genre": "pop",
+        "bpm": [90, 120],
+        "closure": "2020-11-21T18:58:05.142Z",
+        "duration": 120000
+      },
+      "status": "open",
+      "banner": {
+        "url": "https://assets.ppy.sh/beatmaps/883669/covers/card.jpg?1568991428"
+      }
+    },
+    {
+      "__id": "2",
+      "title": "Chinatown Blues [feat. Megpoid Gumi]",
+      "artist": "OIDDEO + Karma Wears White Tiers",
+      "organizer": {
+        "__id": "2",
+        "name": "Cloudchaser",
+        "avatar": {
+          "url": "https://a.ppy.sh/1576498?1605561364.jpeg"
+        }
+      },
+      "gamemodes": ["std", "taiko"],
+      "lastUpdated": "2020-11-21T18:58:05.142Z",
+      "metadata": {
+        "genre": "pop",
+        "bpm": [90, 120],
+        "closure": "2020-11-21T18:58:05.142Z",
+        "duration": 120000
+      },
+      "status": "open",
+      "banner": {
+        "url": "https://assets.ppy.sh/beatmaps/883669/covers/card.jpg?1568991428"
+      }
+    },
+    {
+      "__id": "3",
+      "title": "Chinatown Blues [feat. Megpoid Gumi]",
+      "artist": "OIDDEO + Karma Wears White Tiers",
+      "organizer": {
+        "__id": "2",
+        "name": "Cloudchaser",
+        "avatar": {
+          "url": "https://a.ppy.sh/1576498?1605561364.jpeg"
+        }
+      },
+      "gamemodes": ["std", "taiko"],
+      "lastUpdated": "2020-11-21T18:58:05.142Z",
+      "metadata": {
+        "genre": "pop",
+        "bpm": [90, 120],
+        "closure": "2020-11-21T18:58:05.142Z",
+        "duration": 120000
+      },
+      "status": "open",
+      "banner": {
+        "url": "https://assets.ppy.sh/beatmaps/883669/covers/card.jpg?1568991428"
+      }
+    },
+    {
+      "__id": "4",
+      "title": "Chinatown Blues [feat. Megpoid Gumi]",
+      "artist": "OIDDEO + Karma Wears White Tiers",
+      "organizer": {
+        "__id": "2",
+        "name": "Cloudchaser",
+        "avatar": {
+          "url": "https://a.ppy.sh/1576498?1605561364.jpeg"
+        }
+      },
+      "gamemodes": ["std", "taiko"],
+      "lastUpdated": "2020-11-21T18:58:05.142Z",
+      "metadata": {
+        "genre": "pop",
+        "bpm": [90, 120],
+        "closure": "2020-11-21T18:58:05.142Z",
+        "duration": 120000
+      },
+      "status": "open",
+      "banner": {
+        "url": "https://assets.ppy.sh/beatmaps/883669/covers/card.jpg?1568991428"
+      }
+    }
+  ],
   "status": "Please only message me directly only if you need any additional explanation",
-  "description": "Please only message me directly only if you need any additional explanation on my mods"
+  "description": "Do labore anim sint incididunt exercitation ut Lorem. Ex elit minim velit culpa esse non qui irure sunt nulla incididunt labore. Labore officia ex eiusmod enim. Dolor voluptate aliqua do anim eiusmod eu esse occaecat. \n\n Sit ad quis mollit excepteur irure consectetur in exercitation adipisicing. Dolor id incididunt sint labore ad adipisicing cupidatat. \n\n Et sit laboris consectetur sint ea tempor dolor sint cillum in et dolor dolor magna."
 }

@@ -18,6 +18,7 @@ declare type Journey = {
     closure?: string;
     duration: number;
   };
+  gamemodes: Gamemodes[];
   description?: string;
   status: 'open' | 'clossed' | 'suspended';
   private: boolean;
@@ -48,6 +49,7 @@ declare type User = {
     guest_diffs: boolean;
     playtesting: boolean;
   };
+  journeys: Journey[];
   communityRole: string;
   preferences: Gamemodes[];
   status: string;

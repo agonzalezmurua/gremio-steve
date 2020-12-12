@@ -11,7 +11,7 @@ const AppGlobalStyle = createGlobalStyle`
     ${tw`text-gray-900`}
   }
 
-  h1 {
+  h1, h2, h3 {
     ${tw`font-bold`}
   }
 

@@ -18,7 +18,7 @@ const Button = styled.button<ButtonProps>(
       ease-in-out
       outline-none
       font-bold
-      text-gray-700
+      text-black
     `,
     fullWidth && tw`w-full`,
     FocusRingFlatStyle,

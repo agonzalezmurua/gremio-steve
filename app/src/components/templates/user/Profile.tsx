@@ -7,11 +7,10 @@ import Button from '@components/atoms/form-controls/Button';
 import Skeleton from '@components/atoms/Skeleton';
 import UserAvailability from '@components/atoms/UserAvailability';
 import { UserMessages } from '@globals/constants/GenericMessages';
-import Annotation from '@assets/icons/solid/annotation.svg';
-import Bell from '@assets/icons/solid/bell.svg';
 
-import { GamemodeIcon } from '../../atoms/GamemodeIcon';
 import Markdown from '@components/atoms/Markdown';
+import JourneyCard from '@components/molecules/JourneyCard';
+import GamemodeBadges from '@components/molecules/GamemodeBadges';
 
 type Props = {
   user?: User;
@@ -68,11 +67,7 @@ const UserProfileTemplate: React.FC<Props> = (props) => {
             {/* Availability & Preferences */}
             <section tw="flex flex-row items-center space-x-1">
               {(props.user && (
-                <section tw="flex space-x-2 bg-gray-100 p-1 rounded-md">
-                  {props.user?.preferences.map((mode) => (
-                    <GamemodeIcon gamemode={mode} key={mode} tw="h-6 w-6" />
-                  ))}
-                </section>
+                <GamemodeBadges gamemodes={props.user.preferences} />
               )) || <Skeleton tw="w-80 h-8" />}
               <span tw="flex flex-row text-xs font-bold text-gray-700 space-x-2">
                 <span tw="sm:(hidden) md:(hidden) lg:(hidden) xl:(block)">
@@ -94,6 +89,25 @@ const UserProfileTemplate: React.FC<Props> = (props) => {
             <Markdown value={props.user.description} />
           )}
         </article>
+
+        <FormattedMessage
+          id="templates.user.profile.journeys"
+          defaultMessage="Journey"
+          description="User profile Journeys header"
+          tagName="h2"
+        />
+        <FormattedMessage
+          id="templates.user.profile.openJourneys"
+          defaultMessage="Open"
+          description="User profile open Journeys header"
+          tagName="h3"
+        />
+        <section tw="grid gap-4 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+          {props.user &&
+            props.user.journeys.map((journey) => (
+              <JourneyCard key={journey.__id} journey={journey} />
+            ))}
+        </section>
       </section>
     </>
   );
