@@ -4,17 +4,17 @@ import Button from './Button';
 import InputStyles from './Input.styles';
 
 const MarkdownEditorStyles = {
-  Preview: tw`flex-grow w-full resize-none overflow-y-scroll p-2 text-black bg-white`,
   Wrapper: css`
-    ${tw`flex flex-col h-full w-full border rounded`}
+    ${tw`flex flex-col h-full w-full border dark:border-gray-500 rounded`}
     &:focus-within {
       ${FocusRingTwStyle}
     }
   `,
+  Preview: tw`flex-grow w-full resize-none overflow-y-scroll p-2`,
   ButtonWrapper: css`
-    ${tw`border-t`}
+    ${tw`border-t border-gray-500`}
     ${Button} {
-      ${tw`text-sm text-black border-none rounded-none`}
+      ${tw`text-sm border-none rounded-none px-4`}
       &:focus {
         box-shadow: none;
       }

@@ -9,7 +9,7 @@ type Props = {
 
 const GamemodeBadges: React.FC<Props> = (props) => {
   return (
-    <section tw="flex space-x-2 bg-gray-100 p-1 rounded-md">
+    <section tw="inline-flex space-x-2 bg-gray-100 dark:(bg-gray-800 text-black) p-1 rounded-md">
       {props.gamemodes.map((mode) => (
         <GamemodeIcon gamemode={mode} key={mode} tw="h-6 w-6" />
       ))}

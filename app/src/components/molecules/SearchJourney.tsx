@@ -4,7 +4,7 @@ import 'twin.macro';
 
 import api from 'services/api';
 
-import SearchIcon from '@assets/icons/outline/search.svg';
+import Search from '@assets/icons/outline/search.svg';
 import Spinner from '@assets/icons/steve/spinner.svg';
 import Input from '@components/atoms/form-controls/Input';
 import JourneySmallCard from '@components/atoms/JourneySmallCard';
@@ -36,7 +36,7 @@ const SearchJourney: React.FunctionComponent = () => {
       <Input
         aria-label="Search for journey"
         name="journey-search"
-        icon={loading ? <Spinner tw="animate-spin w-5 h-5" /> : <SearchIcon />}
+        icon={loading ? <Spinner tw="animate-spin" /> : <Search />}
         type="text"
         disabled={loading}
         placeholder="Author, Artist, Group..."

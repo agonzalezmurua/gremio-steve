@@ -1,14 +1,16 @@
 import tw from 'twin.macro';
 import { createGlobalStyle } from 'styled-components';
 import FocusRingTwStyle, { FocusRingStyleString } from './ElementFocusStyle';
+import ArticleStyle from './ArticleStyles';
 
 const AppGlobalStyle = createGlobalStyle`
   html, body {
-    ${tw`bg-gray-100`}
+    ${tw`bg-gray-100 dark:(bg-gray-800)`}
+    ${tw`light:text-black dark:text-gray-300`}
   }
 
   h1, h2, h3, h4 ,h5 ,h6 {
-    ${tw`text-gray-900`}
+    ${tw`light:text-gray-900 dark:text-white`}
   }
 
   h1, h2, h3 {
@@ -16,15 +18,16 @@ const AppGlobalStyle = createGlobalStyle`
   }
 
   a {
-    ${tw`font-semibold outline-none rounded`}
-    * {
-      ${tw`font-normal`}
-    }
+    ${tw`outline-none rounded`}
     &:hover, &:focus{
       text-decoration: underline;
       ${FocusRingTwStyle}
-      ${tw`bg-blue-50`}
+      ${tw`light:bg-blue-50 dark:bg-black`}
     }
+  }
+
+  article {
+    ${ArticleStyle}
   }
 
   p ~ p {
@@ -32,7 +35,7 @@ const AppGlobalStyle = createGlobalStyle`
   };
 
   strong {
-    ${tw`text-gray-900`}
+    ${tw`light:text-gray-900 dark:text-gray-100`}
   }
 
   h1 {
@@ -68,7 +71,7 @@ const AppGlobalStyle = createGlobalStyle`
   }
 
   input, button, textarea, section {
-    ${tw`focus:outline-none`}
+    ${tw`bg-transparent focus:outline-none transition-colors duration-300`}
     ${FocusRingStyleString}
   }
 `;

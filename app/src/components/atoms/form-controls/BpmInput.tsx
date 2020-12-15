@@ -52,7 +52,7 @@ const BpmInput: React.FC<BpmInputProps> = (props) => {
         step={10}
         max={to.current?.value}
       />
-      <section tw="w-4 mx-2 bg-gray-50 h-full border-r border-l" />
+      <section tw="w-4 mx-2 bg-gray-50 h-full border-r border-l dark:(bg-gray-700 border-gray-500)" />
       <input
         id={props.id}
         type="number"

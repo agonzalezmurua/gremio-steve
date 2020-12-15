@@ -1,3 +1,4 @@
+import ArticleStyle from '@globals/ArticleStyles';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
@@ -8,6 +9,7 @@ type Props = {
 } & React.HTMLProps<HTMLDivElement>;
 
 const Container = styled.section`
+  ${tw`light:text-black dark:text-gray-300`}
   ul {
     li {
       list-style-type: disc;
@@ -18,7 +20,7 @@ const Container = styled.section`
 `;
 
 const Markdown: React.FC<Props> = ({ value, ...props }) => (
-  <Container {...props}>
+  <Container {...props} css={[ArticleStyle]}>
     <ReactMarkdown plugins={[gfm]} children={value} />
   </Container>
 );

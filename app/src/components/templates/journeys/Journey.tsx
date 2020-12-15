@@ -12,6 +12,7 @@ import GameMapLists from '@components/molecules/GameMapLists';
 import links from '@links';
 import { FormattedMessage } from 'react-intl';
 import Markdown from '@components/atoms/Markdown';
+import UserCardSmall from '@components/molecules/UserCard.small';
 
 type JourneyTemplateProps = {
   journey: Journey | null;
@@ -71,17 +72,16 @@ const JourneyTemplate: React.FC<JourneyTemplateProps> = ({ journey }) => {
           )) || <Skeleton tw="w-32 h-6" />}
           {/* Organizer */}
           <section tw="flex space-x-2">
-            <Avatar isSkeleton src={journey?.organizer.avatar.url} />
+            {/* <Avatar isSkeleton src={journey?.organizer.avatar.url} /> */}
             {(journey?.organizer.name && (
-              <section>
-                <Link
-                  to={links.user.profile({
-                    id: journey.organizer.__id,
-                  })}
-                >
-                  {journey.organizer.name}
-                </Link>
-              </section>
+              <UserCardSmall
+                __id={journey.organizer.__id}
+                availability={journey.organizer.availability}
+                avatar={journey.organizer.avatar}
+                communityRole={journey.organizer.communityRole}
+                name={journey.organizer.name}
+                preferences={journey.organizer.preferences}
+              />
             )) || <Skeleton tw="w-48 h-12" />}
           </section>
 

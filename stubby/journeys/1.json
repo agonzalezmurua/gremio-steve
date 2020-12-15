@@ -5,6 +5,11 @@
   "organizer": {
     "__id": "2",
     "name": "Cloudchaser",
+    "communityRole": "Beatmap Nominator",
+    "preferences": ["ctb", "std"],
+    "availability": {
+      "guest_diffs": true
+    },
     "avatar": {
       "url": "https://a.ppy.sh/1576498?1605561364.jpeg"
     }

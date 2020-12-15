@@ -10,14 +10,12 @@ type LabelProps = {
 const Label: React.FC<LabelProps> = ({ text, children, htmlFor, ...props }) => {
   return (
     <section css={[Styles.Wrapper]} {...props}>
-      <label htmlFor={htmlFor}>{text}</label>
+      <label htmlFor={htmlFor} css={[Styles.Label]}>
+        {text}
+      </label>
       {children}
     </section>
   );
 };
 
-export default styled(Label)`
-  label {
-    ${tw`text-gray-500 text-xs select-none`}
-  }
-`;
+export default Label;

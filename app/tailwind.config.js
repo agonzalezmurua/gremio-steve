@@ -1,4 +1,5 @@
 const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   darkMode: 'media',
@@ -9,8 +10,11 @@ module.exports = {
   purge: [],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Nunito"', ...defaultTheme.fontFamily.sans],
+      },
       colors: {
-        gray: colors.blueGray,
+        gray: colors.coolGray,
       },
       keyframes: {
         fadeout: {

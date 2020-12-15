@@ -19,7 +19,7 @@ const Indicator: React.FC<{ enabled: boolean }> = (props) => (
 
 const UserAvailability: React.FC<Props> = ({ children, ...props }) => {
   return (
-    <section tw="flex flex-row space-x-4 text-xs">
+    <section tw="flex flex-row space-x-4 text-xs text-gray-900 dark:(text-gray-300)">
       <Indicator enabled={props.mods}>
         <FormattedMessage {...UserMessages['generic.user.availability.mods']} />
       </Indicator>

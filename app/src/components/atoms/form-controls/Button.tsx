@@ -2,7 +2,7 @@ import { FocusRingFlatStyle } from '@globals/ElementFocusStyle';
 import tw, { styled } from 'twin.macro';
 
 type ButtonProps = React.HTMLProps<HTMLButtonElement> & {
-  color?: 'red' | 'white' | 'blue';
+  color?: 'red' | 'default' | 'blue';
   variant?: 'normal' | 'small' | 'self-contained';
   active?: boolean;
   fullWidth?: boolean;
@@ -22,16 +22,18 @@ const Button = styled.button<ButtonProps>(
     `,
     fullWidth && tw`w-full`,
     FocusRingFlatStyle,
-    size === 'normal' && tw`p-2 h-12`,
-    size === 'small' && tw`p-1 text-sm`,
-    color === 'white' &&
+    size === 'normal' && tw`p-2 px-4`,
+    size === 'small' && tw`p-1 px-2 text-sm`,
+    color === 'default' &&
       tw`
-      bg-white
+      bg-white dark:bg-gray-800
+      border-gray-100 dark:border-gray-500
+      text-black dark:text-white
       disabled:(text-gray-300 border-gray-300 bg-gray-100) 
-      hover:(bg-gray-100)
-      active:(bg-gray-200)
+      light:hover:(bg-gray-100) dark:hover:(bg-gray-600)
+      light:active:(bg-gray-200) dark:active:(bg-gray-900)
     `,
-    color === 'white' && active && tw`bg-gray-200`,
+    color === 'default' && active && tw`bg-gray-200`,
     color === 'red' &&
       tw`
       text-white
@@ -42,15 +44,17 @@ const Button = styled.button<ButtonProps>(
     color === 'blue' &&
       tw`
       text-white
-      bg-blue-500 hover:bg-blue-700 active:bg-blue-900
-      border-blue-700
+      bg-blue-500
+      light:border-blue-700 dark:border-blue-300
+      hover:(bg-blue-700)
+      active:(bg-blue-900)
     `,
     color === 'blue' && active && tw`bg-blue-900`,
   ]
 );
 
 Button.defaultProps = {
-  color: 'white',
+  color: 'default',
   variant: 'normal',
   active: false,
   type: 'button',

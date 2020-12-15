@@ -38,22 +38,22 @@ const GameMapFormEntry: React.FC<GameMapFormEntryProps> = ({
     <React.Fragment>
       <Button
         variant="self-contained"
-        tw=" h-8 px-2"
+        tw="h-8 p-2"
         color="red"
         onClick={onDelete}
       >
         <Trash tw="h-4 w-4" />
       </Button>
 
-      <Label text="Name" htmlFor={`maps[${index}].name`}>
+      <Label tw="flex-grow" text="Name" htmlFor={`maps[${index}].name`}>
         <Input {...name} error={nameMeta.error} />
       </Label>
 
-      <Label text="Mode" htmlFor={names.mode}>
+      <Label tw="flex-grow" text="Mode" htmlFor={names.mode}>
         <GameMapModeSelect {...mode} />
       </Label>
 
-      <Label text="Difficulty" htmlFor={names.difficulty}>
+      <Label tw="flex-grow" text="Difficulty" htmlFor={names.difficulty}>
         <GameMapDifficultySelect {...difficulty} mode={mode.value} />
       </Label>
     </React.Fragment>

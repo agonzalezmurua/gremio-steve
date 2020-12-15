@@ -1,12 +1,13 @@
-import FocusRingTwStyle from '@globals/ElementFocusStyle';
+import { FocusRingTwStyle } from '@globals/ElementFocusStyle';
 import tw, { css } from 'twin.macro';
 
 const Wrapper = css`
-  ${tw`flex bg-white rounded border items-center relative`} :focus-within {
+  ${tw`flex bg-white dark:(bg-gray-800 border-gray-500) rounded border items-center relative`}
+  &:focus-within {
     ${FocusRingTwStyle}
   }
 `;
-const Input = tw`bg-transparent px-2 flex-grow h-8 text-sm text-gray-900`;
+const Input = tw`bg-transparent rounded px-2 flex-grow h-8 text-sm text-gray-900 dark:text-white`;
 const Icon = css`
   ${tw`p-2`}
   svg {

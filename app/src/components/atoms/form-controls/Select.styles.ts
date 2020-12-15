@@ -1,31 +1,43 @@
 import tw, { css } from 'twin.macro';
 import InputStyles from './Input.styles';
 
-const OptionsWrapper = tw`bg-white absolute w-full shadow-md rounded border z-50`;
+const OptionsWrapper = tw`bg-white absolute w-full shadow-md rounded border dark:border-gray-500 z-50`;
 
 const OptionHoverStyle = css`
   &:active,
   &:focus,
   &:hover {
-    ${tw`bg-blue-200`}
+    ${tw`bg-blue-200 dark:bg-blue-500`}
   }
 `;
 
 const Option = css`
-  ${tw`relative text-sm cursor-pointer bg-white flex flex-row items-center h-8 space-x-1 px-2`}
+  ${tw`
+    relative
+    text-sm
+    cursor-pointer
+    bg-white dark:(bg-gray-900 text-white)
+    flex flex-row items-center
+    h-8 space-x-1 px-2
+  `}
   ${OptionHoverStyle}
   &[aria-selected='true'] {
-    ${tw`bg-blue-50`}
+    ${tw`bg-blue-50 dark:bg-blue-400`}
     ${OptionHoverStyle}
   }
   > svg {
-    ${tw`h-4 w-4`}
+    ${tw`h-4 w-4 dark:text-black`}
   }
 `;
 
 const Input = css`
   ${Option}
-  ${tw`flex-grow p-0 hover:(bg-transparent) border-r border-gray-300 mr-2`}
+  ${tw`
+    flex-grow p-0 mr-2
+    dark:(bg-transparent)
+    hover:(bg-transparent)
+    border-r border-gray-300 dark:(border-gray-500)
+  `}
 `;
 
 const ListBoxWrapper = css`

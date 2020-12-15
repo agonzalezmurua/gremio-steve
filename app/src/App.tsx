@@ -13,6 +13,7 @@ import QueuePage from '@pages/user/Queue';
 import ActivityPage from '@pages/user/Activity';
 import useAppHotkeys from '@hooks/useAppHotkeys';
 import UserProfilePage from '@pages/user/Profile';
+import useAppEvents from '@hooks/useAppEvents';
 
 type Props = {
   loading: boolean;
@@ -20,6 +21,7 @@ type Props = {
 
 const App: React.FC<Props> = ({ loading }) => {
   useAppHotkeys();
+  useAppEvents();
 
   return (
     <section tw="h-screen">

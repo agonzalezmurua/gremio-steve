@@ -17,6 +17,7 @@
       "closure": "2020-11-21T18:58:05.142Z",
       "duration": 2100
     },
+    "gamemodes": ["taiko"],
     "status": "open",
     "banner": {
       "url": "https://via.placeholder.com/150"
@@ -34,6 +35,7 @@
     "thumbnail": {
       "url": "https://via.placeholder.com/150"
     },
+    "gamemodes": ["std", "taiko"],
     "status": "closed",
     "banner": {
       "url": "https://via.placeholder.com/150"

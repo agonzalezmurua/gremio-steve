@@ -14,10 +14,6 @@ import { FormattedMessage } from 'react-intl';
 const NavigationItem = styled.li`
   a {
     ${tw`inline-flex md:(flex) items-center space-x-4 p-2 cursor-pointer rounded transition-colors duration-100 ease-in-out outline-none`}
-    &:focus, &:hover {
-      ${tw`bg-gray-200`}
-    }
-    ${FocusRingFlatStyle}
   }
   svg {
     ${tw`h-6 w-6`}

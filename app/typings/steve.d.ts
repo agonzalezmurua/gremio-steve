@@ -20,7 +20,7 @@ declare type Journey = {
   };
   gamemodes: Gamemodes[];
   description?: string;
-  status: 'open' | 'clossed' | 'suspended';
+  status: 'open' | 'closed' | 'suspended';
   private: boolean;
   maps: GameMap[];
   osuLink: string;
