@@ -12,6 +12,7 @@ import { FocusRingFlatStyle } from '@globals/ElementFocusStyle';
 import { FormattedMessage } from 'react-intl';
 
 const NavigationItem = styled.li`
+  ${tw`text-center`}
   a {
     ${tw`inline-flex md:(flex) items-center space-x-4 p-2 cursor-pointer rounded transition-colors duration-100 ease-in-out outline-none`}
   }
@@ -25,7 +26,7 @@ export const NavigationList: React.FunctionComponent = () => {
     currentUser: { __id },
   } = useContext(AppContext);
   return (
-    <ul tw="space-y-2">
+    <ul tw="space-y-2 flex-grow">
       <NavigationItem>
         <Link to={links.user.queue({ id: __id })}>
           <Collection />

@@ -45,7 +45,7 @@ const FileUpload: React.FC<
 
   return (
     <section
-      css={[Styles.Wrapper, error && Styles.Error]}
+      css={[Styles.Wrapper, error && Styles.ErrorWrapper]}
       {...props}
       onClickCapture={() => fileInputRef.current!.click()}
     >

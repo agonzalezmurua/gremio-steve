@@ -14,7 +14,7 @@ const Input: React.FunctionComponent<InputProps> = ({
   message,
   ...props
 }) => (
-  <section css={[Styles.Wrapper, error && Styles.Error]}>
+  <section css={[Styles.Wrapper, error && Styles.ErrorWrapper]}>
     {(message || error) && (
       <section css={[Styles.Messsage]}>{message || error}</section>
     )}

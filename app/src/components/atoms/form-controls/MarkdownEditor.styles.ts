@@ -12,7 +12,7 @@ const MarkdownEditorStyles = {
   `,
   Preview: tw`flex-grow w-full resize-none overflow-y-scroll p-2`,
   ButtonWrapper: css`
-    ${tw`border-t border-gray-500`}
+    ${tw`border-t border-gray-500 dark:(bg-gray-800)`}
     ${Button} {
       ${tw`text-sm border-none rounded-none px-4`}
       &:focus {

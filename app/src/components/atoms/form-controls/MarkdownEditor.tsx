@@ -24,7 +24,7 @@ const MarkdownEditor: React.FC<EditorProps> = ({
   const areaRef = useRef<HTMLTextAreaElement>(null);
 
   return (
-    <section css={[Styles.Wrapper, error && InputStyles.Error]}>
+    <section css={[Styles.Wrapper, error && InputStyles.ErrorWrapper]}>
       {(message || error) && (
         <section css={[Styles.Message]}>{message || error}</section>
       )}
