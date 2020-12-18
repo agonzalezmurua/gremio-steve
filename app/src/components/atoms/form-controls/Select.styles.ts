@@ -1,13 +1,13 @@
 import tw, { css } from 'twin.macro';
 import InputStyles from './Input.styles';
 
-const OptionsWrapper = tw`bg-white absolute w-full shadow-md rounded border dark:border-gray-500 z-50`;
+const OptionsWrapper = tw`bg-white absolute overflow-hidden w-full shadow-md rounded border dark:border-gray-500 z-50`;
 
 const OptionHoverStyle = css`
   &:active,
   &:focus,
   &:hover {
-    ${tw`bg-blue-200 dark:bg-blue-500`}
+    ${tw`bg-blue-200 dark:bg-blue-600`}
   }
 `;
 
@@ -22,7 +22,7 @@ const Option = css`
   `}
   ${OptionHoverStyle}
   &[aria-selected='true'] {
-    ${tw`bg-blue-50 dark:bg-blue-400`}
+    ${tw`bg-blue-50 dark:bg-blue-800`}
     ${OptionHoverStyle}
   }
   > svg {

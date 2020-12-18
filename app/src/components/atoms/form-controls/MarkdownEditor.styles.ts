@@ -5,7 +5,7 @@ import InputStyles from './Input.styles';
 
 const MarkdownEditorStyles = {
   Wrapper: css`
-    ${tw`flex flex-col h-full w-full border dark:border-gray-500 rounded`}
+    ${tw`flex flex-col h-full w-full border dark:border-gray-500 rounded overflow-hidden`}
     &:focus-within {
       ${FocusRingTwStyle}
     }
