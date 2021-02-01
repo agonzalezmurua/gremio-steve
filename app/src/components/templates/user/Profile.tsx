@@ -89,12 +89,12 @@ const UserProfileTemplate: React.FC<Props> = (props) => {
 
               {/* Actions */}
               <section tw="flex flex-col space-y-1 space-x-0 md:(flex-row space-y-0 space-x-1)">
-                <Button tw="h-8" variant="small">
+                <Button tw="h-8" size="small">
                   <FormattedMessage
                     {...UserMessages['generic.user.messageAction']}
                   />
                 </Button>
-                <Button tw="h-8" color="blue" variant="small">
+                <Button tw="h-8" color="blue" size="small">
                   <FormattedMessage
                     {...UserMessages['generic.user.followAction']}
                   />

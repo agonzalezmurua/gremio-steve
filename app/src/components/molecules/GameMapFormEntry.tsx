@@ -36,12 +36,7 @@ const GameMapFormEntry: React.FC<GameMapFormEntryProps> = ({
 
   return (
     <React.Fragment>
-      <Button
-        variant="self-contained"
-        tw="h-8 p-2"
-        color="red"
-        onClick={onDelete}
-      >
+      <Button size="self-contained" tw="h-8 p-2" color="red" onClick={onDelete}>
         <Trash tw="h-4 w-4" />
       </Button>
 

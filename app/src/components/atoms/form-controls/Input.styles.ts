@@ -5,6 +5,7 @@ const Wrapper = css`
   ${tw`flex bg-white rounded border items-center relative dark:(bg-gray-800 border-gray-500)`}
   &:focus-within {
     ${FocusRingTwStyle}
+    ${tw`bg-black`}
   }
 `;
 const Input = tw`bg-transparent rounded px-2 flex-grow h-8 text-sm text-gray-900 dark:(text-white)`;

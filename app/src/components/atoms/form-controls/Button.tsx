@@ -3,13 +3,13 @@ import tw, { styled } from 'twin.macro';
 
 type ButtonProps = React.HTMLProps<HTMLButtonElement> & {
   color?: 'red' | 'default' | 'blue';
-  variant?: 'normal' | 'small' | 'self-contained';
+  size?: 'normal' | 'small' | 'self-contained';
   active?: boolean;
   fullWidth?: boolean;
 };
 
 const Button = styled.button<ButtonProps>(
-  ({ color, variant: size, active, fullWidth: fullWidth }) => [
+  ({ color, size: size, active, fullWidth: fullWidth }) => [
     tw`
       border
       rounded
@@ -19,6 +19,7 @@ const Button = styled.button<ButtonProps>(
       outline-none
       font-bold
       text-black
+      ring-offset-1
     `,
     fullWidth && tw`w-full`,
     FocusRingFlatStyle,
@@ -55,7 +56,9 @@ const Button = styled.button<ButtonProps>(
 
 Button.defaultProps = {
   color: 'default',
-  variant: 'normal',
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  size: 'normal',
   active: false,
   type: 'button',
 };

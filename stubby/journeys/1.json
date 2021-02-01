@@ -24,10 +24,9 @@
     "closure": "2020-11-21T18:58:05.142Z",
     "duration": 120000
   },
-  "description": "# Hello, *world*! \n I hope you are all having a wonderful weekend",
   "status": "open",
   "banner": {
-    "url": "https://assets.ppy.sh/beatmaps/883669/covers/card.jpg?1568991428"
+    "url": "https://assets.ppy.sh/beatmaps/883669/covers/cover@2x.jpg?1568991428"
   },
   "maps": [
     {

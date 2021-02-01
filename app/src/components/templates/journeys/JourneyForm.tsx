@@ -109,18 +109,6 @@ const NewJourneyForm: React.FC<FormikProps<JourneyFormObject>> = ({
             />
           </Label>
         </section>
-
-        <Label text="Description" htmlFor="description">
-          <section tw="h-72">
-            <MarkdownEditor
-              id="description"
-              name="description"
-              value={values.description}
-              error={errors.description}
-              onChange={handleChange}
-            />
-          </section>
-        </Label>
       </fieldset>
 
       <fieldset tw="space-y-4">

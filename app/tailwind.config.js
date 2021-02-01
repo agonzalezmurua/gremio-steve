@@ -14,7 +14,7 @@ module.exports = {
         sans: ['"Nunito"', ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        gray: colors.coolGray,
+        gray: colors.trueGray,
       },
       keyframes: {
         fadeout: {

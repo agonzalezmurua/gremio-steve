@@ -1,4 +1,3 @@
-import React from 'react';
 import { useEffectOnce } from 'react-use';
 
 const useAppEvents = () => {
@@ -8,9 +7,10 @@ const useAppEvents = () => {
       if (!target) {
         return;
       }
+      console;
       if (
         target.tagName.toLowerCase() === 'a' &&
-        target.href.match(/^(http|https)\:\/\//)
+        !target.href.match(/^(http|https)\:\/\/localhost/)
       ) {
         event.preventDefault();
         window.electron.shell.openExternal(target.href);

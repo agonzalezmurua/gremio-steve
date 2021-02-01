@@ -10,19 +10,15 @@ const AppGlobalStyle = createGlobalStyle`
   }
 
   h1, h2, h3, h4 ,h5 ,h6 {
-    ${tw`light:text-gray-900 dark:text-white`}
-  }
-
-  h1, h2, h3 {
-    ${tw`font-bold`}
+    ${tw`light:text-gray-900 dark:text-white font-bold`}
   }
 
   a {
     ${tw`outline-none rounded`}
     &:hover, &:focus{
       text-decoration: underline;
+      ${tw`light:bg-blue-50 dark:bg-black `}
       ${FocusRingTwStyle}
-      ${tw`light:bg-blue-50 dark:bg-black`}
     }
   }
 
@@ -39,22 +35,22 @@ const AppGlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    ${tw`text-3xl`}
-  }
-  h2 {
     ${tw`text-2xl`}
   }
-  h3 {
+  h2 {
     ${tw`text-xl`}
   }
-  h4 {
+  h3 {
     ${tw`text-lg`}
   }
-  h5 {
+  h4 {
     ${tw`text-base`}
   }
-  h6 {
+  h5 {
     ${tw`text-sm`}
+  }
+  h6 {
+    ${tw`text-xs`}
   }
 
   legend {
