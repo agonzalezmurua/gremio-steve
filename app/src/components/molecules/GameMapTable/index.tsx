@@ -4,6 +4,7 @@ import Selector from './Selector';
 import Avatar from '@components/atoms/Avatar';
 import links from '@links';
 import { Link } from 'react-router-dom';
+import GamemodeIcon from '@components/atoms/GamemodeIcon';
 
 type Props = {
   maps: GameMap[];
@@ -52,7 +53,7 @@ const GameMapTable: React.FC<Props> = ({ maps, ...props }) => {
   const [selected, setSelected] = useState<Gamemodes>('std');
 
   return (
-    <section {...props}>
+    <section {...props} tw="light:text-gray-900 dark:text-white">
       <Selector
         selected={selected}
         onClick={setSelected}
@@ -83,7 +84,16 @@ const GameMapTable: React.FC<Props> = ({ maps, ...props }) => {
                   </div>
                 ) : null}
               </td>
-              <td>{map.name}</td>
+              <td>
+                <div tw="flex space-x-2 items-center">
+                  <GamemodeIcon
+                    gamemode={map.mode}
+                    difficulty={map.difficulty}
+                    tw="h-5 w-5"
+                  />
+                  <span>{map.name}</span>
+                </div>
+              </td>
               <td>
                 <section tw="flex justify-end">
                   <span>Actions here</span>
@@ -107,6 +117,14 @@ export default styled(GameMapTable)`
           ${tw`p-2`}
         }
       }
+    }
+
+    td:nth-child(1),
+    td:nth-child(3) {
+      ${tw`w-1/4`}
+    }
+    td:nth-child(2) {
+      ${tw`w-2/4`}
     }
 
     tbody {

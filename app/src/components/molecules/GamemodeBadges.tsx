@@ -1,5 +1,4 @@
-import { GamemodeIcon } from '@components/atoms/GamemodeIcon';
-import { title } from 'process';
+import GamemodeIcon from '@components/atoms/GamemodeIcon';
 import React from 'react';
 import 'twin.macro';
 

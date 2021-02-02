@@ -1,10 +1,12 @@
-import React from 'react';
 import 'twin.macro';
+import React from 'react';
+import 'overlayscrollbars/css/OverlayScrollbars.css';
 
 import UserHeader from '@components/molecules/UserInfo';
 import NavigationLinks from '@components/molecules/NavigationLinks';
 import SearchJourney from '@components/molecules/SearchJourney';
 import NavigationControls from '@components/atoms/NavigationControls';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 const NavBar: React.FunctionComponent = (props) => {
   return (
@@ -27,11 +29,12 @@ const NavBar: React.FunctionComponent = (props) => {
         </section>
       </section>
       {/* Content */}
-      <section tw="flex-grow">
-        <section tw="bg-white border-2 dark:(bg-gray-900 border-gray-700) rounded-lg h-full w-full overflow-y-auto shadow-xl">
-          {props.children}
-        </section>
-      </section>
+      <OverlayScrollbarsComponent
+        options={{ scrollbars: { autoHide: 'scroll' } }}
+        tw="flex-grow bg-white border-2 dark:(bg-gray-900 border-gray-700) rounded-lg h-full w-full overflow-y-auto shadow-xl"
+      >
+        {props.children}
+      </OverlayScrollbarsComponent>
     </section>
   );
 };

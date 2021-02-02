@@ -70,7 +70,17 @@ const JourneyTemplate: React.FC<JourneyTemplateProps> = ({ journey }) => {
 
         {/* Maps */}
         <section tw="space-y-4">
-          {(journey?.maps && <GameMapTable maps={journey.maps} />) || (
+          {(journey?.maps && (
+            <>
+              <FormattedMessage
+                id="components.templates.journeys.difficultiesHeader"
+                defaultMessage="Diffs"
+                description="Journey page, difficulties header"
+                tagName="h2"
+              />
+              <GameMapTable maps={journey.maps} />
+            </>
+          )) || (
             <>
               <Skeleton tw="w-32 h-6" />
               <Skeleton tw="w-full h-64" />

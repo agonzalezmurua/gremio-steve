@@ -15,6 +15,10 @@ module.exports = {
       },
       colors: {
         gray: colors.trueGray,
+        lime: colors.lime,
+        magenta: colors.magenta,
+        pink: colors.pink,
+        lightBlue: colors.lightBlue,
       },
       keyframes: {
         fadeout: {

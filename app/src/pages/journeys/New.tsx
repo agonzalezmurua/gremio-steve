@@ -1,5 +1,7 @@
-import React, { useCallback } from 'react';
 import 'twin.macro';
+import React, { useCallback } from 'react';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+
 import NewJourneyForm from '@components/templates/journeys/JourneyForm';
 import { JourneyFormObject } from '@components/templates/journeys/JourneyForm.formik';
 
@@ -9,7 +11,9 @@ const NewJourneyPage: React.FC = () => {
   }, []);
   return (
     <main tw="p-4">
-      <NewJourneyForm onSubmit={handleSubmit} />
+      <OverlayScrollbarsComponent>
+        <NewJourneyForm onSubmit={handleSubmit} />
+      </OverlayScrollbarsComponent>
     </main>
   );
 };

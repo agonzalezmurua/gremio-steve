@@ -82,6 +82,21 @@
       "difficulty": "hard",
       "status": "pending",
       "assignee": null
+    },
+    {
+      "_id": "5",
+      "index": 6,
+      "name": "ez_diff",
+      "mode": "ctb",
+      "difficulty": "easy",
+      "status": "pending",
+      "assignee": {
+        "__id": "2",
+        "name": "Cloudchaser",
+        "avatar": {
+          "url": "https://a.ppy.sh/1576498?1605561364.jpeg"
+        }
+      }
     }
   ]
 }
