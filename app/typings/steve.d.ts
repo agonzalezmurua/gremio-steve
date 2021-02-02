@@ -27,7 +27,7 @@ declare type Journey = {
 };
 
 declare type GameMap = {
-  __id: string;
+  _id: string;
   name: string;
   mode: Gamemodes;
   difficulty: 'easy' | 'normal' | 'hard' | 'insane' | 'expert' | 'expert+';

@@ -30,7 +30,7 @@
   },
   "maps": [
     {
-      "__id": "1",
+      "_id": "1",
       "index": 2,
       "name": "normal_diff",
       "mode": "std",
@@ -45,7 +45,7 @@
       }
     },
     {
-      "__id": "2",
+      "_id": "2",
       "index": 3,
       "name": "hard_diff",
       "mode": "std",
@@ -60,7 +60,7 @@
       }
     },
     {
-      "__id": "3",
+      "_id": "3",
       "index": 1,
       "name": "ez_diff",
       "mode": "std",
@@ -75,7 +75,7 @@
       }
     },
     {
-      "__id": "4",
+      "_id": "4",
       "index": 4,
       "name": "boom_boom",
       "mode": "taiko",

@@ -15,10 +15,11 @@ const AppGlobalStyle = createGlobalStyle`
 
   a {
     ${tw`outline-none rounded`}
+    &:focus {
+      ${FocusRingTwStyle}
+    }
     &:hover, &:focus{
       text-decoration: underline;
-      ${tw`light:bg-blue-50 dark:bg-black `}
-      ${FocusRingTwStyle}
     }
   }
 

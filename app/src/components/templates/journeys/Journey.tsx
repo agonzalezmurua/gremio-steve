@@ -1,19 +1,12 @@
 import 'twin.macro';
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import { Link } from 'react-router-dom';
 
-import Avatar from '@components/atoms/Avatar';
 import JourneyBanner from '@components/atoms/JourneyBanner';
-import JourneyMetadata from '@components/atoms/JourneyMetadata';
-import JourneyStatus from '@components/atoms/JourneyStatus';
 import Skeleton from '@components/atoms/Skeleton';
-import GameMapLists from '@components/molecules/GameMapLists';
-import links from '@links';
 import { FormattedMessage } from 'react-intl';
-import Markdown from '@components/atoms/Markdown';
 import UserCardSmall from '@components/molecules/UserCard.small';
 import JourneyStatusBadge from '@components/atoms/JourneyStatusBadge';
+import GameMapTable from '@components/molecules/GameMapTable';
 
 type JourneyTemplateProps = {
   journey: Journey | null;
@@ -50,32 +43,6 @@ const JourneyTemplate: React.FC<JourneyTemplateProps> = ({ journey }) => {
         </section>
       </section>
 
-      {/* Meta */}
-      {/* <section tw="flex h-16 p-4 bg-gray-100 space-x-4">
-        {(journey?.metadata && (
-          <>
-            <JourneyMetadata.Genre value={journey.metadata.genre} />
-            <JourneyMetadata.Bpm value={journey.metadata.bpm} />
-            <JourneyMetadata.Closure value={journey.metadata.closure} />
-            <JourneyMetadata.Duration value={journey.metadata.duration} />
-          </>
-        )) || (
-          <>
-            <Skeleton tw="w-24 h-8" />
-            <Skeleton tw="w-24 h-8" />
-            <Skeleton tw="w-24 h-8" />
-            <Skeleton tw="w-24 h-8" />
-          </>
-        )}
-      </section> */}
-
-      {/* Status */}
-      {/* <section tw="flex w-full h-10 bg-gray-300 justify-center items-center">
-        {(journey?.status && <JourneyStatus status={journey.status} />) || (
-          <Skeleton tw="w-12 h-6" />
-        )}
-      </section> */}
-      {/* Main Content */}
       <section tw="p-4 space-y-8">
         <section tw="space-y-4">
           {(journey?.organizer && (
@@ -103,7 +70,7 @@ const JourneyTemplate: React.FC<JourneyTemplateProps> = ({ journey }) => {
 
         {/* Maps */}
         <section tw="space-y-4">
-          {(journey?.maps && <GameMapLists maps={journey.maps} />) || (
+          {(journey?.maps && <GameMapTable maps={journey.maps} />) || (
             <>
               <Skeleton tw="w-32 h-6" />
               <Skeleton tw="w-full h-64" />
