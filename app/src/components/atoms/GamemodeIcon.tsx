@@ -1,4 +1,4 @@
-import tw, { styled } from 'twin.macro';
+import tw, { styled, TwStyle } from 'twin.macro';
 import React from 'react';
 import Standard from '@assets/icons/steve/standard.svg';
 import CatchTheBeat from '@assets/icons/steve/catch_the_beat.svg';
@@ -10,7 +10,9 @@ type Props = {
   difficulty?: GameMap['difficulty'];
 };
 
-const colors: { [keys in GameMap['difficulty']]: any } = {
+const colors: {
+  [keys in GameMap['difficulty']]: TwStyle;
+} = {
   easy: tw`text-lime-500`,
   normal: tw`text-lightBlue-500`,
   hard: tw`text-yellow-500`,
