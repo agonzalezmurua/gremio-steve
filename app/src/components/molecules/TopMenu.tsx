@@ -20,16 +20,23 @@ const TopMenu: React.FC = (props) => {
   }, []);
 
   return (
-    <div {...props} tw="flex justify-end h-7 w-full">
-      <button onClick={handleMinimize}>
-        <Minimize />
-      </button>
-      <button onClick={handleMaximize}>
-        <Maximize />
-      </button>
-      <button id="close" onClick={handleQuit}>
-        <Close />
-      </button>
+    <div
+      {...props}
+      tw="flex justify-end h-8 w-full border-b dark:(border-gray-700)"
+    >
+      {process.platform === 'win32' ? (
+        <>
+          <button onClick={handleMinimize}>
+            <Minimize />
+          </button>
+          <button onClick={handleMaximize}>
+            <Maximize />
+          </button>
+          <button id="close" onClick={handleQuit}>
+            <Close />
+          </button>
+        </>
+      ) : null}
     </div>
   );
 };
