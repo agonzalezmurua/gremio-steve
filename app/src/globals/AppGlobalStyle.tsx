@@ -4,8 +4,8 @@ import FocusRingTwStyle, { FocusRingStyleString } from './ElementFocusStyle';
 import ArticleStyle from './ArticleStyles';
 
 const AppGlobalStyle = createGlobalStyle`
-  html, body {
-    ${tw`bg-gray-100 dark:(bg-gray-800)`}
+  html, body, #root {
+    ${tw`light:(bg-white) dark:(bg-gray-800)`}
     ${tw`light:text-black dark:text-gray-300`}
   }
 

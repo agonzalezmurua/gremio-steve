@@ -1,0 +1,50 @@
+import tw, { styled } from 'twin.macro';
+import React, { useCallback, useRef } from 'react';
+
+import Close from '@assets/icons/outline/x.svg';
+import Minimize from '@assets/icons/outline/minus.svg';
+
+import Maximize from '@assets/icons/outline/duplicate.svg';
+
+const TopMenu: React.FC = (props) => {
+  const handleMinimize = useCallback(() => {
+    window.electron.ipcRenderer.send('minimize');
+  }, []);
+
+  const handleMaximize = useCallback(() => {
+    window.electron.ipcRenderer.send('maximize');
+  }, []);
+
+  const handleQuit = useCallback(() => {
+    window.electron.ipcRenderer.send('close');
+  }, []);
+
+  return (
+    <div {...props} tw="flex justify-end h-7 w-full">
+      <button onClick={handleMinimize}>
+        <Minimize />
+      </button>
+      <button onClick={handleMaximize}>
+        <Maximize />
+      </button>
+      <button id="close" onClick={handleQuit}>
+        <Close />
+      </button>
+    </div>
+  );
+};
+
+export default styled(TopMenu)`
+  -webkit-app-region: drag;
+  button {
+    -webkit-app-region: no-drag;
+    ${tw`flex items-center h-full px-3 cursor-default`}
+    ${tw`light:hover:(bg-gray-100 active:bg-gray-200) dark:hover:(bg-gray-600 active:bg-gray-700)`}
+    &#close {
+      ${tw`hover:bg-red-500 active:bg-red-700`}
+    }
+    svg {
+      ${tw`w-4 h-4`}
+    }
+  }
+`;

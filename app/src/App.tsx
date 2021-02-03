@@ -2,7 +2,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import NavBar from '@components/organisms/NavBar';
+import Navigation from '@components/organisms/Navigation';
 
 import Indexpage from '@pages/Index';
 import NotFoundPage from '@pages/NotFound';
@@ -25,7 +25,7 @@ const App: React.FC<Props> = ({ loading }) => {
 
   return (
     <section tw="h-screen">
-      <NavBar>
+      <Navigation>
         <Switch>
           <Route path="/" exact component={Indexpage} />
           <Route path="/journeys/new" exact component={NewJourneyPage} />
@@ -35,7 +35,7 @@ const App: React.FC<Props> = ({ loading }) => {
           <Route path="/user/:id/activity" component={ActivityPage} />
           <Route path={['*', '/not-found']} component={NotFoundPage} />
         </Switch>
-      </NavBar>
+      </Navigation>
     </section>
   );
 };

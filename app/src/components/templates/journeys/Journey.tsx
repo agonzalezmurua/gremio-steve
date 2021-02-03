@@ -18,7 +18,7 @@ const JourneyTemplate: React.FC<JourneyTemplateProps> = ({ journey }) => {
       {/* Title */}
       <JourneyBanner
         src={journey?.banner.url}
-        tw="h-40 bg-gray-300 space-y-1 dark:bg-gray-800"
+        tw="h-40 bg-gray-300 space-y-1 dark:bg-gray-800 rounded-t-md"
       />
 
       <section tw="mx-4 -mt-24 p-3 border space-y-2 rounded-lg bg-white border-gray-300 dark:(bg-gray-900 border-gray-500)">

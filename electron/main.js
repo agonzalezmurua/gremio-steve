@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const { installExtensions } = require('./extensions');
 const config = require('config');
 const consola = require('consola');
@@ -10,6 +10,7 @@ try {
   consola.error(error);
 }
 
+/** @type {BrowserWindow} */
 let window = null;
 
 function createWindow() {
@@ -23,6 +24,7 @@ function createWindow() {
       nodeIntegration: false,
       preload: __dirname + '/preload.js', // (1) <- preload script
     },
+    frame: false,
   });
 
   window.setMenuBarVisibility(null);
@@ -30,6 +32,16 @@ function createWindow() {
   window.webContents.openDevTools();
   window.on('closed', () => {
     window = null; // (3) <- deference when window is closed
+  });
+
+  ipcMain.on('minimize', () => {
+    window.isMinimized() ? window.restore() : window.minimize();
+  });
+  ipcMain.on('maximize', () => {
+    window.isMaximized() ? window.restore() : window.maximize();
+  });
+  ipcMain.on('close', () => {
+    window.close();
   });
 }
 
