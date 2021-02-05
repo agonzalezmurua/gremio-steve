@@ -22,9 +22,9 @@ const TopMenu: React.FC = (props) => {
   return (
     <div
       {...props}
-      tw="flex justify-end h-8 w-full border-b dark:(border-gray-700)"
+      tw="flex justify-end h-8 w-full border-b light:(border-gray-200) dark:(border-black)"
     >
-      {process.platform === 'win32' ? (
+      {window.platform === 'win32' ? (
         <>
           <button onClick={handleMinimize}>
             <Minimize />
@@ -45,8 +45,8 @@ export default styled(TopMenu)`
   -webkit-app-region: drag;
   button {
     -webkit-app-region: no-drag;
-    ${tw`flex items-center h-full px-3 cursor-default`}
-    ${tw`light:hover:(bg-gray-100 active:bg-gray-200) dark:hover:(bg-gray-600 active:bg-gray-700)`}
+    ${tw`flex items-center h-full px-3 cursor-default transition-colors duration-100`}
+    ${tw`light:hover:(bg-gray-200 active:bg-gray-300) dark:hover:(bg-gray-600 active:bg-gray-700)`}
     &#close {
       ${tw`hover:bg-red-500 active:bg-red-700`}
     }

@@ -24,7 +24,8 @@ function createWindow() {
       nodeIntegration: false,
       preload: __dirname + '/preload.js', // (1) <- preload script
     },
-    titleBarStyle: 'hidden',
+    frame: process.platform !== 'win32',
+    titleBarStyle: process.platform !== 'win32' ? 'hidden' : 'default',
   });
 
   window.setMenuBarVisibility(null);
