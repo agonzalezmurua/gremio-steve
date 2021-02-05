@@ -89,7 +89,7 @@ const GameMapTable: React.FC<Props> = ({ maps, ...props }) => {
                   <GamemodeIcon
                     gamemode={map.mode}
                     difficulty={map.difficulty}
-                    tw="h-5 w-5"
+                    tw="h-7 w-7"
                   />
                   <span>{map.name}</span>
                 </div>
@@ -114,7 +114,7 @@ export default styled(GameMapTable)`
       tr {
         ${tw`border-b border-gray-300 dark:(border-gray-600)`}
         td {
-          ${tw`p-2`}
+          ${tw`px-2 h-12`}
         }
       }
     }
