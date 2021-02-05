@@ -3,7 +3,7 @@ import React from 'react';
 import Standard from '@assets/icons/steve/standard.svg';
 import CatchTheBeat from '@assets/icons/steve/catch_the_beat.svg';
 import Taiko from '@assets/icons/steve/taiko.svg';
-import Mania from '@assets/icons/steve/taiko.svg';
+import Mania from '@assets/icons/steve/mania.svg';
 
 type Props = {
   gamemode: Gamemodes;
