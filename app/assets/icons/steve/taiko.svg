@@ -1,5 +1,5 @@
-<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
-  <circle cx="12" cy="12" r="12" fill="#F5F2F0"/>
+<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="12" r="12" fill="white"/>
   <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
   <path d="M10.5 18V6C7.91216 6.68773 6 9.1133 6 12C6 14.8867 7.91216 17.3123 10.5 18Z" fill="currentColor"/>
   <path d="M13.5 18C16.0878 17.3123 18 14.8867 18 12C18 9.1133 16.0878 6.68773 13.5 6V18Z" fill="currentColor"/>
