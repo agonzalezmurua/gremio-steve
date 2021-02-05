@@ -8,21 +8,28 @@ const RoundOutStyle = css`
   height: 10px;
 `;
 
+const colors = {
+  neutral: tw`light:(bg-gray-100) dark:(bg-gray-700)`,
+  selected: tw`light:(bg-gray-200) dark:(bg-gray-800)`,
+};
+
 export const ListItem = styled.li<{ selected: boolean }>`
-  ${tw`relative rounded-t-lg select-none cursor-pointer p-1 p-2 items-center light:(bg-gray-100) dark:(bg-gray-700)`}
-  ${(props) => props.selected && tw`light:(bg-gray-200) dark:(bg-gray-800)`}
+  ${tw`relative rounded-t-lg select-none cursor-pointer p-1 p-2 items-center`}
+  ${colors.neutral}
+  ${(props) => props.selected && colors.selected}
 
   &::after {
     ${RoundOutStyle}
     right: -10px;
     z-index: 1;
-    ${tw`light:bg-gray-200 dark:bg-gray-800`}
+    ${colors.selected}
   }
+
   &::before {
     ${RoundOutStyle}
     left: -10px;
     z-index: 1;
-    ${tw`light:bg-gray-200  bg-gray-800`}
+    ${colors.selected}
   }
 
   section {
@@ -30,14 +37,14 @@ export const ListItem = styled.li<{ selected: boolean }>`
       ${RoundOutStyle}
       right: -10px;
       z-index: 2;
-      ${tw`light:bg-gray-100 dark:bg-gray-700`}
+      ${colors.neutral}
       ${tw`rounded-bl-lg`}
     }
     &::before {
       ${RoundOutStyle}
       left: -10px;
       z-index: 1;
-      ${tw`light:bg-gray-100 bg-gray-700`}
+      ${colors.neutral}
       ${tw`rounded-br-lg`}
     }
   }
@@ -52,10 +59,7 @@ export const ListItem = styled.li<{ selected: boolean }>`
     }
 
     ::after {
-      ${({ selected }) =>
-        selected
-          ? tw`light:bg-gray-200 dark:bg-gray-800`
-          : tw`light:bg-gray-100 dark:bg-gray-700`}
+      ${({ selected }) => (selected ? colors.selected : colors.neutral)}
     }
   }
 
