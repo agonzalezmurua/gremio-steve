@@ -14,7 +14,7 @@ const colors = {
 };
 
 export const ListItem = styled.li<{ selected: boolean }>`
-  ${tw`relative rounded-t-lg select-none cursor-pointer p-1 p-2 items-center`}
+  ${tw`relative rounded-t-lg select-none cursor-pointer p-2 items-center`}
   ${colors.neutral}
   ${(props) => props.selected && colors.selected}
 

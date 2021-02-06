@@ -50,7 +50,9 @@ const GameMapTable: React.FC<Props> = ({ maps, ...props }) => {
       mania,
     };
   }, [maps]);
-  const [selected, setSelected] = useState<Gamemodes>('std');
+  const [selected, setSelected] = useState<Gamemodes>(
+    Object.keys(gamemaps)[0] as Gamemodes
+  );
 
   return (
     <section {...props} tw="light:text-gray-900 dark:text-white">
