@@ -6,7 +6,20 @@ type AppContext = {
 
 const AppContext = createContext<AppContext>({
   currentUser: {
-    __id: 'current_user_id',
+    _id: 'current_user_id',
+    banner: {
+      url: '',
+    },
+    status: '',
+    journeys: [],
+    community_role: '',
+    description: '',
+    preferences: [],
+    availability: {
+      guest_diffs: true,
+      mods: true,
+      playtesting: true,
+    },
     avatar: {
       url: 'https://a.ppy.sh/1869277?1462143398.jpg',
     },

@@ -1,131 +1,131 @@
 [
   {
-    "__id": "1",
+    "_id": "1",
     "when": "2020-11-29T14:48:00.000Z",
     "who": {
-      "__id": "1",
+      "_id": "1",
       "name": "Ferret"
     },
     "what": "comment",
     "to": "journey",
     "journey": {
-      "__id": "1",
+      "_id": "1",
       "title": "Chinatown Blues [feat. Megpoid Gumi]"
     },
     "user": {
-      "__id": "1",
+      "_id": "1",
       "name": "Goatchaser"
     },
     "comment": {
-      "__id": "321",
+      "_id": "321",
       "journey": {
-        "__id": "1",
+        "_id": "1",
         "title": "Chinatown Blues [feat. Megpoid Gumi]"
       }
     },
     "content": "Please finish! <3"
   },
   {
-    "__id": "2",
+    "_id": "2",
     "when": "2020-12-05T14:48:00.000Z",
     "who": {
-      "__id": "2",
+      "_id": "2",
       "name": "Goatchaser"
     },
     "what": "comment",
     "to": "comment",
     "journey": {
-      "__id": "1",
+      "_id": "1",
       "title": "Chinatown Blues [feat. Megpoid Gumi]"
     },
     "comment": {
-      "__id": "321",
+      "_id": "321",
       "journey": {
-        "__id": "1",
+        "_id": "1",
         "title": "Big bang attack feat. Ulko"
       }
     },
     "user": {
-      "__id": "1",
+      "_id": "1",
       "name": "Goatchaser"
     },
     "content": "I'm not too sure about 00:02:34 (2), but besides that I think that it's perfectly good!"
   },
   {
-    "__id": "3",
+    "_id": "3",
     "when": "2020-12-05T14:48:00.000Z",
     "who": {
-      "__id": "1",
+      "_id": "1",
       "name": "Ferret"
     },
     "what": "comment",
     "to": "user",
     "journey": {
-      "__id": "1",
+      "_id": "1",
       "title": "Chinatown Blues [feat. Megpoid Gumi]"
     },
     "user": {
-      "__id": "1",
+      "_id": "1",
       "name": "Goatchaser"
     },
     "comment": {
-      "__id": "120",
+      "_id": "120",
       "journey": {
-        "__id": "4444"
+        "_id": "4444"
       }
     },
     "content": "Nice maps :D"
   },
   {
-    "__id": "4",
+    "_id": "4",
     "when": "2020-12-08T14:48:00.000Z",
     "who": {
-      "__id": "1",
+      "_id": "1",
       "name": "Cloudchaser"
     },
     "what": "mention",
     "to": "comment",
     "comment": {
-      "__id": "321",
+      "_id": "321",
       "journey": {
-        "__id": "1",
+        "_id": "1",
         "title": "Big bang attack feat. Ulko"
       }
     },
     "content": "I think that @Ferret should be able to do it"
   },
   {
-    "__id": "6",
+    "_id": "6",
     "when": "2020-12-05T14:48:00.000Z",
     "who": {
-      "__id": "1",
+      "_id": "1",
       "name": "Cloudchaser"
     },
     "what": "mention",
     "to": "journey",
     "journey": {
-      "__id": "1",
+      "_id": "1",
       "title": "Big bang attack feat. Ulko"
     },
     "comment": {
-      "__id": "666",
+      "_id": "666",
       "journey": {
-        "__id": "3",
+        "_id": "3",
         "title": "Big bang attack feat. Ulko"
       }
     }
   },
   {
-    "__id": "7",
+    "_id": "7",
     "when": "2020-12-05T14:48:00.000Z",
     "who": {
-      "__id": "1",
+      "_id": "1",
       "name": "Cloudchaser"
     },
     "what": "edit",
     "to": "journey",
     "journey": {
-      "__id": "1",
+      "_id": "1",
       "title": "Big bang attack feat. Ulko"
     }
   }

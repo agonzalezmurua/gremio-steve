@@ -2,7 +2,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Navigation from '@components/organisms/Navigation';
+import Navigation from '@components/organisms/navigation';
 
 import Indexpage from '@pages/Index';
 import NotFoundPage from '@pages/NotFound';

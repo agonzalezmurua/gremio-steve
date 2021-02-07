@@ -5,12 +5,12 @@ import AppContext from 'AppContext';
 import { FormattedMessage } from 'react-intl';
 import { useAsync } from 'react-use';
 
-import UserActivityTemplate from '@components/templates/user/Activity';
+import UserActivityTemplate from '@components/templates/user-activity';
 
 const ActivityPage = () => {
   const { currentUser } = useContext(AppContext);
   const { value: activity } = useAsync(async () => {
-    const { data } = await api.user.activity(currentUser.__id);
+    const { data } = await api.user.activity(currentUser._id);
     return data;
   }, []);
 

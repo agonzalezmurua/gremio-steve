@@ -5,7 +5,7 @@ import { useAsync } from 'react-use';
 import { RouteComponentProps } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-import QueueTemplate from '@components/templates/user/Queue';
+import QueueTemplate from '@components/templates/user-queue';
 
 type RouteProps = {
   id: string;

@@ -5,7 +5,7 @@ import api from '@api';
 import { Redirect, RouteComponentProps } from 'react-router-dom';
 import { useAsync } from 'react-use';
 
-import JourneyTemplate from '@components/templates/journeys/Journey';
+import JourneyTemplate from '@components/templates/journeys';
 
 type RouteProps = {
   id: string;

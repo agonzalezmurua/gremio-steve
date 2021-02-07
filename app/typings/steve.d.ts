@@ -1,11 +1,11 @@
-declare type Gamemodes = 'std' | 'taiko' | 'ctb' | 'mania';
+declare type Mode = 'std' | 'taiko' | 'ctb' | 'mania';
 
 declare type Journey = {
-  __id: string;
+  _id: string;
   title: string;
   artist: string;
   organizer: User;
-  lastUpdated: Date;
+  last_updated: Date;
   thumbnail: {
     url: string;
   };
@@ -18,25 +18,25 @@ declare type Journey = {
     closure?: string;
     duration: number;
   };
-  gamemodes: Gamemodes[];
+  modes: Mode[];
   description?: string;
   status: 'pending' | 'open' | 'ready' | 'alert' | 'problem' | 'closed';
   private: boolean;
-  maps: GameMap[];
+  beatmaps: Beatmap[];
   osuLink: string;
 };
 
-declare type GameMap = {
+declare type Beatmap = {
   _id: string;
   name: string;
-  mode: Gamemodes;
+  mode: Mode;
   difficulty: 'easy' | 'normal' | 'hard' | 'insane' | 'expert' | 'expert+';
   status: 'ready' | 'pending' | 'alert' | 'problem';
   assignee?: User;
 };
 
 declare type User = {
-  __id: string;
+  _id: string;
   name: string;
   avatar: {
     url: string;
@@ -50,27 +50,27 @@ declare type User = {
     playtesting: boolean;
   };
   journeys: Journey[];
-  communityRole: string;
-  preferences: Gamemodes[];
+  community_role: string;
+  preferences: Mode[];
   status: string;
   description: string;
   queue: Journey[];
 };
 
 declare type CommentNode = {
-  __id: string;
-  journey: Pick<Journey, '__id'>;
+  _id: string;
+  journey: Pick<Journey, '_id'>;
 };
 
 declare type UserActivity = {
-  __id: string;
+  _id: string;
   /** ISO-DATE */
   when: string;
-  who: Pick<User, '__id' | 'name'>;
+  who: Pick<User, '_id' | 'name'>;
   what: 'mention' | 'comment' | 'add' | 'remove' | 'edit' | 'create';
   to: 'journey' | 'user' | 'comment';
-  user?: Pick<User, '__id' | 'name'>;
-  journey?: Pick<Journey, '__id' | 'title'>;
+  user?: Pick<User, '_id' | 'name'>;
+  journey?: Pick<Journey, '_id' | 'title'>;
   comment?: CommentNode;
   content?: string;
 };

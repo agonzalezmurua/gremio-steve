@@ -1,11 +1,11 @@
-export const MODES: Array<GameMap['mode']> = ['ctb', 'mania', 'std', 'taiko'];
-export const STATUS: Array<GameMap['status']> = [
+export const MODES: Array<Beatmap['mode']> = ['ctb', 'mania', 'std', 'taiko'];
+export const STATUS: Array<Beatmap['status']> = [
   'alert',
   'pending',
   'problem',
   'ready',
 ];
-export const DIFFICULTIES: Array<GameMap['difficulty']> = [
+export const DIFFICULTIES: Array<Beatmap['difficulty']> = [
   'easy',
   'normal',
   'hard',
