@@ -8,14 +8,14 @@ import links from '_links';
 
 const UserHeader: React.FunctionComponent = () => {
   const {
-    currentUser: { avatar, name, _id },
+    currentUser: { avatar_url, name, _id },
   } = useContext(AppContext);
   return (
     <Link
       to={links.user.profile({ id: _id })}
       tw="flex space-x-2 items-center justify-center "
     >
-      <Avatar tw="border" size="medium" src={avatar.url} />
+      <Avatar tw="border" size="medium" src={avatar_url} />
       {/* Name */}
       <section tw="flex-grow hidden md:(block)">
         <strong>{name}</strong>

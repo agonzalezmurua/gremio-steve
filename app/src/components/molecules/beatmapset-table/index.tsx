@@ -79,7 +79,7 @@ const BeatmapsetTable: React.FC<Props> = ({ maps, ...props }) => {
               <td>
                 {map.assignee ? (
                   <div tw="flex space-x-2 items-center">
-                    <Avatar size="small" src={map.assignee.avatar.url} />
+                    <Avatar size="small" src={map.assignee.avatar_url} />
                     <Link to={links.user.profile({ id: map.assignee._id })}>
                       {map.assignee.name}
                     </Link>

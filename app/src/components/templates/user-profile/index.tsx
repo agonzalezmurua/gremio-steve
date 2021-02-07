@@ -72,7 +72,7 @@ const UserProfileTemplate: React.FC<Props> = (props) => {
       />
       <section tw="space-y-4 -mt-16 p-4">
         <section tw="flex flex-row justify-start items-start space-x-4 top-0">
-          <Avatar size="jumbo" src={props.user?.avatar.url} isSkeleton />
+          <Avatar size="jumbo" src={props.user?.avatar_url} isSkeleton />
           <section tw="flex flex-col self-end flex-grow space-y-1">
             {/* Info */}
             <section tw="flex flex-row flex-grow justify-between">

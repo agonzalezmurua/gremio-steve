@@ -15,19 +15,24 @@ import ModeBadges from '../mode-badges';
 
 type Props = Pick<
   User,
-  '_id' | 'preferences' | 'availability' | 'avatar' | 'community_role' | 'name'
+  | '_id'
+  | 'preferences'
+  | 'availability'
+  | 'avatar_url'
+  | 'community_role'
+  | 'name'
 >;
 
 const UserCard: React.FC<Props> = ({
   preferences,
   availability,
-  avatar,
+  avatar_url,
   community_role,
   name,
 }) => {
   return (
     <section tw="flex space-x-4 flex-grow">
-      <Avatar size="big" src={avatar.url} />
+      <Avatar size="big" src={avatar_url} />
       <section tw="flex flex-col justify-between flex-grow">
         <section tw="flex flex-row justify-between">
           {/* User */}

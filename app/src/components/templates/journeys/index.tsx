@@ -59,7 +59,7 @@ const JourneyTemplate: React.FC<JourneyTemplateProps> = ({ journey }) => {
               <UserCard
                 _id={journey.organizer._id}
                 availability={journey.organizer.availability}
-                avatar={journey.organizer.avatar}
+                avatar_url={journey.organizer.avatar_url}
                 community_role={journey.organizer.community_role}
                 name={journey.organizer.name}
                 preferences={journey.organizer.preferences}

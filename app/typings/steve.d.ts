@@ -38,9 +38,7 @@ declare type Beatmap = {
 declare type User = {
   _id: string;
   name: string;
-  avatar: {
-    url: string;
-  };
+  avatar_url: string;
   banner: {
     url: string;
   };

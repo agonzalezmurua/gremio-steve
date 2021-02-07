@@ -20,9 +20,7 @@ const AppContext = createContext<AppContext>({
       mods: true,
       playtesting: true,
     },
-    avatar: {
-      url: 'https://a.ppy.sh/1869277?1462143398.jpg',
-    },
+    avatar_url: 'https://a.ppy.sh/1869277?1462143398.jpg',
     name: 'Example Username',
     queue: [],
   },
