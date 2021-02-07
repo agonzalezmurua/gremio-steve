@@ -5,7 +5,7 @@
 const waitOn = require('wait-on');
 const config = require('config');
 const opts = {
-  resources: [`http://localhost:${config.get('app.dev.port')}`],
+  resources: [`http://localhost:${config.get('webpack.dev_server.port')}`],
 };
 
 waitOn(opts, (err) => {

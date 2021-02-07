@@ -50,6 +50,7 @@
     "babel-plugin-react-intl": "^8.2.21",
     "babel-plugin-styled-components": "^1.11.1",
     "chokidar": "^3.4.3",
+    "config-webpack": "^1.0.4",
     "consola": "^2.15.0",
     "cross-env": "^7.0.2",
     "css-loader": "^5.0.1",

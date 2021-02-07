@@ -29,7 +29,7 @@ function createWindow() {
   });
 
   window.setMenuBarVisibility(null);
-  window.loadURL(`http://localhost:${config.get('app.dev.port')}`); // (2) <- load react
+  window.loadURL(`http://localhost:${config.get('webpack.dev_server.port')}`); // (2) <- load react
   window.webContents.openDevTools();
   window.on('closed', () => {
     window = null; // (3) <- deference when window is closed

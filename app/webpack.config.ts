@@ -8,6 +8,7 @@ const rootPath = path.resolve(__dirname, '../..');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const webpack = require('webpack');
+const ConfigWebpackPlugin = require('config-webpack');
 
 module.exports = {
   mode: 'development',
@@ -19,7 +20,7 @@ module.exports = {
   devServer: {
     contentBase: path.join(rootPath, 'dist', packageName),
     compress: true,
-    port: config.get('app.dev.port'),
+    port: config.get('webpack.dev_server.port'),
     historyApiFallback: true,
   },
   devtool: 'inline-source-map',
@@ -75,6 +76,7 @@ module.exports = {
     ],
   },
   plugins: [
+    new ConfigWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src/template.html'),
     }),

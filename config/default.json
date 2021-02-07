@@ -1,8 +1,14 @@
 {
   "main": {},
-  "app": {
-    "dev": {
+  "webpack": {
+    "dev_server": {
       "port": 3000
+    }
+  },
+  "app": {
+    "api": {
+      "uri": "http://localhost:8882",
+      "path": "/api"
     }
   }
 }

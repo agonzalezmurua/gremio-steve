@@ -1,24 +1,29 @@
-import endpoints from './__endpoints';
 import axios from 'axios';
+
+axios.defaults.baseURL = CONFIG.app.api.uri;
 
 const api = {
   journeys: {
-    search(searchTerm: string) {
-      return axios.get<Journey[]>(endpoints.journeys.search(searchTerm));
+    search(search: string) {
+      return axios.get<Journey[]>(`/journeys`, {
+        params: {
+          search: search,
+        },
+      });
     },
     getById(id: string) {
-      return axios.get<Journey>(endpoints.journeys.byId(id));
+      return axios.get<Journey>(`/journeys/${id}`);
     },
   },
   user: {
     profile(id: string) {
-      return axios.get<User>(endpoints.user.default(id));
+      return axios.get<User>(`/user/${id}`);
     },
     queue(id: string) {
-      return axios.get<Journey[]>(endpoints.user.queue(id));
+      return axios.get<Journey[]>(`/user/${id}/queue`);
     },
     activity(id: string) {
-      return axios.get<UserActivity[]>(endpoints.user.activity(id));
+      return axios.get<UserActivity[]>(`/user/${id}/activity`);
     },
   },
 };

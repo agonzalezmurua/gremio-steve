@@ -1,5 +1,5 @@
 - request:
-    url: ^/api/journeys$
+    url: ^/journeys$
     method: GET
   response:
     - status: 200
@@ -8,7 +8,7 @@
         content-type: application/json
       file: journeys/search.json
 - request:
-    url: ^/api/journeys/1$
+    url: ^/journeys/1$
     method: GET
   response:
     - status: 200
@@ -17,7 +17,7 @@
         content-type: application/json
       file: journeys/1.json
 - request:
-    url: ^/api/user/2$
+    url: ^/user/2$
     method: GET
   response:
     - status: 200
@@ -26,7 +26,7 @@
         content-type: application/json
       file: user/profile_2.json
 - request:
-    url: ^/api/user/3$
+    url: ^/user/3$
     method: GET
   response:
     - status: 200
@@ -35,7 +35,7 @@
         content-type: application/json
       file: user/profile_3.json
 - request:
-    url: ^/api/user/current_user_id/queue$
+    url: ^/user/current_user_id/queue$
     method: GET
   response:
     - status: 200
@@ -44,7 +44,7 @@
         content-type: application/json
       file: user/queue.json
 - request:
-    url: ^/api/user/current_user_id/activity$
+    url: ^/user/current_user_id/activity$
     method: GET
   response:
     - status: 200
