@@ -5,9 +5,7 @@ import ArrowLeft from '_assets/icons/outline/arrow-left.svg';
 import Home from '_assets/icons/outline/home.svg';
 import { Link, useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import FocusRingTwStyle, {
-  FocusRingFlatStyle,
-} from '_globals/ElementFocusStyle';
+import FocusRingTwStyle, { FocusRingFlatStyle } from '_globals/styles/focus';
 
 const NavigationControls = (props) => {
   const history = useHistory();

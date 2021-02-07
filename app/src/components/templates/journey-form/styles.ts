@@ -1,4 +1,4 @@
-import { DIFFICULTIES, MODES } from 'constants/GameMap';
+import { DIFFICULTIES, MODES } from '_constants/beatmapset';
 import { object, string, array, number, boolean } from 'yup';
 
 export type JourneyFormObject = Pick<

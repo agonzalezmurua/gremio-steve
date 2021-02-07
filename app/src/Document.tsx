@@ -5,7 +5,7 @@ import { IntlProvider } from 'react-intl';
 import { HashRouter } from 'react-router-dom';
 
 import useLocalePreference from '_hooks/useLocalePreference';
-import AppGlobalStyles from '_globals/AppGlobalStyle';
+import AppGlobalStyles from 'App.styles';
 
 import App from './App';
 

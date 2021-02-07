@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import 'twin.macro';
 import links from '_links';
-import { FocusRingFlatStyle } from '_globals/ElementFocusStyle';
+import { FocusRingFlatStyle } from '_globals/styles/focus';
 
 const BeatmapResultCard: React.FunctionComponent<
   Pick<Journey, 'artist' | 'organizer' | 'title' | '_id' | 'thumbnail'>

@@ -1,4 +1,4 @@
-import ArticleStyle from '_globals/ArticleStyles';
+import ArticleStyle from '_globals/styles/article';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';

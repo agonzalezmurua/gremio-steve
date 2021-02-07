@@ -11,7 +11,7 @@ import Markdown from '_components/atoms/markdown';
 import JourneyCard from '_components/molecules/journey-card';
 import ModeBadges from '_components/molecules/mode-badges';
 
-import { UserMessages } from 'constants/GenericMessages';
+import { UserMessages } from '_constants/messages/generic';
 
 type Props = {
   user?: User;

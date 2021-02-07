@@ -1,6 +1,6 @@
 import 'twin.macro';
 import React from 'react';
-import { GamemodeMessages } from 'constants/GenericMessages';
+import { GamemodeMessages } from '_constants/messages/generic';
 import { FormattedMessage } from 'react-intl';
 
 import { ListItem } from './styles';

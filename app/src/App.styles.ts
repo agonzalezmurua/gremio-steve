@@ -1,7 +1,7 @@
 import tw from 'twin.macro';
 import { createGlobalStyle } from 'styled-components';
-import FocusRingTwStyle, { FocusRingStyleString } from './ElementFocusStyle';
-import ArticleStyle from './ArticleStyles';
+import FocusRingTwStyle, { FocusRingStyleString } from './globals/styles/focus';
+import ArticleStyle from './globals/styles/article';
 
 const AppGlobalStyle = createGlobalStyle`
   html, body, #root {

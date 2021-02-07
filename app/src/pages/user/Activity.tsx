@@ -1,7 +1,7 @@
 import 'twin.macro';
 import React, { useContext } from 'react';
 import api from '_api';
-import AppContext from 'AppContext';
+import AppContext from 'App.context';
 import { FormattedMessage } from 'react-intl';
 import { useAsync } from 'react-use';
 

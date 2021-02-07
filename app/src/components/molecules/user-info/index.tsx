@@ -1,6 +1,6 @@
 import 'twin.macro';
 import React, { useContext } from 'react';
-import AppContext from 'AppContext';
+import AppContext from 'App.context';
 import { Link } from 'react-router-dom';
 
 import Avatar from '_components/atoms/avatar';

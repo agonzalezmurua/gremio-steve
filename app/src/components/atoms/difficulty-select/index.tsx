@@ -2,9 +2,9 @@ import React, { useMemo } from 'react';
 import { injectIntl, WrappedComponentProps } from 'react-intl';
 
 import Select, { SelectProps } from '_components/atoms/select';
-import MapModeSelectMessages from './messages';
+import { DIFFICULTIES } from '_constants/beatmapset';
 
-import { DIFFICULTIES } from 'constants/GameMap';
+import Messages from './messages';
 
 type MapDifficultySelectProps = {
   mode?: Beatmap['mode'];
@@ -21,7 +21,7 @@ const MapDifficultySelect: React.FC<MapDifficultySelectProps> = (props) => {
       label: props.intl.formatMessage(
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        MapModeSelectMessages[`${props.mode}.${diff}`]
+        Messages[`${props.mode}.${diff}`]
       ),
       value: diff,
     }));
