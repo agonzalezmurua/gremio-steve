@@ -1,11 +1,11 @@
 import 'twin.macro';
 import React from 'react';
-
-import api from '_api';
-import { Redirect, RouteComponentProps } from 'react-router-dom';
 import { useAsync } from 'react-use';
+import { Redirect, RouteComponentProps } from 'react-router-dom';
 
 import JourneyTemplate from '_components/templates/journeys';
+
+import api from '_api';
 
 type RouteProps = {
   id: string;

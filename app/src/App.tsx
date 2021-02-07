@@ -9,10 +9,10 @@ import NotFoundPage from '_pages/NotFound';
 import JourneyPage from '_pages/journeys/Id';
 import NewJourneyPage from '_pages/journeys/New';
 import QueuePage from '_pages/user/Queue';
-
 import ActivityPage from '_pages/user/Activity';
-import useAppHotkeys from '_hooks/useAppHotkeys';
 import UserProfilePage from '_pages/user/Profile';
+
+import useAppHotkeys from '_hooks/useAppHotkeys';
 import useAppEvents from '_hooks/useAppEvents';
 
 type Props = {
