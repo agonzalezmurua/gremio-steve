@@ -4,8 +4,8 @@ import { useField } from 'formik';
 
 import Input from '_components/atoms/input';
 import Label from '_components/atoms/label';
-import DifficultySelect from '_components/atoms//difficulty-select';
-import ModeSelect from '_components/atoms/mode-select';
+import DifficultySelect from '_components/molecules/difficulty-select';
+import ModeSelect from '_components/molecules/mode-select';
 import Button from '_components/atoms/button';
 
 import Trash from '_assets/icons/outline/trash.svg';

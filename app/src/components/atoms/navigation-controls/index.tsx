@@ -1,13 +1,14 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
 import tw, { styled } from 'twin.macro';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
 
 import ArrowLeft from '_assets/icons/outline/arrow-left.svg';
 import Home from '_assets/icons/outline/home.svg';
-import { Link, useHistory } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
-import FocusRingTwStyle, { FocusRingFlatStyle } from '_globals/styles/focus';
 
-const NavigationControls = (props) => {
+import { FocusRingFlatStyle } from '_globals/styles/focus';
+
+const NavigationControls: React.FC = (props) => {
   const history = useHistory();
   const [length, setLength] = useState(history.length);
   const pathname = useRef(history.location.pathname);
@@ -33,7 +34,7 @@ const NavigationControls = (props) => {
   }, []);
 
   return (
-    <section className={props.className} tw="flex space-x-2 justify-between">
+    <section {...props} tw="flex space-x-2 justify-between">
       <button
         aria-label="Go back to previous page"
         disabled={length === 1}

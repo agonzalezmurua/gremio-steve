@@ -1,8 +1,9 @@
-import ArticleStyle from '_globals/styles/article';
+import tw, { styled } from 'twin.macro';
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
-import tw, { styled } from 'twin.macro';
+
+import ArticleStyle from '_globals/styles/article';
 
 type Props = {
   value: string;

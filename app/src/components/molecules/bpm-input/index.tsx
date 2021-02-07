@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import 'twin.macro';
 
-import InputStyle from '../input/styles';
+import InputStyle from '../../atoms/input/styles';
 
 type BpmInputProps = {
   id: string;

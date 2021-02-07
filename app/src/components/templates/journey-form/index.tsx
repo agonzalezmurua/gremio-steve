@@ -5,10 +5,10 @@ import { FormikProps, withFormik } from 'formik';
 
 import Input from '_components/atoms/input';
 import Label from '_components/atoms/label';
-import FileUpload from '_components/atoms/file-upload';
+import FileUpload from '_components/molecules/file-upload';
 import Button from '_components/atoms/button';
 import BeatmapsetFormList from '_components/organisms/beatmapset-form-list';
-import BpmInput from '_components/atoms/bpm';
+import BpmInput from '_components/molecules/bpm-input';
 
 import { initialValues, validationSchema, JourneyFormObject } from './styles';
 

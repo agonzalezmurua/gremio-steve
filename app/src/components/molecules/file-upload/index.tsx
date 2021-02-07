@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from 'react';
 
 import Upload from '_assets/icons/outline/upload.svg';
 
-import Styles from '../input/styles';
+import Styles from '../../atoms/input/styles';
 import useKeyDownHotkey from '_hooks/useKeydownHotkey';
 
 type FileUploadProps = {
