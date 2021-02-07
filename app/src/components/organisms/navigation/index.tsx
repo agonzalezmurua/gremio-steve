@@ -2,11 +2,11 @@ import 'twin.macro';
 import React from 'react';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
 
-import TopMenu from '@components/molecules/top-menu';
-import UserHeader from '@components/molecules/user-info';
-import NavigationLinks from '@components/molecules/navigation-links';
-import SearchJourney from '@components/molecules/search-journey';
-import NavigationControls from '@components/atoms/navigation-controls';
+import TopMenu from '_components/molecules/top-menu';
+import UserHeader from '_components/molecules/user-info';
+import NavigationLinks from '_components/molecules/navigation-links';
+import SearchJourney from '_components/molecules/search-journey';
+import NavigationControls from '_components/atoms/navigation-controls';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 const Navigation: React.FunctionComponent = (props) => {

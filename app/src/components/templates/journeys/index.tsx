@@ -1,12 +1,12 @@
 import 'twin.macro';
 import React from 'react';
 
-import JourneyBanner from '@components/atoms/journey-banner';
-import SkeletonLoader from '@components/atoms/skeleton-loader';
+import JourneyBanner from '_components/atoms/journey-banner';
+import SkeletonLoader from '_components/atoms/skeleton-loader';
 import { FormattedMessage } from 'react-intl';
-import UserCard from '@components/molecules/user-card';
-import JourneyStatusBadge from '@components/atoms/journey-status-badge';
-import GameMapTable from '@components/molecules/beatmapset-table';
+import UserCard from '_components/molecules/user-card';
+import JourneyStatusBadge from '_components/atoms/journey-status-badge';
+import GameMapTable from '_components/molecules/beatmapset-table';
 
 type JourneyTemplateProps = {
   journey: Journey | null;

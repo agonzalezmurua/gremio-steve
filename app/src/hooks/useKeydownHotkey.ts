@@ -1,4 +1,4 @@
-import { handleKey } from '@utils';
+import { handleKey } from '_utils';
 import { RefObject, useEffect, useRef } from 'react';
 import { off, on } from './utils';
 

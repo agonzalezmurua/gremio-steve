@@ -2,7 +2,7 @@ import tw, { styled } from 'twin.macro';
 import React, { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { JourneyMessages } from '@globals/constants/GenericMessages';
+import { JourneyMessages } from 'constants/GenericMessages';
 
 const JourneyStatusBadge: React.FC<{ status: Journey['status'] }> = (props) => {
   const statusMessage = useMemo(() => {

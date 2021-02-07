@@ -2,12 +2,12 @@ import { css } from 'twin.macro';
 import { Link } from 'react-router-dom';
 import React from 'react';
 
-import Bell from '@assets/icons/solid/bell.svg';
-import Star from '@assets/icons/solid/star.svg';
+import Bell from '_assets/icons/solid/bell.svg';
+import Star from '_assets/icons/solid/star.svg';
 
-import Button from '@components/atoms/button';
-import JourneyStatusBadge from '@components/atoms/journey-status-badge';
-import links from '@links';
+import Button from '_components/atoms/button';
+import JourneyStatusBadge from '_components/atoms/journey-status-badge';
+import links from '_links';
 
 import ModeBadges from '../mode-badges';
 

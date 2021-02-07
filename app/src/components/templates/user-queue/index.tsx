@@ -1,11 +1,11 @@
 import 'twin.macro';
 import React from 'react';
 
-import Search from '@assets/icons/outline/search.svg';
+import Search from '_assets/icons/outline/search.svg';
 
-import SkeletonLoader from '@components/atoms/skeleton-loader';
-import Input from '@components/atoms/input';
-import JourneyCard from '@components/molecules/journey-card';
+import SkeletonLoader from '_components/atoms/skeleton-loader';
+import Input from '_components/atoms/input';
+import JourneyCard from '_components/molecules/journey-card';
 
 type QueueTemplateProps = {
   suggestions?: Pick<Journey, '_id' | 'title'>[];

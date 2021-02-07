@@ -2,14 +2,14 @@ import 'twin.macro';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import links from '@links';
+import links from '_links';
 
-import Annotation from '@assets/icons/solid/annotation.svg';
-import Bell from '@assets/icons/solid/bell.svg';
+import Annotation from '_assets/icons/solid/annotation.svg';
+import Bell from '_assets/icons/solid/bell.svg';
 
-import Avatar from '@components/atoms/avatar';
-import Button from '@components/atoms/button';
-import UserAvailability from '@components/atoms/user-availability';
+import Avatar from '_components/atoms/avatar';
+import Button from '_components/atoms/button';
+import UserAvailability from '_components/atoms/user-availability';
 
 import ModeBadges from '../mode-badges';
 

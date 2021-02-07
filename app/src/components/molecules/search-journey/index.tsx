@@ -3,11 +3,11 @@ import { useAsyncFn, useDebounce } from 'react-use';
 import 'twin.macro';
 import api from 'services/api';
 
-import Search from '@assets/icons/outline/search.svg';
-import Spinner from '@assets/icons/steve/spinner.svg';
+import Search from '_assets/icons/outline/search.svg';
+import Spinner from '_assets/icons/steve/spinner.svg';
 
-import Input from '@components/atoms/input';
-import JourneySmallCard from '@components/atoms/journey-card-small';
+import Input from '_components/atoms/input';
+import JourneySmallCard from '_components/atoms/journey-card-small';
 
 const SearchJourney: React.FunctionComponent = () => {
   const [search, setSearch] = useState('');

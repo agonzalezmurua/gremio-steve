@@ -2,11 +2,11 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import tw from 'twin.macro';
 import { useClickAway, useKey } from 'react-use';
 
-import ChevronDown from '@assets/icons/outline/chevron-down.svg';
+import ChevronDown from '_assets/icons/outline/chevron-down.svg';
 
 import Styles from './styles';
-import { handleKey } from '@utils';
-import useKeyDownHotkey from '@hooks/useKeydownHotkey';
+import { handleKey } from '_utils';
+import useKeyDownHotkey from '_hooks/useKeydownHotkey';
 
 export type SelectOption = {
   icon?: React.FC;

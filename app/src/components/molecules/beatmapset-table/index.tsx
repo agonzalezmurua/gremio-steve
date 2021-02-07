@@ -1,10 +1,10 @@
 import tw, { styled } from 'twin.macro';
 import React, { useMemo, useState } from 'react';
 import Selector from './selector';
-import Avatar from '@components/atoms/avatar';
-import links from '@links';
+import Avatar from '_components/atoms/avatar';
+import links from '_links';
 import { Link } from 'react-router-dom';
-import ModeIcon from '@components/atoms/mode-icon';
+import ModeIcon from '_components/atoms/mode-icon';
 
 type Props = {
   maps: Beatmap[];

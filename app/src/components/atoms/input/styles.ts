@@ -1,4 +1,4 @@
-import { FocusRingTwStyle } from '@globals/ElementFocusStyle';
+import { FocusRingTwStyle } from '_globals/ElementFocusStyle';
 import tw, { css } from 'twin.macro';
 
 const Wrapper = css`

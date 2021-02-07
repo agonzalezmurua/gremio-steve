@@ -7,13 +7,13 @@ import {
 } from 'react-intl';
 import { Link } from 'react-router-dom';
 
-import links from '@links';
-import Annotation from '@assets/icons/solid/annotation.svg';
-import AtSymbol from '@assets/icons/solid/at-symbol.svg';
-import Plus from '@assets/icons/solid/plus.svg';
-import Pencil from '@assets/icons/solid/pencil.svg';
-import Trash from '@assets/icons/solid/trash.svg';
-import EyeOff from '@assets/icons/solid/eye-off.svg';
+import links from '_links';
+import Annotation from '_assets/icons/solid/annotation.svg';
+import AtSymbol from '_assets/icons/solid/at-symbol.svg';
+import Plus from '_assets/icons/solid/plus.svg';
+import Pencil from '_assets/icons/solid/pencil.svg';
+import Trash from '_assets/icons/solid/trash.svg';
+import EyeOff from '_assets/icons/solid/eye-off.svg';
 
 import Messages from './messages';
 

@@ -4,8 +4,8 @@ import { GlobalStyles } from 'twin.macro';
 import { IntlProvider } from 'react-intl';
 import { HashRouter } from 'react-router-dom';
 
-import useLocalePreference from '@hooks/useLocalePreference';
-import AppGlobalStyles from '@globals/AppGlobalStyle';
+import useLocalePreference from '_hooks/useLocalePreference';
+import AppGlobalStyles from '_globals/AppGlobalStyle';
 
 import App from './App';
 
@@ -32,6 +32,7 @@ const Document: React.FC = () => {
         <IntlProvider
           locale={locale}
           key={locale}
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           messages={messages}
           defaultLocale="en"

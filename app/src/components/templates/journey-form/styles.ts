@@ -1,4 +1,4 @@
-import { DIFFICULTIES, MODES } from '@globals/constants/GameMap';
+import { DIFFICULTIES, MODES } from 'constants/GameMap';
 import { object, string, array, number, boolean } from 'yup';
 
 export type JourneyFormObject = Pick<

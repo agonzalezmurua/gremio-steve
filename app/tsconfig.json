@@ -45,15 +45,15 @@
     "baseUrl": "src" /* Base directory to resolve non-absolute module names. */,
     "paths": {
       /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
-      "@pages/*": ["pages/*"],
-      "@components/*": ["components/*"],
-      "@assets/*": ["../assets/*"],
-      "@globals/*": ["globals/*"],
-      "@hooks/*": ["hooks/*"],
-      "@hocs/*": ["hocs/*"],
-      "@api": ["services/api"],
-      "@links": ["services/links"],
-      "@utils": ["utils"]
+      "_pages/*": ["pages/*"],
+      "_components/*": ["components/*"],
+      "_assets/*": ["../assets/*"],
+      "_globals/*": ["globals/*"],
+      "_hooks/*": ["hooks/*"],
+      "_hocs/*": ["hocs/*"],
+      "_api": ["services/api"],
+      "_links": ["services/links"],
+      "_utils": ["utils"]
     },
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     // "typeRoots": [],                       /* List of folders to include type definitions from. */

@@ -3,9 +3,9 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { useAsync } from 'react-use';
 import { RouteComponentProps } from 'react-router-dom';
-import api from '@api';
-import UserProfileTemplate from '@components/templates/user-profile';
-import links from '@links';
+import api from '_api';
+import UserProfileTemplate from '_components/templates/user-profile';
+import links from '_links';
 
 type Props = {
   id: string;

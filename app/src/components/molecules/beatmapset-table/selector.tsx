@@ -1,10 +1,10 @@
 import 'twin.macro';
 import React from 'react';
-import { GamemodeMessages } from '@globals/constants/GenericMessages';
+import { GamemodeMessages } from 'constants/GenericMessages';
 import { FormattedMessage } from 'react-intl';
 
 import { ListItem } from './styles';
-import ModeIcon from '@components/atoms/mode-icon';
+import ModeIcon from '_components/atoms/mode-icon';
 
 type Props = {
   selected: string;

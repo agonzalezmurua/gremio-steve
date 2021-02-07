@@ -1,4 +1,4 @@
-import { UserMessages } from '@globals/constants/GenericMessages';
+import { UserMessages } from 'constants/GenericMessages';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import tw, { styled } from 'twin.macro';

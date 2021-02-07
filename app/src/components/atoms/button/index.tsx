@@ -1,4 +1,4 @@
-import { FocusRingFlatStyle } from '@globals/ElementFocusStyle';
+import { FocusRingFlatStyle } from '_globals/ElementFocusStyle';
 import tw, { styled } from 'twin.macro';
 
 type ButtonProps = React.HTMLProps<HTMLButtonElement> & {

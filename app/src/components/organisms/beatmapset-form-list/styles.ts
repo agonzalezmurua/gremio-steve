@@ -1,6 +1,6 @@
 import tw, { css } from 'twin.macro';
-import Button from '@components/atoms/button';
-import Label from '@components/atoms//label';
+import Button from '_components/atoms/button';
+import Label from '_components/atoms//label';
 
 const GameMapFormList = {
   Wrapper: css`

@@ -3,12 +3,12 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FormikProps, withFormik } from 'formik';
 
-import Input from '@components/atoms/input';
-import Label from '@components/atoms/label';
-import FileUpload from '@components/atoms/file-upload';
-import Button from '@components/atoms/button';
-import BeatmapsetFormList from '@components/organisms/beatmapset-form-list';
-import BpmInput from '@components/atoms/bpm';
+import Input from '_components/atoms/input';
+import Label from '_components/atoms/label';
+import FileUpload from '_components/atoms/file-upload';
+import Button from '_components/atoms/button';
+import BeatmapsetFormList from '_components/organisms/beatmapset-form-list';
+import BpmInput from '_components/atoms/bpm';
 
 import { initialValues, validationSchema, JourneyFormObject } from './styles';
 

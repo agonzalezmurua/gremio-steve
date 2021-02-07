@@ -3,8 +3,8 @@ import React, { useContext } from 'react';
 import AppContext from 'AppContext';
 import { Link } from 'react-router-dom';
 
-import Avatar from '@components/atoms/avatar';
-import links from '@links';
+import Avatar from '_components/atoms/avatar';
+import links from '_links';
 
 const UserHeader: React.FunctionComponent = () => {
   const {

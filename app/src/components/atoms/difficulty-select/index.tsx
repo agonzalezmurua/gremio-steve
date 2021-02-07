@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 import { injectIntl, WrappedComponentProps } from 'react-intl';
 
-import Select, { SelectProps } from '@components/atoms/select';
+import Select, { SelectProps } from '_components/atoms/select';
 import MapModeSelectMessages from './messages';
 
-import { DIFFICULTIES } from '@globals/constants/GameMap';
+import { DIFFICULTIES } from 'constants/GameMap';
 
 type MapDifficultySelectProps = {
   mode?: Beatmap['mode'];

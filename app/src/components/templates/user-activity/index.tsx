@@ -1,7 +1,7 @@
 import 'twin.macro';
 import React from 'react';
-import SkeletonLoader from '@components/atoms/skeleton-loader';
-import ActivityFeed from '@components/organisms/activity-feed';
+import SkeletonLoader from '_components/atoms/skeleton-loader';
+import ActivityFeed from '_components/organisms/activity-feed';
 
 type UserActivityTemplateProps = {
   activity?: UserActivity[];

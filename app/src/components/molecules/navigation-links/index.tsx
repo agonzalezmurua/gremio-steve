@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 import AppContext from 'AppContext';
-import links from '@links';
-import LightNingBolt from '@assets/icons/outline/lightning-bolt.svg';
-import Collection from '@assets/icons/outline/collection.svg';
-import Bookmark from '@assets/icons/outline/bookmark.svg';
-import Plus from '@assets/icons/outline/plus.svg';
+import links from '_links';
+import LightNingBolt from '_assets/icons/outline/lightning-bolt.svg';
+import Collection from '_assets/icons/outline/collection.svg';
+import Bookmark from '_assets/icons/outline/bookmark.svg';
+import Plus from '_assets/icons/outline/plus.svg';
 
 const NavigationItem = styled.li`
   ${tw`text-center`}

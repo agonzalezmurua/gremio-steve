@@ -2,18 +2,18 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Navigation from '@components/organisms/navigation';
+import Navigation from '_components/organisms/navigation';
 
-import Indexpage from '@pages/Index';
-import NotFoundPage from '@pages/NotFound';
-import JourneyPage from '@pages/journeys/Id';
-import NewJourneyPage from '@pages/journeys/New';
-import QueuePage from '@pages/user/Queue';
+import Indexpage from '_pages/Index';
+import NotFoundPage from '_pages/NotFound';
+import JourneyPage from '_pages/journeys/Id';
+import NewJourneyPage from '_pages/journeys/New';
+import QueuePage from '_pages/user/Queue';
 
-import ActivityPage from '@pages/user/Activity';
-import useAppHotkeys from '@hooks/useAppHotkeys';
-import UserProfilePage from '@pages/user/Profile';
-import useAppEvents from '@hooks/useAppEvents';
+import ActivityPage from '_pages/user/Activity';
+import useAppHotkeys from '_hooks/useAppHotkeys';
+import UserProfilePage from '_pages/user/Profile';
+import useAppEvents from '_hooks/useAppEvents';
 
 type Props = {
   loading: boolean;

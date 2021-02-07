@@ -1,13 +1,13 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import tw, { styled } from 'twin.macro';
 
-import ArrowLeft from '@assets/icons/outline/arrow-left.svg';
-import Home from '@assets/icons/outline/home.svg';
+import ArrowLeft from '_assets/icons/outline/arrow-left.svg';
+import Home from '_assets/icons/outline/home.svg';
 import { Link, useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import FocusRingTwStyle, {
   FocusRingFlatStyle,
-} from '@globals/ElementFocusStyle';
+} from '_globals/ElementFocusStyle';
 
 const NavigationControls = (props) => {
   const history = useHistory();

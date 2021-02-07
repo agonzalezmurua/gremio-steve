@@ -1,4 +1,4 @@
-import FocusRingTwStyle from '@globals/ElementFocusStyle';
+import FocusRingTwStyle from '_globals/ElementFocusStyle';
 import tw, { css } from 'twin.macro';
 import Button from '../../atoms/button';
 import InputStyles from '../../atoms/input/styles';

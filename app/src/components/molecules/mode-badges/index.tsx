@@ -1,4 +1,4 @@
-import ModeIcon from '@components/atoms/mode-icon';
+import ModeIcon from '_components/atoms/mode-icon';
 import React from 'react';
 import 'twin.macro';
 

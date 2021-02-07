@@ -1,11 +1,11 @@
 import React from 'react';
 import 'twin.macro';
-import api from '@api';
+import api from '_api';
 import { useAsync } from 'react-use';
 import { RouteComponentProps } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-import QueueTemplate from '@components/templates/user-queue';
+import QueueTemplate from '_components/templates/user-queue';
 
 type RouteProps = {
   id: string;

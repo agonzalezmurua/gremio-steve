@@ -2,16 +2,16 @@ import tw, { css } from 'twin.macro';
 import React, { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import Avatar from '@components/atoms/avatar';
-import Button from '@components/atoms/button';
-import SkeletonLoader from '@components/atoms/skeleton-loader';
-import UserAvailability from '@components/atoms/user-availability';
-import Markdown from '@components/atoms/markdown';
+import Avatar from '_components/atoms/avatar';
+import Button from '_components/atoms/button';
+import SkeletonLoader from '_components/atoms/skeleton-loader';
+import UserAvailability from '_components/atoms/user-availability';
+import Markdown from '_components/atoms/markdown';
 
-import JourneyCard from '@components/molecules/journey-card';
-import ModeBadges from '@components/molecules/mode-badges';
+import JourneyCard from '_components/molecules/journey-card';
+import ModeBadges from '_components/molecules/mode-badges';
 
-import { UserMessages } from '@globals/constants/GenericMessages';
+import { UserMessages } from 'constants/GenericMessages';
 
 type Props = {
   user?: User;

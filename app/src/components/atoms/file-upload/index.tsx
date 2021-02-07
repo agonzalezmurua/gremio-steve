@@ -2,10 +2,10 @@ import 'twin.macro';
 import { useFormikContext } from 'formik';
 import React, { useEffect, useRef } from 'react';
 
-import Upload from '@assets/icons/outline/upload.svg';
+import Upload from '_assets/icons/outline/upload.svg';
 
 import Styles from '../input/styles';
-import useKeyDownHotkey from '@hooks/useKeydownHotkey';
+import useKeyDownHotkey from '_hooks/useKeydownHotkey';
 
 type FileUploadProps = {
   error?: string;

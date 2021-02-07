@@ -1,11 +1,11 @@
 import 'twin.macro';
 import React, { useContext } from 'react';
-import api from '@api';
+import api from '_api';
 import AppContext from 'AppContext';
 import { FormattedMessage } from 'react-intl';
 import { useAsync } from 'react-use';
 
-import UserActivityTemplate from '@components/templates/user-activity';
+import UserActivityTemplate from '_components/templates/user-activity';
 
 const ActivityPage = () => {
   const { currentUser } = useContext(AppContext);

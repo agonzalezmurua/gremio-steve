@@ -2,13 +2,13 @@ import 'twin.macro';
 import React, { useMemo } from 'react';
 import { useField } from 'formik';
 
-import Input from '@components/atoms/input';
-import Label from '@components/atoms/label';
-import DifficultySelect from '@components/atoms//difficulty-select';
-import ModeSelect from '@components/atoms/mode-select';
-import Button from '@components/atoms/button';
+import Input from '_components/atoms/input';
+import Label from '_components/atoms/label';
+import DifficultySelect from '_components/atoms//difficulty-select';
+import ModeSelect from '_components/atoms/mode-select';
+import Button from '_components/atoms/button';
 
-import Trash from '@assets/icons/outline/trash.svg';
+import Trash from '_assets/icons/outline/trash.svg';
 
 type Props = {
   index: number;

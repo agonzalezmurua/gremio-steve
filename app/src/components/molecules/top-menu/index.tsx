@@ -1,9 +1,9 @@
 import tw, { styled } from 'twin.macro';
 import React, { useCallback } from 'react';
 
-import Close from '@assets/icons/outline/x.svg';
-import Minimize from '@assets/icons/outline/minus.svg';
-import Maximize from '@assets/icons/outline/duplicate.svg';
+import Close from '_assets/icons/outline/x.svg';
+import Minimize from '_assets/icons/outline/minus.svg';
+import Maximize from '_assets/icons/outline/duplicate.svg';
 
 const TopMenu: React.FC = (props) => {
   const handleMinimize = useCallback(() => {
