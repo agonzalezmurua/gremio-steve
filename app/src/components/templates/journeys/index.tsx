@@ -17,7 +17,7 @@ const JourneyTemplate: React.FC<JourneyTemplateProps> = ({ journey }) => {
     <section>
       {/* Title */}
       <JourneyBanner
-        src={journey?.banner.url}
+        src={journey?.banner_url}
         tw="h-40 bg-gray-300 space-y-1 dark:bg-gray-800 rounded-t-md"
       />
 

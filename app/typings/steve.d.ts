@@ -5,7 +5,7 @@ declare type Journey = {
   title: string;
   artist: string;
   organizer: User;
-  last_updated: Date;
+  updated_at: Date;
   thumbnail: {
     url: string;
   };
@@ -23,7 +23,7 @@ declare type Journey = {
   status: 'pending' | 'open' | 'ready' | 'alert' | 'problem' | 'closed';
   private: boolean;
   beatmaps: Beatmap[];
-  osuLink: string;
+  osu_link: ?string;
 };
 
 declare type Beatmap = {
@@ -37,11 +37,11 @@ declare type Beatmap = {
 
 declare type User = {
   _id: string;
+  osu_id: string;
   name: string;
+  active: boolean;
   avatar_url: string;
-  banner: {
-    url: string;
-  };
+  banner_url: string;
   availability: {
     mods: boolean;
     guest_diffs: boolean;

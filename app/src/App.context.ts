@@ -7,9 +7,7 @@ type AppContext = {
 const AppContext = createContext<AppContext>({
   currentUser: {
     _id: 'current_user_id',
-    banner: {
-      url: '',
-    },
+    banner_url: '',
     status: '',
     journeys: [],
     community_role: '',

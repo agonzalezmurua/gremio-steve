@@ -61,9 +61,9 @@ const UserProfileTemplate: React.FC<Props> = (props) => {
     <>
       <section
         css={[
-          (!props.user?.banner.url && tw`bg-gray-300`) ||
+          (!props.user?.banner_url && tw`bg-gray-300`) ||
             css`
-              background-image: url(${props.user?.banner.url});
+              background-image: url(${props.user?.banner_url});
               background-size: cover;
               background-position: 50%;
             `,
