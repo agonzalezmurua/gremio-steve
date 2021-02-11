@@ -1,23 +1,24 @@
 import axios, { AxiosResponse } from 'axios';
-import { operations, definitions } from '_typings/api.gremio-steve';
+import { paths, operations, definitions } from '_typings/api.gremio-steve';
 
 axios.defaults.baseURL = CONFIG.app.api.uri;
 
-type JourneyOperations = {
-  search: (
-    parameters: operations['searchJourneys']['parameters']
-  ) => Promise<AxiosResponse<Array<definitions['Journey']>>>;
+type Operation = {
+  parameters: unknown;
+  responses: {
+    200: {
+      schema: unknown;
+    };
+  };
 };
 
-const api: {
-  journeys: JourneyOperations;
-} = {
+type OperationRequest<O extends Operation> = (
+  params: O['parameters']
+) => Promise<AxiosResponse<O['responses'][200]>>;
+
+const api = {
   journeys: {
-    search: (params) => {
-      return axios.get<Array<definitions['Journey']>>(`/journeys`, {
-        params: params.query,
-      });
-    },
+    search: search,
   },
   // journeys: {
   //   search(search: string) {
