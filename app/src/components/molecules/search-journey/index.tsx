@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAsyncFn, useDebounce } from 'react-use';
 import 'twin.macro';
-import api from 'services/api';
+import api from '_api';
 
 import Search from '_assets/icons/outline/search.svg';
 import Spinner from '_assets/icons/steve/spinner.svg';
