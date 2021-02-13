@@ -11,7 +11,7 @@
     "build:i18n:compile": "formatjs compile-folder --ast app/lang app/compiled-lang",
     "build:i18n:extract": "node runtime-scripts/build/extract-i18n.js",
     "start": "cross-env NODE_ENV=development run-p dev:start:**",
-    "generate:specs": "run -p generate:specs:*",
+    "generate:specs": "run-p generate:specs:*",
     "generate:specs:gremio-steve": "npx openapi-typescript http://localhost:3010/api-docs/swagger.json --output app/typings/api.gremio-steve.d.ts",
     "dev:start:i18n-build": "node runtime-scripts/dev/watch-i18n.js",
     "dev:start:app": "webpack serve --config app/webpack.config.ts",

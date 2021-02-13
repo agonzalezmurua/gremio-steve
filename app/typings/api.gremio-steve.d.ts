@@ -168,7 +168,7 @@ export interface operations {
     };
     responses: {
       /** The journey was deleted succesfully */
-      204: never;
+      200: unknown;
       /** User is not authenticated */
       401: unknown;
       /** User cannot perform action */
