@@ -19,6 +19,8 @@ export type OperationResponse<O extends Operation> = AxiosResponse<
   status: keyof O['responses'];
 };
 
-export type OperationRequest<O extends Operation> = (
-  params: O['parameters']
-) => Promise<OperationResponse<O>>;
+export type OperationRequest<
+  O extends Operation
+> = O['parameters'] extends undefined
+  ? () => Promise<OperationResponse<O>>
+  : (params: O['parameters']) => Promise<OperationResponse<O>>;
