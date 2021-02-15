@@ -36,7 +36,7 @@ const Operations: {
       },
     }),
   createOneJourney: (parameters) =>
-    Axios.post(Paths['/journeys'](), parameters.body.journey),
+    Axios.post(Paths['/journeys'](), parameters.body),
   deleteOneJourneyById: (parameters) =>
     Axios.delete(Paths['/journeys/:id'](parameters.path.id)),
   getMyJourneys: () => Axios.get(Paths['/journeys/mine']()),
@@ -49,7 +49,7 @@ const Operations: {
       },
     }),
   authenticateUser: (parameters) =>
-    Axios.post(Paths['/auth/osu/callback'](), parameters.body.authentication),
+    Axios.post(Paths['/auth/osu/callback'](), parameters.body),
   requestAuthorization: () => {
     throw new Error('this methos is not supposed to be navigated to');
   },
@@ -61,4 +61,5 @@ const Operations: {
 export default {
   Paths,
   Operations,
+  Client: Axios,
 };

@@ -1,36 +1,35 @@
 import 'twin.macro';
 import React, { useCallback } from 'react';
-import Button from '@/components/atoms/button';
-import { FormattedMessage } from 'react-intl';
+import { v4 as uuidv4 } from 'uuid';
+
+import LoginTemplate from '@/components/templates/login';
 import { isBrowser } from '@/constants/platform';
+import { OauthState } from '@/typings/gremio-steve';
 
 const LoginPage = () => {
-  const handleClick = useCallback(() => {
-    window.electron.shell.openExternal(CONFIG.renderer.auth.request_url);
+  const handleLogin = useCallback(() => {
+    const url = new URL(CONFIG.renderer.auth.request_url);
+
+    const stateIdentifier = uuidv4();
+    const state = btoa(
+      JSON.stringify({
+        [stateIdentifier]: {
+          came_from: isBrowser ? 'browser' : 'app',
+        } as OauthState,
+      })
+    );
+
+    sessionStorage.setItem('oauthstate', state);
+    url.searchParams.append('state', stateIdentifier);
+
+    if (isBrowser === true) {
+      document.location.href = url.toString();
+    } else {
+      window.electron.shell.openExternal(url.toString());
+    }
   }, []);
 
-  return (
-    <main tw="h-full">
-      <section tw="p-8 flex flex-col justify-center items-center space-y-4">
-        <section>
-          <h1>
-            <FormattedMessage
-              id="pages.login.title"
-              defaultMessage="Welcome to Stev"
-              description="Header with salutations"
-            />
-          </h1>
-        </section>
-        <Button color="blue" onClick={handleClick}>
-          <FormattedMessage
-            id="pages.login.authWithOsu"
-            defaultMessage="Log in with osu!"
-            description="Button that indicated that a log in with osu! game option"
-          />
-        </Button>
-      </section>
-    </main>
-  );
+  return <LoginTemplate onLogin={handleLogin} />;
 };
 
 export default LoginPage;

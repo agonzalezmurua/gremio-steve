@@ -1,2 +1,2 @@
-export const isBrowser = Boolean(window.platform);
+export const isBrowser = window.platform === undefined;
 export const currentPlatform = window.platform;

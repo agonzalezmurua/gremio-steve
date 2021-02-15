@@ -7,7 +7,7 @@
   },
   "renderer": {
     "auth": {
-      "callback_url": "http://localhost:3000/auth/osu/callback",
+      "callback_url": "http://localhost:3000/#/auth/osu/callback",
       "request_url": "http://localhost:3010/auth/osu"
     },
     "api": {

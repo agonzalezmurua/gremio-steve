@@ -7,6 +7,7 @@ import links from '@/services/links';
 import Api from '@/services/api';
 import { StoredOauthState } from '@/typings/gremio-steve';
 import AppContext from '@/App.context';
+import { session } from 'electron';
 
 const Callback: React.FC = () => {
   const { actions } = useContext(AppContext);
@@ -18,9 +19,9 @@ const Callback: React.FC = () => {
 
   const state = useMemo(() => {
     const states = JSON.parse(
-      atob(localStorage.getItem('oauthstate'))
+      atob(sessionStorage.getItem('oauthstate'))
     ) as StoredOauthState;
-    localStorage.removeItem('oauthstate');
+    sessionStorage.removeItem('oauthstate'); // Use
     return states[stateIdentifier];
   }, [stateIdentifier]);
 
@@ -38,7 +39,7 @@ const Callback: React.FC = () => {
     if (state) {
       fetchAuthentication();
     }
-    return () => localStorage.removeItem('oauthstate'); // Use oauthstate nonce
+    return () => sessionStorage.removeItem('oauthstate'); // Use oauthstate nonce
   }, [state]);
 
   if (!state) {

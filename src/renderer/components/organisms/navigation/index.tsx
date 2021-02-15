@@ -3,7 +3,7 @@ import React from 'react';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
 
 import TopMenu from '@/components/molecules/top-menu';
-import UserHeader from '@/components/molecules/user-info';
+import UserInfo from '@/components/molecules/user-info';
 import NavigationLinks from '@/components/molecules/navigation-links';
 import SearchJourney from '@/components/molecules/search-journey';
 import NavigationControls from '@/components/atoms/navigation-controls';
@@ -26,7 +26,7 @@ const Navigation: React.FC<Props> = (props) => {
             </section>
             {/* User Info */}
             <section>
-              <UserHeader />
+              <UserInfo />
             </section>
             {/* Navigation */}
             <nav tw="flex flex-row justify-center md:(justify-start)">

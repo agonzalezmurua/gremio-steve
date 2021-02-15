@@ -21,74 +21,79 @@ const NavigationItem = styled.li`
   }
 `;
 
-export const NavigationList: React.FunctionComponent = () => {
-  const {
-    currentUser: { _id },
-  } = useContext(AppContext);
+export const NavigationLinks: React.FunctionComponent = () => {
+  const { user, isLoggedIn } = useContext(AppContext);
+
   return (
     <ul tw="space-y-2 flex-grow">
-      <NavigationItem>
-        <Link to={links.pages.login()}>
-          <User />
-          <span tw="hidden md:(block)">
-            <FormattedMessage
-              id="components.molecules.navigationLinks.loginLink"
-              description="Navigation links, name for link that redirects to 'Log in'"
-              defaultMessage="Log in"
-            />
-          </span>
-        </Link>
-      </NavigationItem>
-      <NavigationItem>
-        <Link to={links.user.queue({ id: _id })}>
-          <Collection />
-          <span tw="hidden md:(block)">
-            <FormattedMessage
-              id="components.molecules.navigationLinks.myQueueLink"
-              description="Navigation links, name for link that redirects to 'My Queue'"
-              defaultMessage="My Queue"
-            />
-          </span>
-        </Link>
-      </NavigationItem>
-      <NavigationItem>
-        <Link to={links.user.activity({ id: _id })}>
-          <LightNingBolt />
-          <span tw="hidden md:(block)">
-            <FormattedMessage
-              id="components.molecules.navigationLinks.activityLink"
-              description="Navigation links, name for link that redirects to 'My Activity'"
-              defaultMessage="Activity"
-            />
-          </span>
-        </Link>
-      </NavigationItem>
-      <NavigationItem>
-        <Link to={links.user.bookmarks({ id: _id })}>
-          <Bookmark />
-          <span tw="hidden md:(block)">
-            <FormattedMessage
-              id="components.molecules.navigationLinks.bookmarksLink"
-              description="Navigation links, name for link that redirects to 'Bookmarks'"
-              defaultMessage="Bookmarks"
-            />
-          </span>
-        </Link>
-      </NavigationItem>
-      <NavigationItem>
-        <Link to={links.journeys.new()}>
-          <Plus />
-          <span tw="hidden md:(block)">
-            <FormattedMessage
-              id="components.molecules.navigationLinks.newJourneyLink"
-              description="Navigation links, name for link that redirects to 'New Journey'"
-              defaultMessage="New Journey"
-            />
-          </span>
-        </Link>
-      </NavigationItem>
+      {isLoggedIn === false ? (
+        <NavigationItem>
+          <Link to={links.pages.login()}>
+            <User />
+            <span tw="hidden md:(block)">
+              <FormattedMessage
+                id="components.molecules.navigationLinks.loginLink"
+                description="Navigation links, name for link that redirects to 'Log in'"
+                defaultMessage="Log in"
+              />
+            </span>
+          </Link>
+        </NavigationItem>
+      ) : (
+        <>
+          {' '}
+          <NavigationItem>
+            <Link to={links.user.queue({ id: user.id })}>
+              <Collection />
+              <span tw="hidden md:(block)">
+                <FormattedMessage
+                  id="components.molecules.navigationLinks.myQueueLink"
+                  description="Navigation links, name for link that redirects to 'My Queue'"
+                  defaultMessage="My Queue"
+                />
+              </span>
+            </Link>
+          </NavigationItem>
+          <NavigationItem>
+            <Link to={links.user.activity({ id: user.id })}>
+              <LightNingBolt />
+              <span tw="hidden md:(block)">
+                <FormattedMessage
+                  id="components.molecules.navigationLinks.activityLink"
+                  description="Navigation links, name for link that redirects to 'My Activity'"
+                  defaultMessage="Activity"
+                />
+              </span>
+            </Link>
+          </NavigationItem>
+          <NavigationItem>
+            <Link to={links.user.bookmarks({ id: user.id })}>
+              <Bookmark />
+              <span tw="hidden md:(block)">
+                <FormattedMessage
+                  id="components.molecules.navigationLinks.bookmarksLink"
+                  description="Navigation links, name for link that redirects to 'Bookmarks'"
+                  defaultMessage="Bookmarks"
+                />
+              </span>
+            </Link>
+          </NavigationItem>
+          <NavigationItem>
+            <Link to={links.journeys.new()}>
+              <Plus />
+              <span tw="hidden md:(block)">
+                <FormattedMessage
+                  id="components.molecules.navigationLinks.newJourneyLink"
+                  description="Navigation links, name for link that redirects to 'New Journey'"
+                  defaultMessage="New Journey"
+                />
+              </span>
+            </Link>
+          </NavigationItem>
+        </>
+      )}
     </ul>
   );
 };
 
-export default NavigationList;
+export default NavigationLinks;
