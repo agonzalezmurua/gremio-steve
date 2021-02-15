@@ -22,8 +22,8 @@ const App: React.FC = () => {
 
   return (
     <section tw="h-screen">
-      <Navigation>
-        <Switch>
+      <Navigation sidebar>
+        <Route>
           <Route path="/" exact component={IndexPage} />
           <Route path="/login" exact component={LoginPage} />
           {/* <Route path="/journeys/new" exact component={NewJourneyPage} />
@@ -32,7 +32,7 @@ const App: React.FC = () => {
           <Route path="/user/:id/queue" component={QueuePage} />
           <Route path="/user/:id/activity" component={ActivityPage} />
           <Route path={['*', '/not-found']} component={NotFoundPage} /> */}
-        </Switch>
+        </Route>
       </Navigation>
     </section>
   );

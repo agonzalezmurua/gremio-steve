@@ -1,18 +1,16 @@
 const chokidar = require('chokidar');
 const consola = require('consola');
-const { srcFolder, extract } = require('../compile-i18n');
+const { srcFolder, extract } = require('../i18n.commands');
 const { languages } = require('../../package.json');
 
-const watchExpression = srcFolder + '/**/*.tsx';
+const watchExpression = path.join(srcFolder, '/**/*.tsx');
 
 const watcher = chokidar.watch(watchExpression);
 
 watcher.on('change', () => {
   languages.forEach((lang) => {
     try {
-      const _langFile = `${lang}.json`;
-
-      extract(_langFile);
+      extract(lang);
     } catch (error) {
       consola.error(lang, 'failed to build');
     }

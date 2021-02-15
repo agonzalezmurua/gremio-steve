@@ -21,6 +21,7 @@ const AppContext = createContext<AppContextType>({
     avatar_url: 'https://a.ppy.sh/1869277?1462143398.jpg',
     name: 'Example Username',
     queue: [],
+    isBrowser: Boolean(window.platform),
   },
 });
 

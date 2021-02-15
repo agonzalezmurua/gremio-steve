@@ -12,7 +12,7 @@ function loadMessages(locale: string) {
     case 'en':
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      return import('./compiled-lang/en.json');
+      return import('../lang/compiled/en.json');
     default:
       return Promise.resolve(undefined);
   }

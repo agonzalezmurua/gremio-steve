@@ -1,83 +1,24 @@
+import webpack = require('webpack');
+import { merge } from 'webpack-merge';
+
 const config = require('config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const webpack = require('webpack');
-const ConfigWebpackPlugin = require('config-webpack');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const path = require('path');
 
-const Configuration: import('webpack').Configuration = {
-  cache: true,
-  mode: 'development',
+module.exports = merge(require('./webpack.react'), {
   entry: './src/renderer/index.tsx',
-  target: 'electron-renderer',
   output: {
-    publicPath: '/',
-    filename: 'index.js',
     path: path.resolve('dist/renderer'),
   },
   devServer: {
-    contentBase: 'dist',
-    compress: true,
     port: config.get('webpack.dev_server.port'),
-    historyApiFallback: true,
   },
   devtool: 'inline-source-map',
   node: {
     global: true,
   },
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              [
-                '@babel/preset-env',
-                {
-                  useBuiltIns: 'usage',
-                  corejs: '3',
-                },
-              ],
-              '@babel/preset-typescript',
-              '@babel/preset-react',
-            ],
-            plugins: [
-              'macros',
-              'babel-plugin-styled-components',
-              [
-                'react-intl',
-                {
-                  idInterpolationPattern: '[sha512:contenthash:base64:6]',
-                  extractFromFormatMessageCall: true,
-                  ast: true,
-                },
-              ],
-            ],
-          },
-        },
-      },
-      {
-        test: /\.css/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/i,
-        loader: 'file-loader',
-        options: {
-          name: '[path][name].[ext]',
-        },
-      },
-      {
-        test: /\.svg$/,
-        use: ['@svgr/webpack'],
-      },
-    ],
-  },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js'],
     plugins: [
       new TsconfigPathsPlugin({
         configFile: path.resolve('./src/renderer/tsconfig.json'),
@@ -85,15 +26,11 @@ const Configuration: import('webpack').Configuration = {
     ],
   },
   plugins: [
-    new ConfigWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: 'src/renderer/index.html',
+      template: 'src/renderer/App.html',
     }),
-    new FriendlyErrorsWebpackPlugin(),
     new webpack.ProvidePlugin({
       process: 'process/browser',
     }),
   ],
-};
-
-module.exports = Configuration;
+} as import('webpack').Configuration);

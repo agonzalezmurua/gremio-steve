@@ -4,6 +4,7 @@ import React, { useCallback } from 'react';
 import Close from '@/assets/icons/outline/x.svg';
 import Minimize from '@/assets/icons/outline/minus.svg';
 import Maximize from '@/assets/icons/outline/duplicate.svg';
+import { isBrowser, currentPlatform } from '@/constants/platform';
 
 const TopMenu: React.FC = (props) => {
   const handleMinimize = useCallback(() => {
@@ -23,7 +24,7 @@ const TopMenu: React.FC = (props) => {
       {...props}
       tw="flex justify-end h-8 w-full border-b light:(border-gray-200) dark:(border-black)"
     >
-      {window.platform === 'win32' ? (
+      {currentPlatform === 'win32' ? (
         <>
           <button onClick={handleMinimize}>
             <Minimize />
@@ -41,7 +42,7 @@ const TopMenu: React.FC = (props) => {
 };
 
 export default styled(TopMenu)`
-  ${window.platform === undefined ? tw`hidden` : null}
+  ${isBrowser ? null : tw`hidden`}
   -webkit-app-region: drag;
   button {
     -webkit-app-region: no-drag;

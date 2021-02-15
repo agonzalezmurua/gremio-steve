@@ -9,28 +9,34 @@ import SearchJourney from '@/components/molecules/search-journey';
 import NavigationControls from '@/components/atoms/navigation-controls';
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
-const Navigation: React.FunctionComponent = (props) => {
+type Props = {
+  sidebar: boolean;
+};
+
+const Navigation: React.FC<Props> = (props) => {
   return (
     <section tw="flex flex-col h-screen w-screen overflow-hidden light:(text-gray-900) dark:(text-gray-300)">
       <TopMenu />
       <section tw="flex flex-grow py-2 px-4 space-x-4">
         {/* Sidebar */}
-        <section tw="flex-shrink space-y-4 w-20 md:(w-60)">
-          <section tw="border-b dark:(border-gray-500) pb-2">
-            <NavigationControls />
+        {props.sidebar ? (
+          <section tw="flex-shrink space-y-4 w-20 md:(w-60)">
+            <section tw="border-b dark:(border-gray-500) pb-2">
+              <NavigationControls />
+            </section>
+            {/* User Info */}
+            <section>
+              <UserHeader />
+            </section>
+            {/* Navigation */}
+            <nav tw="flex flex-row justify-center md:(justify-start)">
+              <NavigationLinks />
+            </nav>
+            <section tw="border-t dark:(border-gray-500) pt-4 space-y-2 hidden md:(block)">
+              <SearchJourney />
+            </section>
           </section>
-          {/* User Info */}
-          <section>
-            <UserHeader />
-          </section>
-          {/* Navigation */}
-          <nav tw="flex flex-row justify-center md:(justify-start)">
-            <NavigationLinks />
-          </nav>
-          <section tw="border-t dark:(border-gray-500) pt-4 space-y-2 hidden md:(block)">
-            <SearchJourney />
-          </section>
-        </section>
+        ) : null}
         {/* Content */}
         <OverlayScrollbarsComponent
           options={{ scrollbars: { autoHide: 'scroll' } }}
@@ -41,6 +47,10 @@ const Navigation: React.FunctionComponent = (props) => {
       </section>
     </section>
   );
+};
+
+Navigation.defaultProps = {
+  sidebar: true,
 };
 
 export default Navigation;

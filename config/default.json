@@ -5,9 +5,13 @@
       "port": 3000
     }
   },
-  "app": {
+  "renderer": {
+    "auth": {
+      "callback_url": "http://localhost:3000/auth/osu/callback",
+      "request_url": "http://localhost:3010/auth/osu"
+    },
     "api": {
-      "uri": "http://localhost:8882",
+      "uri": "http://localhost:3010",
       "path": "/api"
     }
   }

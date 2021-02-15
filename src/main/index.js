@@ -1,12 +1,12 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
-// const { installExtensions } = require('./extensions');
+const { installExtensions } = require('./extensions');
 const config = require('config');
 const consola = require('consola');
 const path = require('path');
 
 try {
   // Hot reloading for main process, that means if any file inside main changes it triggers a full app reload
-  // require('electron-reloader')(module, { ignore: 'app/**' });
+  require('electron-reloader')(module, { ignore: 'app/**' });
 } catch (error) {
   consola.error(error);
 }
@@ -45,18 +45,10 @@ function createWindow() {
   ipcMain.on('close', () => {
     window.close();
   });
-
-  ipcMain.handle('newWindow', async (event, arg) => {
-    return new BrowserWindow({
-      center: true,
-      width: 300,
-      height: 300,
-    });
-  });
 }
 
 app.on('ready', () => {
-  // installExtensions(); // (4) <- install dev tools when on dev environment
+  installExtensions(); // (4) <- install dev tools when on dev environment
   createWindow();
 });
 

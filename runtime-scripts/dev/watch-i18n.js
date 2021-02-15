@@ -1,19 +1,19 @@
 const chokidar = require('chokidar');
 const consola = require('consola');
-const { langFolder, build } = require('../compile-i18n');
+const { compiledLangFolder, build } = require('../i18n.commands');
 const path = require('path');
 
-const watchExpression = langFolder + '/*.json';
+const watchExpression = path.join(compiledLangFolder, '/*.json');
 
 const watcher = chokidar.watch(watchExpression);
 
 watcher.on('add', (dir) => {
-  const locale = path.relative(langFolder, dir);
+  const locale = path.relative(compiledLangFolder, dir);
   consola.info('watching', locale);
 });
 
 watcher.on('change', (dir) => {
-  const locale = path.relative(langFolder, dir);
+  const locale = path.relative(compiledLangFolder, dir);
   consola.info('building', locale);
   try {
     build(locale);

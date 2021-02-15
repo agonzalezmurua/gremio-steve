@@ -7,39 +7,39 @@
     "defaultMessage": "Title",
     "description": "Home page Title"
   },
-  "components.atoms.form-controls.catchOptionLabel": {
+  "components.atoms..catchOptionLabel": {
     "defaultMessage": "Catch",
     "description": "Osu!catch option label"
   },
-  "components.atoms.form-controls.editButton": {
+  "components.atoms..editButton": {
     "defaultMessage": "Edit",
     "description": "Set markdown editor form component into edit mode"
   },
-  "components.atoms.form-controls.maniaOptionLabel": {
+  "components.atoms..maniaOptionLabel": {
     "defaultMessage": "Mania",
     "description": "Osu!mania option label"
   },
-  "components.atoms.form-controls.previewButton": {
+  "components.atoms..previewButton": {
     "defaultMessage": "Preview",
     "description": "Set markdown editor form component into preview mode"
   },
-  "components.atoms.form-controls.progress.backButton": {
+  "components.atoms..progress.backButton": {
     "defaultMessage": "Back",
     "description": "Form progress indicator, back button"
   },
-  "components.atoms.form-controls.progress.finishButton": {
+  "components.atoms..progress.finishButton": {
     "defaultMessage": "Finish",
     "description": "Form progress indicator, finish button"
   },
-  "components.atoms.form-controls.progress.nextButton": {
+  "components.atoms..progress.nextButton": {
     "defaultMessage": "Next",
     "description": "Form progress indicator, next step button"
   },
-  "components.atoms.form-controls.standardOptionLabel": {
+  "components.atoms..standardOptionLabel": {
     "defaultMessage": "Standard",
     "description": "Osu! option label"
   },
-  "components.atoms.form-controls.taikoOptionLabel": {
+  "components.atoms..taikoOptionLabel": {
     "defaultMessage": "Taiko",
     "description": "Osu!taiko option label"
   },
@@ -139,6 +139,10 @@
     "defaultMessage": "Futsuu",
     "description": "Taiko Normal diffculty name"
   },
+  "components.atoms.navigationControls.goBackHome": {
+    "defaultMessage": "Go to home page",
+    "description": "Accesible text that describes what the home button action"
+  },
   "components.molecules.activity.commenLink": {
     "defaultMessage": "{count, plural, =0 {no comments} one {comment} other {comments}}",
     "description": ""
@@ -175,10 +179,6 @@
     "defaultMessage": "{user} mentioned {journey} on a {comment}",
     "description": "Activity message indicating that someone mentioned your Journey on a comment"
   },
-  "components.molecules.gameMapLists.applyButton": {
-    "defaultMessage": "Apply",
-    "description": "Game map list, apply button"
-  },
   "components.molecules.navigationLinks.activityLink": {
     "defaultMessage": "Activity",
     "description": "Navigation links, name for link that redirects to 'My Activity'"
@@ -186,6 +186,10 @@
   "components.molecules.navigationLinks.bookmarksLink": {
     "defaultMessage": "Bookmarks",
     "description": "Navigation links, name for link that redirects to 'Bookmarks'"
+  },
+  "components.molecules.navigationLinks.loginLink": {
+    "defaultMessage": "Log in",
+    "description": "Navigation links, name for link that redirects to 'Log in'"
   },
   "components.molecules.navigationLinks.myQueueLink": {
     "defaultMessage": "My Queue",
@@ -195,13 +199,13 @@
     "defaultMessage": "New Journey",
     "description": "Navigation links, name for link that redirects to 'New Journey'"
   },
-  "components.organisms.activityFeed.loadMoreButton": {
-    "defaultMessage": "Load more",
-    "description": "Activity feed, load more activities"
-  },
   "components.organisms.gameMapForm.addNewDifficultyButton": {
     "defaultMessage": "Add new",
     "description": "Add a new Beatmap difficulty entry"
+  },
+  "components.templates.journeys.difficultiesHeader": {
+    "defaultMessage": "Diffs",
+    "description": "Journey page, difficulties header"
   },
   "components.templates.journeys.organizerHeader": {
     "defaultMessage": "Organizer",
@@ -223,6 +227,58 @@
     "defaultMessage": "Save",
     "description": "Submit new journey form"
   },
+  "generic.gamemodes.ctb": {
+    "defaultMessage": "Catch the beat",
+    "description": "Gamemode name for Catch the beat"
+  },
+  "generic.gamemodes.mania": {
+    "defaultMessage": "Mania",
+    "description": "Gamemode name for Mania"
+  },
+  "generic.gamemodes.std": {
+    "defaultMessage": "Standard",
+    "description": "Gamemode name for Standard"
+  },
+  "generic.gamemodes.taiko": {
+    "defaultMessage": "Taiko",
+    "description": "Gamemode name for Taiko"
+  },
+  "generic.journey.statusClosed": {
+    "defaultMessage": "Closed",
+    "description": "Journey is either finished or cancelled"
+  },
+  "generic.journey.statusOpen": {
+    "defaultMessage": "Open",
+    "description": "Journey is open for either applications or mods"
+  },
+  "generic.journey.statusSuspended": {
+    "defaultMessage": "Suspended",
+    "description": "Journey is suspended for any kind of interactions"
+  },
+  "generic.user.availability.collab": {
+    "defaultMessage": "Collab",
+    "description": "User is/isn't available for collabs"
+  },
+  "generic.user.availability.guest_diffs": {
+    "defaultMessage": "GD",
+    "description": "User is/isn't available for guest diffs maps"
+  },
+  "generic.user.availability.mods": {
+    "defaultMessage": "Mods",
+    "description": "User is/isn't available for playtesting maps"
+  },
+  "generic.user.availability.playtesting": {
+    "defaultMessage": "Playtesting",
+    "description": "User is/isn't available for playtesting maps"
+  },
+  "generic.user.followAction": {
+    "defaultMessage": "Follow",
+    "description": "Generic action that allows to follow a certain user"
+  },
+  "generic.user.messageAction": {
+    "defaultMessage": "Message",
+    "description": "Generic action that opens a message dialog with certain user"
+  },
   "hotkeys.app.history_goBack": {
     "defaultMessage": "Go Back to previous page",
     "description": "Global hotkey that goes to the previous page (if available)"
@@ -239,16 +295,27 @@
     "defaultMessage": "404 - Not found",
     "description": "Not found page header"
   },
-  "pages.user.activity.titleHeader": {
-    "defaultMessage": "Activity",
-    "description": "Activity Page Header"
-  },
-  "pages.user.profile.titleHeader": {
-    "defaultMessage": "User",
-    "description": "User profile page header"
-  },
   "pages.user.queue.titleHeader": {
     "defaultMessage": "Queue",
     "description": "Queue Page Header"
+  },
+  "templates.user.profile.availability": {
+    "defaultMessage": "Available for"
+  },
+  "templates.user.profile.closedJourneys": {
+    "defaultMessage": "Closed",
+    "description": "User profile closed Journeys header"
+  },
+  "templates.user.profile.journeys": {
+    "defaultMessage": "Journey",
+    "description": "User profile Journeys header"
+  },
+  "templates.user.profile.openJourneys": {
+    "defaultMessage": "Open",
+    "description": "User profile open Journeys header"
+  },
+  "templates.user.profile.suspendedJourneys": {
+    "defaultMessage": "Suspended",
+    "description": "User profile suspended Journeys header"
   }
 }

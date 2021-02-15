@@ -1,10 +1,15 @@
 import Axios from 'axios';
 import format from 'string-format';
 import { OperationRequest } from '@/typings/api';
-import { operations, paths } from '@/typings/api.gremio-steve';
-export { definitions as Definitions } from '@/typings/api.gremio-steve';
+import {
+  operations,
+  paths,
+  definitions,
+} from '@/typings/api.gremio-steve.d.ts';
 
-Axios.defaults.baseURL = CONFIG.app.api.uri;
+export type Definitions = definitions;
+
+Axios.defaults.baseURL = CONFIG.renderer.api.uri;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Paths: Record<keyof paths, (params?: any) => string> = {
