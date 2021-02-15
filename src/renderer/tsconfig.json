@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./*"],
+      "common/*": ["../common/*"]
+    },
+    "esModuleInterop": true
+  }
+}

@@ -1,8 +1,0 @@
-env:
-  node: true
-  browser: false
-parserOptions:
-  ecmaVersion: 6
-  sourceType: module
-rules:
-  '@typescript-eslint/no-var-requires': 0
