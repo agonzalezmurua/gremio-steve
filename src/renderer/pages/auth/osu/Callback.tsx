@@ -1,12 +1,15 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import { useAsyncFn } from 'react-use';
 
 import useQuery from '@/hooks/useQuery';
 import links from '@/services/links';
 import Api from '@/services/api';
+import { StoredOauthState } from '@/typings/gremio-steve';
+import AppContext from '@/App.context';
 
 const Callback: React.FC = () => {
+  const { actions } = useContext(AppContext);
   const query = useQuery();
   const history = useHistory();
 
@@ -16,18 +19,17 @@ const Callback: React.FC = () => {
   const state = useMemo(() => {
     const states = JSON.parse(
       atob(localStorage.getItem('oauthstate'))
-    ) as Steve.StoredOauthState;
+    ) as StoredOauthState;
     localStorage.removeItem('oauthstate');
     return states[stateIdentifier];
   }, [stateIdentifier]);
 
   const [authenticationState, fetchAuthentication] = useAsyncFn(async () => {
-    const response = Api.Operations.authenticateUser({
+    const response = await Api.Operations.authenticateUser({
       body: { authentication: { code: code } },
     });
 
-    // TODO: store access token
-
+    actions.login(response.data.access_token);
     history.push(links.pages.home());
     return;
   }, [state]);
