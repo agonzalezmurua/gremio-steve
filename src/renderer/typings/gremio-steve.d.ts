@@ -5,6 +5,7 @@ export type StoredOauthState = {
 };
 
 export type OauthState = {
+  identifier: string;
   came_from: 'browser' | 'app';
   original_url?: string;
 };

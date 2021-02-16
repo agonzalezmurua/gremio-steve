@@ -60,6 +60,7 @@ const UserProfileTemplate: React.FC<Props> = (props) => {
       pending,
     };
   }, [props.user?.journeys]);
+
   return (
     <>
       <section
@@ -137,26 +138,39 @@ const UserProfileTemplate: React.FC<Props> = (props) => {
         </section>
 
         <article>
-          {(props.user?.description && (
-            <Markdown value={props.user.description} text="" />
-          )) || <SkeletonLoader tw="h-16 w-full" />}
+          {props.user !== null ? (
+            <Markdown>
+              {props.user.description || 'User has no description (っ °Д °;)っ'}
+            </Markdown>
+          ) : (
+            <SkeletonLoader tw="h-16 w-full" />
+          )}
         </article>
 
-        {props.user && (
+        {props.user !== null ? (
           <FormattedMessage
             id="templates.user.profile.journeys"
             defaultMessage="Journey"
             description="User profile Journeys header"
             tagName="h2"
           />
-        )}
-
-        {props.user ? null : (
+        ) : (
           <>
             <SkeletonLoader tw="h-8 w-24" />
             <SkeletonLoader tw="h-48 w-full" />
           </>
         )}
+
+        {props.user !== null &&
+          open.length === 0 &&
+          closed.length === 0 &&
+          pending.length === 0 && (
+            <FormattedMessage
+              id="templates.userProfile.noJourneys"
+              defaultMessage="This is a placeholder message for those who do not have any Journey (´。＿。｀)"
+              tagName="p"
+            />
+          )}
 
         {open.length !== 0 && (
           <>

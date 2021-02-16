@@ -2,7 +2,7 @@ import tw, { styled } from 'twin.macro';
 import ArticleStyle from '@/globals/styles/article';
 
 export default {
-  Container: styled.section`
+  Container: styled.div`
     ${ArticleStyle}
     ${tw`light:text-black dark:text-gray-300`}
     ul {

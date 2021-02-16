@@ -10,7 +10,7 @@ import IndexPage from '@/pages/Index';
 // import NewJourneyPage from '@/pages/journeys/New';
 // import QueuePage from '@/pages/user/Queue';
 // import ActivityPage from '@/pages/user/Activity';
-// import UserProfilePage from '@/pages/user/Profile';
+import UserProfilePage from '@/pages/user/Profile';
 
 import useAppHotkeys from '@/hooks/useAppHotkeys';
 import useAppEvents from '@/hooks/useAppEvents';
@@ -30,12 +30,12 @@ const App: React.FC = () => {
             <Route path="/" exact component={IndexPage} />
             <Route path="/login" exact component={LoginPage} />
             <Route path="/auth/osu/callback" exact component={CallbackPage} />
-            {/* <Route path="/journeys/new" exact component={NewJourneyPage} />
-          <Route path="/journeys/:id" component={JourneyPage} />
-          <Route path="/user/:id/profile" component={UserProfilePage} />
-          <Route path="/user/:id/queue" component={QueuePage} />
-          <Route path="/user/:id/activity" component={ActivityPage} />
-        <Route path={['*', '/not-found']} component={NotFoundPage} /> */}
+            {/* <Route path="/journeys/new" exact component={NewJourneyPage} /> */}
+            {/* <Route path="/journeys/:id" component={JourneyPage} /> */}
+            <Route path="/user/:id/profile" component={UserProfilePage} />
+            {/* <Route path="/user/:id/queue" component={QueuePage} /> */}
+            {/* <Route path="/user/:id/activity" component={ActivityPage} /> */}
+            {/* <Route path={['*', '/not-found']} component={NotFoundPage} /> */}
           </Route>
         </Navigation>
       </AppContextProvider>

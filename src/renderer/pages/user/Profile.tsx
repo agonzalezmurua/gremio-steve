@@ -10,11 +10,12 @@ type Props = {
   id: string;
 };
 
-const UserProfilePage: React.FC<RouteComponentProps & Props> = (props) => {
-  const { value, error } = useAsync(async () => {
-    return (await Api.Operations.getOneUserById({ path: { id: props.id } }))
-      .data;
-  });
+const UserProfilePage: React.FC<RouteComponentProps<Props>> = (props) => {
+  const { value, error, loading } = useAsync(
+    async () =>
+      Api.Operations.getOneUserById({ path: { id: props.match.params.id } }),
+    []
+  );
 
   if (error) {
     props.history.push(links.pages.not_found());
@@ -22,7 +23,7 @@ const UserProfilePage: React.FC<RouteComponentProps & Props> = (props) => {
 
   return (
     <main>
-      <UserProfileTemplate user={value} />
+      <UserProfileTemplate user={loading ? null : value.data} />
     </main>
   );
 };

@@ -42,7 +42,7 @@ const TopMenu: React.FC = (props) => {
 };
 
 export default styled(TopMenu)`
-  ${isBrowser ? null : tw`hidden`}
+  ${isBrowser ? tw`hidden` : null}
   -webkit-app-region: drag;
   button {
     -webkit-app-region: no-drag;

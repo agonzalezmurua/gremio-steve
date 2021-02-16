@@ -10,17 +10,13 @@ const LoginPage = () => {
   const handleLogin = useCallback(() => {
     const url = new URL(CONFIG.renderer.auth.request_url);
 
-    const stateIdentifier = uuidv4();
-    const state = btoa(
-      JSON.stringify({
-        [stateIdentifier]: {
-          came_from: isBrowser ? 'browser' : 'app',
-        } as OauthState,
-      })
-    );
+    const state: OauthState = {
+      identifier: uuidv4(),
+      came_from: isBrowser ? 'browser' : 'app',
+    };
 
-    sessionStorage.setItem('oauthstate', state);
-    url.searchParams.append('state', stateIdentifier);
+    sessionStorage.setItem('oauthstate', JSON.stringify(state));
+    url.searchParams.append('state', btoa(JSON.stringify(state)));
 
     if (isBrowser === true) {
       document.location.href = url.toString();

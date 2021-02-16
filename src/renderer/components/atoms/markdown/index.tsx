@@ -4,13 +4,9 @@ import gfm from 'remark-gfm';
 
 import Styles from './styles';
 
-type Props = {
-  text: string;
-} & React.HTMLProps<HTMLDivElement>;
-
-const Markdown: React.FC<Props> = ({ text, ...props }) => (
+const Markdown: React.FC = ({ children, ...props }) => (
   <Styles.Container {...props}>
-    <ReactMarkdown plugins={[gfm]} children={text} />
+    <ReactMarkdown plugins={[gfm]}>{String(children)}</ReactMarkdown>
   </Styles.Container>
 );
 
