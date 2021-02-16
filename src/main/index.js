@@ -1,15 +1,10 @@
 const { app, BrowserWindow, ipcMain, protocol } = require('electron');
 const { installExtensions } = require('./extensions');
-const config = require('config');
 const consola = require('consola');
 const path = require('path');
+const mode = process.env.NODE_ENV || 'development';
 
-try {
-  // Hot reloading for main process, that means if any file inside main changes it triggers a full app reload
-  require('electron-reloader')(module, { ignore: 'app/**' });
-} catch (error) {
-  consola.error(error);
-}
+console.log(mode);
 
 /** @type {BrowserWindow} */
 let window = null;
@@ -30,7 +25,11 @@ function createWindow() {
   });
 
   window.setMenuBarVisibility(null);
-  window.loadURL(`http://localhost:${config.get('webpack.dev_server.port')}`); // (2) <- load react
+  if (mode === 'development') {
+    window.loadURL('http://localhost:3000'); // (2) <- load react
+  } else {
+    window.loadURL(`file://${__dirname}/renderer/index.html`);
+  }
   // window.webContents.openDevTools();
   window.on('closed', () => {
     window = null; // (3) <- deference when window is closed
@@ -50,7 +49,7 @@ function createWindow() {
 app.on('ready', () => {
   installExtensions(); // (4) <- install dev tools when on dev environment
   createWindow();
-  protocol.registerHttpProtocol(config.get('main.protocol'), (req) => {
+  protocol.registerHttpProtocol('gremio-steve', (req) => {
     const fullUrl = formFullTodoUrl(req.url);
     consola.debug('full url to open ' + fullUrl);
     mainWindow.loadURL(fullUrl);
