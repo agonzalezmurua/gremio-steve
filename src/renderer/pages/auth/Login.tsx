@@ -1,14 +1,33 @@
 import 'twin.macro';
-import React, { useCallback } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import LoginTemplate from '@/components/templates/login';
+import AppContext from '@/App.context';
+import { ACCESS_TOKEN_KEY } from '@/App.context.user';
 import { isBrowser } from '@/constants/platform';
 import { OauthState } from '@/typings/gremio-steve';
+import links from '@/services/links';
+import useQuery from '@/hooks/useQuery';
+
+import WebLoginTemplate from '@/components/templates/web-login';
+import AppLoginTemplate from '@/components/templates/app-login';
 
 const LoginPage = () => {
-  const handleLogin = useCallback(() => {
-    const url = new URL(CONFIG.renderer.auth.request_url);
+  const query = useQuery();
+  const { isLoggedIn } = useContext(AppContext);
+  const cameFrom = query.get('came_from');
+
+  const handleOpenApp = useCallback(() => {
+    document.location.href = links.desktop.protocol.auth_callback(
+      localStorage.getItem(ACCESS_TOKEN_KEY)
+    );
+  }, [isLoggedIn]);
+
+  const handleWebLogin = useCallback(() => {
+    if (cameFrom === 'app') {
+      return;
+    }
+    const url = new URL(CONFIG.renderer.api.request_url);
 
     const state: OauthState = {
       identifier: uuidv4(),
@@ -18,14 +37,25 @@ const LoginPage = () => {
     sessionStorage.setItem('oauthstate', JSON.stringify(state));
     url.searchParams.append('state', btoa(JSON.stringify(state)));
 
-    if (isBrowser === true) {
-      document.location.href = url.toString();
-    } else {
-      window.electron.shell.openExternal(url.toString());
-    }
+    document.location.href = url.toString();
   }, []);
 
-  return <LoginTemplate onLogin={handleLogin} />;
+  if (isBrowser) {
+    return (
+      <WebLoginTemplate
+        onLogin={handleWebLogin}
+        isUserLoggedIn={isLoggedIn}
+        onOpenApp={handleOpenApp}
+        cameFrom={cameFrom}
+      />
+    );
+  } else {
+    return (
+      <AppLoginTemplate
+        onLogin={() => window.electron.shell.openExternal(links.web.login())}
+      />
+    );
+  }
 };
 
 export default LoginPage;

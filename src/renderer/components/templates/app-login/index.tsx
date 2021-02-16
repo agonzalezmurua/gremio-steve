@@ -7,7 +7,7 @@ type Props = {
   onLogin: () => void;
 };
 
-const LoginTemplate: React.FC<Props> = (props) => {
+const AppLoginTemplate: React.FC<Props> = (props) => {
   return (
     <main tw="h-full">
       <section tw="p-8 flex flex-col justify-center items-center space-y-4">
@@ -20,11 +20,12 @@ const LoginTemplate: React.FC<Props> = (props) => {
             />
           </h1>
         </section>
+
         <Button color="blue" onClick={props.onLogin}>
           <FormattedMessage
-            id="pages.login.authWithOsu"
-            defaultMessage="Log in with osu!"
-            description="Button that indicated that a log in with osu! game option"
+            id="pages.login.openBrowser"
+            defaultMessage="Log in with browser"
+            description="Button that indicated that user must open the browser in order to log in"
           />
         </Button>
       </section>
@@ -32,4 +33,4 @@ const LoginTemplate: React.FC<Props> = (props) => {
   );
 };
 
-export default LoginTemplate;
+export default AppLoginTemplate;

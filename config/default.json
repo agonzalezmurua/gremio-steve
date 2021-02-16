@@ -1,16 +1,19 @@
 {
-  "main": {},
+  "main": {
+    "protocol": "stev"
+  },
   "webpack": {
     "dev_server": {
       "port": 3000
     }
   },
   "renderer": {
-    "auth": {
-      "callback_url": "http://localhost:3000/#/auth/osu/callback",
-      "request_url": "http://localhost:3010/auth/osu"
+    "web": {
+      "login": "http://localhost:3000/#/login",
+      "callback_url": "http://localhost:3000/#/auth/osu/callback"
     },
     "api": {
+      "request_url": "http://localhost:3010/auth/osu",
       "uri": "http://localhost:3010",
       "path": "/api"
     }

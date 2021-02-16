@@ -4,7 +4,7 @@ import jwt_decode from 'jwt-decode';
 import { LoggedUser } from '@/typings/gremio-steve';
 import Api from '@/services/api';
 
-const ACCESS_TOKEN_KEY = 'access_token';
+export const ACCESS_TOKEN_KEY = 'access_token';
 
 type Actions =
   | {

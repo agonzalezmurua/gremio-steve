@@ -1,9 +1,5 @@
 import { Definitions } from '@/services/api';
 
-export type StoredOauthState = {
-  [identifier: string]: OauthState | undefined;
-};
-
 export type OauthState = {
   identifier: string;
   came_from: 'browser' | 'app';

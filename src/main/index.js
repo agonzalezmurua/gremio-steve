@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, protocol } = require('electron');
 const { installExtensions } = require('./extensions');
 const config = require('config');
 const consola = require('consola');
@@ -50,6 +50,11 @@ function createWindow() {
 app.on('ready', () => {
   installExtensions(); // (4) <- install dev tools when on dev environment
   createWindow();
+  protocol.registerHttpProtocol(config.get('main.protocol'), (req) => {
+    const fullUrl = formFullTodoUrl(req.url);
+    consola.debug('full url to open ' + fullUrl);
+    mainWindow.loadURL(fullUrl);
+  });
 });
 
 app.on('window-all-closed', () => {
