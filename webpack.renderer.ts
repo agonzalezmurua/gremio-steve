@@ -9,7 +9,7 @@ const path = require('path');
 module.exports = merge(require('./webpack.react'), {
   entry: './src/renderer/index.tsx',
   output: {
-    path: path.resolve('dist/renderer'),
+    path: path.resolve('build/renderer'),
   },
   devServer: {
     port: config.get('webpack.dev_server.port'),

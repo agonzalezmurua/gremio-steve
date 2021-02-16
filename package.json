@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "run-p build:*",
-    "build:app": "webpack --config app/webpack.config.js",
+    "build:main": "electron-builder",
+    "build:renderer": "webpack --config webpack.renderer.ts",
     "build:i18n": "run-s build:i18n:extract build:i18n:compile",
     "build:i18n:extract": "node runtime-scripts/build/extract-i18n.js",
     "build:i18n:compile": "formatjs compile-folder --ast src/lang/raw src/lang/compiled",

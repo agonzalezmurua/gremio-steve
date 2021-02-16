@@ -1,2 +1,632 @@
 {
+  "'GL31F/'": [
+    {
+      "type": 0,
+      "value": "Hello fellow mappers"
+    }
+  ],
+  "'P33wds'": [
+    {
+      "type": 0,
+      "value": "Title"
+    }
+  ],
+  "components.atoms..catchOptionLabel": [
+    {
+      "type": 0,
+      "value": "Catch"
+    }
+  ],
+  "components.atoms..editButton": [
+    {
+      "type": 0,
+      "value": "Edit"
+    }
+  ],
+  "components.atoms..maniaOptionLabel": [
+    {
+      "type": 0,
+      "value": "Mania"
+    }
+  ],
+  "components.atoms..previewButton": [
+    {
+      "type": 0,
+      "value": "Preview"
+    }
+  ],
+  "components.atoms..progress.backButton": [
+    {
+      "type": 0,
+      "value": "Back"
+    }
+  ],
+  "components.atoms..progress.finishButton": [
+    {
+      "type": 0,
+      "value": "Finish"
+    }
+  ],
+  "components.atoms..progress.nextButton": [
+    {
+      "type": 0,
+      "value": "Next"
+    }
+  ],
+  "components.atoms..standardOptionLabel": [
+    {
+      "type": 0,
+      "value": "Standard"
+    }
+  ],
+  "components.atoms..taikoOptionLabel": [
+    {
+      "type": 0,
+      "value": "Taiko"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.catchTheBeatEasy": [
+    {
+      "type": 0,
+      "value": "Cup"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.catchTheBeatExpert": [
+    {
+      "type": 0,
+      "value": "Overdose"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.catchTheBeatExpertPlus": [
+    {
+      "type": 0,
+      "value": "Overdose+"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.catchTheBeatHard": [
+    {
+      "type": 0,
+      "value": "Platter"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.catchTheBeatInsane": [
+    {
+      "type": 0,
+      "value": "Rain"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.catchTheBeatNormal": [
+    {
+      "type": 0,
+      "value": "Salad"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.maniaEasy": [
+    {
+      "type": 0,
+      "value": "Easy"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.maniaExpert": [
+    {
+      "type": 0,
+      "value": "Expert"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.maniaExpertPlus": [
+    {
+      "type": 0,
+      "value": "Expert+"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.maniaHard": [
+    {
+      "type": 0,
+      "value": "Hard"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.maniaInsane": [
+    {
+      "type": 0,
+      "value": "Insane"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.maniaNormal": [
+    {
+      "type": 0,
+      "value": "Normal"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.standardEasy": [
+    {
+      "type": 0,
+      "value": "Easy"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.standardExpert": [
+    {
+      "type": 0,
+      "value": "Expert"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.standardExpertPlus": [
+    {
+      "type": 0,
+      "value": "Expert+"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.standardHard": [
+    {
+      "type": 0,
+      "value": "Hard"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.standardInsane": [
+    {
+      "type": 0,
+      "value": "Insane"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.standardNormal": [
+    {
+      "type": 0,
+      "value": "Normal"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.taikoEasy": [
+    {
+      "type": 0,
+      "value": "Kantan"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.taikoExpert": [
+    {
+      "type": 0,
+      "value": "Inner/Ura Oni"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.taikoExpertPlus": [
+    {
+      "type": 0,
+      "value": "Hell Oni"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.taikoHard": [
+    {
+      "type": 0,
+      "value": "Muzukashii"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.taikoInsane": [
+    {
+      "type": 0,
+      "value": "Oni"
+    }
+  ],
+  "components.atoms.gameMapDifficultySelect.taikoNormal": [
+    {
+      "type": 0,
+      "value": "Futsuu"
+    }
+  ],
+  "components.atoms.navigationControls.goBackHome": [
+    {
+      "type": 0,
+      "value": "Go to home page"
+    }
+  ],
+  "components.molecules.activity.commenLink": [
+    {
+      "offset": 0,
+      "options": {
+        "=0": {
+          "value": [
+            {
+              "type": 0,
+              "value": "no comments"
+            }
+          ]
+        },
+        "one": {
+          "value": [
+            {
+              "type": 0,
+              "value": "comment"
+            }
+          ]
+        },
+        "other": {
+          "value": [
+            {
+              "type": 0,
+              "value": "comments"
+            }
+          ]
+        }
+      },
+      "pluralType": "cardinal",
+      "type": 6,
+      "value": "count"
+    }
+  ],
+  "components.molecules.activity.comment_on_comment": [
+    {
+      "type": 1,
+      "value": "user"
+    },
+    {
+      "type": 0,
+      "value": " replied to your "
+    },
+    {
+      "type": 1,
+      "value": "comment"
+    },
+    {
+      "type": 0,
+      "value": " on "
+    },
+    {
+      "type": 1,
+      "value": "journey"
+    },
+    {
+      "type": 0,
+      "value": "."
+    }
+  ],
+  "components.molecules.activity.comment_on_journey": [
+    {
+      "type": 1,
+      "value": "user"
+    },
+    {
+      "type": 0,
+      "value": " left a "
+    },
+    {
+      "type": 1,
+      "value": "comment"
+    },
+    {
+      "type": 0,
+      "value": " on "
+    },
+    {
+      "type": 1,
+      "value": "journey"
+    },
+    {
+      "type": 0,
+      "value": "."
+    }
+  ],
+  "components.molecules.activity.comment_on_user": [
+    {
+      "type": 1,
+      "value": "user"
+    },
+    {
+      "type": 0,
+      "value": " left a "
+    },
+    {
+      "type": 1,
+      "value": "comment"
+    },
+    {
+      "type": 0,
+      "value": " on your profile"
+    }
+  ],
+  "components.molecules.activity.create_a_journey": [
+    {
+      "type": 1,
+      "value": "user"
+    },
+    {
+      "type": 0,
+      "value": " created a new journey "
+    },
+    {
+      "type": 1,
+      "value": "journey"
+    }
+  ],
+  "components.molecules.activity.default": [
+    {
+      "type": 0,
+      "value": "How did you even got this message?... Please contact the devs!"
+    }
+  ],
+  "components.molecules.activity.edit_a_journey": [
+    {
+      "type": 1,
+      "value": "user"
+    },
+    {
+      "type": 0,
+      "value": " edited "
+    },
+    {
+      "type": 1,
+      "value": "journey"
+    }
+  ],
+  "components.molecules.activity.mention_on_comment": [
+    {
+      "type": 1,
+      "value": "user"
+    },
+    {
+      "type": 0,
+      "value": " mentioned you on a "
+    },
+    {
+      "type": 1,
+      "value": "comment"
+    }
+  ],
+  "components.molecules.activity.mention_on_journey": [
+    {
+      "type": 1,
+      "value": "user"
+    },
+    {
+      "type": 0,
+      "value": " mentioned "
+    },
+    {
+      "type": 1,
+      "value": "journey"
+    },
+    {
+      "type": 0,
+      "value": " on a "
+    },
+    {
+      "type": 1,
+      "value": "comment"
+    }
+  ],
+  "components.molecules.navigationLinks.activityLink": [
+    {
+      "type": 0,
+      "value": "Activity"
+    }
+  ],
+  "components.molecules.navigationLinks.bookmarksLink": [
+    {
+      "type": 0,
+      "value": "Bookmarks"
+    }
+  ],
+  "components.molecules.navigationLinks.loginLink": [
+    {
+      "type": 0,
+      "value": "Log in"
+    }
+  ],
+  "components.molecules.navigationLinks.myQueueLink": [
+    {
+      "type": 0,
+      "value": "My Queue"
+    }
+  ],
+  "components.molecules.navigationLinks.newJourneyLink": [
+    {
+      "type": 0,
+      "value": "New Journey"
+    }
+  ],
+  "components.organisms.gameMapForm.addNewDifficultyButton": [
+    {
+      "type": 0,
+      "value": "Add new"
+    }
+  ],
+  "components.templates.journeys.difficultiesHeader": [
+    {
+      "type": 0,
+      "value": "Diffs"
+    }
+  ],
+  "components.templates.journeys.organizerHeader": [
+    {
+      "type": 0,
+      "value": "Organizer"
+    }
+  ],
+  "components.templates.journeysForm.difficultiesLegend": [
+    {
+      "type": 0,
+      "value": "Difficulties"
+    }
+  ],
+  "components.templates.journeysForm.essentialsLegend": [
+    {
+      "type": 0,
+      "value": "Essentials"
+    }
+  ],
+  "components.templates.journeysForm.extrasLegend": [
+    {
+      "type": 0,
+      "value": "Extras"
+    }
+  ],
+  "components.templates.journeysForm.saveButton": [
+    {
+      "type": 0,
+      "value": "Save"
+    }
+  ],
+  "generic.gamemodes.ctb": [
+    {
+      "type": 0,
+      "value": "Catch the beat"
+    }
+  ],
+  "generic.gamemodes.mania": [
+    {
+      "type": 0,
+      "value": "Mania"
+    }
+  ],
+  "generic.gamemodes.std": [
+    {
+      "type": 0,
+      "value": "Standard"
+    }
+  ],
+  "generic.gamemodes.taiko": [
+    {
+      "type": 0,
+      "value": "Taiko"
+    }
+  ],
+  "generic.journey.statusClosed": [
+    {
+      "type": 0,
+      "value": "Closed"
+    }
+  ],
+  "generic.journey.statusOpen": [
+    {
+      "type": 0,
+      "value": "Open"
+    }
+  ],
+  "generic.journey.statusSuspended": [
+    {
+      "type": 0,
+      "value": "Suspended"
+    }
+  ],
+  "generic.user.availability.collab": [
+    {
+      "type": 0,
+      "value": "Collab"
+    }
+  ],
+  "generic.user.availability.guest_diffs": [
+    {
+      "type": 0,
+      "value": "GD"
+    }
+  ],
+  "generic.user.availability.mods": [
+    {
+      "type": 0,
+      "value": "Mods"
+    }
+  ],
+  "generic.user.availability.playtesting": [
+    {
+      "type": 0,
+      "value": "Playtesting"
+    }
+  ],
+  "generic.user.followAction": [
+    {
+      "type": 0,
+      "value": "Follow"
+    }
+  ],
+  "generic.user.messageAction": [
+    {
+      "type": 0,
+      "value": "Message"
+    }
+  ],
+  "hotkeys.app.history_goBack": [
+    {
+      "type": 0,
+      "value": "Go Back to previous page"
+    }
+  ],
+  "hotkeys.app.history_goForward": [
+    {
+      "type": 0,
+      "value": "Go Forward to next page"
+    }
+  ],
+  "hotkeys.app.journey_new": [
+    {
+      "type": 0,
+      "value": "Create new Journey"
+    }
+  ],
+  "pages.login.authWithOsu": [
+    {
+      "type": 0,
+      "value": "Log in with in!"
+    }
+  ],
+  "pages.login.openApp": [
+    {
+      "type": 0,
+      "value": "Open the app"
+    }
+  ],
+  "pages.login.openBrowser": [
+    {
+      "type": 0,
+      "value": "Log in with browser"
+    }
+  ],
+  "pages.login.title": [
+    {
+      "type": 0,
+      "value": "Welcome to Stev"
+    }
+  ],
+  "pages.notFound.titleHeader": [
+    {
+      "type": 0,
+      "value": "404 - Not found"
+    }
+  ],
+  "pages.user.queue.titleHeader": [
+    {
+      "type": 0,
+      "value": "Queue"
+    }
+  ],
+  "templates.user.profile.availability": [
+    {
+      "type": 0,
+      "value": "Available for"
+    }
+  ],
+  "templates.user.profile.closedJourneys": [
+    {
+      "type": 0,
+      "value": "Closed"
+    }
+  ],
+  "templates.user.profile.journeys": [
+    {
+      "type": 0,
+      "value": "Journey"
+    }
+  ],
+  "templates.user.profile.openJourneys": [
+    {
+      "type": 0,
+      "value": "Open"
+    }
+  ],
+  "templates.user.profile.suspendedJourneys": [
+    {
+      "type": 0,
+      "value": "Suspended"
+    }
+  ],
+  "templates.userProfile.noJourneys": [
+    {
+      "type": 0,
+      "value": "This is a placeholder message for those who do not have any Journey (´。＿。｀)"
+    }
+  ]
 }

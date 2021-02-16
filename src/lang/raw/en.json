@@ -291,6 +291,22 @@
     "defaultMessage": "Create new Journey",
     "description": "Global hotkey that navigates to new journey page"
   },
+  "pages.login.authWithOsu": {
+    "defaultMessage": "Log in with in!",
+    "description": "Button that indicated that a log in with osu! game option"
+  },
+  "pages.login.openApp": {
+    "defaultMessage": "Open the app",
+    "description": "Button that indicated that user is already logged in web, prompting them to open the app"
+  },
+  "pages.login.openBrowser": {
+    "defaultMessage": "Log in with browser",
+    "description": "Button that indicated that user must open the browser in order to log in"
+  },
+  "pages.login.title": {
+    "defaultMessage": "Welcome to Stev",
+    "description": "Header with salutations"
+  },
   "pages.notFound.titleHeader": {
     "defaultMessage": "404 - Not found",
     "description": "Not found page header"
@@ -317,5 +333,8 @@
   "templates.user.profile.suspendedJourneys": {
     "defaultMessage": "Suspended",
     "description": "User profile suspended Journeys header"
+  },
+  "templates.userProfile.noJourneys": {
+    "defaultMessage": "This is a placeholder message for those who do not have any Journey (´。＿。｀)"
   }
 }
