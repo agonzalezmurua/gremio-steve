@@ -15,9 +15,9 @@ const build = (lang) => {
 };
 
 const extract = (lang) => {
-  const dir = srcFolder + '/**/!(typings)/*.ts*';
+  const glob = 'src/{renderer,**}/!(*.d).{ts,tsx}'; //  All .ts or .tsx files but ignoring declarations
   const outFile = path.join(srcLangFolder, `${lang}.json`);
-  const command = `npx formatjs extract ${dir} --out-file=${outFile} --id-interpolation-pattern='[sha512:contenthash:base64:6]'`;
+  const command = `npx formatjs extract "${glob}" --out-file=${outFile} --id-interpolation-pattern='[sha512:contenthash:base64:6]'`;
 
   consola.debug('running cli command:', command);
   execSync(command);
