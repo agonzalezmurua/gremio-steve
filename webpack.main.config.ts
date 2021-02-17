@@ -1,31 +1,25 @@
 const webpack = require('webpack');
 const path = require('path');
+const ConfigWebpackPlugin = require('config-webpack');
 
 module.exports = [
   {
     entry: './src/main/index.js',
     output: {
       filename: 'main.js',
-      path: path.resolve('dist'),
+      path: path.resolve('build'),
     },
     target: 'electron-main',
-    module: {
-      rules: [
-        {
-          test: /\.node$/,
-          loader: 'node-loader',
-        },
-      ],
-    },
     node: {
       __dirname: false,
     },
+    plugins: [new ConfigWebpackPlugin()],
   },
   {
     entry: './src/main/preload.js',
     target: 'electron-preload',
     output: {
-      path: path.resolve('dist'),
+      path: path.resolve('build'),
       filename: 'preload.js',
     },
   },

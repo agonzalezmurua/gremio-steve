@@ -1,35 +1,69 @@
 {
   "name": "gremio-steve",
-  "version": "1.0.0",
   "description": "Osu! Queue manager",
-  "main": "src/main/index.js",
+  "homepage": "https://github.com/agonzalezmurua/gremio-steve",
+  "version": "1.0.0",
+  "module": "./build/main/index.js",
   "private": true,
+  "repository": {
+    "url": "https://github.com/agonzalezmurua/gremio-steve"
+  },
+  "main": "build/main.js",
+  "author": {
+    "email": "8430727+agonzalezmurua@users.noreply.github.com",
+    "name": "Agustín González",
+    "url": "https://github.com/agonzalezmurua"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "run-s build:main",
     "dist": "electron-builder",
     "pack": "electron-builder --dir",
-    "compile": "run-p compile:*",
-    "compile:main": "webpack --mode=production --config webpack.main.config.ts",
-    "compile:renderer": "webpack --mode=production --config webpack.renderer.config.ts",
-    "build:i18n": "run-s build:i18n:extract build:i18n:compile",
-    "build:i18n:extract": "node runtime-scripts/build/extract-i18n.js",
-    "build:i18n:compile": "formatjs compile-folder --ast src/lang/raw src/lang/compiled",
+    "build": "run-p build:*",
+    "build:main": "webpack --mode=production --config webpack.main.config.ts",
+    "build:renderer": "run-s build:renderer:*",
+    "build:renderer:i18n": "run-s build:renderer:i18n:*",
+    "build:renderer:i18n:extract": "node runtime-scripts/build/extract-i18n.js",
+    "build:renderer:i18n:compile": "formatjs compile-folder --ast src/lang/raw src/lang/compiled",
+    "build:renderer:webpack": "webpack --mode=production --config webpack.renderer.config.ts",
     "generate:specs": "run-p generate:specs:*",
     "generate:specs:gremio-steve": "npx openapi-typescript http://localhost:3010/api-docs/swagger.json --output src/renderer/typings/api.gremio-steve.d.ts",
     "dev": "cross-env NODE_ENV=development run-p dev:**",
     "dev:i18n-build": "node runtime-scripts/dev/watch-i18n.js",
     "dev:renderer": "webpack serve --mode=development --config webpack.renderer.config.ts",
-    "dev:main": "node runtime-scripts/dev/wait-on-app && electron src/main/index.js",
+    "dev:main": "run-p dev:main:*",
+    "dev:main:compile": "node runtime-scripts/dev/wait-on-app & webpack --watch --mode=development --config webpack.main.config.ts",
+    "dev:main:start": "wait-on build/main.js && electron . build/main.js",
     "postinstall": "electron-builder install-app-deps"
   },
-  "author": "",
   "license": "ISC",
   "languages": [
     "en"
   ],
   "engines": {
     "node": ">=15.3.0"
+  },
+  "build": {
+    "appId": "com.steve.app",
+    "mac": {
+      "category": "public.app-category.music-games"
+    },
+    "files": [
+      "build/**/*",
+      "package.json"
+    ],
+    "protocols": {
+      "name": "steve",
+      "role": "Viewer",
+      "schemes": [
+        "steve"
+      ]
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "perMachine": true
+    }
   },
   "dependencies": {
     "axios": "^0.21.0",
@@ -101,7 +135,6 @@
     "eslint-plugin-standard": "^5.0.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.1.0",
-    "node-loader": "^1.0.2",
     "npm-run-all": "^4.1.5",
     "style-loader": "^2.0.0",
     "tailwindcss": "^2.0.2",

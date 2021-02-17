@@ -21,7 +21,7 @@ export default {
   desktop: {
     protocol: {
       auth_callback: (acess_token: string) =>
-        `${CONFIG.main.protocol}://auth/osu/callback?acess_token=${acess_token}`,
+        `${CONFIG.main.protocol}://auth/osu/callback`,
     },
   },
 };

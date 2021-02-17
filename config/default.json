@@ -1,6 +1,6 @@
 {
   "main": {
-    "protocol": "gremio-steve"
+    "protocol": "steve"
   },
   "webpack": {
     "dev_server": {

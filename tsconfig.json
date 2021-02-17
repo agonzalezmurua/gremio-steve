@@ -1,7 +1,8 @@
 {
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "typings/dir.config.d.ts"],
   "exclude": ["node_modules", "dist"],
   "compilerOptions": {
-    "jsx": "react"
+    "allowJs": true,
+    "resolveJsonModule": true
   }
 }

@@ -14,7 +14,7 @@ module.exports = (env, argv) =>
     cache: true,
     output: {
       filename: 'index.js',
-      path: path.resolve('dist/renderer'),
+      path: path.resolve('build/renderer'),
     },
     devServer: {
       contentBase: 'dist',

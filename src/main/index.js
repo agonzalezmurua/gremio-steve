@@ -2,9 +2,9 @@ const { app, BrowserWindow, ipcMain, protocol } = require('electron');
 const { installExtensions } = require('./extensions');
 const consola = require('consola');
 const path = require('path');
-const mode = process.env.NODE_ENV || 'development';
+const mode = process.env.NODE_ENV || 'production';
 
-console.log(mode);
+const protocolSchema = CONFIG.main.protocol;
 
 /** @type {BrowserWindow} */
 let window = null;
@@ -26,7 +26,7 @@ function createWindow() {
 
   window.setMenuBarVisibility(null);
   if (mode === 'development') {
-    window.loadURL('http://localhost:3000'); // (2) <- load react
+    window.loadURL(`http://localhost:${CONFIG.webpack.dev_server.port}`); // (2) <- load react
   } else {
     window.loadURL(`file://${__dirname}/renderer/index.html`);
   }
@@ -49,7 +49,12 @@ function createWindow() {
 app.on('ready', () => {
   installExtensions(); // (4) <- install dev tools when on dev environment
   createWindow();
-  protocol.registerHttpProtocol('gremio-steve', (req) => {
+
+  if (!app.isDefaultProtocolClient(protocolSchema)) {
+    app.setAsDefaultProtocolClient(protocolSchema);
+  }
+
+  protocol.registerHttpProtocol(protocolSchema, (req) => {
     const fullUrl = formFullTodoUrl(req.url);
     consola.debug('full url to open ' + fullUrl);
     mainWindow.loadURL(fullUrl);
