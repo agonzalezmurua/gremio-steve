@@ -24,9 +24,6 @@ const LoginPage = () => {
   }, [isLoggedIn]);
 
   const handleWebLogin = useCallback(() => {
-    if (cameFrom === 'app') {
-      return;
-    }
     const url = new URL(CONFIG.renderer.api.request_url);
 
     const state: OauthState = {

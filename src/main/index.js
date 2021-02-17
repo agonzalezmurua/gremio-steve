@@ -2,7 +2,7 @@ const { app, BrowserWindow, ipcMain, protocol } = require('electron');
 const { installExtensions } = require('./extensions');
 const consola = require('consola');
 const path = require('path');
-const mode = process.env.NODE_ENV || 'production';
+const mode = process.env.NODE_ENV || 'development';
 
 const protocolSchema = CONFIG.main.protocol;
 

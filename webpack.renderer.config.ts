@@ -6,6 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const ConfigWebpackPlugin = require('config-webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 const path = require('path');
 
 module.exports = (env, argv) =>
@@ -86,6 +88,7 @@ module.exports = (env, argv) =>
       ],
     },
     plugins: [
+      new CleanWebpackPlugin(),
       new ConfigWebpackPlugin(),
       new FriendlyErrorsWebpackPlugin(),
       new HtmlWebpackPlugin({

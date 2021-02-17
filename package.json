@@ -31,9 +31,9 @@
     "dev:i18n-build": "node runtime-scripts/dev/watch-i18n.js",
     "dev:renderer": "webpack serve --config webpack.renderer.config.ts",
     "dev:main": "run-s dev:main:*",
-    "dev:main:compile": "node runtime-scripts/dev/wait-on-app && webpack --watch --config webpack.main.config.ts",
-    "dev:main:start": "electron . build/main.js",
-    "postinstall": "wait-on build/main.js && electron-builder install-app-deps"
+    "dev:main:compile": "webpack --watch --config webpack.main.config.ts",
+    "dev:main:start": "node runtime-scripts/dev/wait-on-app && electron . build/main.js",
+    "postinstall": "electron-builder install-app-deps"
   },
   "license": "ISC",
   "languages": [
@@ -121,6 +121,7 @@
     "babel-plugin-macros": "^2.8.0",
     "babel-plugin-react-intl": "^8.2.21",
     "babel-plugin-styled-components": "^1.11.1",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.0.1",
     "electron": "^10.1.5",
     "electron-builder": "^22.9.1",

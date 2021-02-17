@@ -13,7 +13,13 @@ module.exports = [
     node: {
       __dirname: false,
     },
-    plugins: [new ConfigWebpackPlugin()],
+    plugins: [
+      new ConfigWebpackPlugin(),
+      new webpack.EnvironmentPlugin({
+        NODE_ENV: 'development',
+        DEBUG: false,
+      }),
+    ],
   },
   {
     entry: './src/main/preload.js',
