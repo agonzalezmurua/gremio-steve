@@ -27,7 +27,7 @@ const WebLoginTemplate: React.FC<Props> = (props) => {
           <Button color="blue" onClick={props.onLogin}>
             <FormattedMessage
               id="pages.login.authWithOsu"
-              defaultMessage="Log in with in!"
+              defaultMessage="Log in with osu!"
               description="Button that indicated that a log in with osu! game option"
             />
           </Button>
