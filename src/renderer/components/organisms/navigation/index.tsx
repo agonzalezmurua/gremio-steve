@@ -17,7 +17,7 @@ const Navigation: React.FC<Props> = (props) => {
   return (
     <section tw="flex flex-col h-screen w-screen overflow-hidden light:(text-gray-900) dark:(text-gray-300)">
       <TopMenu />
-      <section tw="flex flex-grow py-2 px-4 space-x-4">
+      <section tw=" h-full flex flex-grow py-2 px-4 space-x-4">
         {/* Sidebar */}
         {props.sidebar ? (
           <section tw="flex-shrink space-y-4 w-20 md:(w-60)">
