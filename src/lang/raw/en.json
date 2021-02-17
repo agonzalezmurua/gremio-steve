@@ -1,9 +1,9 @@
 {
-  "'GL31F/'": {
+  "GL31F/": {
     "defaultMessage": "Hello fellow mappers",
     "description": "Test message"
   },
-  "'P33wds'": {
+  "P33wds": {
     "defaultMessage": "Title",
     "description": "Home page Title"
   },
@@ -292,7 +292,7 @@
     "description": "Global hotkey that navigates to new journey page"
   },
   "pages.login.authWithOsu": {
-    "defaultMessage": "Log in with in!",
+    "defaultMessage": "Log in with osu!",
     "description": "Button that indicated that a log in with osu! game option"
   },
   "pages.login.openApp": {
