@@ -1,6 +1,6 @@
 {
   "main": {
-    "protocol": "steve"
+    "protocol": "steve-dev"
   },
   "webpack": {
     "dev_server": {

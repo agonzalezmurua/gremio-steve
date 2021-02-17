@@ -4,6 +4,7 @@ const ConfigWebpackPlugin = require('config-webpack');
 
 module.exports = [
   {
+    cache: true,
     entry: './src/main/index.js',
     output: {
       filename: 'main.js',
