@@ -1,3 +1,7 @@
+/**
+ * This file exposes instanced arrays of values that appear on the types exposed by the API
+ */
+
 import { Definitions } from '@/services/api';
 
 export const MODES: Array<Definitions['Journey.Beatmap']['mode']> = [

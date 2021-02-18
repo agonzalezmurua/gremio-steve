@@ -1,3 +1,8 @@
+/**
+ * This file's function is to define messages that do not have or require
+ * a context to make sense
+ */
+
 import { defineMessages } from 'react-intl';
 
 export const UserMessages = defineMessages({

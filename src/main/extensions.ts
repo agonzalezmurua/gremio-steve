@@ -1,7 +1,8 @@
 import log from 'electron-log';
 
 /**
- * Instals Development extenssions for debugging purposes
+ * Instals Development the extenssions for debugging purposes:
+ * - React DevTools
  */
 export async function installExtensions() {
   if (process.env.NODE_ENV !== 'development') {

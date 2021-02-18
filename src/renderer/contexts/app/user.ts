@@ -1,3 +1,8 @@
+/**
+ * Extension of AppContext, exposes information
+ * about the current logged user (if present)
+ */
+
 import { useMemo, useReducer } from 'react';
 import jwt_decode from 'jwt-decode';
 
@@ -6,6 +11,9 @@ import Api, { Definitions } from '@/services/api';
 
 export const AUTHENTICATION = 'authentication';
 
+/**
+ * Available reducer actions
+ */
 type Actions =
   | {
       type: 'login';
@@ -45,6 +53,7 @@ const useUserReducer = () => {
         : null;
       return parsed ? jwt_decode<LoggedUser>(parsed.access_token) : null;
     } catch (error) {
+      // jwt_decode error because of invalid string should catch here
       return null;
     }
   }, []);
