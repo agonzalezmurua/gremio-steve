@@ -8,17 +8,17 @@
 
 import log from 'electron-log'; // https://www.npmjs.com/package/electron-log
 import URL from 'url';
-import handleProtocolActions, {
-  Action,
-  ActionReturn,
-} from './handle-protocol-actions';
 import querystring from 'query-string';
+
+import handleProtocolActions, { ActionReturn } from './handle-protocol-actions';
+import { Action } from '../common/protocol.actions';
+import * as IpcEvents from '../common/ipc.events';
 
 export function parseAppURL(url: string): ActionReturn | undefined {
   log.info(url);
   const knownActions = Object.values(Action);
   const parsedURL = URL.parse(url);
-  const unknown = { name: 'unknown', payload: undefined };
+  const unknown = { name: IpcEvents.Renderer.unknown, payload: undefined };
 
   // Avoiding an injection attack: check that the query only includes expected characters
   // No characters other than #.-&=_ a-z A-Z 0-9 (no spaces)

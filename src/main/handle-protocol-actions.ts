@@ -1,19 +1,17 @@
 import { definitions } from '../common/typings/api.gremio-steve';
+import * as IpcEvents from '../common/ipc.events';
+import * as Protocol from '../common/protocol.actions';
 
-export enum Action {
-  authenticate = 'authenticate',
-}
-
-export type ActionReturn = { name: string; payload: unknown };
+export type ActionReturn = { name: IpcEvents.Renderer; payload: unknown };
 
 type ActionHandler = (params?: any) => ActionReturn;
 
-const handleProtocolActions: { [keys in Action]: ActionHandler } = {
+const handleProtocolActions: { [keys in Protocol.Action]: ActionHandler } = {
   authenticate: (
     params: definitions['Authentication.Response']
   ): ActionReturn => {
     return {
-      name: 'authenticate',
+      name: IpcEvents.Renderer.authenticate_user,
       payload: {
         ...params,
       },

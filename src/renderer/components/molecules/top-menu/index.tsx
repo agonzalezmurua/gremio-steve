@@ -5,18 +5,19 @@ import Close from '@/assets/icons/outline/x.svg';
 import Minimize from '@/assets/icons/outline/minus.svg';
 import Maximize from '@/assets/icons/outline/duplicate.svg';
 import { isBrowser, currentPlatform } from '@/constants/platform';
+import * as IpcEvents from 'common/ipc.events';
 
 const TopMenu: React.FC = (props) => {
   const handleMinimize = useCallback(() => {
-    window.electron.ipcRenderer.send('minimize');
+    window.electron.ipcRenderer.send(IpcEvents.Main.minimize_main_window);
   }, []);
 
   const handleMaximize = useCallback(() => {
-    window.electron.ipcRenderer.send('maximize');
+    window.electron.ipcRenderer.send(IpcEvents.Main.maximize_main_window);
   }, []);
 
-  const handleQuit = useCallback(() => {
-    window.electron.ipcRenderer.send('close');
+  const handleClose = useCallback(() => {
+    window.electron.ipcRenderer.send(IpcEvents.Main.close_main_window);
   }, []);
 
   return (
@@ -32,7 +33,7 @@ const TopMenu: React.FC = (props) => {
           <button onClick={handleMaximize}>
             <Maximize />
           </button>
-          <button id="close" onClick={handleQuit}>
+          <button id="close" onClick={handleClose}>
             <Close />
           </button>
         </>

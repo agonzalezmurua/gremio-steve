@@ -5,6 +5,7 @@ import { IntlProvider } from 'react-intl';
 import { HashRouter } from 'react-router-dom';
 
 import useLocalePreference from '@/hooks/useLocalePreference';
+import { AppContextProvider } from '@/contexts/app';
 import AppGlobalStyles from '@/App.styles';
 
 function loadMessages(locale: string) {
@@ -37,7 +38,9 @@ const Document: React.FC = (props) => {
           messages={messages}
           defaultLocale="en"
         >
-          <HashRouter>{props.children}</HashRouter>
+          <AppContextProvider>
+            <HashRouter>{props.children}</HashRouter>
+          </AppContextProvider>
         </IntlProvider>
       )}
     </>

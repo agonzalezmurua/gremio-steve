@@ -1,11 +1,11 @@
-import { app, BrowserWindow, ipcMain, protocol } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
 
 import log from 'electron-log';
 import config from './config';
 import { installExtensions } from './extensions';
 import { parseAppURL } from './parse-app-url';
-import { match } from 'assert';
+import * as IpcEvents from '../common/ipc.events';
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const DEBUG = process.env.DEBUG === 'true';
@@ -16,7 +16,7 @@ const protocolLauncherArg = '--protocol-launcher';
 /** This expression captures from a string {protocol}://{path} */
 const protocolExpression = new RegExp(/(.*):\/\/(.*)/s);
 
-let mainWindow = null;
+let mainWindow: BrowserWindow = null;
 
 /**
  * Creates the main window instance
@@ -49,13 +49,13 @@ async function createWindow() {
 
   installExtensions(); // (4) <- install dev tools when on dev environment
 
-  ipcMain.on('minimize', () => {
+  ipcMain.on(IpcEvents.Main.minimize_main_window, () => {
     mainWindow.isMinimized() ? mainWindow.restore() : mainWindow.minimize();
   });
-  ipcMain.on('maximize', () => {
+  ipcMain.on(IpcEvents.Main.maximize_main_window, () => {
     mainWindow.isMaximized() ? mainWindow.restore() : mainWindow.maximize();
   });
-  ipcMain.on('close', () => {
+  ipcMain.on(IpcEvents.Main.close_main_window, () => {
     mainWindow.close();
   });
 }
@@ -73,7 +73,7 @@ function handleAppURL(url) {
   if (mainWindow) {
     mainWindow.focus();
     mainWindow.show();
-    mainWindow.webContents.send('url-action', action);
+    mainWindow.webContents.send(action.name, action.payload);
   }
 }
 /**
