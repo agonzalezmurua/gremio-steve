@@ -21,7 +21,7 @@ type Actions =
     }
   | { type: 'logoff' };
 
-function UserReducer(state: LoggedUser, action: Actions) {
+function userReducer(state: LoggedUser = null, action: Actions) {
   switch (action.type) {
     case 'login':
       const user = jwt_decode<LoggedUser>(action.authentication.access_token);
@@ -44,21 +44,20 @@ function UserReducer(state: LoggedUser, action: Actions) {
 
 const useUserReducer = () => {
   const initialState = useMemo<LoggedUser | null>(() => {
+    const authentication:
+      | Definitions['Authentication.Response']
+      | null = JSON.parse(localStorage.getItem(AUTHENTICATION));
     try {
-      const storedAuthentication: string | null = localStorage.getItem(
-        AUTHENTICATION
-      );
-      const parsed: Definitions['Authentication.Response'] = storedAuthentication
-        ? JSON.parse(storedAuthentication)
+      return authentication !== null
+        ? jwt_decode<LoggedUser>(authentication.access_token)
         : null;
-      return parsed ? jwt_decode<LoggedUser>(parsed.access_token) : null;
     } catch (error) {
       // jwt_decode error because of invalid string should catch here
       return null;
     }
   }, []);
 
-  return useReducer(UserReducer, initialState);
+  return useReducer(userReducer, initialState);
 };
 
 export default useUserReducer;
