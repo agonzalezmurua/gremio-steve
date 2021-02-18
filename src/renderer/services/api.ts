@@ -60,32 +60,32 @@ const ApiService: IApiService = {
   // we han handle retries
   Operations: {
     searchJourneys: (parameters) =>
-      Axios.get('/', {
+      Client.get('/', {
         params: {
           search: parameters.query.search,
         },
       }),
     createOneJourney: (parameters) =>
-      Axios.post(ApiService.Paths['/journeys'](), parameters.body),
+      Client.post(ApiService.Paths['/journeys'](), parameters.body),
     deleteOneJourneyById: (parameters) =>
-      Axios.delete(ApiService.Paths['/journeys/:id'](parameters.path.id)),
-    getMyJourneys: () => Axios.get(ApiService.Paths['/journeys/mine']()),
+      Client.delete(ApiService.Paths['/journeys/:id'](parameters.path.id)),
+    getMyJourneys: () => Client.get(ApiService.Paths['/journeys/mine']()),
     getOneJourneyById: (parameters) =>
-      Axios.get(ApiService.Paths['/journeys/:id'](parameters.path)),
+      Client.get(ApiService.Paths['/journeys/:id'](parameters.path)),
     searchUsers: (parameters) =>
-      Axios.get(ApiService.Paths['/users'](), {
+      Client.get(ApiService.Paths['/users'](), {
         params: {
           search: parameters.query.search,
         },
       }),
     authenticateUser: (parameters) =>
-      Axios.post(ApiService.Paths['/auth/osu/callback'](), parameters.body),
+      Client.post(ApiService.Paths['/auth/osu/callback'](), parameters.body),
     requestAuthorization: () => {
       throw new Error('this methos is not supposed to be navigated to');
     },
-    getMyUser: () => Axios.get(ApiService.Paths['/users/myself']()),
+    getMyUser: () => Client.get(ApiService.Paths['/users/myself']()),
     getOneUserById: (parameters) =>
-      Axios.get(ApiService.Paths['/users/:id']({ id: parameters.path.id })),
+      Client.get(ApiService.Paths['/users/:id']({ id: parameters.path.id })),
   },
   Client: Client,
 };

@@ -4,7 +4,7 @@ import path from 'path';
 import log from 'electron-log';
 import config from './config';
 import { installExtensions } from './extensions';
-import { parseAppURL } from './parse-app-url';
+import { parseProtocolURL } from './protocol.parse-url';
 import * as IpcEvents from '../common/ipc.events';
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -30,24 +30,25 @@ async function createWindow() {
     transparent: false,
     webPreferences: {
       nodeIntegration: true,
-      preload: path.resolve(__dirname, 'preload.js'), // (1) <- preload script
+      preload: path.resolve(__dirname, 'preload.js'),
     },
     frame: process.platform !== 'win32',
     titleBarStyle: process.platform !== 'win32' ? 'hidden' : 'default',
+    autoHideMenuBar: true,
   });
 
-  mainWindow.setMenuBarVisibility(null);
   if (NODE_ENV === 'development') {
-    mainWindow.loadURL(`http://localhost:3000`); // (2) <- load react
+    mainWindow.loadURL(`http://localhost:3000`);
   } else {
     mainWindow.loadURL(`file://${__dirname}/renderer/index.html`);
   }
-  // window.webContents.openDevTools();
-  mainWindow.on('closed', () => {
-    mainWindow = null; // (3) <- deference when window is closed
-  });
 
-  installExtensions(); // (4) <- install dev tools when on dev environment
+  installExtensions();
+
+  //#region Handle events targetting the main window
+  mainWindow.on('closed', () => {
+    mainWindow = null; // deference window when closed
+  });
 
   ipcMain.on(IpcEvents.Main.minimize_main_window, () => {
     mainWindow.isMinimized() ? mainWindow.restore() : mainWindow.minimize();
@@ -58,15 +59,16 @@ async function createWindow() {
   ipcMain.on(IpcEvents.Main.close_main_window, () => {
     mainWindow.close();
   });
+  //#endregion
 }
 
 /**
  * Handle the url sent to this application
  * @param url the incoming url argument
  */
-function handleAppURL(url) {
+function handleAppURL(url: string) {
   log.info('Processing protocol url');
-  const action = parseAppURL(url);
+  const action = parseProtocolURL(url); // Action payload to pass onto the ipcRenderer process
   // This manual focus call _shouldn't_ be necessary, but is for Chrome on
   // macOS. See https://github.com/desktop/desktop/issues/973.
   log.info(`Sending action!\n${JSON.stringify(action, null, 4)}`);
@@ -79,8 +81,9 @@ function handleAppURL(url) {
 /**
  * Wrapper around app.setAsDefaultProtocolClient that adds our
  * custom prefix command line switches on Windows.
+ * @param procotol Protocol that is used as a application identifier
  */
-function setAsDefaultProtocolClient(protocol) {
+function setAsDefaultProtocolClient(protocol: string) {
   if (!protocol) {
     return;
   }

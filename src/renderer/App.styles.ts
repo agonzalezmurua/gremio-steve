@@ -5,6 +5,7 @@ import ArticleStyle from './globals/styles/article';
 
 const AppGlobalStyle = createGlobalStyle`
   html, body, #root {
+    ${tw`h-screen w-screen`}
     ${tw`light:(bg-white) dark:(bg-gray-800)`}
     ${tw`light:text-black dark:text-gray-300`}
   }

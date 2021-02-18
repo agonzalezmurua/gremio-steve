@@ -10,11 +10,15 @@ import log from 'electron-log'; // https://www.npmjs.com/package/electron-log
 import URL from 'url';
 import querystring from 'query-string';
 
-import handleProtocolActions, { ActionReturn } from './handle-protocol-actions';
+import ProtocolHandlers, { ActionPayload } from './protocol.actions';
 import { Action } from '../common/protocol.actions';
 import * as IpcEvents from '../common/ipc.events';
 
-export function parseAppURL(url: string): ActionReturn | undefined {
+/**
+ *
+ * @param url received URL from event
+ */
+export function parseProtocolURL(url: string): ActionPayload | undefined {
   log.info(url);
   const knownActions = Object.values(Action);
   const parsedURL = URL.parse(url);
@@ -29,7 +33,7 @@ export function parseAppURL(url: string): ActionReturn | undefined {
     return unknown;
   }
 
-  const { action, ...parameters } = querystring.parse(parsedURL.query);
+  const { action, ...queryObject } = querystring.parse(parsedURL.query);
 
   let actionName: Action | undefined;
   // For future versions of Node, the WHATG version of URL is
@@ -67,11 +71,11 @@ export function parseAppURL(url: string): ActionReturn | undefined {
 
   if (
     !actionName ||
-    !Object.prototype.hasOwnProperty.call(handleProtocolActions, actionName) // Check if we created a handler for this actionName
+    !Object.prototype.hasOwnProperty.call(ProtocolHandlers, actionName) // Check if we created a handler for this actionName
   ) {
     log.debug('Unknown action, skipping');
     return unknown; // EARLY RETURN
   }
 
-  return handleProtocolActions[actionName](parameters);
+  return ProtocolHandlers[actionName](queryObject);
 }

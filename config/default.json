@@ -14,8 +14,7 @@
     },
     "api": {
       "request_url": "http://localhost:3010/auth/osu",
-      "uri": "http://localhost:3010",
-      "path": "/api"
+      "uri": "http://localhost:3010"
     }
   }
 }
