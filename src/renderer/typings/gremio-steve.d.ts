@@ -6,7 +6,5 @@ export type OauthState = {
   original_url?: string;
 };
 
-export type LoggedUser = Pick<
-  Definitions['User'],
-  'id' | 'osu_id' | 'name' | 'avatar_url'
->;
+export interface LoggedUser
+  extends Pick<Definitions['User'], 'id' | 'osu_id' | 'name' | 'avatar_url'> {}
