@@ -25,7 +25,7 @@ const Client = Axios.create({
  * that the `openapi-typescript` creates, if for some reason you are having any problem consuming the
  * API service try running `npm run generate:specs` in order to refresh the typings
  */
-interface ApiService {
+interface IApiService {
   /**
    * functions that create a parametrized paths for API consumption
    *
@@ -42,7 +42,7 @@ interface ApiService {
   Client: AxiosInstance;
 }
 
-const Service: ApiService = {
+const ApiService: IApiService = {
   Paths: {
     '/auth/osu': () => '/auth/osu',
     '/auth/osu/callback': () => '/auth/osu/callback',
@@ -66,26 +66,26 @@ const Service: ApiService = {
         },
       }),
     createOneJourney: (parameters) =>
-      Axios.post(Service.Paths['/journeys'](), parameters.body),
+      Axios.post(ApiService.Paths['/journeys'](), parameters.body),
     deleteOneJourneyById: (parameters) =>
-      Axios.delete(Service.Paths['/journeys/:id'](parameters.path.id)),
-    getMyJourneys: () => Axios.get(Service.Paths['/journeys/mine']()),
+      Axios.delete(ApiService.Paths['/journeys/:id'](parameters.path.id)),
+    getMyJourneys: () => Axios.get(ApiService.Paths['/journeys/mine']()),
     getOneJourneyById: (parameters) =>
-      Axios.get(Service.Paths['/journeys/:id'](parameters.path)),
+      Axios.get(ApiService.Paths['/journeys/:id'](parameters.path)),
     searchUsers: (parameters) =>
-      Axios.get(Service.Paths['/users'](), {
+      Axios.get(ApiService.Paths['/users'](), {
         params: {
           search: parameters.query.search,
         },
       }),
     authenticateUser: (parameters) =>
-      Axios.post(Service.Paths['/auth/osu/callback'](), parameters.body),
+      Axios.post(ApiService.Paths['/auth/osu/callback'](), parameters.body),
     requestAuthorization: () => {
       throw new Error('this methos is not supposed to be navigated to');
     },
-    getMyUser: () => Axios.get(Service.Paths['/users/myself']()),
+    getMyUser: () => Axios.get(ApiService.Paths['/users/myself']()),
     getOneUserById: (parameters) =>
-      Axios.get(Service.Paths['/users/:id']({ id: parameters.path.id })),
+      Axios.get(ApiService.Paths['/users/:id']({ id: parameters.path.id })),
   },
   Client: Client,
 };
