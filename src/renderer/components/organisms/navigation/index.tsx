@@ -1,12 +1,13 @@
 import 'twin.macro';
-import React from 'react';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
+import React from 'react';
 
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
+
+import NavigationControls from '@/components/atoms/navigation-controls';
 import UserInfo from '@/components/molecules/user-info';
 import NavigationLinks from '@/components/molecules/navigation-links';
 import SearchJourney from '@/components/molecules/search-journey';
-import NavigationControls from '@/components/atoms/navigation-controls';
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 type Props = {
   sidebar: boolean;
@@ -16,7 +17,7 @@ const Navigation: React.FC<Props> = (props) => {
   return (
     <section tw="h-full flex flex-row overflow-hidden light:(text-gray-900) dark:(text-gray-300) px-4 space-x-4 py-2">
       {/* Sidebar */}
-      {props.sidebar ? (
+      {props.sidebar === true ? (
         <section tw="flex-shrink space-y-4 w-20 md:(w-60)">
           <section tw="border-b dark:(border-gray-500) pb-2">
             <NavigationControls />
