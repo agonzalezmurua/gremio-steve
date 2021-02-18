@@ -50,13 +50,13 @@ async function createWindow() {
     mainWindow = null; // deference window when closed
   });
 
-  ipcMain.on(IpcEvents.Main.minimize_main_window, () => {
+  ipcMain.on(IpcEvents.Main.minimize_window, () => {
     mainWindow.isMinimized() ? mainWindow.restore() : mainWindow.minimize();
   });
-  ipcMain.on(IpcEvents.Main.maximize_main_window, () => {
+  ipcMain.on(IpcEvents.Main.maximize_window, () => {
     mainWindow.isMaximized() ? mainWindow.restore() : mainWindow.maximize();
   });
-  ipcMain.on(IpcEvents.Main.close_main_window, () => {
+  ipcMain.on(IpcEvents.Main.close_window, () => {
     mainWindow.close();
   });
   //#endregion
