@@ -5,7 +5,7 @@ import {
   operations,
   paths,
   definitions,
-} from '@/typings/api.gremio-steve.d.ts';
+} from 'common/typings/api.gremio-steve.d.ts';
 
 export type Definitions = definitions;
 

@@ -3,7 +3,7 @@ import tw, { styled } from 'twin.macro';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-import AppContext from '@/App.context';
+import AppContext from '@/contexts/app';
 import links from '@/services/links';
 import LightNingBolt from '@/assets/icons/outline/lightning-bolt.svg';
 import Collection from '@/assets/icons/outline/collection.svg';

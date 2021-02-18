@@ -1,13 +1,14 @@
 import React, { createContext } from 'react';
 
-import useUserReducer from './App.context.user';
-import { LoggedUser } from './typings/gremio-steve';
+import useUserReducer from './user';
+import { Definitions } from '../../services/api';
+import { LoggedUser } from '../../typings/gremio-steve';
 
 type AppContextType = {
   user: LoggedUser;
   isLoggedIn: boolean;
   actions: {
-    login: (token: string) => void;
+    login: (authentication: Definitions['Authentication.Response']) => void;
     logoff: () => void;
   };
 };
@@ -35,7 +36,8 @@ export const AppContextProvider: React.FC = (props) => {
         user: user,
         isLoggedIn: user !== null,
         actions: {
-          login: (token) => dispatch({ type: 'login', token: token }),
+          login: (authentication) =>
+            dispatch({ type: 'login', authentication: authentication }),
           logoff: () => dispatch({ type: 'logoff' }),
         },
       }}

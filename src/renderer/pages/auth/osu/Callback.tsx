@@ -8,7 +8,7 @@ import useQuery from '@/hooks/useQuery';
 import links from '@/services/links';
 import Api from '@/services/api';
 import { OauthState } from '@/typings/gremio-steve';
-import AppContext from '@/App.context';
+import AppContext from '@/contexts/app';
 
 const Callback: React.FC = () => {
   const { actions } = useContext(AppContext);
@@ -25,7 +25,7 @@ const Callback: React.FC = () => {
     // TODO: implement refresh token
     // TODO: implement original destionation URL navigation
 
-    actions.login(response.data.access_token); // Update context so user is logged in
+    actions.login(response.data); // Update context so user is logged in
     history.push(links.pages.home()); // Navigate to main home
 
     return;
@@ -77,9 +77,6 @@ const Callback: React.FC = () => {
   return (
     <main tw="h-full flex items-center justify-center">
       <h1>Authenticating</h1>
-      <a href={links.desktop.protocol.auth_callback(code)}>
-        Click here to open app
-      </a>
     </main>
   );
 };

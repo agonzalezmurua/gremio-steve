@@ -1,7 +1,9 @@
+import log from 'electron-log';
+
 /**
  * Instals Development extenssions for debugging purposes
  */
-async function installExtensions() {
+export async function installExtensions() {
   if (process.env.NODE_ENV !== 'development') {
     return;
   }
@@ -13,11 +15,7 @@ async function installExtensions() {
 
   [REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS].map((extension) =>
     install(extension)
-      .then((extension) => console.log(`Installed: ${extension}`))
-      .catch((err) => console.err(`Failed to install: ${extension}`, err))
+      .then((extension) => log.log(`Installed: ${extension}`))
+      .catch((err) => log.error(`Failed to install: ${extension}`, err))
   );
 }
-
-module.exports = {
-  installExtensions,
-};

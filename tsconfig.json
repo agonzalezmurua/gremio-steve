@@ -1,5 +1,5 @@
 {
-  "include": ["src/**/*", "typings/dir.config.d.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist", "build"],
   "compilerOptions": {
     "outDir": "build",

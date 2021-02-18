@@ -16,7 +16,7 @@ import useAppHotkeys from '@/hooks/useAppHotkeys';
 import useAppEvents from '@/hooks/useAppEvents';
 import LoginPage from '@/pages/auth/Login';
 import CallbackPage from '@/pages/auth/osu/Callback';
-import { AppContextProvider } from './App.context';
+import { AppContextProvider } from '@/contexts/app';
 
 const App: React.FC = () => {
   useAppHotkeys();

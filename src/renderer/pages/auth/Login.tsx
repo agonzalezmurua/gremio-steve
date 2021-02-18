@@ -2,8 +2,8 @@ import 'twin.macro';
 import React, { useCallback, useContext, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import AppContext from '@/App.context';
-import { ACCESS_TOKEN_KEY } from '@/App.context.user';
+import AppContext from '@/contexts/app';
+import { AUTHENTICATION } from '@/contexts/app/user';
 import { isBrowser } from '@/constants/platform';
 import { OauthState } from '@/typings/gremio-steve';
 import links from '@/services/links';
@@ -11,6 +11,7 @@ import useQuery from '@/hooks/useQuery';
 
 import WebLoginTemplate from '@/components/templates/web-login';
 import AppLoginTemplate from '@/components/templates/app-login';
+import { Definitions } from '@/services/api';
 
 const LoginPage = () => {
   const query = useQuery();
@@ -18,14 +19,17 @@ const LoginPage = () => {
   const cameFrom = query.get('came_from');
 
   const handleOpenApp = useCallback(() => {
-    document.location.href = links.desktop.protocol.auth_callback(
-      localStorage.getItem(ACCESS_TOKEN_KEY)
+    if (!isLoggedIn) {
+      return;
+    }
+
+    document.location.href = links.desktop.protocol.authenticate(
+      JSON.parse(localStorage.getItem(AUTHENTICATION))
     );
   }, [isLoggedIn]);
 
   const handleWebLogin = useCallback(() => {
     const url = new URL(CONFIG.renderer.api.request_url);
-
     const state: OauthState = {
       identifier: uuidv4(),
       came_from: isBrowser ? 'browser' : 'app',

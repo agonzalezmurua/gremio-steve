@@ -1,6 +1,8 @@
 import Format from 'string-format';
+import { Definitions } from '../api';
 import journeys from './journeys';
 import user from './user';
+import querystring from 'query-string';
 
 export default {
   journeys,
@@ -14,14 +16,17 @@ export default {
   },
   web: {
     login: () =>
-      Format(`${CONFIG.renderer.web.login}?came_from={referer}`, {
-        referer: 'app',
-      }),
+      `${CONFIG.renderer.web.login}?${querystring.stringify({
+        came_from: 'app',
+      })}`,
   },
   desktop: {
     protocol: {
-      auth_callback: (acess_token: string) =>
-        `${CONFIG.main.protocol}://auth/osu/callback`,
+      authenticate: (parameters: Definitions['Authentication.Response']) =>
+        `${CONFIG.main.protocol}://?${querystring.stringify({
+          action: 'authenticate',
+          ...parameters,
+        })}`,
     },
   },
 };

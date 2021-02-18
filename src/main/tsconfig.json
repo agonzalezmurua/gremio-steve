@@ -1,14 +1,12 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["./**/*", "../common/**/*"],
   "compilerOptions": {
-    "jsx": "react",
     "baseUrl": "./",
     "paths": {
       "@/*": ["./*"],
       "common/*": ["../common/*"]
     },
-    "resolveJsonModule": true,
+    "allowJs": true,
     "esModuleInterop": true
   }
 }
