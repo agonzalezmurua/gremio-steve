@@ -1,4 +1,3 @@
-import Format from 'string-format';
 import { Definitions } from '../api';
 import journeys from './journeys';
 import user from './user';
