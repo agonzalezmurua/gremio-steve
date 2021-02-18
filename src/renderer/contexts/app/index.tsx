@@ -10,6 +10,7 @@ type AppContextType = {
    * can be null if the user is not present so is advised to use `isLoggedIn` value
    * before trying to use this value
    */
+  user?: LoggedUser;
   isLoggedIn: boolean;
   actions: {
     /**
@@ -45,7 +46,6 @@ const AppContext = createContext<AppContextType>({
 
 export const AppContextProvider: React.FC = (props) => {
   const [user, dispatch] = useUserReducer();
-
   return (
     <AppContext.Provider
       value={{
