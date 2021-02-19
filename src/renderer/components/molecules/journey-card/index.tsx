@@ -59,12 +59,14 @@ const JourneyCard: React.FC<Props> = (props) => {
         <span tw="font-bold text-sm text-gray-700 dark:text-gray-300">
           {props.journey.artist}
         </span>
-        <Link
-          to={links.user.profile({ id: props.journey.organizer.id })}
-          tw="text-sm text-gray-700 dark:text-gray-300"
-        >
-          {props.journey.organizer.name}
-        </Link>
+        {props.journey.organizer ? (
+          <Link
+            to={links.user.profile({ id: props.journey.organizer.id })}
+            tw="text-sm text-gray-700 dark:text-gray-300"
+          >
+            {props.journey.organizer.name}
+          </Link>
+        ) : null}
         <section tw="flex">
           <ModeBadges modes={modes} />
         </section>
