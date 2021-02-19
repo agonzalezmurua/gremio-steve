@@ -26,7 +26,7 @@
     "build:renderer:i18n:compile": "formatjs compile-folder --ast src/lang/raw src/lang/compiled",
     "build:renderer:webpack": "webpack --config webpack.renderer.config.ts",
     "generate:specs": "run-p generate:specs:*",
-    "generate:specs:gremio-steve": "npx openapi-typescript http://localhost:3010/api-docs/swagger.json --output src/renderer/typings/api.gremio-steve.d.ts",
+    "generate:specs:gremio-steve": "npx openapi-typescript http://localhost:3010/api-docs/swagger.json --output src/common/typings/api.gremio-steve.d.ts",
     "dev": "cross-env NODE_ENV=development DEBUG=true run-p dev:**",
     "dev:i18n-build": "node runtime-scripts/dev/watch-i18n.js",
     "dev:renderer": "webpack serve --config webpack.renderer.config.ts",

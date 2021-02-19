@@ -54,6 +54,7 @@ const ApiService: IApiService = {
     '/users/:id': (parameters: { id: string }) =>
       format('/users/{id}', parameters),
     '/users/myself': () => '/users/myself',
+    '/journeys/queue': () => '/journeys/queue',
   },
   // TODO: Handle 403 responses to either redirect or wait for the refresh token implementation so
   // we han handle retries
@@ -88,6 +89,7 @@ const ApiService: IApiService = {
     getMyUser: () => Client.get(ApiService.Paths['/users/myself']()),
     getOneUserById: (parameters) =>
       Client.get(ApiService.Paths['/users/:id']({ id: parameters.path.id })),
+    getMyQueue: () => Client.get(ApiService.Paths['/journeys/queue']()),
   },
   Client: Client,
 };

@@ -1,6 +1,7 @@
 import { css } from 'twin.macro';
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { useMemo } from 'react';
+import uniq from 'lodash/uniq';
 
 import Bell from '@/assets/icons/solid/bell.svg';
 import Star from '@/assets/icons/solid/star.svg';
@@ -18,6 +19,11 @@ type Props = {
 };
 
 const JourneyCard: React.FC<Props> = (props) => {
+  const modes = useMemo(
+    () => uniq(props.journey.beatmaps.map(({ mode }) => mode)),
+    [props.journey]
+  );
+
   return (
     <section tw="rounded border overflow-hidden dark:(border-gray-700 bg-gray-900)">
       <section
@@ -45,7 +51,7 @@ const JourneyCard: React.FC<Props> = (props) => {
       </section>
       <section tw="flex flex-col space-y-1 justify-between p-4">
         <Link
-          to={links.journeys.id({ id: props.journey._id })}
+          to={links.journeys.id({ id: props.journey.id })}
           tw="font-bold text-lg dark:text-white"
         >
           {props.journey.title}
@@ -54,13 +60,13 @@ const JourneyCard: React.FC<Props> = (props) => {
           {props.journey.artist}
         </span>
         <Link
-          to={links.user.profile({ id: props.journey.organizer._id })}
+          to={links.user.profile({ id: props.journey.organizer.id })}
           tw="text-sm text-gray-700 dark:text-gray-300"
         >
           {props.journey.organizer.name}
         </Link>
         <section tw="flex">
-          <ModeBadges modes={props.journey.modes} />
+          <ModeBadges modes={modes} />
         </section>
       </section>
     </section>

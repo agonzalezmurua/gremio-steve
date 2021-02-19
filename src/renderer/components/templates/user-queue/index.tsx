@@ -8,19 +8,19 @@ import Input from '@/components/atoms/input';
 import JourneyCard from '@/components/molecules/journey-card';
 import { Definitions } from '@/services/api';
 
-type QueueTemplateProps = {
+type Props = {
   suggestions?: Pick<Definitions['Journey'], 'id' | 'title'>[];
   journeys?: Array<Definitions['Journey']>;
 };
 
-const QueueTemplate: React.FC<QueueTemplateProps> = (props) => {
+const QueueTemplate: React.FC<Props> = (props) => {
   return (
     <section tw="space-y-4">
       <section tw="space-y-4">
         <Input icon={<Search />} placeholder="Filter or something" />
         <ul tw="space-y-2">
           {props.journeys?.map((journey) => (
-            <li key={journey._id}>
+            <li key={journey.id}>
               <JourneyCard journey={journey} />
             </li>
           )) || (

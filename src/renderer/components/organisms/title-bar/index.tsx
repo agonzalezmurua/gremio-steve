@@ -1,5 +1,5 @@
 import tw, { styled } from 'twin.macro';
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 
 import Close from '@/assets/icons/outline/x.svg';
 import Minimize from '@/assets/icons/outline/minus.svg';
@@ -7,6 +7,11 @@ import Maximize from '@/assets/icons/outline/duplicate.svg';
 import { isBrowser, currentPlatform, isElectron } from '@/constants/platform';
 
 import * as IpcEvents from 'common/ipc.events';
+
+const DebugTitleBar: React.FC = () => {
+  const text = useMemo(() => window.location.href, [window.location.href]);
+  return <span tw="flex-grow text-center align-middle">{text}</span>;
+};
 
 const TopMenu: React.FC = (props) => {
   const handleMinimize = useCallback(() => {
@@ -27,9 +32,7 @@ const TopMenu: React.FC = (props) => {
       tw="flex justify-end h-8 w-full border-b light:(border-gray-200) dark:(border-black)"
     >
       {isElectron && process.env.NODE_ENV === 'development' && (
-        <span tw="flex-grow text-center align-middle">
-          {window.location.href}
-        </span>
+        <DebugTitleBar />
       )}
       {currentPlatform === 'win32' ? (
         <>

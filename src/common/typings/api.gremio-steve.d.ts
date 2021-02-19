@@ -26,6 +26,10 @@ export interface paths {
     /** Get the journeys that were organized by the current user */
     get: operations["getMyJourneys"];
   };
+  "/journeys/queue": {
+    /** Get journeys that were added into the user's queue */
+    get: operations["getMyQueue"];
+  };
   "/journeys/:id": {
     /** Find one journey based on ID */
     get: operations["getOneJourneyById"];
@@ -77,7 +81,6 @@ export interface definitions {
     thumbnail_url: string;
     banner_url: string;
     metadata?: definitions["Journey.Metadata"];
-    modes?: "std" | "taiko" | "ctb" | "mania";
     description?: string;
     status?: "pending" | "open" | "ready" | "alert" | "problem" | "closed";
     is_private?: boolean;
@@ -184,6 +187,15 @@ export interface operations {
         status?: unknown;
       };
     };
+    responses: {
+      /** Success */
+      200: {
+        schema: definitions["Journey"][];
+      };
+    };
+  };
+  /** Get journeys that were added into the user's queue */
+  getMyQueue: {
     responses: {
       /** Success */
       200: {

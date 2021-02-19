@@ -12,12 +12,10 @@ type Props = {
 };
 
 const UserQueuePage: React.FC<RouteComponentProps<Props>> = () => {
-  const { value } = useAsync(async () => {
-    const { data } = await Api.Operations.getMyJourneys({
-      query: { status: 'pending' },
-    });
+  const { value: journeys } = useAsync(async () => {
+    const { data } = await Api.Operations.getMyQueue();
     return data;
-  });
+  }, []);
 
   return (
     <main tw="p-4 space-y-4">
@@ -27,7 +25,7 @@ const UserQueuePage: React.FC<RouteComponentProps<Props>> = () => {
         description="Queue Page Header"
         tagName="h1"
       />
-      <QueueTemplate journeys={value} />
+      <QueueTemplate journeys={journeys} />
     </main>
   );
 };
