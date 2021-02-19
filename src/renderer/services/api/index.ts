@@ -1,4 +1,4 @@
-import Axios, { AxiosInstance } from 'axios';
+import { AxiosInstance } from 'axios';
 import format from 'string-format';
 import { OperationRequest } from '@/typings/api';
 import {
@@ -6,13 +6,12 @@ import {
   paths,
   definitions,
 } from 'common/typings/api.gremio-steve.d.ts';
+import AuthenticationStorage from '@/services/authentication.storage';
+
+import Client from './client';
 
 /** This is a re-exported definition from common typings  */
 export type Definitions = definitions;
-
-const Client = Axios.create({
-  baseURL: CONFIG.renderer.api.uri,
-});
 
 /**
  * Api service that handles:
@@ -69,7 +68,10 @@ const ApiService: IApiService = {
       Client.post(ApiService.Paths['/journeys'](), parameters.body),
     deleteOneJourneyById: (parameters) =>
       Client.delete(ApiService.Paths['/journeys/:id'](parameters.path.id)),
-    getMyJourneys: () => Client.get(ApiService.Paths['/journeys/mine']()),
+    getMyJourneys: (parameters) =>
+      Client.get(ApiService.Paths['/journeys/mine'](), {
+        params: parameters.query,
+      }),
     getOneJourneyById: (parameters) =>
       Client.get(ApiService.Paths['/journeys/:id'](parameters.path)),
     searchUsers: (parameters) =>
@@ -89,5 +91,9 @@ const ApiService: IApiService = {
   },
   Client: Client,
 };
+
+Client.setAuthorizationHeaders(
+  AuthenticationStorage.get()?.access_token || null
+);
 
 export default ApiService;

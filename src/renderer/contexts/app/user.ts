@@ -8,8 +8,7 @@ import jwt_decode from 'jwt-decode';
 
 import { LoggedUser } from '@/typings/gremio-steve';
 import Api, { Definitions } from '@/services/api';
-
-export const AUTHENTICATION = 'authentication';
+import AuthenticationStorage from '@/services/authentication.storage';
 
 /**
  * Available reducer actions
@@ -24,17 +23,14 @@ type Actions =
 function userReducer(state: LoggedUser = null, action: Actions) {
   switch (action.type) {
     case 'login':
-      const user = jwt_decode<LoggedUser>(action.authentication.access_token);
-      localStorage.setItem(
-        AUTHENTICATION,
-        JSON.stringify(action.authentication)
-      );
+      AuthenticationStorage.write(action.authentication);
+      const user = AuthenticationStorage.get_user();
       Api.Client.defaults.headers = {
         Authorization: `Bearer ${action.authentication.access_token}`,
       };
       return user;
     case 'logout':
-      localStorage.removeItem(AUTHENTICATION);
+      AuthenticationStorage.remove();
       delete Api.Client.defaults.headers.Authorization;
       return null;
     default:
@@ -43,21 +39,7 @@ function userReducer(state: LoggedUser = null, action: Actions) {
 }
 
 const useUserReducer = () => {
-  const initialState = useMemo<LoggedUser | null>(() => {
-    const authentication:
-      | Definitions['Authentication.Response']
-      | null = JSON.parse(localStorage.getItem(AUTHENTICATION));
-    try {
-      return authentication !== null
-        ? jwt_decode<LoggedUser>(authentication.access_token)
-        : null;
-    } catch (error) {
-      // jwt_decode error because of invalid string should catch here
-      return null;
-    }
-  }, []);
-
-  return useReducer(userReducer, initialState);
+  return useReducer(userReducer, AuthenticationStorage.get_user());
 };
 
 export default useUserReducer;

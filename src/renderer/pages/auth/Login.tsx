@@ -3,7 +3,7 @@ import React, { useCallback, useContext, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 import AppContext from '@/contexts/app';
-import { AUTHENTICATION } from '@/contexts/app/user';
+import AuthenticationStorage from '@/services/authentication.storage';
 import { isBrowser, isElectron } from '@/constants/platform';
 import { OauthState } from '@/typings/gremio-steve';
 import links from '@/services/links';
@@ -27,7 +27,7 @@ const LoginPage = () => {
     }
 
     document.location.href = links.app.protocol.authenticate(
-      JSON.parse(localStorage.getItem(AUTHENTICATION))
+      AuthenticationStorage.get()
     );
   }, [isLoggedIn]);
 
