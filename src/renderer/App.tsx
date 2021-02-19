@@ -66,7 +66,7 @@ const App: React.FC = () => {
                 />
                 <Route exact path="/login" component={LoginPage} />
                 {/* <Route path="/journeys/new" exact component={NewJourneyPage} /> */}
-                {/* <Route path="/journeys/:id" component={JourneyPage} /> */}
+                <Route path="/journeys/:id" component={JourneyPage} />
                 <Route path="/user/:id/profile" component={UserProfilePage} />
                 <Route path="/user/:id/queue" component={QueuePage} />
                 {/* <Route path="/user/:id/activity" component={ActivityPage} /> */}
