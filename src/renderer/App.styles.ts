@@ -15,7 +15,6 @@ const AppGlobalStyle = createGlobalStyle`
   }
 
   a {
-    ${tw`outline-none rounded`}
     &:focus {
       ${FocusRingTwStyle}
     }

@@ -19,7 +19,7 @@ type Actions =
       type: 'login';
       authentication: Definitions['Authentication.Response'];
     }
-  | { type: 'logoff' };
+  | { type: 'logout' };
 
 function userReducer(state: LoggedUser = null, action: Actions) {
   switch (action.type) {
@@ -33,7 +33,7 @@ function userReducer(state: LoggedUser = null, action: Actions) {
         Authorization: `Bearer ${action.authentication.access_token}`,
       };
       return user;
-    case 'logoff':
+    case 'logout':
       localStorage.removeItem(AUTHENTICATION);
       delete Api.Client.defaults.headers.Authorization;
       return null;

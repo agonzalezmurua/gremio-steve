@@ -26,7 +26,7 @@ type AppContextType = {
      * - Deleting the `Authorization` header from the Api Client
      * - Updating the state so the user is null
      */
-    logoff: () => void;
+    logout: () => void;
   };
 };
 
@@ -40,7 +40,7 @@ const AppContext = createContext<AppContextType>({
   isLoggedIn: true,
   actions: {
     login: () => {},
-    logoff: () => {},
+    logout: () => {},
   },
 });
 
@@ -54,7 +54,7 @@ export const AppContextProvider: React.FC = (props) => {
         actions: {
           login: (authentication) =>
             dispatch({ type: 'login', authentication: authentication }),
-          logoff: () => dispatch({ type: 'logoff' }),
+          logout: () => dispatch({ type: 'logout' }),
         },
       }}
     >

@@ -1,7 +1,7 @@
 import React from 'react';
 import tw, { styled } from 'twin.macro';
 import { FormattedMessage } from 'react-intl';
-import { UserMessages } from '@/constants/messages/generic';
+import { UserMessages } from '@/constants/messages/user';
 
 type Props = User['availability'];
 

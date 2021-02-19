@@ -4,7 +4,7 @@ import React, { useCallback } from 'react';
 import Close from '@/assets/icons/outline/x.svg';
 import Minimize from '@/assets/icons/outline/minus.svg';
 import Maximize from '@/assets/icons/outline/duplicate.svg';
-import { isBrowser, currentPlatform } from '@/constants/platform';
+import { isBrowser, currentPlatform, isElectron } from '@/constants/platform';
 
 import * as IpcEvents from 'common/ipc.events';
 
@@ -26,6 +26,11 @@ const TopMenu: React.FC = (props) => {
       {...props}
       tw="flex justify-end h-8 w-full border-b light:(border-gray-200) dark:(border-black)"
     >
+      {isElectron && process.env.NODE_ENV === 'development' && (
+        <span tw="flex-grow text-center align-middle">
+          {window.location.href}
+        </span>
+      )}
       {currentPlatform === 'win32' ? (
         <>
           <button onClick={handleMinimize}>

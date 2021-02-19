@@ -5,6 +5,7 @@ import { FormattedMessage } from 'react-intl';
 
 import AppContext from '@/contexts/app';
 import links from '@/services/links';
+
 import LightNingBolt from '@/assets/icons/outline/lightning-bolt.svg';
 import Collection from '@/assets/icons/outline/collection.svg';
 import Bookmark from '@/assets/icons/outline/bookmark.svg';
@@ -12,9 +13,22 @@ import Plus from '@/assets/icons/outline/plus.svg';
 import User from '@/assets/icons/outline/user.svg';
 
 const NavigationItem = styled.li`
-  ${tw`text-center`}
+  ${tw`text-center rounded transition-colors duration-100 light:hover:(bg-gray-200) dark:hover:(bg-gray-700)`}
   a {
-    ${tw`inline-flex md:(flex) items-center space-x-4 p-2 cursor-pointer rounded transition-colors duration-100 ease-in-out outline-none`}
+    ${tw`
+      inline-flex
+      md:(flex)
+      items-center
+      space-x-4
+      p-2
+      cursor-pointer
+      rounded
+      transition-colors
+      duration-100
+      ease-in-out
+      outline-none
+      no-underline
+    `}
   }
   svg {
     ${tw`h-6 w-6`}
@@ -41,7 +55,6 @@ export const NavigationLinks: React.FunctionComponent = () => {
         </NavigationItem>
       ) : (
         <>
-          {' '}
           <NavigationItem>
             <Link to={links.user.queue({ id: user.id })}>
               <Collection />

@@ -13,13 +13,13 @@ export default {
     error_400: () => '/error/400',
     login: () => '/login',
   },
-  web: {
-    login: () =>
-      `${CONFIG.renderer.web.login}?${querystring.stringify({
-        came_from: 'app',
-      })}`,
-  },
-  desktop: {
+  app: {
+    open_web: {
+      login: () =>
+        `${CONFIG.renderer.web.login}?${querystring.stringify({
+          came_from: 'app',
+        })}`,
+    },
     protocol: {
       authenticate: (parameters: Definitions['Authentication.Response']) =>
         `${CONFIG.main.protocol}://?${querystring.stringify({

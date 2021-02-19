@@ -1,15 +1,18 @@
 import 'twin.macro';
 import React from 'react';
-import { GamemodeMessages } from '@/constants/messages/generic';
 import { FormattedMessage } from 'react-intl';
 
-import { ListItem } from './styles';
+import { Definitions } from '@/services/api';
+
+import GamemodeMessages from '@/constants/messages/gamemodes';
 import ModeIcon from '@/components/atoms/mode-icon';
+
+import { ListItem } from './styles';
 
 type Props = {
   selected: string;
-  modes: Array<Mode>;
-  onClick: (string: Mode) => void;
+  modes: Array<Definitions['Journey.Beatmap']['mode']>;
+  onClick: (string: Definitions['Journey.Beatmap']['mode']) => void;
 };
 
 const Headers: React.FC<Props> = ({ selected, modes, onClick, ...props }) => {
