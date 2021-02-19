@@ -1,5 +1,6 @@
 import 'twin.macro';
 import React from 'react';
+import * as _ from 'lodash';
 import { Link } from 'react-router-dom';
 
 import links from '@/services/links';
@@ -57,7 +58,13 @@ const UserCard: React.FC<Props> = ({
           </section>
         </section>
         <section tw="flex flex-row space-x-3">
-          <ModeBadges modes={preferences} />
+          <ModeBadges
+            modes={
+              _.filter(Object.entries(preferences), ([, v]) => v === true).map(
+                ([mode]) => mode
+              ) as Array<Definitions['Journey.Beatmap']['mode']>
+            }
+          />
           <UserAvailability {...availability} />
         </section>
       </section>
