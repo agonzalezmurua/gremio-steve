@@ -1,6 +1,7 @@
 import tw, { css } from 'twin.macro';
 import React, { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
+import * as _ from 'lodash';
 
 import Avatar from '@/components/atoms/avatar';
 import Button from '@/components/atoms/button';
@@ -13,6 +14,7 @@ import ModeBadges from '@/components/molecules/mode-badges';
 
 import { UserMessages } from '@/constants/messages/user';
 import { Definitions } from '@/services/api';
+import { STATUS } from '@/constants/journey';
 
 type Props = {
   user?: Definitions['User'];
@@ -31,35 +33,22 @@ const JourneyGrid: React.FC<{ journeys: Array<Definitions['Journey']> }> = (
 };
 
 const UserProfileTemplate: React.FC<Props> = (props) => {
-  const { open, closed, pending } = useMemo(() => {
-    const open: Array<Definitions['Journey']> = [];
-    const closed: Array<Definitions['Journey']> = [];
-    const pending: Array<Definitions['Journey']> = [];
-
-    if (props.user) {
-      for (const journey of props.user.queue!) {
-        switch (journey.status) {
-          case 'open':
-            open.push(journey);
-            break;
-          case 'closed':
-            closed.push(journey);
-            break;
-          case 'pending':
-            pending.push(journey);
-            break;
-          default:
-            break;
-        }
-      }
+  const { open, closed, pending } = useMemo<
+    {
+      [status in Definitions['Journey']['status']]: Array<
+        Definitions['Journey']
+      >;
     }
-
+  >(() => {
     return {
-      open,
-      closed,
-      pending,
+      open: _.filter(props.user?.journeys ?? [], ['status', STATUS.OPEN]),
+      closed: _.filter(props.user?.journeys ?? [], ['status', STATUS.CLOSED]),
+      pending: _.filter(props.user?.journeys ?? [], ['status', STATUS.PENDING]),
+      alert: _.filter(props.user?.journeys ?? [], ['status', STATUS.ALERT]),
+      problem: _.filter(props.user?.journeys ?? [], ['status', STATUS.PROBLEM]),
+      ready: _.filter(props.user?.journeys ?? [], ['status', STATUS.READY]),
     };
-  }, [props.user?.journeys]);
+  }, [props.user]);
 
   return (
     <>
@@ -148,12 +137,13 @@ const UserProfileTemplate: React.FC<Props> = (props) => {
         </article>
 
         {props.user !== null ? (
-          <FormattedMessage
-            id="templates.user.profile.journeys"
-            defaultMessage="Journey"
-            description="User profile Journeys header"
-            tagName="h2"
-          />
+          <h2>
+            <FormattedMessage
+              id="templates.user.profile.journeys"
+              defaultMessage="Journey"
+              description="User profile Journeys header"
+            />
+          </h2>
         ) : (
           <>
             <SkeletonLoader tw="h-8 w-24" />
@@ -165,45 +155,50 @@ const UserProfileTemplate: React.FC<Props> = (props) => {
           open.length === 0 &&
           closed.length === 0 &&
           pending.length === 0 && (
-            <FormattedMessage
-              id="templates.userProfile.noJourneys"
-              defaultMessage="This is a placeholder message for those who do not have any Journey (´。＿。｀)"
-              tagName="p"
-            />
+            <p>
+              <FormattedMessage
+                id="templates.userProfile.noJourneys"
+                defaultMessage="This is a placeholder message for those who do not have any Journey (´。＿。｀)"
+              />
+            </p>
           )}
 
         {open.length !== 0 && (
           <>
-            <FormattedMessage
-              id="templates.user.profile.openJourneys"
-              defaultMessage="Open"
-              description="User profile open Journeys header"
-              tagName="h3"
-            />
+            <h3>
+              <FormattedMessage
+                id="templates.user.profile.openJourneys"
+                defaultMessage="Open"
+                description="User profile open Journeys header"
+              />
+            </h3>
+
             <JourneyGrid journeys={open} />
           </>
         )}
 
         {closed.length !== 0 && (
           <>
-            <FormattedMessage
-              id="templates.user.profile.closedJourneys"
-              defaultMessage="Closed"
-              description="User profile closed Journeys header"
-              tagName="h3"
-            />
+            <h3>
+              <FormattedMessage
+                id="templates.user.profile.closedJourneys"
+                defaultMessage="Closed"
+                description="User profile closed Journeys header"
+              />
+            </h3>
             <JourneyGrid journeys={closed} />
           </>
         )}
 
         {pending.length !== 0 && (
           <>
-            <FormattedMessage
-              id="templates.user.profile.suspendedJourneys"
-              defaultMessage="Suspended"
-              description="User profile suspended Journeys header"
-              tagName="h3"
-            />
+            <h3>
+              <FormattedMessage
+                id="templates.user.profile.pendingJourneys"
+                defaultMessage="Pending"
+                description="User profile pending Journeys header"
+              />
+            </h3>
             <JourneyGrid journeys={pending} />
           </>
         )}
