@@ -7,6 +7,7 @@ import ArrowLeft from '@/assets/icons/outline/arrow-left.svg';
 import Home from '@/assets/icons/outline/home.svg';
 
 import { FocusRingFlatStyle } from '@/globals/styles/focus';
+import Button from '@/components/atoms/button';
 
 const NavigationControls: React.FC = (props) => {
   const history = useHistory();
@@ -35,34 +36,28 @@ const NavigationControls: React.FC = (props) => {
 
   return (
     <section {...props} tw="flex space-x-2 justify-between">
-      <button
+      <Button
+        variant="icon"
         aria-label="Go back to previous page"
         disabled={length === 1}
         onClick={history.goBack}
       >
         <ArrowLeft />
-      </button>
-      <Link to="/">
-        <Home />
-        <span className="visually-hidden">
-          <FormattedMessage
-            id="components.atoms.navigationControls.goBackHome"
-            defaultMessage="Go to home page"
-            description="Accesible text that describes what the home button action"
-          />
-        </span>
-      </Link>
+      </Button>
+      <Button variant="icon">
+        <Link to="/">
+          <Home />
+          <span className="visually-hidden">
+            <FormattedMessage
+              id="components.atoms.navigationControls.goBackHome"
+              defaultMessage="Go to home page"
+              description="Accesible text that describes what the home button action"
+            />
+          </span>
+        </Link>
+      </Button>
     </section>
   );
 };
 
-export default styled(NavigationControls)`
-  button,
-  a {
-    ${tw`p-1 hover:text-gray-700 disabled:text-gray-500 active:bg-gray-300 rounded transition-colors duration-200 ease-in-out`}
-    ${FocusRingFlatStyle}
-    > svg {
-      ${tw`h-5 w-5`}
-    }
-  }
-`;
+export default NavigationControls;

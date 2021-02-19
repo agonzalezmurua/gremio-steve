@@ -4,7 +4,7 @@ import React from 'react';
 
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
-import NavigationControls from '@/components/atoms/navigation-controls';
+import NavigationControls from '@/components/molecules/navigation-controls';
 import UserInfo from '@/components/molecules/user-info';
 import NavigationLinks from '@/components/molecules/navigation-links';
 import SearchJourney from '@/components/molecules/search-journey';
