@@ -14,6 +14,8 @@ const JourneyStatusBadge: React.FC<{
         return JourneyMessages['generic.journey.statusClosed'];
       case 'closed':
         return JourneyMessages['generic.journey.statusSuspended'];
+      case 'pending':
+        return JourneyMessages['generic.journey.statusPending'];
       default:
       case 'open':
         return JourneyMessages['generic.journey.statusOpen'];

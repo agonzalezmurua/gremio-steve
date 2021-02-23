@@ -9,7 +9,12 @@ export const JourneyMessages = defineMessages({
   'generic.journey.statusSuspended': {
     id: 'generic.journey.statusSuspended',
     defaultMessage: 'Suspended',
-    description: 'Journey is suspended for any kind of interactions',
+    description: 'Journey is suspended and prevented from being updated',
+  },
+  'generic.journey.statusPending': {
+    id: 'generic.journey.statusPending',
+    defaultMessage: 'Pending',
+    description: 'Journey is pending, meaning its possible to contribute',
   },
   'generic.journey.statusClosed': {
     id: 'generic.journey.statusClosed',
