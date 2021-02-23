@@ -21,11 +21,7 @@ const UserProfilePage: React.FC<RouteComponentProps<Props>> = (props) => {
     props.history.push(links.pages.not_found());
   }
 
-  return (
-    <main>
-      <UserProfileTemplate user={loading ? null : value.data} />
-    </main>
-  );
+  return <UserProfileTemplate user={loading ? null : value.data} />;
 };
 
 export default UserProfilePage;
