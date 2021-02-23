@@ -51,10 +51,10 @@ const UserProfileTemplate: React.FC<Props> = (props) => {
   }, [props.user]);
 
   return (
-    <>
+    <main>
       <section
         css={[
-          (!props.user?.banner_url && tw`bg-gray-300`) ||
+          (!props.user?.banner_url && tw`bg-gray-300 rounded-t-lg`) ||
             css`
               background-image: url(${props.user?.banner_url});
               background-size: cover;
@@ -140,7 +140,7 @@ const UserProfileTemplate: React.FC<Props> = (props) => {
           <h2>
             <FormattedMessage
               id="templates.user.profile.journeys"
-              defaultMessage="Journey"
+              defaultMessage="Journeys"
               description="User profile Journeys header"
             />
           </h2>
@@ -203,7 +203,7 @@ const UserProfileTemplate: React.FC<Props> = (props) => {
           </>
         )}
       </section>
-    </>
+    </main>
   );
 };
 
