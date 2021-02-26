@@ -94,8 +94,6 @@ const ApiService: IApiService = {
   Client: Client,
 };
 
-Client.setAuthorizationHeaders(
-  AuthenticationStorage.get()?.access_token || null
-);
+Client.setAuthorizationHeaders(AuthenticationStorage.get() || null);
 
 export default ApiService;

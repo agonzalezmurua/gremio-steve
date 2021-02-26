@@ -7,9 +7,9 @@ const KEY = 'authentication';
 const AuthenticationStorage = {
   /** Decodes the acces_token value, if invalid then returns null */
   get_user: (): LoggedUser | null => {
-    const authentication = AuthenticationStorage.get();
+    const access_token = AuthenticationStorage.get();
     try {
-      return jwt_decode<LoggedUser>(authentication.access_token);
+      return jwt_decode<LoggedUser>(access_token);
     } catch (error) {
       // jwt_decode error because of invalid string should catch here
       return null;
@@ -18,10 +18,12 @@ const AuthenticationStorage = {
   /** Obtains the stored value */
   get: () => {
     const stored = localStorage.getItem(KEY);
-    return JSON.parse(stored) as Definitions['Authentication.Response'] | null;
+    return JSON.parse(stored) as
+      | Definitions['Authentication.Response']['access_token']
+      | null;
   },
   write: (authentication: Definitions['Authentication.Response']) =>
-    localStorage.setItem(KEY, JSON.stringify(authentication)),
+    localStorage.setItem(KEY, JSON.stringify(authentication.access_token)),
   remove: () => localStorage.removeItem(KEY),
 };
 
