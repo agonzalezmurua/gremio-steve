@@ -43,6 +43,9 @@ export interface paths {
   "/auth/osu/callback": {
     post: operations["authenticateUser"];
   };
+  "/auth/refresh": {
+    get: operations["refreshToken"];
+  };
 }
 
 export interface definitions {
@@ -255,6 +258,14 @@ export interface operations {
     };
     responses: {
       /** Bearer token response */
+      200: {
+        schema: definitions["Authentication.Response"];
+      };
+    };
+  };
+  refreshToken: {
+    responses: {
+      /** Given a refresh token, as valid refresh_token, emits a new access token */
       200: {
         schema: definitions["Authentication.Response"];
       };

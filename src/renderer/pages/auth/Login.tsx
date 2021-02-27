@@ -11,12 +11,24 @@ import useQuery from '@/hooks/useQuery';
 
 import WebLoginTemplate from '@/components/templates/web-login';
 import AppLoginTemplate from '@/components/templates/app-login';
-import { Redirect } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom';
 
-const LoginPage = () => {
+const LoginPage: React.FC<
+  RouteComponentProps<
+    unknown,
+    unknown,
+    { referer?: string; action: 'none' | 'logoff' }
+  >
+> = (props) => {
   const query = useQuery();
-  const { isLoggedIn } = useContext(AppContext);
+  const { isLoggedIn, actions } = useContext(AppContext);
   const cameFrom = query.get('came_from');
+  useEffect(() => {
+    AuthenticationStorage.remove();
+    if (props.location.state?.action === 'logoff') {
+      actions.logout();
+    }
+  }, [props.location.state?.action]);
 
   /**
    * Continue the authenticaton flow on the app
@@ -27,7 +39,7 @@ const LoginPage = () => {
     }
 
     document.location.href = links.app.protocol.authenticate(
-      AuthenticationStorage.get()
+      AuthenticationStorage.read()
     );
   }, [isLoggedIn]);
 

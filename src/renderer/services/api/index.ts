@@ -9,6 +9,8 @@ import {
 import AuthenticationStorage from '@/services/authentication.storage';
 
 import Client from './client';
+import history from '../history';
+import consolaGlobalInstance from 'consola';
 
 /** This is a re-exported definition from common typings  */
 export type Definitions = definitions;
@@ -55,6 +57,7 @@ const ApiService: IApiService = {
       format('/users/{id}', parameters),
     '/users/myself': () => '/users/myself',
     '/journeys/queue': () => '/journeys/queue',
+    '/auth/refresh': () => '/auth/refresh',
   },
   // TODO: Handle 403 responses to either redirect or wait for the refresh token implementation so
   // we han handle retries
@@ -90,10 +93,46 @@ const ApiService: IApiService = {
     getOneUserById: (parameters) =>
       Client.get(ApiService.Paths['/users/:id']({ id: parameters.path.id })),
     getMyQueue: () => Client.get(ApiService.Paths['/journeys/queue']()),
+    refreshToken: () => Client.get(ApiService.Paths['/auth/refresh']()),
   },
   Client: Client,
 };
 
-Client.setAuthorizationHeaders(AuthenticationStorage.get() || null);
+Client.interceptors.request.use((config) => {
+  config.headers = {
+    ...(config.headers || {}),
+    ...Client.computeAuthorizationHeaders(),
+  };
+  return config;
+});
+
+Client.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async (error) => {
+    const originalRequest = error.config;
+    // Check if JWT is expired when tried to access a protected resource
+    if (error.response.status === 401 && !originalRequest._retry) {
+      try {
+        originalRequest._retry = true;
+        const authentication = await await ApiService.Operations.refreshToken();
+
+        if (!authentication) {
+          throw 'Refresh token expired';
+        }
+
+        AuthenticationStorage.write(authentication.data.access_token);
+
+        return Client(originalRequest);
+      } catch (error) {
+        history.push('/login', { referer: history.location });
+      }
+    } else {
+      // Continue normal rejection flow
+      return Promise.reject(error);
+    }
+  }
+);
 
 export default ApiService;

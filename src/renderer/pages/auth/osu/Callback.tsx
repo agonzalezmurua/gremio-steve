@@ -22,7 +22,6 @@ const Callback: React.FC = () => {
     const response = await Api.Operations.authenticateUser({
       body: { authentication: { code: code } },
     });
-    // TODO: implement refresh token
     // TODO: implement original destionation URL navigation
 
     actions.login(response.data); // Update context so user is logged in

@@ -2,11 +2,12 @@ import React from 'react';
 import { useAsync } from 'react-use';
 import { GlobalStyles } from 'twin.macro';
 import { IntlProvider } from 'react-intl';
-import { HashRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 
 import useLocalePreference from '@/hooks/useLocalePreference';
 import { AppContextProvider } from '@/contexts/app';
 import AppGlobalStyles from '@/App.styles';
+import history from './services/history';
 
 function loadMessages(locale: string) {
   switch (locale) {
@@ -39,7 +40,7 @@ const Document: React.FC = (props) => {
           defaultLocale="en"
         >
           <AppContextProvider>
-            <HashRouter>{props.children}</HashRouter>
+            <Router history={history}>{props.children}</Router>
           </AppContextProvider>
         </IntlProvider>
       )}

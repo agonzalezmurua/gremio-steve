@@ -6,8 +6,8 @@ const KEY = 'authentication';
 
 const AuthenticationStorage = {
   /** Decodes the acces_token value, if invalid then returns null */
-  get_user: (): LoggedUser | null => {
-    const access_token = AuthenticationStorage.get();
+  readUser: (): LoggedUser | null => {
+    const access_token = AuthenticationStorage.read();
     try {
       return jwt_decode<LoggedUser>(access_token);
     } catch (error) {
@@ -15,15 +15,20 @@ const AuthenticationStorage = {
       return null;
     }
   },
-  /** Obtains the stored value */
-  get: () => {
+  /** Obtains the stored access token */
+  read: () => {
     const stored = localStorage.getItem(KEY);
     return JSON.parse(stored) as
       | Definitions['Authentication.Response']['access_token']
       | null;
   },
-  write: (authentication: Definitions['Authentication.Response']) =>
-    localStorage.setItem(KEY, JSON.stringify(authentication.access_token)),
+  /**
+   * From the authentication response, write the acccess_token into the storage
+   * @param access_token
+   */
+  write: (
+    access_token: Definitions['Authentication.Response']['access_token']
+  ) => localStorage.setItem(KEY, JSON.stringify(access_token)),
   remove: () => localStorage.removeItem(KEY),
 };
 

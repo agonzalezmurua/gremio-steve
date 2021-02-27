@@ -23,6 +23,12 @@ module.exports = (env, argv) =>
       compress: true,
       historyApiFallback: true,
       port: config.get('webpack.dev_server.port'),
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3010',
+          pathRewrite: { '^/api': '' },
+        },
+      },
     },
     devtool: 'inline-source-map',
     node: {

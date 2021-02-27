@@ -17,10 +17,6 @@ const UserInfo: React.FunctionComponent = () => {
   const { isLoggedIn, user, actions } = useContext(AppContext);
   const intl = useIntl();
 
-  if (isLoggedIn === false) {
-    return null;
-  }
-
   const handleLogout = useCallback(() => {
     if (
       isLoggedIn &&
@@ -35,6 +31,10 @@ const UserInfo: React.FunctionComponent = () => {
       actions.logout();
     }
   }, [isLoggedIn]);
+
+  if (isLoggedIn === false) {
+    return null;
+  }
 
   return (
     <section tw="flex flex-row items-center space-x-2">

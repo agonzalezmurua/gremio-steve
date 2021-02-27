@@ -23,15 +23,10 @@ type Actions =
 function userReducer(state: LoggedUser = null, action: Actions) {
   switch (action.type) {
     case 'login':
-      AuthenticationStorage.write(action.authentication);
-      const user = AuthenticationStorage.get_user();
-      Api.Client.defaults.headers = {
-        Authorization: `Bearer ${action.authentication.access_token}`,
-      };
-      return user;
+      AuthenticationStorage.write(action.authentication.access_token);
+      return AuthenticationStorage.readUser();
     case 'logout':
       AuthenticationStorage.remove();
-      delete Api.Client.defaults.headers.Authorization;
       return null;
     default:
       return state;
@@ -39,7 +34,7 @@ function userReducer(state: LoggedUser = null, action: Actions) {
 }
 
 const useUserReducer = () => {
-  return useReducer(userReducer, AuthenticationStorage.get_user());
+  return useReducer(userReducer, AuthenticationStorage.readUser());
 };
 
 export default useUserReducer;
