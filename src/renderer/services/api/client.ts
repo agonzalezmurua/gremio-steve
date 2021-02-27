@@ -1,18 +1,11 @@
-import Axios, { AxiosInstance } from 'axios';
+import Axios from 'axios';
 import AuthenticationStorage from '../authentication.storage';
-
-interface ClientInstance extends AxiosInstance {
-  /**
-   * @returns Extended headers
-   */
-  computeAuthorizationHeaders: () => object;
-  removeAuthorizationHeaders: () => void;
-}
+import { IApiService } from './api';
 
 const Client = Axios.create({
   baseURL: CONFIG.renderer.api.uri,
   withCredentials: true,
-}) as ClientInstance;
+}) as IApiService['Client'];
 
 Client.computeAuthorizationHeaders = function () {
   const access_token = AuthenticationStorage.read();
