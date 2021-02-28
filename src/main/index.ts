@@ -7,6 +7,10 @@ import { installExtensions } from './extensions';
 import { parseProtocolURL } from './protocol.parse-url';
 import * as IpcEvents from '../common/ipc.events';
 
+import { createClient } from '../common/api/client';
+import { createOperations } from '../common/api/operations';
+import Paths from '../common/api/paths';
+
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const DEBUG = process.env.DEBUG === 'true';
 const DARWIN = process.platform === 'darwin';
@@ -16,7 +20,31 @@ const protocolLauncherArg = '--protocol-launcher';
 /** This expression captures from a string {protocol}://{path} */
 const protocolExpression = new RegExp(/(.*):\/\/(.*)/s);
 
+/** API client */
+const Client = createClient({
+  baseURL: config.api_uri,
+});
+const Operations = createOperations(Client);
+
 let mainWindow: BrowserWindow = null;
+
+let authWindow: BrowserWindow = null;
+
+/** Creates the authentication window instance */
+function createAuthWindow() {
+  authWindow = new BrowserWindow({
+    width: 800,
+    height: 800,
+  });
+
+  authWindow.webContents.on('will-redirect', function (event, url) {
+    handleAuthCallback(url);
+  });
+
+  authWindow.on('close', () => {
+    authWindow = null;
+  });
+}
 
 /**
  * Creates the main window instance
@@ -50,18 +78,25 @@ async function createWindow() {
     mainWindow = null; // deference window when closed
   });
 
-  ipcMain.on(IpcEvents.Main.minimize_window, () => {
+  ipcMain.on(IpcEvents.Main.Events.minimize_window, () => {
     mainWindow.isMinimized() ? mainWindow.restore() : mainWindow.minimize();
   });
-  ipcMain.on(IpcEvents.Main.maximize_window, () => {
+  ipcMain.on(IpcEvents.Main.Events.maximize_window, () => {
     mainWindow.isMaximized() ? mainWindow.restore() : mainWindow.maximize();
   });
-  ipcMain.on(IpcEvents.Main.close_window, () => {
+  ipcMain.on(IpcEvents.Main.Events.close_window, () => {
     mainWindow.close();
+  });
+
+  ipcMain.on(IpcEvents.Main.Events.open_auth, () => {
+    createAuthWindow();
+    authWindow.loadURL(config.api_uri + Paths['/auth/osu']());
+    authWindow.show();
   });
   //#endregion
 }
 
+//#region Handle protocol calls
 /**
  * Handle the url sent to this application
  * @param url the incoming url argument
@@ -162,7 +197,9 @@ function handlePossibleProtocolLauncherArgs(args: Readonly<string[]>) {
     handleAppURL(args[1]);
   }
 }
+//#endregion
 
+//#region Handling of possible multiple unwanted instances, depending on the platform
 if (DARWIN) {
   app.on('open-url', (event, url) => {
     event.preventDefault();
@@ -183,8 +220,8 @@ if (isDuplicateInstance) {
   app.quit();
 }
 
+// Someone tried to run a second instance, we should focus our window.
 app.on('second-instance', (_event, args) => {
-  // Someone tried to run a second instance, we should focus our window.
   if (mainWindow) {
     if (mainWindow.isMinimized()) {
       mainWindow.restore();
@@ -199,6 +236,7 @@ app.on('second-instance', (_event, args) => {
 
   handlePossibleProtocolLauncherArgs(args);
 });
+//#endregion  Handling of possible multiple unwanted instances, depending on the platform
 
 //#region Event handlers
 app.on('ready', () => {
@@ -227,3 +265,30 @@ app
     console.error('error creating window', error);
   });
 //#endregion
+
+//#region Auth window events / Handle callback
+async function handleAuthCallback(url: string) {
+  log.info('handleAuthCallback', url);
+  const raw_code = /code=([^&]\*)/.exec(url) || null;
+  const code = raw_code && raw_code.length > 1 ? raw_code[1] : null;
+  const error = /\?error=(.+)\$/.exec(url);
+
+  if (code || error) {
+    // Close the browser if code found or error
+    authWindow.destroy();
+  }
+
+  // If there is a code, proceed to get token from the api
+  if (code) {
+    const { data } = await Operations.authenticateUser({
+      body: { authentication: { code: code } },
+    });
+    log.info('received response from auth server', data);
+  } else if (error) {
+    alert(
+      "Oops! Something went wrong and we couldn't" +
+        'log you in. Please try again.'
+    );
+  }
+}
+//#endregion Auth window events

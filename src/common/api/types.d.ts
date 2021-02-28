@@ -1,14 +1,29 @@
-import { AxiosInstance } from 'axios';
-import { OperationRequest } from '@/typings/api';
-import { operations, paths } from 'common/typings/api.gremio-steve.d.ts';
+import { AxiosResponse } from 'axios';
+import { operations, paths } from '../typings/api.gremio-steve';
+import { ClientInstance } from './client';
 
-interface ClientInstance extends AxiosInstance {
-  /**
-   * @returns Extended headers
-   */
-  computeAuthorizationHeaders: () => object;
-  removeAuthorizationHeaders: () => void;
+interface Operation {
+  parameters?: unknown;
+  responses: {
+    [key: number]:
+      | {
+          schema: unknown;
+        }
+      | unknown;
+  };
 }
+
+export type OperationResponse<O extends Operation> = AxiosResponse<
+  O['responses'] extends { 200: { schema: unknown } }
+    ? O['responses'][200]['schema']
+    : void
+> & {
+  status: keyof O['responses'];
+};
+
+export type OperationRequest<O extends Operation> = (
+  params?: O['parameters']
+) => Promise<OperationResponse<O>>;
 
 export interface IApiService {
   /**

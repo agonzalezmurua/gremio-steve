@@ -30,6 +30,8 @@ const QueuePage = React.lazy(() => import('@/pages/user/Queue'));
 import ErrorBoundary from '@/components/atoms/error-boundary';
 import Navigation from '@/components/organisms/navigation';
 import TitleBar from '@/components/organisms/title-bar';
+import history from './services/history';
+import links from './services/links';
 
 const App: React.FC = () => {
   const context = useContext(AppContext);
@@ -37,9 +39,13 @@ const App: React.FC = () => {
   useAppEvents();
 
   useIpcRendererEvent(
-    IpcEvents.Renderer.authenticate_user,
-    (event, payload: Definitions['Authentication.Response']) => {
-      context.actions.login(payload);
+    IpcEvents.Renderer.Events.authenticate,
+    (event, payload: IpcEvents.Renderer.Payloads.Authentication) => {
+      history.push(
+        links.pages.auth_osu_callback({
+          code: payload.code,
+        })
+      );
     }
   );
 
@@ -50,7 +56,14 @@ const App: React.FC = () => {
         <section tw="flex-grow" aria-live="polite">
           <Switch>
             {isElectron === true && context.isLoggedIn === false && (
-              <Route component={LoginPage} />
+              <>
+                <Route component={LoginPage} />
+                <Route
+                  exact
+                  path="/auth/osu/callback"
+                  component={CallbackPage}
+                />
+              </>
             )}
             <Suspense
               fallback={

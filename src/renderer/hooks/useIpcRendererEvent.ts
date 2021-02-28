@@ -4,15 +4,20 @@ import * as IpcEvents from 'common/ipc.events';
 import { isBrowser } from '@/constants/platform';
 
 /**
- * Registers a given function to handler a ipcEventRender
- * this method is the equivalent of registering the event manually along with the handling of unregistering
+ * Handles a event emitted by the renderer process by registering
+ * a given function to handler a ipcEventRender
  *
- * Also the given handler is internally memoized, only once
+ * This method is the equivalent of registering the event manually along with the handling of unregistering
+ *
+ * Please note that:
+ * - Only works on the APP instance
+ * - The given handler is internally memoized, only once
+ *
  * @param channel event to subscribe to
- * @param handler
+ * @param handler function to execute
  */
 export default function useIpcRendererEvent(
-  channel: IpcEvents.Renderer,
+  channel: IpcEvents.Renderer.Events,
   handler: (...args: any[]) => void
 ) {
   const memoizedHandler = useMemo(() => handler, []);

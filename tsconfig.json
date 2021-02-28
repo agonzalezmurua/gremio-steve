@@ -4,6 +4,7 @@
   "compilerOptions": {
     "outDir": "build",
     "allowJs": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   }
 }

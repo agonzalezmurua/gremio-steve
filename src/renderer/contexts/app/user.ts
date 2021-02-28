@@ -23,10 +23,10 @@ type Actions =
 function userReducer(state: LoggedUser = null, action: Actions) {
   switch (action.type) {
     case 'login':
-      AuthenticationStorage.write(action.authentication.access_token);
+      AuthenticationStorage.writeToken(action.authentication.access_token);
       return AuthenticationStorage.readUser();
     case 'logout':
-      AuthenticationStorage.remove();
+      AuthenticationStorage.removeToken();
       return null;
     default:
       return state;

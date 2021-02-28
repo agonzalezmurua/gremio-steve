@@ -38,13 +38,16 @@ export interface paths {
   };
   "/auth/osu": {
     /** Redirects to osu oauth flow */
-    get: operations["requestAuthorization"];
+    get: operations["redirectToOsuOauth"];
   };
   "/auth/osu/callback": {
     post: operations["authenticateUser"];
   };
   "/auth/refresh": {
     get: operations["refreshToken"];
+  };
+  "/auth/app": {
+    get: operations["issueAppAuthentication"];
   };
 }
 
@@ -242,7 +245,7 @@ export interface operations {
     };
   };
   /** Redirects to osu oauth flow */
-  requestAuthorization: {
+  redirectToOsuOauth: {
     responses: {
       /** Redirects to oauth service */
       301: never;
@@ -265,10 +268,22 @@ export interface operations {
   };
   refreshToken: {
     responses: {
-      /** Given a refresh token, as valid refresh_token, emits a new access token */
+      /** Bearer token response */
       200: {
         schema: definitions["Authentication.Response"];
       };
+      /** User is not allowed to refresh */
+      403: unknown;
+    };
+  };
+  issueAppAuthentication: {
+    responses: {
+      /** Bearer token response */
+      200: {
+        schema: definitions["Authentication.Response"];
+      };
+      /** Used is not authenticated */
+      401: unknown;
     };
   };
 }

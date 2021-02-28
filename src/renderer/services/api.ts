@@ -1,31 +1,35 @@
 import { definitions } from 'common/typings/api.gremio-steve.d.ts';
 import AuthenticationStorage from '@/services/authentication.storage';
 
-import { IApiService } from './api';
+import { IApiService } from '@/../common/api/types';
 
-import Client from '@/services/api/client';
+import { createClient } from 'common/api/client';
+import { createOperations } from 'common/api/operations';
 import history from '@/services/history';
-import Paths from '@/services/api/paths';
-import Operations from '@/services/api/operations';
+import Paths from '@/../common/api/paths';
 
 /** This is a re-exported definition from common typings  */
 export type Definitions = definitions;
 
-/**
- * Api service that handles:
- * - API Operation calls
- * - TODO: Invalid Authentication redirects (maybe?)
- * - Exposes API string paths
- * - Exposes a AxiosInstance as Client
- *
- * This service is strictly tied to the OpenAPI file (Swagger's json file at the moment) typification
- * that the `openapi-typescript` creates, if for some reason you are having any problem consuming the
- * API service try running `npm run generate:specs` in order to refresh the typings
- */
-const ApiService: IApiService = {
-  Paths: Paths,
-  Operations: Operations,
-  Client: Client,
+const Client = createClient({
+  baseURL: CONFIG.renderer.api.uri,
+  withCredentials: true,
+});
+
+Client.computeAuthorizationHeaders = function () {
+  const access_token = AuthenticationStorage.readToken();
+
+  if (access_token) {
+    const headers = {
+      Authorization: `Bearer ${access_token}`,
+    };
+    return headers;
+  }
+  return {};
+};
+
+Client.removeAuthorizationHeaders = function () {
+  delete this.defaults.headers.Authorization;
 };
 
 ///
@@ -56,7 +60,7 @@ Client.interceptors.response.use(
           throw 'Refresh token expired';
         }
 
-        AuthenticationStorage.write(authentication.data.access_token);
+        AuthenticationStorage.writeToken(authentication.data.access_token);
 
         return Client(originalRequest);
       } catch (error) {
@@ -68,5 +72,21 @@ Client.interceptors.response.use(
     }
   }
 );
+
+/**
+ * Api service that handles:
+ * - API Operation calls
+ * - Exposes API string paths
+ * - Exposes a AxiosInstance as Client
+ *
+ * This service is strictly tied to the OpenAPI file (Swagger's json file at the moment) typification
+ * that the `openapi-typescript` creates, if for some reason you are having any problem consuming the
+ * API service try running `npm run generate:specs` in order to refresh the typings
+ */
+const ApiService: IApiService = {
+  Paths: Paths,
+  Operations: createOperations(Client),
+  Client: Client,
+};
 
 export default ApiService;

@@ -50,7 +50,12 @@ module.exports = (env, argv) =>
                     corejs: '3',
                   },
                 ],
-                '@babel/preset-typescript',
+                [
+                  '@babel/preset-typescript',
+                  {
+                    allowNamespaces: true,
+                  },
+                ],
                 '@babel/preset-react',
               ],
               plugins: [

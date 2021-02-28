@@ -5,9 +5,8 @@ import Button from '@/components/atoms/button';
 
 type Props = {
   onLogin: () => void;
-  onOpenApp: () => void;
   isUserLoggedIn: boolean;
-  cameFrom?: string;
+  referer?: string;
 };
 
 const WebLoginTemplate: React.FC<Props> = (props) => {
@@ -28,18 +27,20 @@ const WebLoginTemplate: React.FC<Props> = (props) => {
             <FormattedMessage
               id="pages.login.authWithOsu"
               defaultMessage="Log in with osu!"
-              description="Button that indicated that a log in with osu! game option"
+              description="Button that indicates tells the user to log in using osu"
             />
           </Button>
-        ) : (
-          <Button color="blue" onClick={props.onOpenApp}>
+        ) : null}
+
+        {props.isUserLoggedIn && props.referer === 'app' ? (
+          <Button color="blue" onClick={props.onLogin}>
             <FormattedMessage
               id="pages.login.openApp"
               defaultMessage="Open the app"
-              description="Button that indicated that user is already logged in web, prompting them to open the app"
+              description="Button that indicates that user is already logged in web, prompting them to open the app"
             />
           </Button>
-        )}
+        ) : null}
       </section>
     </main>
   );

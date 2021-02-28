@@ -15,15 +15,15 @@ const DebugTitleBar: React.FC = () => {
 
 const TopMenu: React.FC = (props) => {
   const handleMinimize = useCallback(() => {
-    window.electron.ipcRenderer.send(IpcEvents.Main.minimize_window);
+    window.electron.ipcRenderer.send(IpcEvents.Main.Events.minimize_window);
   }, []);
 
   const handleMaximize = useCallback(() => {
-    window.electron.ipcRenderer.send(IpcEvents.Main.maximize_window);
+    window.electron.ipcRenderer.send(IpcEvents.Main.Events.maximize_window);
   }, []);
 
   const handleClose = useCallback(() => {
-    window.electron.ipcRenderer.send(IpcEvents.Main.close_window);
+    window.electron.ipcRenderer.send(IpcEvents.Main.Events.close_window);
   }, []);
 
   return (

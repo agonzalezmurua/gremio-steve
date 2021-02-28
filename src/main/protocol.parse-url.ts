@@ -10,19 +10,25 @@ import log from 'electron-log'; // https://www.npmjs.com/package/electron-log
 import URL from 'url';
 import querystring from 'query-string';
 
-import ProtocolHandlers, { ActionPayload } from './protocol.actions';
-import { Action } from '../common/protocol.actions';
+import ProtocolHandlers, { ActionPayload } from './protocol.handlers';
+import { Action as ProtocolActions } from '../common/protocol.actions';
 import * as IpcEvents from '../common/ipc.events';
 
 /**
+ * Parses a protocol URL into an ActionPayload,
+ * these kind of actions can either trigger an event or not depending on the payload's response
  *
+ * These actions must be returned to the main file since we do not want to access the main windows directly
  * @param url received URL from event
  */
 export function parseProtocolURL(url: string): ActionPayload | undefined {
   log.info(url);
-  const knownActions = Object.values(Action);
+  const knownActions = Object.values(ProtocolActions);
   const parsedURL = URL.parse(url);
-  const unknown = { name: IpcEvents.Renderer.unknown, payload: undefined };
+  const unknown = {
+    name: IpcEvents.Renderer.Events.unknown,
+    payload: undefined,
+  };
 
   // Avoiding an injection attack: check that the query only includes expected characters
   // No characters other than #.-&=_ a-z A-Z 0-9 (no spaces)
@@ -35,7 +41,7 @@ export function parseProtocolURL(url: string): ActionPayload | undefined {
 
   const { action, ...queryObject } = querystring.parse(parsedURL.query);
 
-  let actionName: Action | undefined;
+  let actionName: ProtocolActions | undefined;
   // For future versions of Node, the WHATG version of URL is
   // recommended. But it's not ready for v12.20. Sigh.
   //
@@ -61,12 +67,12 @@ export function parseProtocolURL(url: string): ActionPayload | undefined {
   // could be added before or after the target string.
   // But checking the state value (done by the listener) provides the
   // necessary security against CSRF and other attacks
-  if (pathname && knownActions.includes(action as Action)) {
+  if (pathname && knownActions.includes(action as ProtocolActions)) {
     log.debug('pathname match, all good');
-    actionName = action as Action;
-  } else if (hostname && knownActions.includes(action as Action)) {
+    actionName = action as ProtocolActions;
+  } else if (hostname && knownActions.includes(action as ProtocolActions)) {
     log.debug('hostname match, all good');
-    actionName = action as Action;
+    actionName = action as ProtocolActions;
   }
 
   if (
@@ -77,5 +83,6 @@ export function parseProtocolURL(url: string): ActionPayload | undefined {
     return unknown; // EARLY RETURN
   }
 
+  // Execute the handling of the Protocl, which returns a payload that
   return ProtocolHandlers[actionName](queryObject);
 }

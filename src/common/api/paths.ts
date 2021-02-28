@@ -1,7 +1,8 @@
 import format from 'string-format';
-import { IApiService } from './api';
+import { IApiService } from './types';
 
 const Paths: IApiService['Paths'] = {
+  '/auth/app': () => '/auth/app',
   '/auth/osu': () => '/auth/osu',
   '/auth/osu/callback': () => '/auth/osu/callback',
   '/journeys': () => '/journeys',

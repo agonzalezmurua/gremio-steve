@@ -1,5 +1,13 @@
+// TODO: implement original destionation URL navigation
+
 import 'twin.macro';
-import React, { useContext, useEffect, useMemo } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import { useAsyncFn } from 'react-use';
 import _ from 'lodash';
@@ -7,46 +15,39 @@ import _ from 'lodash';
 import useQuery from '@/hooks/useQuery';
 import links from '@/services/links';
 import Api from '@/services/api';
-import { OauthState } from '@/typings/gremio-steve';
+import { AuthenticationState } from '@/typings/gremio-steve';
 import AppContext from '@/contexts/app';
+import Storage from '@/services/authentication.storage';
+import AuthenticationStorage from '@/services/authentication.storage';
 
 const Callback: React.FC = () => {
-  const { actions } = useContext(AppContext);
+  const { actions, isLoggedIn } = useContext(AppContext);
   const query = useQuery();
   const history = useHistory();
 
   const code = query.get('code'); // used for requesting acess token
-  const serializedStateFromQuery = query.get('state'); // state value from callback
+  const serializedState = query.get('state'); // serialize base64 state value, received from callback
 
-  const [authenticationState, fetchAuthentication] = useAsyncFn(async () => {
-    const response = await Api.Operations.authenticateUser({
+  const [authentication, fetchAuthentication] = useAsyncFn(async () => {
+    return Api.Operations.authenticateUser({
       body: { authentication: { code: code } },
     });
-    // TODO: implement original destionation URL navigation
-
-    actions.login(response.data); // Update context so user is logged in
-    history.push(links.pages.home()); // Navigate to main home
-
-    return;
   }, []);
 
-  const state = useMemo<OauthState | null>(() => {
-    const stateFromStorage = JSON.parse(
-      sessionStorage.getItem('oauthstate')
-    ) as OauthState; // oauth state value, one use only
-    sessionStorage.removeItem('oauthstate'); // Ensure that this value is deleted right away
+  const state = useMemo<AuthenticationState | null>(() => {
+    const stateFromStorage = Storage.readState();
 
     const stateFromQuery = JSON.parse(
-      atob(serializedStateFromQuery)
-    ) as OauthState; // oauth state from callback
+      atob(serializedState) // Parse string from base64
+    ) as AuthenticationState; // oauth state from callback
 
-    // Only return a valid state when they are strictly equal
+    // State is valid ONLY when both values are strictly equal
     if (_.isEqual(stateFromStorage, stateFromQuery)) {
       return stateFromStorage;
     }
 
     return null;
-  }, [serializedStateFromQuery]);
+  }, []);
 
   // Handdle state validation and access
   useEffect(() => {
@@ -57,20 +58,26 @@ const Callback: React.FC = () => {
       });
       return;
     }
-    if (state.came_from === 'browser') {
-      fetchAuthentication().catch((error) => {
+
+    fetchAuthentication()
+      .then((response) => {
+        actions.login(response.data); // Update context so user is logged in
+      })
+      .catch((error) => {
         history.push(links.pages.error_400(), {
           name: error.name,
           message: error.message,
         });
       });
-    }
-    return () => sessionStorage.removeItem('oauthstate'); // Use oauthstate nonce
   }, [state]);
 
-  if (authenticationState.error) {
-    console.error(authenticationState.error);
+  if (authentication.error) {
+    console.error(authentication.error);
     return <Redirect to={links.pages.error_500()} />;
+  }
+
+  if (isLoggedIn) {
+    return <Redirect to={links.pages.home()} />;
   }
 
   return (

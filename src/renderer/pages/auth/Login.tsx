@@ -1,17 +1,16 @@
 import 'twin.macro';
 import React, { useCallback, useContext, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { RouteComponentProps } from 'react-router-dom';
 
+import { Main } from 'common/ipc.events';
 import AppContext from '@/contexts/app';
-import AuthenticationStorage from '@/services/authentication.storage';
 import { isBrowser, isElectron } from '@/constants/platform';
-import { OauthState } from '@/typings/gremio-steve';
+import AuthenticationStorage from '@/services/authentication.storage';
 import links from '@/services/links';
 import useQuery from '@/hooks/useQuery';
 
 import WebLoginTemplate from '@/components/templates/web-login';
 import AppLoginTemplate from '@/components/templates/app-login';
-import { RouteComponentProps } from 'react-router-dom';
 
 const LoginPage: React.FC<
   RouteComponentProps<
@@ -22,64 +21,42 @@ const LoginPage: React.FC<
 > = (props) => {
   const query = useQuery();
   const { isLoggedIn, actions } = useContext(AppContext);
-  const cameFrom = query.get('came_from');
+  const referer = query.get('referer') || 'browser';
+
+  // If redirected from any other page, logs out the user
+  // TODO: add this to another page, this is just a placeholder
   useEffect(() => {
-    AuthenticationStorage.remove();
+    AuthenticationStorage.removeToken();
     if (props.location.state?.action === 'logoff') {
       actions.logout();
     }
   }, [props.location.state?.action]);
 
-  /**
-   * Continue the authenticaton flow on the app
-   */
-  const handleOpenAppFromWeb = useCallback(() => {
-    if (!isLoggedIn) {
-      return;
-    }
-
-    document.location.href = links.app.protocol.authenticate(
-      AuthenticationStorage.read()
-    );
-  }, [isLoggedIn]);
-
-  /**
-   * Regular auth flow
-   */
   const handleWebLogin = useCallback(() => {
-    const url = new URL(CONFIG.renderer.api.request_url);
-    const state: OauthState = {
-      identifier: uuidv4(),
-      came_from: isBrowser ? 'browser' : 'app',
-    };
+    const url = new URL(CONFIG.renderer.api.request_url); // Redirect url to navigate to
+    const state = AuthenticationStorage.writeState();
 
-    sessionStorage.setItem('oauthstate', JSON.stringify(state));
+    // Send a bas64 stringified value of the state that persists
+    // during the oauth process and is used during the callback handle
     url.searchParams.append('state', btoa(JSON.stringify(state)));
 
     document.location.href = url.toString();
   }, []);
 
-  /**
-   * Opens the default browser at the login link
-   */
-  const handleAppLogin = useCallback(() => {
-    window.electron.shell.openExternal(links.app.open_web.login());
-  }, []);
-
-  if (isBrowser) {
+  // Since the app cannot log in by itself, we use this template
+  if (isElectron) {
     return (
-      <WebLoginTemplate
-        onLogin={handleWebLogin}
-        isUserLoggedIn={isLoggedIn}
-        onOpenApp={handleOpenAppFromWeb}
-        cameFrom={cameFrom}
+      <AppLoginTemplate
+        onLogin={() => window.electron.ipcRenderer.send(Main.Events.open_auth)}
+        loginLink={links.app.open_web.login()}
       />
     );
   } else {
     return (
-      <AppLoginTemplate
-        onLogin={handleAppLogin}
-        loginLink={links.app.open_web.login()}
+      <WebLoginTemplate
+        onLogin={handleWebLogin}
+        isUserLoggedIn={isLoggedIn}
+        referer={referer}
       />
     );
   }

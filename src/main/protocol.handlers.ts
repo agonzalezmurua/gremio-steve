@@ -2,7 +2,11 @@ import { definitions } from '../common/typings/api.gremio-steve';
 import * as IpcEvents from '../common/ipc.events';
 import * as Protocol from '../common/protocol.actions';
 
-export type ActionPayload = { name: IpcEvents.Renderer; payload: unknown };
+export type ActionPayload<T = unknown> = {
+  /** Renderer event to call */
+  name: IpcEvents.Renderer.Events;
+  payload: T;
+};
 
 type ActionHandler = (params?: any) => ActionPayload;
 
@@ -16,12 +20,12 @@ type ActionHandler = (params?: any) => ActionPayload;
  */
 const ProtocolHandlers: { [keys in Protocol.Action]: ActionHandler } = {
   authenticate: (
-    params: definitions['Authentication.Response']
+    params: IpcEvents.Renderer.Payloads.Authentication
   ): ActionPayload => {
     return {
-      name: IpcEvents.Renderer.authenticate_user,
+      name: IpcEvents.Renderer.Events.authenticate,
       payload: {
-        ...params,
+        code: params.code,
       },
     };
   },
