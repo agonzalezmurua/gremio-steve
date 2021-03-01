@@ -28,7 +28,7 @@ const JourneyPage = React.lazy(() => import('@/pages/journeys/Id'));
 const QueuePage = React.lazy(() => import('@/pages/user/Queue'));
 
 import ErrorBoundary from '@/components/atoms/error-boundary';
-import Navigation from '@/components/organisms/navigation';
+import SideBar from '@/components/organisms/side-bar';
 import TitleBar from '@/components/organisms/title-bar';
 import history from './services/history';
 import links from './services/links';
@@ -78,7 +78,7 @@ const App: React.FC = () => {
                 <FormattedMessage {...GenericMessages['generic.loading']} />
               }
             >
-              <Navigation sidebar>
+              <SideBar sidebar>
                 <Route exact path="/" component={IndexPage} />
                 <Route
                   exact
@@ -92,7 +92,7 @@ const App: React.FC = () => {
                 <Route path="/user/:id/queue" component={QueuePage} />
                 {/* <Route path="/user/:id/activity" component={ActivityPage} /> */}
                 {/* <Route path={['*', '/not-found']} component={NotFoundPage} /> */}
-              </Navigation>
+              </SideBar>
             </Suspense>
           </Switch>
         </section>

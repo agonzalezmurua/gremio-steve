@@ -9,7 +9,7 @@ import Home from '@/assets/icons/outline/home.svg';
 import { FocusRingFlatStyle } from '@/globals/styles/focus';
 import Button from '@/components/atoms/button';
 
-const NavigationControls: React.FC = (props) => {
+const HistoryControls: React.FC = (props) => {
   const history = useHistory();
   const [length, setLength] = useState(history.length);
   const pathname = useRef(history.location.pathname);
@@ -60,4 +60,4 @@ const NavigationControls: React.FC = (props) => {
   );
 };
 
-export default NavigationControls;
+export default HistoryControls;
