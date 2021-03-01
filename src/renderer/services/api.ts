@@ -54,7 +54,7 @@ Client.interceptors.response.use(
     if (error.response.status === 401 && !originalRequest._retry) {
       try {
         originalRequest._retry = true;
-        const authentication = await await ApiService.Operations.refreshToken();
+        const authentication = await ApiService.Operations.refreshToken();
 
         if (!authentication) {
           throw 'Refresh token expired';
