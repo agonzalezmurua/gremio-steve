@@ -1,7 +1,8 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
+import log, { info } from 'electron-log';
+import queryString from 'query-string';
 
-import log from 'electron-log';
 import config from './config';
 import { installExtensions } from './extensions';
 import { parseProtocolURL } from './protocol.parse-url';
@@ -32,13 +33,28 @@ let authWindow: BrowserWindow = null;
 
 /** Creates the authentication window instance */
 function createAuthWindow() {
+  if (authWindow !== null) {
+    authWindow.destroy();
+  }
+
   authWindow = new BrowserWindow({
-    width: 800,
-    height: 800,
+    width: 600,
+    height: 600,
   });
 
-  authWindow.webContents.on('will-redirect', function (event, url) {
-    handleAuthCallback(url);
+  authWindow.webContents.on('did-redirect-navigation', (event, url) => {
+    const [, query] = url.split('?');
+    const { code, error, state } = queryString.parse(query);
+
+    if (code && state) {
+      event.preventDefault();
+      authWindow.close();
+      // Defer the callback to the main window
+      mainWindow.webContents.send(IpcEvents.Renderer.Events.navigate, {
+        route:
+          '/auth/osu/callback?' + queryString.stringify({ code, state, error }),
+      });
+    }
   });
 
   authWindow.on('close', () => {
@@ -88,9 +104,9 @@ async function createWindow() {
     mainWindow.close();
   });
 
-  ipcMain.on(IpcEvents.Main.Events.open_auth, () => {
+  ipcMain.on(IpcEvents.Main.Events.open_auth, (event, { state }) => {
     createAuthWindow();
-    authWindow.loadURL(config.api_uri + Paths['/auth/osu']());
+    authWindow.loadURL(config.api_uri + Paths['/auth/osu']({ state: state }));
     authWindow.show();
   });
   //#endregion
@@ -265,30 +281,3 @@ app
     console.error('error creating window', error);
   });
 //#endregion
-
-//#region Auth window events / Handle callback
-async function handleAuthCallback(url: string) {
-  log.info('handleAuthCallback', url);
-  const raw_code = /code=([^&]\*)/.exec(url) || null;
-  const code = raw_code && raw_code.length > 1 ? raw_code[1] : null;
-  const error = /\?error=(.+)\$/.exec(url);
-
-  if (code || error) {
-    // Close the browser if code found or error
-    authWindow.destroy();
-  }
-
-  // If there is a code, proceed to get token from the api
-  if (code) {
-    const { data } = await Operations.authenticateUser({
-      body: { authentication: { code: code } },
-    });
-    log.info('received response from auth server', data);
-  } else if (error) {
-    alert(
-      "Oops! Something went wrong and we couldn't" +
-        'log you in. Please try again.'
-    );
-  }
-}
-//#endregion Auth window events

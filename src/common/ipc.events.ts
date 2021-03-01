@@ -29,11 +29,15 @@ export namespace Renderer {
     /** Fallback event when the handler cannot determine the intention, do not use */
     unknown = 'unknown',
     authenticate = 'authenticate',
+    navigate = 'navigate',
   }
   export namespace Payloads {
     export type Authentication = {
       /** Authentication string from service */
       code: string;
+    };
+    export type Navigate = {
+      route: string;
     };
   }
 }

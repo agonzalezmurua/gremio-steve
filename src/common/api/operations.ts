@@ -5,7 +5,6 @@ import { IApiService } from './types';
 export const createOperations = (
   Client: ClientInstance
 ): IApiService['Operations'] => ({
-  issueAppAuthentication: () => Client.get(Paths['/auth/app']()),
   searchJourneys: (parameters) =>
     Client.get('/', {
       params: {

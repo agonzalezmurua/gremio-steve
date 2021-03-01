@@ -12,9 +12,10 @@ type Props = {
 
 const AppLoginTemplate: React.FC<Props> = (props) => {
   const [didClick, toggle] = useToggle(false);
+
   const handleLogin = useCallback((event) => {
     event.preventDefault();
-    setTimeout(props.onLogin, didClick ? 0 : 2000);
+    props.onLogin();
     toggle(true);
   }, []);
 
@@ -34,8 +35,8 @@ const AppLoginTemplate: React.FC<Props> = (props) => {
             <Button color="blue" onClick={handleLogin}>
               <FormattedMessage
                 id="pages.login.continueWithBrowserButton"
-                defaultMessage="Log in with browser"
-                description="Button that indicated that user must open the browser in order to log in"
+                defaultMessage="Log in with osu!"
+                description="Button that tells the user to log in with their osu's game account"
               />
             </Button>
           </Anchor>

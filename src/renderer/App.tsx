@@ -49,6 +49,14 @@ const App: React.FC = () => {
     }
   );
 
+  useIpcRendererEvent(
+    IpcEvents.Renderer.Events.navigate,
+    (event, payload: IpcEvents.Renderer.Payloads.Navigate) => {
+      console.log('received navigate event', payload);
+      history.push(payload.route);
+    }
+  );
+
   return (
     <section tw="h-full flex flex-col">
       <TitleBar />

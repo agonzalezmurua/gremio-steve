@@ -46,9 +46,6 @@ export interface paths {
   "/auth/refresh": {
     get: operations["refreshToken"];
   };
-  "/auth/app": {
-    get: operations["issueAppAuthentication"];
-  };
 }
 
 export interface definitions {
@@ -246,6 +243,11 @@ export interface operations {
   };
   /** Redirects to osu oauth flow */
   redirectToOsuOauth: {
+    parameters: {
+      query: {
+        state?: unknown;
+      };
+    };
     responses: {
       /** Redirects to oauth service */
       301: never;
@@ -274,16 +276,6 @@ export interface operations {
       };
       /** User is not allowed to refresh */
       403: unknown;
-    };
-  };
-  issueAppAuthentication: {
-    responses: {
-      /** Bearer token response */
-      200: {
-        schema: definitions["Authentication.Response"];
-      };
-      /** Used is not authenticated */
-      401: unknown;
     };
   };
 }

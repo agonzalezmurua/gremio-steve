@@ -32,29 +32,35 @@ const LoginPage: React.FC<
     }
   }, [props.location.state?.action]);
 
-  const handleWebLogin = useCallback(() => {
-    const url = new URL(CONFIG.renderer.api.request_url); // Redirect url to navigate to
-    const state = AuthenticationStorage.writeState();
+  const handleLogin = useCallback(() => {
+    const state = btoa(JSON.stringify(AuthenticationStorage.writeState()));
 
+    if (isElectron) {
+      return window.electron.ipcRenderer.send(Main.Events.open_auth, {
+        state: state,
+      });
+    }
+
+    const url = new URL(CONFIG.renderer.api.request_url); // Redirect url to navigate to
     // Send a bas64 stringified value of the state that persists
     // during the oauth process and is used during the callback handle
-    url.searchParams.append('state', btoa(JSON.stringify(state)));
+    url.searchParams.append('state', state);
 
-    document.location.href = url.toString();
+    document.location.assign(url.toString());
   }, []);
 
   // Since the app cannot log in by itself, we use this template
   if (isElectron) {
     return (
       <AppLoginTemplate
-        onLogin={() => window.electron.ipcRenderer.send(Main.Events.open_auth)}
+        onLogin={handleLogin}
         loginLink={links.app.open_web.login()}
       />
     );
   } else {
     return (
       <WebLoginTemplate
-        onLogin={handleWebLogin}
+        onLogin={handleLogin}
         isUserLoggedIn={isLoggedIn}
         referer={referer}
       />

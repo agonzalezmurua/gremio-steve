@@ -1,13 +1,7 @@
 // TODO: implement original destionation URL navigation
 
 import 'twin.macro';
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 import { useAsyncFn } from 'react-use';
 import _ from 'lodash';
@@ -21,7 +15,7 @@ import Storage from '@/services/authentication.storage';
 import AuthenticationStorage from '@/services/authentication.storage';
 
 const Callback: React.FC = () => {
-  const { actions, isLoggedIn } = useContext(AppContext);
+  const { actions } = useContext(AppContext);
   const query = useQuery();
   const history = useHistory();
 
@@ -58,27 +52,28 @@ const Callback: React.FC = () => {
       });
       return;
     }
+    fetchAuthentication();
+  }, []);
 
-    fetchAuthentication()
-      .then((response) => {
-        actions.login(response.data); // Update context so user is logged in
-      })
-      .catch((error) => {
-        history.push(links.pages.error_400(), {
-          name: error.name,
-          message: error.message,
-        });
+  useEffect(() => {
+    const { loading, error, value } = authentication;
+    if (loading) {
+      return;
+    }
+
+    if (error) {
+      history.push(links.pages.error_400(), {
+        name: error.name,
+        message: error.message,
       });
-  }, [state]);
+      return;
+    }
 
-  if (authentication.error) {
-    console.error(authentication.error);
-    return <Redirect to={links.pages.error_500()} />;
-  }
-
-  if (isLoggedIn) {
-    return <Redirect to={links.pages.home()} />;
-  }
+    if (value?.status === 200) {
+      actions.login(value.data); // Update context so user is logged in
+      history.push(links.pages.home());
+    }
+  }, [authentication]);
 
   return (
     <main tw="h-full flex items-center justify-center">
