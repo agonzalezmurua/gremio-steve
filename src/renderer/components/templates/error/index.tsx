@@ -14,7 +14,7 @@ type Props = {
 
 const ErrorTemplate: React.FC<Props> = (props) => {
   return (
-    <main tw="flex flex-col h-full">
+    <main tw="flex flex-col h-full w-full items-center justify-center">
       <ErrorCircle />
       <FormattedMessage tagName="h1" {...Messages[props.title]} />
       <FormattedMessage tagName="p" {...props.message} values={props.values} />

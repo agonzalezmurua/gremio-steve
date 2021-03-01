@@ -16,7 +16,7 @@ import { isElectron } from '_/constants/platform';
 
 // Regular import pages
 import IndexPage from '_/pages/Index';
-// import NotFoundPage from '_/pages/NotFound';
+import NotFoundPage from '_/pages/NotFound';
 // import NewJourneyPage from '_/pages/journeys/New';
 // import ActivityPage from '_/pages/user/Activity';
 import LoginPage from '_/pages/auth/Login';
@@ -88,7 +88,7 @@ const App: React.FC = () => {
                 <Route path="/user/:id/profile" component={UserProfilePage} />
                 <Route path="/user/:id/queue" component={QueuePage} />
                 {/* <Route path="/user/:id/activity" component={ActivityPage} /> */}
-                {/* <Route path={['*', '/not-found']} component={NotFoundPage} /> */}
+                <Route path={['*', '/not-found']} component={NotFoundPage} />
               </SideBar>
             </Suspense>
           </Switch>
