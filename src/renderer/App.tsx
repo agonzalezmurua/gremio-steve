@@ -32,6 +32,7 @@ import SideBar from '_/components/organisms/side-bar';
 import TitleBar from '_/components/organisms/title-bar';
 import history from './services/history';
 import links from './services/links';
+import FullscreenLoader from './components/atoms/fullscreen-loader';
 
 const App: React.FC = () => {
   const context = useContext(AppContext);
@@ -65,7 +66,7 @@ const App: React.FC = () => {
           <Switch>
             {isElectron === true && context.isLoggedIn === false && (
               <>
-                <Route component={LoginPage} />
+                <Route exact path="/" component={LoginPage} />
                 <Route
                   exact
                   path="/auth/osu/callback"
@@ -73,11 +74,7 @@ const App: React.FC = () => {
                 />
               </>
             )}
-            <Suspense
-              fallback={
-                <FormattedMessage {...GenericMessages['generic.loading']} />
-              }
-            >
+            <Suspense fallback={<FullscreenLoader />}>
               <SideBar sidebar>
                 <Route exact path="/" component={IndexPage} />
                 <Route

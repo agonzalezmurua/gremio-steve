@@ -4,7 +4,7 @@ import 'twin.macro';
 import Api, { Definitions } from '_/services/api';
 
 import Search from '_/assets/icons/outline/search.svg';
-import Spinner from '_/assets/icons/steve/spinner.svg';
+import Spinner from '_/assets/spinner.svg';
 
 import Input from '_/components/atoms/input';
 import JourneySmallCard from '_/components/atoms/journey-card-small';
