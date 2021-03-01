@@ -4,9 +4,9 @@ import { GlobalStyles } from 'twin.macro';
 import { IntlProvider } from 'react-intl';
 import { Router } from 'react-router-dom';
 
-import useLocalePreference from '@/hooks/useLocalePreference';
-import { AppContextProvider } from '@/contexts/app';
-import AppGlobalStyles from '@/App.styles';
+import useLocalePreference from '_/hooks/useLocalePreference';
+import { AppContextProvider } from '_/contexts/app';
+import AppGlobalStyles from '_/App.styles';
 import history from './services/history';
 
 function loadMessages(locale: string) {

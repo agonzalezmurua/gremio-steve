@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 import React, { useMemo } from 'react';
 import uniq from 'lodash/uniq';
 
-import Bell from '@/assets/icons/solid/bell.svg';
-import Star from '@/assets/icons/solid/star.svg';
+import Bell from '_/assets/icons/solid/bell.svg';
+import Star from '_/assets/icons/solid/star.svg';
 
-import Button from '@/components/atoms/button';
-import JourneyStatusBadge from '@/components/atoms/journey-status-badge';
-import links from '@/services/links';
+import Button from '_/components/atoms/button';
+import JourneyStatusBadge from '_/components/atoms/journey-status-badge';
+import links from '_/services/links';
 
 import ModeBadges from '../mode-badges';
-import { Definitions } from '@/services/api';
+import { Definitions } from '_/services/api';
 
 type Props = {
   journey: Definitions['Journey'];

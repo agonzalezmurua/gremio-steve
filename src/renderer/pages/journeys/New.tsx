@@ -1,8 +1,8 @@
 import 'twin.macro';
 import React, { useCallback } from 'react';
 
-import NewJourneyForm from '@/components/templates/journey-form';
-import { JourneyFormObject } from '@/components/templates/journey-form/styles';
+import NewJourneyForm from '_/components/templates/journey-form';
+import { JourneyFormObject } from '_/components/templates/journey-form/styles';
 
 const NewJourneyPage: React.FC = () => {
   const handleSubmit = useCallback(async (values: JourneyFormObject) => {

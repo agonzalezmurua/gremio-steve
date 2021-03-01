@@ -1,12 +1,12 @@
 import { definitions } from 'common/typings/api.gremio-steve.d.ts';
-import AuthenticationStorage from '@/services/authentication.storage';
+import AuthenticationStorage from '_/services/authentication.storage';
 
-import { IApiService } from '@/../common/api/types';
+import { IApiService } from '_/../common/api/types';
 
 import { createClient } from 'common/api/client';
 import { createOperations } from 'common/api/operations';
-import history from '@/services/history';
-import Paths from '@/../common/api/paths';
+import history from '_/services/history';
+import Paths from '_/../common/api/paths';
 
 /** This is a re-exported definition from common typings  */
 export type Definitions = definitions;

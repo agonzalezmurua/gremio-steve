@@ -4,10 +4,10 @@ import React from 'react';
 
 import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
-import HistoryControls from '@/components/molecules/history-controls';
-import UserInfo from '@/components/molecules/user-info';
-import NavigationLinks from '@/components/molecules/navigation-links';
-import SearchJourney from '@/components/molecules/search-journey';
+import HistoryControls from '_/components/molecules/history-controls';
+import UserInfo from '_/components/molecules/user-info';
+import NavigationLinks from '_/components/molecules/navigation-links';
+import SearchJourney from '_/components/molecules/search-journey';
 
 type Props = {
   sidebar: boolean;

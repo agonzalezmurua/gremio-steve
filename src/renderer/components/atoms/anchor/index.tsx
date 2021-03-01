@@ -1,6 +1,6 @@
 import tw, { styled } from 'twin.macro';
 
-import FocusRingTwStyle from '@/globals/styles/focus';
+import FocusRingTwStyle from '_/globals/styles/focus';
 
 const Anchor = styled.a`
   ${tw`dark:text-blue-300`}

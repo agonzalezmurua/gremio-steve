@@ -2,8 +2,8 @@ import 'twin.macro';
 // import React from 'react';
 // import { FormattedMessage } from 'react-intl';
 
-// import Button from '@/components/atoms/button';
-// import Activity from '@/components/molecules/activity';
+// import Button from '_/components/atoms/button';
+// import Activity from '_/components/molecules/activity';
 
 // type ActivityFeedProps = {
 //   activity: UserActivity[];

@@ -2,11 +2,11 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { FieldArray, useFormikContext } from 'formik';
 
-import Plus from '@/assets/icons/outline/plus.svg';
+import Plus from '_/assets/icons/outline/plus.svg';
 
-import Button from '@/components/atoms/button';
-import GameMapFormEntry from '@/components/molecules/beatmapset-form-entry';
-import { JourneyFormObject } from '@/components/templates/journey-form/styles';
+import Button from '_/components/atoms/button';
+import GameMapFormEntry from '_/components/molecules/beatmapset-form-entry';
+import { JourneyFormObject } from '_/components/templates/journey-form/styles';
 
 import Styles from './styles';
 

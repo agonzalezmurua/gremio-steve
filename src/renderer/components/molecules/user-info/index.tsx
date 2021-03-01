@@ -3,15 +3,15 @@ import React, { useCallback, useContext } from 'react';
 import { useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
 
-import { FocusRingFlatStyle } from '@/globals/styles/focus';
+import { FocusRingFlatStyle } from '_/globals/styles/focus';
 
-import AppContext from '@/contexts/app';
+import AppContext from '_/contexts/app';
 
-import Avatar from '@/components/atoms/avatar';
-import links from '@/services/links';
-import Button from '@/components/atoms/button';
+import Avatar from '_/components/atoms/avatar';
+import links from '_/services/links';
+import Button from '_/components/atoms/button';
 
-import Logout from '@/assets/icons/outline/logout.svg';
+import Logout from '_/assets/icons/outline/logout.svg';
 
 const UserInfo: React.FunctionComponent = () => {
   const { isLoggedIn, user, actions } = useContext(AppContext);

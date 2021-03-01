@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useMemo, useState } from 'react';
 import tw, { styled } from 'twin.macro';
 import Button from '../../atoms/button';
 
-import Circle from '@/assets/icons/steve/circle.svg';
+import Circle from '_/assets/icons/steve/circle.svg';
 import { FormattedMessage } from 'react-intl';
 
 type ProgressProps = {

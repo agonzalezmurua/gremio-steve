@@ -3,11 +3,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-import ArrowLeft from '@/assets/icons/outline/arrow-left.svg';
-import Home from '@/assets/icons/outline/home.svg';
+import ArrowLeft from '_/assets/icons/outline/arrow-left.svg';
+import Home from '_/assets/icons/outline/home.svg';
 
-import { FocusRingFlatStyle } from '@/globals/styles/focus';
-import Button from '@/components/atoms/button';
+import { FocusRingFlatStyle } from '_/globals/styles/focus';
+import Button from '_/components/atoms/button';
 
 const HistoryControls: React.FC = (props) => {
   const history = useHistory();

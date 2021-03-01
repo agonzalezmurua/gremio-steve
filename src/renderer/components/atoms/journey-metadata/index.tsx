@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import tw, { styled } from 'twin.macro';
 
-import Calendar from '@/assets/icons/outline/calendar.svg';
-import MusicNote from '@/assets/icons/outline/music-note.svg';
-import DocumentText from '@/assets/icons/outline/document-text.svg';
-import Clock from '@/assets/icons/outline/clock.svg';
-import useMs from '@/hooks/useMs';
+import Calendar from '_/assets/icons/outline/calendar.svg';
+import MusicNote from '_/assets/icons/outline/music-note.svg';
+import DocumentText from '_/assets/icons/outline/document-text.svg';
+import Clock from '_/assets/icons/outline/clock.svg';
+import useMs from '_/hooks/useMs';
 
 const Base = styled.section`
   ${tw`flex items-center space-x-1`}

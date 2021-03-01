@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react';
 import { injectIntl, WrappedComponentProps } from 'react-intl';
 
-import Select, { SelectProps } from '@/components/atoms/select';
-import { DIFFICULTIES } from '@/constants/beatmapset';
+import Select, { SelectProps } from '_/components/atoms/select';
+import { DIFFICULTIES } from '_/constants/beatmapset';
 
 import Messages from './messages';
 

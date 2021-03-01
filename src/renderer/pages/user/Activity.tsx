@@ -1,11 +1,11 @@
 import 'twin.macro';
 // import React, { useContext } from 'react';
-// import Operations from '@/services/api';
-// import AppContext from '@/App.context';
+// import Operations from '_/services/api';
+// import AppContext from '_/App.context';
 // import { FormattedMessage } from 'react-intl';
 // import { useAsync } from 'react-use';
 
-// import UserActivityTemplate from '@/components/templates/user-activity';
+// import UserActivityTemplate from '_/components/templates/user-activity';
 
 const ActivityPage = () => {
   return null;

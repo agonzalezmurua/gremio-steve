@@ -2,8 +2,8 @@ import tw, { styled } from 'twin.macro';
 import React, { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import JourneyMessages from '@/constants/messages/journey';
-import { Definitions } from '@/services/api';
+import JourneyMessages from '_/constants/messages/journey';
+import { Definitions } from '_/services/api';
 
 const JourneyStatusBadge: React.FC<{
   status: Definitions['Journey']['status'];

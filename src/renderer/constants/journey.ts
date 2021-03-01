@@ -1,4 +1,4 @@
-import { Definitions } from '@/services/api';
+import { Definitions } from '_/services/api';
 
 export const STATUS: {
   [key in Uppercase<Definitions['Journey']['status']>]: Lowercase<key>;

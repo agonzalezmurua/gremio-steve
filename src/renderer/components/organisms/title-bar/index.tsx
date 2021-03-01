@@ -1,10 +1,10 @@
 import tw, { styled } from 'twin.macro';
 import React, { useCallback, useMemo } from 'react';
 
-import Close from '@/assets/icons/outline/x.svg';
-import Minimize from '@/assets/icons/outline/minus.svg';
-import Maximize from '@/assets/icons/outline/duplicate.svg';
-import { isBrowser, currentPlatform, isElectron } from '@/constants/platform';
+import Close from '_/assets/icons/outline/x.svg';
+import Minimize from '_/assets/icons/outline/minus.svg';
+import Maximize from '_/assets/icons/outline/duplicate.svg';
+import { isBrowser, currentPlatform, isElectron } from '_/constants/platform';
 
 import * as IpcEvents from 'common/ipc.events';
 

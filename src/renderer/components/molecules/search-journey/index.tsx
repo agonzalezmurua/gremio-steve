@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { useAsyncFn, useDebounce } from 'react-use';
 import 'twin.macro';
-import Api, { Definitions } from '@/services/api';
+import Api, { Definitions } from '_/services/api';
 
-import Search from '@/assets/icons/outline/search.svg';
-import Spinner from '@/assets/icons/steve/spinner.svg';
+import Search from '_/assets/icons/outline/search.svg';
+import Spinner from '_/assets/icons/steve/spinner.svg';
 
-import Input from '@/components/atoms/input';
-import JourneySmallCard from '@/components/atoms/journey-card-small';
+import Input from '_/components/atoms/input';
+import JourneySmallCard from '_/components/atoms/journey-card-small';
 
 const SearchJourney: React.FunctionComponent = () => {
   const [search, setSearch] = useState('');

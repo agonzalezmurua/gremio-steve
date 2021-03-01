@@ -3,14 +3,14 @@ import tw, { styled } from 'twin.macro';
 import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-import AppContext from '@/contexts/app';
-import links from '@/services/links';
+import AppContext from '_/contexts/app';
+import links from '_/services/links';
 
-import LightNingBolt from '@/assets/icons/outline/lightning-bolt.svg';
-import Collection from '@/assets/icons/outline/collection.svg';
-import Bookmark from '@/assets/icons/outline/bookmark.svg';
-import Plus from '@/assets/icons/outline/plus.svg';
-import User from '@/assets/icons/outline/user.svg';
+import LightNingBolt from '_/assets/icons/outline/lightning-bolt.svg';
+import Collection from '_/assets/icons/outline/collection.svg';
+import Bookmark from '_/assets/icons/outline/bookmark.svg';
+import Plus from '_/assets/icons/outline/plus.svg';
+import User from '_/assets/icons/outline/user.svg';
 
 const NavigationItem = styled.li`
   ${tw`text-center rounded transition-colors duration-100 light:hover:(bg-gray-200) dark:hover:(bg-gray-700)`}

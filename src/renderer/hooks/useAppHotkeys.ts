@@ -2,7 +2,7 @@ import keyboardjs from 'keyboardjs';
 import { useHistory } from 'react-router-dom';
 import { useEffectOnce } from 'react-use';
 import * as H from 'history';
-import Links from '@/services/links';
+import Links from '_/services/links';
 import {
   defineMessage,
   IntlShape,

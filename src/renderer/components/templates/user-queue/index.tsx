@@ -1,12 +1,12 @@
 import 'twin.macro';
 import React from 'react';
 
-import Search from '@/assets/icons/outline/search.svg';
+import Search from '_/assets/icons/outline/search.svg';
 
-import SkeletonLoader from '@/components/atoms/skeleton-loader';
-import Input from '@/components/atoms/input';
-import JourneyCard from '@/components/molecules/journey-card';
-import { Definitions } from '@/services/api';
+import SkeletonLoader from '_/components/atoms/skeleton-loader';
+import Input from '_/components/atoms/input';
+import JourneyCard from '_/components/molecules/journey-card';
+import { Definitions } from '_/services/api';
 
 type Props = {
   suggestions?: Pick<Definitions['Journey'], 'id' | 'title'>[];

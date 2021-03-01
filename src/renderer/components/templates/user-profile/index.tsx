@@ -3,18 +3,18 @@ import React, { useMemo } from 'react';
 import { FormattedMessage } from 'react-intl';
 import * as _ from 'lodash';
 
-import Avatar from '@/components/atoms/avatar';
-import Button from '@/components/atoms/button';
-import SkeletonLoader from '@/components/atoms/skeleton-loader';
-import UserAvailability from '@/components/atoms/user-availability';
-import Markdown from '@/components/atoms/markdown';
+import Avatar from '_/components/atoms/avatar';
+import Button from '_/components/atoms/button';
+import SkeletonLoader from '_/components/atoms/skeleton-loader';
+import UserAvailability from '_/components/atoms/user-availability';
+import Markdown from '_/components/atoms/markdown';
 
-import JourneyCard from '@/components/molecules/journey-card';
-import ModeBadges from '@/components/molecules/mode-badges';
+import JourneyCard from '_/components/molecules/journey-card';
+import ModeBadges from '_/components/molecules/mode-badges';
 
-import { UserMessages } from '@/constants/messages/user';
-import { Definitions } from '@/services/api';
-import { STATUS } from '@/constants/journey';
+import { UserMessages } from '_/constants/messages/user';
+import { Definitions } from '_/services/api';
+import { STATUS } from '_/constants/journey';
 
 type Props = {
   user?: Definitions['User'];

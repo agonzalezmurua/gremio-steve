@@ -4,32 +4,32 @@ import React, { Suspense, useContext } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
-import AppContext from '@/contexts/app';
+import AppContext from '_/contexts/app';
 
 import * as IpcEvents from 'common/ipc.events';
-import { Definitions } from '@/services/api';
-import useAppHotkeys from '@/hooks/useAppHotkeys';
-import useAppEvents from '@/hooks/useAppEvents';
-import useIpcRendererEvent from '@/hooks/useIpcRendererEvent';
-import GenericMessages from '@/constants/messages/generic';
-import { isElectron } from '@/constants/platform';
+import { Definitions } from '_/services/api';
+import useAppHotkeys from '_/hooks/useAppHotkeys';
+import useAppEvents from '_/hooks/useAppEvents';
+import useIpcRendererEvent from '_/hooks/useIpcRendererEvent';
+import GenericMessages from '_/constants/messages/generic';
+import { isElectron } from '_/constants/platform';
 
 // Regular import pages
-import IndexPage from '@/pages/Index';
-// import NotFoundPage from '@/pages/NotFound';
-// import NewJourneyPage from '@/pages/journeys/New';
-// import ActivityPage from '@/pages/user/Activity';
-import LoginPage from '@/pages/auth/Login';
-import CallbackPage from '@/pages/auth/osu/Callback';
+import IndexPage from '_/pages/Index';
+// import NotFoundPage from '_/pages/NotFound';
+// import NewJourneyPage from '_/pages/journeys/New';
+// import ActivityPage from '_/pages/user/Activity';
+import LoginPage from '_/pages/auth/Login';
+import CallbackPage from '_/pages/auth/osu/Callback';
 
 // Dynamic import pages
-const UserProfilePage = React.lazy(() => import('@/pages/user/Profile'));
-const JourneyPage = React.lazy(() => import('@/pages/journeys/Id'));
-const QueuePage = React.lazy(() => import('@/pages/user/Queue'));
+const UserProfilePage = React.lazy(() => import('_/pages/user/Profile'));
+const JourneyPage = React.lazy(() => import('_/pages/journeys/Id'));
+const QueuePage = React.lazy(() => import('_/pages/user/Queue'));
 
-import ErrorBoundary from '@/components/atoms/error-boundary';
-import SideBar from '@/components/organisms/side-bar';
-import TitleBar from '@/components/organisms/title-bar';
+import ErrorBoundary from '_/components/atoms/error-boundary';
+import SideBar from '_/components/organisms/side-bar';
+import TitleBar from '_/components/organisms/title-bar';
 import history from './services/history';
 import links from './services/links';
 

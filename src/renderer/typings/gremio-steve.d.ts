@@ -1,4 +1,4 @@
-import { Definitions } from '@/services/api';
+import { Definitions } from '_/services/api';
 
 /**
  *

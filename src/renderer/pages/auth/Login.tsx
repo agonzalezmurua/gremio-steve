@@ -3,14 +3,14 @@ import React, { useCallback, useContext, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 
 import { Main } from 'common/ipc.events';
-import AppContext from '@/contexts/app';
-import { isBrowser, isElectron } from '@/constants/platform';
-import AuthenticationStorage from '@/services/authentication.storage';
-import links from '@/services/links';
-import useQuery from '@/hooks/useQuery';
+import AppContext from '_/contexts/app';
+import { isBrowser, isElectron } from '_/constants/platform';
+import AuthenticationStorage from '_/services/authentication.storage';
+import links from '_/services/links';
+import useQuery from '_/hooks/useQuery';
 
-import WebLoginTemplate from '@/components/templates/web-login';
-import AppLoginTemplate from '@/components/templates/app-login';
+import WebLoginTemplate from '_/components/templates/web-login';
+import AppLoginTemplate from '_/components/templates/app-login';
 
 const LoginPage: React.FC<
   RouteComponentProps<

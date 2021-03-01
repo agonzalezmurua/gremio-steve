@@ -1,7 +1,7 @@
 import 'twin.macro';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import Button from '@/components/atoms/button';
+import Button from '_/components/atoms/button';
 
 type Props = {
   onLogin: () => void;

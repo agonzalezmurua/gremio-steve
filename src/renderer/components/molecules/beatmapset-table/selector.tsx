@@ -2,10 +2,10 @@ import 'twin.macro';
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import { Definitions } from '@/services/api';
+import { Definitions } from '_/services/api';
 
-import GamemodeMessages from '@/constants/messages/gamemodes';
-import ModeIcon from '@/components/atoms/mode-icon';
+import GamemodeMessages from '_/constants/messages/gamemodes';
+import ModeIcon from '_/components/atoms/mode-icon';
 
 import { ListItem } from './styles';
 

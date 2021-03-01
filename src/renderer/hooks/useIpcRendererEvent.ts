@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useEffectOnce } from 'react-use';
 import * as IpcEvents from 'common/ipc.events';
-import { isBrowser } from '@/constants/platform';
+import { isBrowser } from '_/constants/platform';
 
 /**
  * Handles a event emitted by the renderer process by registering

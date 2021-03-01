@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import tw from 'twin.macro';
 import { useClickAway } from 'react-use';
 
-import ChevronDown from '@/assets/icons/outline/chevron-down.svg';
-import { handleKey } from '@/utils';
-import useKeyDownHotkey from '@/hooks/useKeydownHotkey';
+import ChevronDown from '_/assets/icons/outline/chevron-down.svg';
+import { handleKey } from '_/utils';
+import useKeyDownHotkey from '_/hooks/useKeydownHotkey';
 
 import Styles from './styles';
 

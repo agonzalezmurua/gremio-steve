@@ -1,5 +1,5 @@
-import ModeIcon from '@/components/atoms/mode-icon';
-import { Definitions } from '@/services/api';
+import ModeIcon from '_/components/atoms/mode-icon';
+import { Definitions } from '_/services/api';
 import React from 'react';
 import 'twin.macro';
 

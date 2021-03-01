@@ -1,5 +1,5 @@
 import tw, { styled } from 'twin.macro';
-import ArticleStyle from '@/globals/styles/article';
+import ArticleStyle from '_/globals/styles/article';
 
 export default {
   Container: styled.div`

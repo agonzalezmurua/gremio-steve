@@ -2,9 +2,9 @@ import 'twin.macro';
 import React from 'react';
 import { useAsync } from 'react-use';
 import { RouteComponentProps } from 'react-router-dom';
-import Api from '@/services/api';
-import UserProfileTemplate from '@/components/templates/user-profile';
-import links from '@/services/links';
+import Api from '_/services/api';
+import UserProfileTemplate from '_/components/templates/user-profile';
+import links from '_/services/links';
 
 type Props = {
   id: string;

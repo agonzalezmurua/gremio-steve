@@ -6,9 +6,9 @@
 import { useMemo, useReducer } from 'react';
 import jwt_decode from 'jwt-decode';
 
-import { LoggedUser } from '@/typings/gremio-steve';
-import Api, { Definitions } from '@/services/api';
-import AuthenticationStorage from '@/services/authentication.storage';
+import { LoggedUser } from '_/typings/gremio-steve';
+import Api, { Definitions } from '_/services/api';
+import AuthenticationStorage from '_/services/authentication.storage';
 
 /**
  * Available reducer actions

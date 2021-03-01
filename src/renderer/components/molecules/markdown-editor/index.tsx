@@ -5,8 +5,8 @@ import 'twin.macro';
 
 import Button from '../../atoms/button';
 import Styles from './styles';
-import InputStyles from '@/components/atoms/input/styles';
-import Markdown from '@/components/atoms/markdown';
+import InputStyles from '_/components/atoms/input/styles';
+import Markdown from '_/components/atoms/markdown';
 
 type EditorProps = {
   value?: string;

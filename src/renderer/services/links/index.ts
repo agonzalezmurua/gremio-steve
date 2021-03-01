@@ -1,7 +1,7 @@
 import journeys from './journeys';
 import user from './user';
 import querystring from 'query-string';
-import { Action as ProtocolActions } from '@/../common/protocol.actions';
+import { Action as ProtocolActions } from '_/../common/protocol.actions';
 import * as IpcEvents from 'common/ipc.events';
 
 /**

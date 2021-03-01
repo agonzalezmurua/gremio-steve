@@ -3,9 +3,9 @@ import React from 'react';
 import { useAsync } from 'react-use';
 import { Redirect, RouteComponentProps } from 'react-router-dom';
 
-import JourneyTemplate from '@/components/templates/journeys';
+import JourneyTemplate from '_/components/templates/journeys';
 
-import Api from '@/services/api';
+import Api from '_/services/api';
 
 const JourneyPage: React.FC<
   RouteComponentProps<{

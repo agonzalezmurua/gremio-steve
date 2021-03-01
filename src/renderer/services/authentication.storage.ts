@@ -1,8 +1,8 @@
 import jwt_decode from 'jwt-decode';
 import { v4 as uuidv4 } from 'uuid';
 
-import { Definitions } from '@/services/api';
-import { LoggedUser, AuthenticationState } from '@/typings/gremio-steve';
+import { Definitions } from '_/services/api';
+import { LoggedUser, AuthenticationState } from '_/typings/gremio-steve';
 
 const ACCESS_TOKEN_KEY = 'authentication';
 const STATE_KEY = 'oauthstate';

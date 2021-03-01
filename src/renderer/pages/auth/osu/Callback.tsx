@@ -6,13 +6,13 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { useAsyncFn } from 'react-use';
 import _ from 'lodash';
 
-import useQuery from '@/hooks/useQuery';
-import links from '@/services/links';
-import Api from '@/services/api';
-import { AuthenticationState } from '@/typings/gremio-steve';
-import AppContext from '@/contexts/app';
-import Storage from '@/services/authentication.storage';
-import AuthenticationStorage from '@/services/authentication.storage';
+import useQuery from '_/hooks/useQuery';
+import links from '_/services/links';
+import Api from '_/services/api';
+import { AuthenticationState } from '_/typings/gremio-steve';
+import AppContext from '_/contexts/app';
+import Storage from '_/services/authentication.storage';
+import AuthenticationStorage from '_/services/authentication.storage';
 
 const Callback: React.FC = () => {
   const { actions } = useContext(AppContext);

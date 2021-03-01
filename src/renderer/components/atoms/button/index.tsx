@@ -1,4 +1,4 @@
-import { FocusRingFlatStyle } from '@/globals/styles/focus';
+import { FocusRingFlatStyle } from '_/globals/styles/focus';
 import tw, { styled, css } from 'twin.macro';
 import { DefaultStyles, LinkStyles, IconStyles } from './styles';
 

@@ -1,9 +1,9 @@
 import 'twin.macro';
 import React, { useCallback } from 'react';
 import { FormattedMessage } from 'react-intl';
-import Button from '@/components/atoms/button';
+import Button from '_/components/atoms/button';
 import { useToggle } from 'react-use';
-import Anchor from '@/components/atoms/anchor';
+import Anchor from '_/components/atoms/anchor';
 
 type Props = {
   onLogin: () => void;

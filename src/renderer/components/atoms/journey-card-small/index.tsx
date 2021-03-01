@@ -1,9 +1,9 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import 'twin.macro';
-import links from '@/services/links';
-import { FocusRingFlatStyle } from '@/globals/styles/focus';
-import { Definitions } from '@/services/api';
+import links from '_/services/links';
+import { FocusRingFlatStyle } from '_/globals/styles/focus';
+import { Definitions } from '_/services/api';
 
 const JourneyCardSmall: React.FunctionComponent<
   Pick<

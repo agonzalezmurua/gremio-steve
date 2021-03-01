@@ -3,17 +3,17 @@ import React from 'react';
 import * as _ from 'lodash';
 import { Link } from 'react-router-dom';
 
-import links from '@/services/links';
+import links from '_/services/links';
 
-import Annotation from '@/assets/icons/solid/annotation.svg';
-import Bell from '@/assets/icons/solid/bell.svg';
+import Annotation from '_/assets/icons/solid/annotation.svg';
+import Bell from '_/assets/icons/solid/bell.svg';
 
-import Avatar from '@/components/atoms/avatar';
-import Button from '@/components/atoms/button';
-import UserAvailability from '@/components/atoms/user-availability';
+import Avatar from '_/components/atoms/avatar';
+import Button from '_/components/atoms/button';
+import UserAvailability from '_/components/atoms/user-availability';
 
 import ModeBadges from '../mode-badges';
-import { Definitions } from '@/services/api';
+import { Definitions } from '_/services/api';
 
 type Props = Pick<
   Definitions['User'],
