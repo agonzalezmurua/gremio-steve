@@ -25,7 +25,7 @@ const AppLoginTemplate: React.FC<Props> = (props) => {
         <>
           <h1>
             <FormattedMessage
-              id="pages.login.title"
+              id="templates.login.title"
               defaultMessage="Welcome to Stev"
               description="Header with salutations"
             />
@@ -34,7 +34,7 @@ const AppLoginTemplate: React.FC<Props> = (props) => {
           <Anchor>
             <Button color="blue" onClick={handleLogin}>
               <FormattedMessage
-                id="pages.login.continueWithBrowserButton"
+                id="templates.login.continueWithBrowserButton"
                 defaultMessage="Log in with osu!"
                 description="Button that tells the user to log in with their osu's game account"
               />
@@ -45,20 +45,20 @@ const AppLoginTemplate: React.FC<Props> = (props) => {
         <>
           <h1>
             <FormattedMessage
-              id="pages.login.afterClickHeader"
+              id="templates.login.afterClickHeader"
               defaultMessage="Go to your browser to complete your log in"
               description="Header that instructs user to go to their browser to complete the process"
             />
           </h1>
           <span>
             <FormattedMessage
-              id="pages.login.helpNotSeeingTab"
+              id="templates.login.helpNotSeeingTab"
               defaultMessage="Not seeing the browser tab?"
               description="Helper text that ask if the user is not able to see / find the intended login tab"
             />{' '}
             <Anchor href={props.loginLink} onClick={handleLogin}>
               <FormattedMessage
-                id="pages.login.tryAgain"
+                id="templates.login.tryAgain"
                 defaultMessage="Try again"
                 description="Link that opens the link again"
               />

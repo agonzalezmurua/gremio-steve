@@ -16,7 +16,7 @@ const WebLoginTemplate: React.FC<Props> = (props) => {
         <section>
           <h1>
             <FormattedMessage
-              id="pages.login.title"
+              id="templates.login.title"
               defaultMessage="Welcome to Stev"
               description="Header with salutations"
             />
@@ -25,7 +25,7 @@ const WebLoginTemplate: React.FC<Props> = (props) => {
         {props.isUserLoggedIn === false ? (
           <Button color="blue" onClick={props.onLogin}>
             <FormattedMessage
-              id="pages.login.authWithOsu"
+              id="templates.login.authWithOsu"
               defaultMessage="Log in with osu!"
               description="Button that indicates tells the user to log in using osu"
             />
@@ -35,7 +35,7 @@ const WebLoginTemplate: React.FC<Props> = (props) => {
         {props.isUserLoggedIn && props.referer === 'app' ? (
           <Button color="blue" onClick={props.onLogin}>
             <FormattedMessage
-              id="pages.login.openApp"
+              id="templates.login.openApp"
               defaultMessage="Open the app"
               description="Button that indicates that user is already logged in web, prompting them to open the app"
             />
