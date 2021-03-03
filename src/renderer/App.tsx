@@ -64,10 +64,10 @@ const App: React.FC = () => {
       <ErrorBoundary>
         <Switch>
           {isElectron === true && context.isLoggedIn === false && (
-            <>
+            <Switch>
               <Route path="/" component={LoginPage} />
               <Route exact path="/auth/osu/callback" component={CallbackPage} />
-            </>
+            </Switch>
           )}
           <Suspense fallback={<FullscreenLoader />}>
             <SideBar>
