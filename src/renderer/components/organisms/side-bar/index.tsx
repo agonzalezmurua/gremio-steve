@@ -37,8 +37,4 @@ const SideBar: React.FC = (props) => {
   );
 };
 
-SideBar.defaultProps = {
-  sidebar: true,
-};
-
 export default SideBar;

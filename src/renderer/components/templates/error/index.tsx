@@ -13,12 +13,12 @@ type Props = {
 
 const ErrorTemplate: React.FC<Props> = (props) => {
   return (
-    <main>
+    <main tw="p-4 h-full flex flex-col justify-center items-center">
       <ErrorCircle />
       <FormattedMessage tagName="h1" {...props.title} />
-      <section>
-        <FormattedMessage tagName="p" {...props.message} />
-      </section>
+      <p tw="whitespace-pre-line">
+        <FormattedMessage {...props.message} />
+      </p>
     </main>
   );
 };
