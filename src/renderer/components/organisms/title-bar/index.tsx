@@ -29,7 +29,7 @@ const TopMenu: React.FC = (props) => {
   return (
     <div
       {...props}
-      tw="flex justify-end h-8 w-full border-b light:(border-gray-200) dark:(border-black)"
+      tw="flex-none flex justify-end h-8 w-full border-b light:(border-gray-200) dark:(border-black)"
     >
       {isElectron && process.env.NODE_ENV === 'development' && (
         <DebugTitleBar />

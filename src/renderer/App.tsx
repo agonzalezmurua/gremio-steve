@@ -59,23 +59,19 @@ const App: React.FC = () => {
   );
 
   return (
-    <section tw="h-full flex flex-col">
+    <section tw="max-h-full min-h-full flex flex-col">
       <TitleBar />
       <ErrorBoundary>
-        <section tw="flex-grow" aria-live="polite">
-          <Switch>
-            {isElectron === true && context.isLoggedIn === false && (
-              <>
-                <Route exact path="/" component={LoginPage} />
-                <Route
-                  exact
-                  path="/auth/osu/callback"
-                  component={CallbackPage}
-                />
-              </>
-            )}
-            <Suspense fallback={<FullscreenLoader />}>
-              <SideBar sidebar>
+        <Switch>
+          {isElectron === true && context.isLoggedIn === false && (
+            <>
+              <Route path="/" component={LoginPage} />
+              <Route exact path="/auth/osu/callback" component={CallbackPage} />
+            </>
+          )}
+          <Suspense fallback={<FullscreenLoader />}>
+            <SideBar>
+              <Switch>
                 <Route exact path="/" component={IndexPage} />
                 <Route
                   exact
@@ -89,10 +85,10 @@ const App: React.FC = () => {
                 <Route path="/user/:id/queue" component={QueuePage} />
                 {/* <Route path="/user/:id/activity" component={ActivityPage} /> */}
                 <Route path={['*', '/not-found']} component={NotFoundPage} />
-              </SideBar>
-            </Suspense>
-          </Switch>
-        </section>
+              </Switch>
+            </SideBar>
+          </Suspense>
+        </Switch>
       </ErrorBoundary>
     </section>
   );

@@ -5,9 +5,11 @@ import ArticleStyle from './globals/styles/article';
 
 const AppGlobalStyle = createGlobalStyle`
   html, body, #root {
-    ${tw`h-screen w-screen`}
     ${tw`light:(bg-white) dark:(bg-gray-800)`}
     ${tw`light:text-black dark:text-gray-300`}
+  }
+  #root {
+    ${tw`h-screen w-screen`}
   }
 
   h1, h2, h3, h4 ,h5 ,h6 {
