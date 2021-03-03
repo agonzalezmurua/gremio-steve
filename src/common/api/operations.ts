@@ -6,7 +6,7 @@ export const createOperations = (
   Client: ClientInstance
 ): IApiService['Operations'] => ({
   searchJourneys: (parameters) =>
-    Client.get('/', {
+    Client.get(Paths['/journeys'](), {
       params: {
         search: parameters.query.search,
       },
