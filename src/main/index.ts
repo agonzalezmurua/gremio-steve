@@ -75,6 +75,7 @@ async function createWindow() {
     webPreferences: {
       nodeIntegration: true,
       preload: path.resolve(__dirname, 'preload.js'),
+      partition: 'persist:steve',
     },
     frame: process.platform !== 'win32',
     titleBarStyle: process.platform !== 'win32' ? 'hidden' : 'default',
