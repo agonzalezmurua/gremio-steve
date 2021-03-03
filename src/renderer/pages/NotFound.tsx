@@ -10,15 +10,20 @@ const Messages = defineMessages({
     description: "Page couldn't be found",
   },
   message: {
-    defaultMessage: `The page you are looking for couldn’t be found.
-    Either it was moved or you need to ask that friend of your to check the link before sending it....`,
+    defaultMessage: `The page you are looking for couldn’t be found.`,
     id: 'pages.not_found.title',
     description: 'Webpage could not be found, description',
   },
 });
 
 const NoMatchPage: React.FunctionComponent = () => {
-  return <ErrorTemplate title={Messages.title} message={Messages.message} />;
+  return (
+    <ErrorTemplate
+      statusCode={404}
+      title={Messages.title}
+      message={Messages.message}
+    />
+  );
 };
 
 NoMatchPage.displayName = 'NoMatchPage';
