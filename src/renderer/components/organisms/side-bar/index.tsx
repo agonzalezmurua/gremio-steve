@@ -1,15 +1,14 @@
 import 'twin.macro';
 import 'overlayscrollbars/css/OverlayScrollbars.css';
 import React from 'react';
+import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 import * as Styles from './styles';
-
-import { OverlayScrollbarsComponent } from 'overlayscrollbars-react';
 
 import HistoryControls from '_/components/molecules/history-controls';
 import UserInfo from '_/components/molecules/user-info';
 import NavigationLinks from '_/components/molecules/navigation-links';
-import SearchJourney from '_/components/molecules/search-journey';
+import SearchJourney from '_/components/organisms/search-journey';
 
 const SideBar: React.FC = (props) => {
   return (
@@ -32,7 +31,20 @@ const SideBar: React.FC = (props) => {
         </section>
       </Styles.SideBar>
       {/* Content */}
-      <Styles.Content>{props.children}</Styles.Content>
+      <OverlayScrollbarsComponent
+        tw="
+          flex-grow
+          bg-white
+          border-2
+          dark:(bg-gray-900 border-gray-700)
+          rounded-lg
+          shadow-xl
+          overflow-y-auto
+        "
+        options={{ scrollbars: { autoHide: 'scroll' } }}
+      >
+        {props.children}
+      </OverlayScrollbarsComponent>
     </Styles.Container>
   );
 };

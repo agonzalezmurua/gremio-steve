@@ -38,22 +38,22 @@ const AppGlobalStyle = createGlobalStyle`
   }
 
   h1 {
-    ${tw`text-2xl`}
+    ${tw`(text-2xl font-bold)!`}
   }
   h2 {
-    ${tw`text-xl`}
+    ${tw`(text-xl font-bold)!`}
   }
   h3 {
-    ${tw`text-lg`}
+    ${tw`(text-lg font-bold)!`}
   }
   h4 {
-    ${tw`text-base`}
+    ${tw`(text-base! font-bold)`}
   }
   h5 {
-    ${tw`text-sm`}
+    ${tw`(text-sm font-bold)!`}
   }
   h6 {
-    ${tw`text-xs`}
+    ${tw`(text-xs font-bold)!`}
   }
 
   legend {

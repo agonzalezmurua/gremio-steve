@@ -21,14 +21,3 @@ export const SideBar = styled.section(() => [
   md:(w-60)
   `,
 ]);
-export const Content = styled.section(() => [
-  tw`
-  flex-grow
-  bg-white
-  border-2
-  dark:(bg-gray-900 border-gray-700)
-  rounded-lg
-  shadow-xl
-  overflow-y-auto
-  `,
-]);

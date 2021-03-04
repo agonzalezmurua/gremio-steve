@@ -13,7 +13,9 @@ type Props = {
 const UserProfilePage: React.FC<RouteComponentProps<Props>> = (props) => {
   const { value, error, loading } = useAsync(
     async () =>
-      Api.Operations.getOneUserById({ path: { id: props.match.params.id } }),
+      Api.Client.operations().getOneUserById({
+        path: { id: props.match.params.id },
+      }),
     []
   );
 

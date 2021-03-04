@@ -1,10 +1,9 @@
 import { definitions } from 'common/typings/api.gremio-steve.d.ts';
 import AuthenticationStorage from '_/services/authentication.storage';
 
-import { IApiService } from '_/../common/api/types';
+import { ApiTypes } from '_/../common/api/types';
 
 import { createClient } from 'common/api/client';
-import { createOperations } from 'common/api/operations';
 import history from '_/services/history';
 import Paths from '_/../common/api/paths';
 
@@ -54,7 +53,7 @@ Client.interceptors.response.use(
     if (error.response.status === 401 && !originalRequest._retry) {
       try {
         originalRequest._retry = true;
-        const authentication = await ApiService.Operations.refreshToken();
+        const authentication = await Api.Client.operations().refreshToken();
 
         if (!authentication) {
           throw 'Refresh token expired';
@@ -83,10 +82,12 @@ Client.interceptors.response.use(
  * that the `openapi-typescript` creates, if for some reason you are having any problem consuming the
  * API service try running `npm run generate:specs` in order to refresh the typings
  */
-const ApiService: IApiService = {
+const Api: {
+  Paths: ApiTypes.Service.Paths;
+  Client: ApiTypes.Service.Client;
+} = {
   Paths: Paths,
-  Operations: createOperations(Client),
   Client: Client,
 };
 
-export default ApiService;
+export default Api;

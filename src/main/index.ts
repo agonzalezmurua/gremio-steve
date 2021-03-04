@@ -1,6 +1,6 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
 import path from 'path';
-import log, { info } from 'electron-log';
+import log from 'electron-log';
 import queryString from 'query-string';
 
 import config from './config';
@@ -9,7 +9,6 @@ import { parseProtocolURL } from './protocol.parse-url';
 import * as IpcEvents from '../common/ipc.events';
 
 import { createClient } from '../common/api/client';
-import { createOperations } from '../common/api/operations';
 import Paths from '../common/api/paths';
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
@@ -20,12 +19,6 @@ const WIN32 = process.platform === 'win32';
 const protocolLauncherArg = '--protocol-launcher';
 /** This expression captures from a string {protocol}://{path} */
 const protocolExpression = new RegExp(/(.*):\/\/(.*)/s);
-
-/** API client */
-const Client = createClient({
-  baseURL: config.api_uri,
-});
-const Operations = createOperations(Client);
 
 let mainWindow: BrowserWindow = null;
 

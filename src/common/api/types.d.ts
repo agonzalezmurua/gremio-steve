@@ -1,43 +1,68 @@
-import { AxiosResponse } from 'axios';
-import { operations, paths } from '../typings/api.gremio-steve';
-import { ClientInstance } from './client';
+import {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  CancelTokenStatic,
+} from 'axios';
+import {
+  operations as ApiOperations,
+  paths,
+} from '../typings/api.gremio-steve';
 
-interface Operation {
-  parameters?: unknown;
-  responses: {
-    [key: number]:
-      | {
-          schema: unknown;
-        }
-      | unknown;
-  };
-}
+declare namespace ApiTypes {
+  export interface ClientInstance extends AxiosInstance {
+    /**
+     * @returns Extended headers
+     */
+    computeAuthorizationHeaders: () => object;
+    removeAuthorizationHeaders: () => void;
+    /**
+     * Promises that invoke the API service, parameters, and response are defined from the API typings
+     */
+    operations: (config?: AxiosRequestConfig) => Operations.Requests;
+    cancelToken: CancelTokenStatic;
+  }
+  namespace Service {
+    /**
+     * functions that create a parametrized paths for API consumption
+     *
+     * This implementation was rushed so any attempt to make this any cleaner will be highly appreciated
+     */
+    export type Paths = Record<keyof paths, (params?: any) => string>;
+    /** Axios client instance, prefer using Operations unless there this a edge case that needs this specific instance */
+    export type Client = ClientInstance;
+  }
+  namespace Operations {
+    type Definitions = ApiOperations;
 
-export type OperationResponse<O extends Operation> = AxiosResponse<
-  O['responses'] extends { 200: { schema: unknown } }
-    ? O['responses'][200]['schema']
-    : void
-> & {
-  status: keyof O['responses'];
-};
+    type Requests = {
+      [key in Names]: Base.Request<ApiOperations[key]>;
+    };
 
-export type OperationRequest<O extends Operation> = (
-  params?: O['parameters']
-) => Promise<OperationResponse<O>>;
+    type Names = keyof ApiOperations;
+    namespace Base {
+      interface Structure {
+        parameters?: unknown;
+        responses: {
+          [key: number]:
+            | {
+                schema: unknown;
+              }
+            | unknown;
+        };
+      }
 
-export interface IApiService {
-  /**
-   * functions that create a parametrized paths for API consumption
-   *
-   * This implementation was rushed so any attempt to make this any cleaner will be highly appreciated
-   */
-  Paths: Record<keyof paths, (params?: any) => string>;
-  /**
-   * Promises that invoke the API service, parameters, and response are defined from the API typings
-   */
-  Operations: {
-    [key in keyof operations]: OperationRequest<operations[key]>;
-  };
-  /** Axios client instance, prefer using Operations unless there this a edge case that needs this specific instance */
-  Client: ClientInstance;
+      export type Response<Operation extends Structure> = AxiosResponse<
+        Operation['responses'] extends { 200: { schema: unknown } }
+          ? Operation['responses'][200]['schema']
+          : void
+      > & {
+        status: keyof Operation['responses'];
+      };
+
+      export type Request<Operation extends Structure = Structure> = (
+        params?: Operation['parameters']
+      ) => Promise<Response<Operation>>;
+    }
+  }
 }

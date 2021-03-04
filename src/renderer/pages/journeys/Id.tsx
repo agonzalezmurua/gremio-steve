@@ -18,7 +18,7 @@ const JourneyPage: React.FC<
     },
   } = props;
   const { value: journey = null, error } = useAsync(async () => {
-    const response = await Api.Operations.getOneJourneyById({
+    const response = await Api.Client.operations().getOneJourneyById({
       path: { id: id },
     });
     return response.data;

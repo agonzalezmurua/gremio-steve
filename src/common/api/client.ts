@@ -1,13 +1,11 @@
-import Axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { IApiService } from './types';
+import Axios, { AxiosRequestConfig } from 'axios';
+import { createOperations } from './operations';
+import { ApiTypes } from './types';
 
-export interface ClientInstance extends AxiosInstance {
-  /**
-   * @returns Extended headers
-   */
-  computeAuthorizationHeaders: () => object;
-  removeAuthorizationHeaders: () => void;
-}
+export const createClient = (config: AxiosRequestConfig) => {
+  const Client = Axios.create(config) as ApiTypes.Service.Client;
 
-export const createClient = (config: AxiosRequestConfig) =>
-  Axios.create(config) as IApiService['Client'];
+  Client.operations = (config) => createOperations(Client, config);
+  Client.cancelToken = Axios.CancelToken;
+  return Client;
+};
