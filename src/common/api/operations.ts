@@ -1,12 +1,11 @@
 import { AxiosRequestConfig } from 'axios';
-import { ClientInstance } from './client';
 import Paths from './paths';
-import { IApiService } from './types';
+import { ApiTypes } from './types';
 
 export const createOperations = (
-  Client: ClientInstance,
+  Client: ApiTypes.ClientInstance,
   config: AxiosRequestConfig = {}
-): IApiService['Operations'] => ({
+): ApiTypes.Operations.Requests => ({
   searchJourneys: (parameters) =>
     Client.get(Paths['/journeys'](), {
       ...config,

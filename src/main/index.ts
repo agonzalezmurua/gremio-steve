@@ -8,7 +8,6 @@ import { installExtensions } from './extensions';
 import { parseProtocolURL } from './protocol.parse-url';
 import * as IpcEvents from '../common/ipc.events';
 
-import { createClient } from '../common/api/client';
 import Paths from '../common/api/paths';
 
 const NODE_ENV = process.env.NODE_ENV || 'development';

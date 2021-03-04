@@ -1,8 +1,8 @@
 import format from 'string-format';
 import queryString from 'query-string';
-import { IApiService } from './types';
+import { ApiTypes } from './types';
 
-const Paths: IApiService['Paths'] = {
+const Paths: ApiTypes.Service.Paths = {
   '/auth/osu': (parameters: { state: string }) =>
     '/auth/osu?' + queryString.stringify(parameters),
   '/auth/osu/callback': () => '/auth/osu/callback',
