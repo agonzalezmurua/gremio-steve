@@ -15,7 +15,7 @@ const SearchJourney: React.FC = () => {
   return (
     <>
       <SearchComponent
-        initialSearch={{ search: '' }}
+        initialParameters={{ query: { search: '' } }}
         onResolved={({ response }) => {
           setJourneys(response.data);
         }}

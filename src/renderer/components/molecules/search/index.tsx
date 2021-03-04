@@ -27,7 +27,7 @@ type Props<O extends Operations, Q> = {
   onResolved: Resolution<O>;
   operation: O;
   parameters: (values: Q) => Params<O>;
-  initialSearch: Q;
+  initialParameters: Params<O>;
   skipCondition?: (
     parameters: Params<O>
   ) => { shouldSkip: boolean; returnValue: any };
@@ -43,9 +43,9 @@ const CancelMessage = 'Canceled by user';
 
 function Search<O extends Operations, Q>(props: Props<O, Q>) {
   const cancel = useRef<Canceler | undefined>(undefined); // Cancel request function
-  const [values, setValues] = useState<Q>(props.initialSearch); // Input values
+  const [values, setValues] = useState<Q>(props.initialParameters); // Input values
   const [debouncedValues, setDebouncedValues] = React.useState<Q>(
-    props.initialSearch
+    props.initialParameters
   );
   const [isSearching, setIsSearching] = useState(false);
 
@@ -116,7 +116,7 @@ function Search<O extends Operations, Q>(props: Props<O, Q>) {
   };
 
   return (
-    <Formik initialValues={props.initialSearch} onSubmit={() => null}>
+    <Formik initialValues={props.initialParameters} onSubmit={() => null}>
       {(formikProps) => (
         <form onSubmit={formikProps.handleSubmit}>
           {props.children({
