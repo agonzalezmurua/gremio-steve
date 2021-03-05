@@ -1,4 +1,4 @@
-import { definitions } from 'common/typings/api.gremio-steve.d.ts';
+import { definitions } from 'common/typings/api.gremio-steve';
 import AuthenticationStorage from '_/services/authentication.storage';
 
 import { ApiTypes } from '_/../common/api/types';

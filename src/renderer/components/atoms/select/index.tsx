@@ -26,12 +26,14 @@ const Select: React.FC<SelectProps> = (props) => {
   const optionsWrapper = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState<SelectOption | undefined>();
   const [isDisplaying, setDisplaying] = useState(false);
+
   const diplayList = useCallback(() => {
     if (props.disabled) {
       return;
     }
     setDisplaying(true);
-  }, []);
+  }, [props.disabled]);
+
   const handleItemClick = useCallback(
     (option: SelectOption) => () => {
       props.onChange &&

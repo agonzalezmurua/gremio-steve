@@ -2,24 +2,25 @@
  * This file exposes instanced arrays of values that appear on the types exposed by the API
  */
 
-import { Definitions } from '_/services/api';
+export enum MODES {
+  'ctb' = 'ctb',
+  'mania' = 'mania',
+  'std' = 'std',
+  'taiko' = 'taiko',
+}
 
-export const MODES: Array<Definitions['Journey.Beatmap']['mode']> = [
-  'ctb',
-  'mania',
-  'std',
-  'taiko',
-];
-export const STATUS: Array<Definitions['Journey.Beatmap']['status']> = [
-  'alert',
-  'pending',
-  'problem',
-  'ready',
-];
-export const DIFFICULTIES: Array<
-  Definitions['Journey.Beatmap']['difficulty']
-> = ['easy', 'normal', 'hard', 'insane', 'expert', 'expert+'];
+export enum STATUS {
+  'alert' = 'alert',
+  'pending' = 'pending',
+  'problem' = 'problem',
+  'ready' = 'ready',
+}
 
-Object.freeze(DIFFICULTIES);
-Object.freeze(MODES);
-Object.freeze(STATUS);
+export enum DIFFICULTIES {
+  'easy' = 'easy',
+  'normal' = 'normal',
+  'hard' = 'hard',
+  'insane' = 'insane',
+  'expert' = 'expert',
+  'expert+' = 'expert+',
+}

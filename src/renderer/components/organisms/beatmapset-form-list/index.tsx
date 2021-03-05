@@ -5,39 +5,44 @@ import { FieldArray, useFormikContext } from 'formik';
 import Plus from '_/assets/icons/outline/plus.svg';
 
 import Button from '_/components/atoms/button';
-import GameMapFormEntry from '_/components/molecules/beatmapset-form-entry';
-import { JourneyFormObject } from '_/components/templates/journey-form/styles';
+import BeatmapListEntry from '_/components/organisms/beatmapset-form-list/beatmap-list-entry';
+import { JourneyFormObject } from '_/components/templates/journey-form/validations';
 
 import Styles from './styles';
+import { DIFFICULTIES, MODES } from '_/constants/beatmapset';
 
 const GameMapFormList = () => {
   const { values } = useFormikContext<JourneyFormObject>();
 
   return (
     <FieldArray
-      name="maps"
+      name="beatmaps"
       render={(helpers) => (
         <section css={[Styles.Wrapper]}>
           <Button
             name="add"
             onClick={() =>
-              helpers.push({ name: '', mode: 'std', difficulty: 'normal' })
+              helpers.push({
+                name: '',
+                mode: MODES.std,
+                difficulty: DIFFICULTIES.normal,
+              })
             }
           >
             <Plus />
             <FormattedMessage
               id="components.organisms.gameMapForm.addNewDifficultyButton"
-              defaultMessage="Add new"
-              description="Add a new Beatmap difficulty entry"
+              defaultMessage="Add"
+              description="Add a new Beatmap to the Journey"
               tagName="span"
             />
           </Button>
           <section css={[Styles.GameMaps]}>
             <ul>
-              {values.maps.map((_, index) => {
+              {values.beatmaps.map((_, index) => {
                 return (
                   <li key={index}>
-                    <GameMapFormEntry
+                    <BeatmapListEntry
                       onDelete={() => helpers.remove(index)}
                       index={index}
                     />

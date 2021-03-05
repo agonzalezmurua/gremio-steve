@@ -17,7 +17,7 @@ import { isElectron } from '_/constants/platform';
 // Regular import pages
 import IndexPage from '_/pages/Index';
 import NotFoundPage from '_/pages/NotFound';
-// import NewJourneyPage from '_/pages/journeys/New';
+import NewJourneyPage from '_/pages/journeys/New';
 // import ActivityPage from '_/pages/user/Activity';
 import LoginPage from '_/pages/auth/Login';
 import CallbackPage from '_/pages/auth/osu/Callback';
@@ -65,7 +65,7 @@ const App: React.FC = () => {
         <Switch>
           {isElectron === true && context.isLoggedIn === false && (
             <Switch>
-              <Route path="/" component={LoginPage} />
+              <Route exact path="/" component={LoginPage} />
               <Route exact path="/auth/osu/callback" component={CallbackPage} />
             </Switch>
           )}
@@ -79,7 +79,7 @@ const App: React.FC = () => {
                   component={CallbackPage}
                 />
                 <Route exact path="/login" component={LoginPage} />
-                {/* <Route path="/journeys/new" exact component={NewJourneyPage} /> */}
+                <Route path="/journeys/new" exact component={NewJourneyPage} />
                 <Route path="/journeys/:id" component={JourneyPage} />
                 <Route path="/user/:id/profile" component={UserProfilePage} />
                 <Route path="/user/:id/queue" component={QueuePage} />

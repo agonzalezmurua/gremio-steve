@@ -9,14 +9,15 @@ import ModeSelect from '_/components/molecules/mode-select';
 import Button from '_/components/atoms/button';
 
 import Trash from '_/assets/icons/outline/trash.svg';
+import { DIFFICULTIES, MODES } from '_/constants/beatmapset';
 
 type Props = {
   index: number;
   onDelete?: () => void;
 };
 
-const GameMapFormEntry: React.FC<Props> = ({ onDelete, index }) => {
-  const names = useMemo(
+const BeatmapListEntry: React.FC<Props> = ({ onDelete, index }) => {
+  const inputs = useMemo(
     () => ({
       name: `maps[${index}].name`,
       mode: `maps[${index}].mode`,
@@ -24,12 +25,14 @@ const GameMapFormEntry: React.FC<Props> = ({ onDelete, index }) => {
     }),
     [index]
   );
-  const [name, nameMeta] = useField({
-    name: names.name,
+  const [name, nameMeta] = useField<string>({
+    name: inputs.name,
     type: 'text',
   });
-  const [mode] = useField({ name: names.mode });
-  const [difficulty] = useField({ name: names.difficulty });
+  const [mode] = useField<MODES>({
+    name: inputs.mode,
+  });
+  const [difficulty] = useField<DIFFICULTIES>({ name: inputs.difficulty });
 
   return (
     <React.Fragment>
@@ -46,15 +49,15 @@ const GameMapFormEntry: React.FC<Props> = ({ onDelete, index }) => {
         <Input {...name} error={nameMeta.error} />
       </Label>
 
-      <Label tw="flex-grow" text="Mode" htmlFor={names.mode}>
+      <Label tw="flex-grow" text="Mode" htmlFor={inputs.mode}>
         <ModeSelect {...mode} />
       </Label>
 
-      <Label tw="flex-grow" text="Difficulty" htmlFor={names.difficulty}>
+      <Label tw="flex-grow" text="Difficulty" htmlFor={inputs.difficulty}>
         <DifficultySelect {...difficulty} mode={mode.value} />
       </Label>
     </React.Fragment>
   );
 };
 
-export default GameMapFormEntry;
+export default BeatmapListEntry;

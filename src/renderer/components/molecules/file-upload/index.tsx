@@ -1,10 +1,10 @@
-import 'twin.macro';
+import tw from 'twin.macro';
 import { useFormikContext } from 'formik';
 import React, { useEffect, useRef } from 'react';
 
 import Upload from '_/assets/icons/outline/upload.svg';
 
-import Styles from '../../atoms/input/styles';
+import InputStyles from '../../atoms/input/styles';
 import useKeyDownHotkey from '_/hooks/useKeydownHotkey';
 
 type FileUploadProps = {
@@ -45,12 +45,12 @@ const FileUpload: React.FC<
 
   return (
     <section
-      css={[Styles.Wrapper, error && Styles.ErrorWrapper]}
+      css={[InputStyles.Wrapper, error && InputStyles.ErrorWrapper]}
       {...props}
       onClickCapture={() => fileInputRef.current!.click()}
     >
       {(message || error) && (
-        <section css={[Styles.Messsage]}>{message || error}</section>
+        <section css={[InputStyles.Messsage]}>{message || error}</section>
       )}
       <input
         type="file"
@@ -61,8 +61,12 @@ const FileUpload: React.FC<
         ref={fileInputRef}
         hidden
       />
-      <input css={[Styles.Input]} readOnly ref={inputRef} />
-      <Upload tw="h-4 w-4 mx-2 my-auto text-gray-500" />
+      <input
+        css={[InputStyles.Input, tw`cursor-pointer`]}
+        readOnly
+        ref={inputRef}
+      />
+      <Upload tw="h-4 w-4 mx-2 my-auto text-gray-500 cursor-pointer" />
     </section>
   );
 };
