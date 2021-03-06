@@ -5,7 +5,7 @@ import { FormikProps, withFormik } from 'formik';
 
 import Input from '_/components/atoms/input';
 import Label from '_/components/atoms/label';
-import FileUpload from '_/components/molecules/file-upload';
+import FileInput from '_/components/molecules/file-input';
 import Button from '_/components/atoms/button';
 import BeatmapsetFormList from '_/components/organisms/beatmapset-form-list';
 import BpmInput from '_/components/molecules/bpm-input';
@@ -17,7 +17,7 @@ import {
 } from './validations';
 
 type JourneyFormProps = {
-  onSubmit: (journey: JourneyFormObject) => Promise<void>;
+  onSubmit: (journey: JourneyFormObject) => Promise<any>;
 };
 
 const NewJourneyForm: React.FC<FormikProps<JourneyFormObject>> = ({
@@ -95,7 +95,7 @@ const NewJourneyForm: React.FC<FormikProps<JourneyFormObject>> = ({
 
           <section tw="flex space-x-2">
             <Label text="Banner" htmlFor="banner" tw="w-1/2" required>
-              <FileUpload
+              <FileInput
                 id="banner"
                 name="banner_url"
                 accept="image/jpeg, image/jpg"
@@ -103,7 +103,7 @@ const NewJourneyForm: React.FC<FormikProps<JourneyFormObject>> = ({
               />
             </Label>
             <Label text="Thumbnail" htmlFor="thumbnail" tw="w-1/2" required>
-              <FileUpload
+              <FileInput
                 id="thumbnail"
                 name="thumbnail_url"
                 accept="image/jpeg, image/jpg"

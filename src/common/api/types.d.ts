@@ -10,17 +10,20 @@ import {
 } from '../typings/api.gremio-steve';
 
 declare namespace ApiTypes {
-  export interface ClientInstance extends AxiosInstance {
-    /**
-     * @returns Extended headers
-     */
-    computeAuthorizationHeaders: () => object;
-    removeAuthorizationHeaders: () => void;
-    /**
-     * Promises that invoke the API service, parameters, and response are defined from the API typings
-     */
-    operations: (config?: AxiosRequestConfig) => Operations.Requests;
-    cancelToken: CancelTokenStatic;
+  namespace Client {
+    export interface Instance extends AxiosInstance {
+      /**
+       * @returns Extended headers
+       */
+      computeAuthorizationHeaders: () => object;
+      removeAuthorizationHeaders: () => void;
+      /**
+       * Promises that invoke the API service, parameters, and response are defined from the API typings
+       */
+      operations: Operations.Requests &
+        ((config?: AxiosRequestConfig) => Operations.Requests);
+      cancelToken: CancelTokenStatic;
+    }
   }
   namespace Service {
     /**
@@ -30,7 +33,7 @@ declare namespace ApiTypes {
      */
     export type Paths = Record<keyof paths, (params?: any) => string>;
     /** Axios client instance, prefer using Operations unless there this a edge case that needs this specific instance */
-    export type Client = ClientInstance;
+    export type Client = Client.Instance;
   }
   namespace Operations {
     type Definitions = ApiOperations;

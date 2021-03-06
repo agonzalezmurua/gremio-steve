@@ -23,7 +23,7 @@ const Callback: React.FC = () => {
   const serializedState = query.get('state'); // serialize base64 state value, received from callback
 
   const [authentication, fetchAuthentication] = useAsyncFn(async () => {
-    return Api.Client.operations().authenticateUser({
+    return Api.Client.operations.authenticateUser({
       body: { authentication: { code: code } },
     });
   }, []);
@@ -61,7 +61,7 @@ const Callback: React.FC = () => {
       return;
     }
 
-    if (error) {
+    if (error !== undefined) {
       history.push(links.pages.error_400(), {
         name: error.name,
         message: error.message,

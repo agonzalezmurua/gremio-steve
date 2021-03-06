@@ -3,7 +3,7 @@ import Paths from './paths';
 import { ApiTypes } from './types';
 
 export const createOperations = (
-  Client: ApiTypes.ClientInstance,
+  Client: ApiTypes.Client.Instance,
   config: AxiosRequestConfig = {}
 ): ApiTypes.Operations.Requests => ({
   searchJourneys: (parameters) =>
@@ -31,6 +31,8 @@ export const createOperations = (
         search: parameters.query.search,
       },
     }),
+  uploadJourneyBanner: () => Client.post(Paths['/journeys/banner']()),
+  uploadJourneyThumbnail: () => Client.post(Paths['/journeys/thumbnail']()),
   authenticateUser: (parameters) =>
     Client.post(Paths['/auth/osu/callback'](), parameters.body, { ...config }),
   redirectToOsuOauth: () => {
