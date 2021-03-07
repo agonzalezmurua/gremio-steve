@@ -6,11 +6,12 @@ import { JourneyFormObject } from '_/components/templates/journey-form/validatio
 import Api from '_/services/api';
 
 const NewJourneyPage: React.FC = () => {
-  const handleSubmit = useCallback(
-    async (values: JourneyFormObject) =>
-      Api.Client.operations.createOneJourney({ body: { journey: values } }),
-    []
-  );
+  const handleSubmit = useCallback((values: JourneyFormObject) => {
+    console.log('submit');
+    return Api.Client.operations().createOneJourney({
+      body: { journey: values },
+    });
+  }, []);
   return <JourneyForm onSubmit={handleSubmit} />;
 };
 

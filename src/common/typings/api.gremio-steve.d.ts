@@ -36,14 +36,6 @@ export interface paths {
     /** Delete a journey based on id */
     delete: operations["deleteOneJourneyById"];
   };
-  "/journeys/banner": {
-    /** Upload a banner image, if it does not match the size it will be cropped to 900px by 250px */
-    post: operations["uploadJourneyBanner"];
-  };
-  "/journeys/thumbnail": {
-    /** Upload a thumbnail image, if it does not match the size it will be cropped to 250px by 250px */
-    post: operations["uploadJourneyThumbnail"];
-  };
   "/auth/osu": {
     /** Redirects to osu oauth flow */
     get: operations["redirectToOsuOauth"];
@@ -84,13 +76,16 @@ export interface definitions {
     status?: "ready" | "pending" | "alert" | "problem";
     assignee?: definitions["User"];
   };
+  "Journey.Covers": {
+    thumbnail?: string;
+    banner?: string;
+  };
   Journey: {
     id?: string;
     title: string;
     artist: string;
     organizer?: definitions["User"];
-    thumbnail_url: string;
-    banner_url: string;
+    covers: definitions["Journey.Covers"];
     metadata?: definitions["Journey.Metadata"];
     description?: string;
     status?: "pending" | "open" | "ready" | "alert" | "problem" | "closed";
@@ -251,36 +246,6 @@ export interface operations {
       403: unknown;
       /** The journey could not be found */
       404: unknown;
-    };
-  };
-  /** Upload a banner image, if it does not match the size it will be cropped to 900px by 250px */
-  uploadJourneyBanner: {
-    parameters: {
-      body: {
-        body?: { [key: string]: any };
-      };
-    };
-    responses: {
-      /** Succesful upload */
-      200: {
-        schema: definitions["FileUpload.Response"];
-      };
-      403: unknown;
-    };
-  };
-  /** Upload a thumbnail image, if it does not match the size it will be cropped to 250px by 250px */
-  uploadJourneyThumbnail: {
-    parameters: {
-      body: {
-        body?: { [key: string]: any };
-      };
-    };
-    responses: {
-      /** Succesful upload */
-      200: {
-        schema: definitions["FileUpload.Response"];
-      };
-      403: unknown;
     };
   };
   /** Redirects to osu oauth flow */

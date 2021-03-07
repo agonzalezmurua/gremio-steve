@@ -30,7 +30,7 @@ const JourneyCard: React.FC<Props> = (props) => {
         tw="flex justify-between items-center p-2 bg-gray-500"
         css={[
           css`
-            background-image: url(${props.journey.banner_url});
+            background-image: url(${props.journey.covers.banner});
             background-position: 50%;
             background-size: cover;
           `,

@@ -59,7 +59,7 @@ const SearchJourney: React.FC = () => {
                 artist={beatmap.artist}
                 title={beatmap.title}
                 organizer={beatmap.organizer}
-                thumbnail_url={beatmap.thumbnail_url}
+                covers={beatmap.covers}
               />
             </li>
           ))}

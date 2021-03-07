@@ -10,8 +10,6 @@ const Paths: ApiTypes.Service.Paths = {
   '/journeys/:id': (parameters: { id: string }) => {
     return format('/journeys/{id}', parameters);
   },
-  '/journeys/banner': () => '/journeys/banner',
-  '/journeys/thumbnail': () => '/journeys/thumbnail',
   '/journeys/mine': () => '/journeys/mine',
   '/users': () => '/users',
   '/users/:id': (parameters: { id: string }) =>

@@ -8,7 +8,7 @@ import { Definitions } from '_/services/api';
 const JourneyCardSmall: React.FunctionComponent<
   Pick<
     Definitions['Journey'],
-    'artist' | 'organizer' | 'title' | 'id' | 'thumbnail_url'
+    'artist' | 'organizer' | 'title' | 'id' | 'covers'
   >
 > = (props) => {
   const link = useMemo(() => links.journeys.id({ id: props.id! }), [props.id]);
@@ -20,7 +20,7 @@ const JourneyCardSmall: React.FunctionComponent<
         tw="flex flex-row items-center space-x-2 h-24 p-2 outline-none rounded"
         css={[FocusRingFlatStyle]}
       >
-        <img src={props.thumbnail_url} tw="h-20 w-20 rounded bg-gray-300" />
+        <img src={props.covers.thumbnail} tw="h-20 w-20 rounded bg-gray-300" />
         <section tw="flex flex-col flex-grow h-full justify-around space-y-1 text-xs truncate">
           <span>{props.organizer?.name}</span>
           <strong>{props.title}</strong>

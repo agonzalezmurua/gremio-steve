@@ -10,17 +10,21 @@ export const initialValues: JourneyFormObject = {
   title: '',
   artist: '',
   beatmaps: [],
-  banner_url: '',
+  covers: {
+    banner: '',
+    thumbnail: '',
+  },
   description: '',
-  thumbnail_url: '',
   metadata: { bpm: [], duration: 30, genre: '', closure: null },
 };
 
 export const validationSchema = object().shape<JourneyFormObject>({
   title: string().required(),
   artist: string().required(),
-  banner_url: string().required(),
-  thumbnail_url: string().required(),
+  covers: object().shape<JourneyFormObject['covers']>({
+    banner: string().required(),
+    thumbnail: string().required(),
+  }),
   beatmaps: array(
     object()
       .shape<BeatmapFormObject>({

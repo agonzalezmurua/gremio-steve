@@ -97,17 +97,17 @@ const NewJourneyForm: React.FC<FormikProps<JourneyFormObject>> = ({
             <Label text="Banner" htmlFor="banner" tw="w-1/2" required>
               <FileInput
                 id="banner"
-                name="banner_url"
+                name="covers.banner"
                 accept="image/jpeg, image/jpg"
-                error={errors.banner_url}
+                error={errors.covers?.banner as string}
               />
             </Label>
             <Label text="Thumbnail" htmlFor="thumbnail" tw="w-1/2" required>
               <FileInput
                 id="thumbnail"
-                name="thumbnail_url"
+                name="covers.thumbnail"
                 accept="image/jpeg, image/jpg"
-                error={errors.thumbnail_url}
+                error={errors.covers?.thumbnail as string}
               />
             </Label>
           </section>
@@ -123,12 +123,7 @@ const NewJourneyForm: React.FC<FormikProps<JourneyFormObject>> = ({
           <BeatmapsetFormList />
         </fieldset>
 
-        <Button
-          fullWidth
-          color="blue"
-          type="submit"
-          onClick={() => handleSubmit()}
-        >
+        <Button fullWidth color="blue" type="submit">
           <FormattedMessage
             id="components.templates.journeysForm.saveButton"
             defaultMessage="Save"
