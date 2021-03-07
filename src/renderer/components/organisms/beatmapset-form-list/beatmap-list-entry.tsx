@@ -12,27 +12,28 @@ import Trash from '_/assets/icons/outline/trash.svg';
 import { DIFFICULTIES, MODES } from '_/constants/beatmapset';
 
 type Props = {
+  name: string;
   index: number;
   onDelete?: () => void;
 };
 
-const BeatmapListEntry: React.FC<Props> = ({ onDelete, index }) => {
+const BeatmapListEntry: React.FC<Props> = ({ name, onDelete, index }) => {
   const inputs = useMemo(
     () => ({
-      name: `maps[${index}].name`,
-      mode: `maps[${index}].mode`,
-      difficulty: `maps[${index}].difficulty`,
+      name: `${name}[${index}].name`,
+      mode: `${name}[${index}].mode`,
+      difficulty: `${name}[${index}].difficulty`,
     }),
     [index]
   );
-  const [name, nameMeta] = useField<string>({
+  const [nameField, nameFieldMeta] = useField<string>({
     name: inputs.name,
     type: 'text',
   });
-  const [mode] = useField<MODES>({
+  const [modeField] = useField<MODES>({
     name: inputs.mode,
   });
-  const [difficulty] = useField<DIFFICULTIES>({ name: inputs.difficulty });
+  const [difficultyField] = useField<DIFFICULTIES>({ name: inputs.difficulty });
 
   return (
     <React.Fragment>
@@ -46,15 +47,29 @@ const BeatmapListEntry: React.FC<Props> = ({ onDelete, index }) => {
       </Button>
 
       <Label tw="flex-grow" text="Name" htmlFor={`maps[${index}].name`}>
-        <Input {...name} error={nameMeta.error} />
+        <Input
+          name={nameField.name}
+          onChange={(e) => nameField.onChange(e)}
+          value={nameField.value}
+          error={nameFieldMeta.error}
+        />
       </Label>
 
       <Label tw="flex-grow" text="Mode" htmlFor={inputs.mode}>
-        <ModeSelect {...mode} />
+        <ModeSelect
+          name={modeField.name}
+          onChange={(e) => modeField.onChange(e)}
+          value={modeField.value}
+        />
       </Label>
 
       <Label tw="flex-grow" text="Difficulty" htmlFor={inputs.difficulty}>
-        <DifficultySelect {...difficulty} mode={mode.value} />
+        <DifficultySelect
+          name={difficultyField.name}
+          onChange={(e) => difficultyField.onChange(e)}
+          value={difficultyField.value}
+          mode={modeField.value}
+        />
       </Label>
     </React.Fragment>
   );

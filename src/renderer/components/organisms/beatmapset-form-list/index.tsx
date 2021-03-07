@@ -43,6 +43,7 @@ const GameMapFormList = () => {
                 return (
                   <li key={index}>
                     <BeatmapListEntry
+                      name="beatmaps"
                       onDelete={() => helpers.remove(index)}
                       index={index}
                     />
