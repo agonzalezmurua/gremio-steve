@@ -4,63 +4,63 @@
  */
 
 export interface paths {
-  "/users": {
+  '/users': {
     /** Obtains a list of users, searching based on username */
-    get: operations["searchUsers"];
+    get: operations['searchUsers'];
   };
-  "/users/:id": {
+  '/users/:id': {
     /** Obtains a user by id */
-    get: operations["getOneUserById"];
+    get: operations['getOneUserById'];
   };
-  "/users/myself": {
+  '/users/myself': {
     /** Obtains the current logged user */
-    get: operations["getMyUser"];
+    get: operations['getMyUser'];
   };
-  "/journeys": {
+  '/journeys': {
     /** Search a list of journeys based on a string */
-    get: operations["searchJourneys"];
+    get: operations['searchJourneys'];
     /** Create a new journey */
-    post: operations["createOneJourney"];
+    post: operations['createOneJourney'];
   };
-  "/journeys/mine": {
+  '/journeys/mine': {
     /** Get the journeys that were organized by the current user */
-    get: operations["getMyJourneys"];
+    get: operations['getMyJourneys'];
   };
-  "/journeys/queue": {
+  '/journeys/queue': {
     /** Get journeys that were added into the user's queue */
-    get: operations["getMyQueue"];
+    get: operations['getMyQueue'];
   };
-  "/journeys/:id": {
+  '/journeys/:id': {
     /** Find one journey based on ID */
-    get: operations["getOneJourneyById"];
+    get: operations['getOneJourneyById'];
     /** Delete a journey based on id */
-    delete: operations["deleteOneJourneyById"];
+    delete: operations['deleteOneJourneyById'];
   };
-  "/auth/osu": {
+  '/auth/osu': {
     /** Redirects to osu oauth flow */
-    get: operations["redirectToOsuOauth"];
+    get: operations['redirectToOsuOauth'];
   };
-  "/auth/osu/callback": {
-    post: operations["authenticateUser"];
+  '/auth/osu/callback': {
+    post: operations['authenticateUser'];
   };
-  "/auth/refresh": {
-    get: operations["refreshToken"];
+  '/auth/refresh': {
+    get: operations['refreshToken'];
   };
 }
 
 export interface definitions {
-  "User.Preferences": {
+  'User.Preferences': {
     std?: boolean;
     taiko?: boolean;
     ctb?: boolean;
     mania?: boolean;
   };
-  "User.Availability": {
+  'User.Availability': {
     mods?: boolean;
     guest_diffs?: boolean;
     playtesting?: boolean;
   };
-  "Journey.Metadata": {
+  'Journey.Metadata': {
     genre: string;
     /** Represents a range of BPM that the song has */
     bpm: number[];
@@ -68,15 +68,15 @@ export interface definitions {
     closure?: string;
     duration?: number;
   };
-  "Journey.Beatmap": {
+  'Journey.Beatmap': {
     id?: string;
     name: string;
-    mode: "std" | "taiko" | "ctb" | "mania";
-    difficulty: "easy" | "normal" | "hard" | "insane" | "expert" | "expert+";
-    status?: "ready" | "pending" | "alert" | "problem";
-    assignee?: definitions["User"];
+    mode: 'std' | 'taiko' | 'ctb' | 'mania';
+    difficulty: 'easy' | 'normal' | 'hard' | 'insane' | 'expert' | 'expert+';
+    status?: 'ready' | 'pending' | 'alert' | 'problem';
+    assignee?: definitions['User'];
   };
-  "Journey.Covers": {
+  'Journey.Covers': {
     thumbnail?: string;
     banner?: string;
   };
@@ -84,13 +84,13 @@ export interface definitions {
     id?: string;
     title: string;
     artist: string;
-    organizer?: definitions["User"];
-    covers: definitions["Journey.Covers"];
-    metadata?: definitions["Journey.Metadata"];
+    organizer?: definitions['User'];
+    covers: definitions['Journey.Covers'];
+    metadata?: definitions['Journey.Metadata'];
     description?: string;
-    status?: "pending" | "open" | "ready" | "alert" | "problem" | "closed";
+    status?: 'pending' | 'open' | 'ready' | 'alert' | 'problem' | 'closed';
     is_private?: boolean;
-    beatmaps?: definitions["Journey.Beatmap"][];
+    beatmaps?: definitions['Journey.Beatmap'][];
     osu_link?: string;
   };
   User: {
@@ -102,23 +102,23 @@ export interface definitions {
     active?: boolean;
     avatar_url: string;
     banner_url: string;
-    availability: definitions["User.Availability"];
-    journeys?: definitions["Journey"][];
+    availability: definitions['User.Availability'];
+    journeys?: definitions['Journey'][];
     community_role: string;
-    role: "admin" | "user" | "moderator";
-    preferences: definitions["User.Preferences"];
-    status: "available" | "do_not_disturb";
+    role: 'admin' | 'user' | 'moderator';
+    preferences: definitions['User.Preferences'];
+    status: 'available' | 'do_not_disturb';
     description?: string;
-    queue?: definitions["Journey"][];
+    queue?: definitions['Journey'][];
   };
   /** Authentication values for response */
-  "Authentication.Response": {
+  'Authentication.Response': {
     access_token?: string;
     token_type?: string;
     expires_in?: number;
   };
   /** Result of a image type */
-  "FileUpload.Response": {
+  'FileUpload.Response': {
     url?: string;
   };
 }
@@ -135,7 +135,7 @@ export interface operations {
     responses: {
       /** Success */
       200: {
-        schema: definitions["User"][];
+        schema: definitions['User'][];
       };
     };
   };
@@ -149,7 +149,7 @@ export interface operations {
     responses: {
       /** Success */
       200: {
-        schema: definitions["User"];
+        schema: definitions['User'];
       };
     };
   };
@@ -158,7 +158,7 @@ export interface operations {
     responses: {
       /** Success */
       200: {
-        schema: definitions["User"];
+        schema: definitions['User'];
       };
     };
   };
@@ -172,7 +172,7 @@ export interface operations {
     responses: {
       /** Success */
       200: {
-        schema: definitions["Journey"][];
+        schema: definitions['Journey'][];
       };
     };
   };
@@ -180,13 +180,13 @@ export interface operations {
   createOneJourney: {
     parameters: {
       body: {
-        journey?: definitions["Journey"];
+        journey?: definitions['Journey'];
       };
     };
     responses: {
       /** Success */
       200: {
-        schema: definitions["Journey"];
+        schema: definitions['Journey'];
       };
     };
   };
@@ -200,7 +200,7 @@ export interface operations {
     responses: {
       /** Success */
       200: {
-        schema: definitions["Journey"][];
+        schema: definitions['Journey'][];
       };
     };
   };
@@ -209,7 +209,7 @@ export interface operations {
     responses: {
       /** Success */
       200: {
-        schema: definitions["Journey"][];
+        schema: definitions['Journey'][];
       };
     };
   };
@@ -223,7 +223,7 @@ export interface operations {
     responses: {
       /** Success */
       200: {
-        schema: definitions["Journey"];
+        schema: definitions['Journey'];
       };
       /** Client error and Not Found */
       404: unknown;
@@ -271,7 +271,7 @@ export interface operations {
     responses: {
       /** Bearer token response */
       200: {
-        schema: definitions["Authentication.Response"];
+        schema: definitions['Authentication.Response'];
       };
     };
   };
@@ -279,7 +279,7 @@ export interface operations {
     responses: {
       /** Bearer token response */
       200: {
-        schema: definitions["Authentication.Response"];
+        schema: definitions['Authentication.Response'];
       };
       /** User is not allowed to refresh */
       403: unknown;

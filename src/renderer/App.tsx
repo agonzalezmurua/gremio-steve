@@ -1,18 +1,17 @@
 import 'twin.macro';
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { Suspense, useContext } from 'react';
+import React, { Suspense, useContext, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
+
+import * as IpcEvents from 'common/ipc.events';
 
 import AppContext from '_/contexts/app';
 
-import * as IpcEvents from 'common/ipc.events';
-import { Definitions } from '_/services/api';
+import { isElectron } from '_/constants/platform';
+
 import useAppHotkeys from '_/hooks/useAppHotkeys';
 import useAppEvents from '_/hooks/useAppEvents';
-import useIpcRendererEvent from '_/hooks/useIpcRendererEvent';
-import GenericMessages from '_/constants/messages/generic';
-import { isElectron } from '_/constants/platform';
+import useHandleIpcRendererEvent from '_/hooks/useHandleIpcRendererEvent';
 
 // Regular import pages
 import IndexPage from '_/pages/Index';
@@ -33,13 +32,14 @@ import TitleBar from '_/components/organisms/title-bar';
 import history from './services/history';
 import links from './services/links';
 import FullscreenLoader from './components/atoms/fullscreen-loader';
+import useNotifications from './hooks/useNotifications';
 
 const App: React.FC = () => {
   const context = useContext(AppContext);
   useAppHotkeys();
   useAppEvents();
 
-  useIpcRendererEvent(
+  useHandleIpcRendererEvent(
     IpcEvents.Renderer.Events.authenticate,
     (event, payload: IpcEvents.Renderer.Payloads.Authentication) => {
       history.push(
@@ -50,7 +50,7 @@ const App: React.FC = () => {
     }
   );
 
-  useIpcRendererEvent(
+  useHandleIpcRendererEvent(
     IpcEvents.Renderer.Events.navigate,
     (event, payload: IpcEvents.Renderer.Payloads.Navigate) => {
       console.log('received navigate event', payload);

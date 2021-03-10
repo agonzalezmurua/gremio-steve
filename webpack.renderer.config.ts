@@ -1,5 +1,6 @@
 import webpack = require('webpack');
 import { merge } from 'webpack-merge';
+import path from 'path';
 
 const config = require('config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -7,8 +8,6 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const ConfigWebpackPlugin = require('config-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
-const path = require('path');
 
 module.exports = (env, argv) =>
   ({
@@ -32,13 +31,15 @@ module.exports = (env, argv) =>
     },
     devtool: 'inline-source-map',
     node: {
-      __dirname: false,
+      __filename: true,
+      __dirname: true,
       global: true,
     },
     module: {
       rules: [
         {
           test: /\.tsx?$/,
+          include: path.resolve(__dirname, 'src'),
           use: {
             loader: 'babel-loader',
             options: {
@@ -79,6 +80,7 @@ module.exports = (env, argv) =>
         },
         {
           test: /\.(png|jpe?g|gif)$/i,
+          include: path.resolve(__dirname, 'src/renderer/assets'),
           loader: 'file-loader',
           options: {
             name: '[path][name].[ext]',
@@ -86,6 +88,7 @@ module.exports = (env, argv) =>
         },
         {
           test: /\.svg$/,
+          include: path.resolve(__dirname, 'src/renderer/assets'),
           use: ['@svgr/webpack'],
         },
       ],

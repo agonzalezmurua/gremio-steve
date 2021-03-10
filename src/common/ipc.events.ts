@@ -17,6 +17,8 @@ export namespace Main {
     close_window = 'close_main_window',
     /** Open authentication window */
     open_auth = 'open_auth',
+    /** Open authentication window */
+    send_notification = 'send_notification',
   }
 }
 

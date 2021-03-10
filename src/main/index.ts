@@ -9,6 +9,7 @@ import { parseProtocolURL } from './protocol.parse-url';
 import * as IpcEvents from '../common/ipc.events';
 
 import Paths from '../common/api/paths';
+import notifications from './notifications';
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const DEBUG = process.env.DEBUG === 'true';
@@ -64,6 +65,8 @@ async function createWindow() {
     minWidth: 768,
     minHeight: 480,
     transparent: false,
+    icon: config.icon_path,
+    title: 'Gremio Steve',
     webPreferences: {
       nodeIntegration: true,
       preload: path.resolve(__dirname, 'preload.js'),
@@ -102,6 +105,13 @@ async function createWindow() {
     authWindow.loadURL(config.api_uri + Paths['/auth/osu']({ state: state }));
     authWindow.show();
   });
+
+  ipcMain.on(
+    IpcEvents.Main.Events.send_notification,
+    (event, { title, message }) => {
+      notifications.notify(title, message);
+    }
+  );
   //#endregion
 }
 

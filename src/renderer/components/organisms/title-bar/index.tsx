@@ -1,12 +1,14 @@
 import tw, { styled } from 'twin.macro';
 import React, { useCallback, useMemo } from 'react';
 
+import * as IpcEvents from 'common/ipc.events';
+
 import Close from '_/assets/icons/outline/x.svg';
 import Minimize from '_/assets/icons/outline/minus.svg';
 import Maximize from '_/assets/icons/outline/duplicate.svg';
 import { isBrowser, currentPlatform, isElectron } from '_/constants/platform';
 
-import * as IpcEvents from 'common/ipc.events';
+import sendIpcMainEvents from '_/utils/sendIpcMainEvent';
 
 const DebugTitleBar: React.FC = () => {
   const text = useMemo(() => window.location.href, [window.location.href]);
@@ -15,15 +17,15 @@ const DebugTitleBar: React.FC = () => {
 
 const TopMenu: React.FC = (props) => {
   const handleMinimize = useCallback(() => {
-    window.electron.ipcRenderer.send(IpcEvents.Main.Events.minimize_window);
+    sendIpcMainEvents(IpcEvents.Main.Events.minimize_window);
   }, []);
 
   const handleMaximize = useCallback(() => {
-    window.electron.ipcRenderer.send(IpcEvents.Main.Events.maximize_window);
+    sendIpcMainEvents(IpcEvents.Main.Events.maximize_window);
   }, []);
 
   const handleClose = useCallback(() => {
-    window.electron.ipcRenderer.send(IpcEvents.Main.Events.close_window);
+    sendIpcMainEvents(IpcEvents.Main.Events.close_window);
   }, []);
 
   return (

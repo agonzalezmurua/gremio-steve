@@ -16,7 +16,7 @@ import { isBrowser } from '_/constants/platform';
  * @param channel event to subscribe to
  * @param handler function to execute
  */
-export default function useIpcRendererEvent(
+export default function useHandleIpcRendererEvent(
   channel: IpcEvents.Renderer.Events,
   handler: (...args: any[]) => void
 ) {
