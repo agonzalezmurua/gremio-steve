@@ -91,7 +91,7 @@ export const NavigationLinks: React.FunctionComponent = () => {
               </span>
             </Link>
           </NavigationItem>
-          <NavigationItem>
+          {/* <NavigationItem>
             <Link to={links.journeys.new()}>
               <Plus />
               <span tw="hidden md:(block)">
@@ -102,7 +102,7 @@ export const NavigationLinks: React.FunctionComponent = () => {
                 />
               </span>
             </Link>
-          </NavigationItem>
+          </NavigationItem> */}
         </>
       )}
     </ul>

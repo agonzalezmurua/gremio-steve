@@ -33,18 +33,11 @@ const LoginPage: React.FC<
   }, [props.location.state?.action]);
 
   const handleLogin = useCallback(() => {
-    const state = btoa(JSON.stringify(AuthenticationStorage.writeState()));
-
     if (isElectron) {
-      return window.electron.ipcRenderer.send(Main.Events.open_auth, {
-        state: state,
-      });
+      return window.electron.ipcRenderer.send(Main.Events.open_auth);
     }
 
     const url = new URL(CONFIG.renderer.api.request_url); // Redirect url to navigate to
-    // Send a bas64 stringified value of the state that persists
-    // during the oauth process and is used during the callback handle
-    url.searchParams.append('state', state);
 
     document.location.assign(url.toString());
   }, []);

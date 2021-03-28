@@ -49,12 +49,7 @@ const UserInfo: React.FunctionComponent = () => {
           <strong>{user.name}</strong>
         </section>
       </Link>
-      <Button
-        tw="self-start my-auto"
-        color="default"
-        variant="icon"
-        onClick={handleLogout}
-      >
+      <Button tw="self-start my-auto" color="default" variant="icon" onClick={handleLogout}>
         <Logout />
       </Button>
     </section>

@@ -6,11 +6,11 @@ import Search from '_/assets/icons/outline/search.svg';
 import SkeletonLoader from '_/components/atoms/skeleton-loader';
 import Input from '_/components/atoms/input';
 import JourneyCard from '_/components/molecules/journey-card';
-import { Definitions } from '_/services/api';
+import { components } from 'common/typings/api.gremio-steve';
 
 type Props = {
-  suggestions?: Pick<Definitions['Journey'], 'id' | 'title'>[];
-  journeys?: Array<Definitions['Journey']>;
+  suggestions?: Pick<components['schemas']['JourneyData'], 'id' | 'title'>[];
+  journeys?: Array<components['schemas']['JourneyData']>;
 };
 
 const QueueTemplate: React.FC<Props> = (props) => {

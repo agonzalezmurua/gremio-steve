@@ -9,15 +9,18 @@ import HistoryControls from '_/components/molecules/history-controls';
 import UserInfo from '_/components/molecules/user-info';
 import NavigationLinks from '_/components/molecules/navigation-links';
 import SearchJourney from '_/components/organisms/search-journey';
+import { isElectron } from '_/constants/platform';
 
 const SideBar: React.FC = (props) => {
   return (
     <Styles.Container>
       {/* Sidebar */}
       <Styles.SideBar>
-        <section tw="border-b dark:(border-gray-500) pb-2">
-          <HistoryControls />
-        </section>
+        {isElectron ? (
+          <section tw="border-b dark:(border-gray-500) pb-2">
+            <HistoryControls />
+          </section>
+        ) : undefined}
         {/* User Info */}
         <section>
           <UserInfo />
@@ -26,9 +29,9 @@ const SideBar: React.FC = (props) => {
         <nav tw="flex flex-row justify-center md:(justify-start)">
           <NavigationLinks />
         </nav>
-        <section tw="border-t dark:(border-gray-500) pt-4 space-y-2 hidden md:(block)">
+        {/* <section tw="border-t dark:(border-gray-500) pt-4 space-y-2 hidden md:(block)">
           <SearchJourney />
-        </section>
+        </section> */}
       </Styles.SideBar>
       {/* Content */}
       <OverlayScrollbarsComponent

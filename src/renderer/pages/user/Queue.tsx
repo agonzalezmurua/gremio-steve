@@ -13,7 +13,7 @@ type Props = {
 
 const UserQueuePage: React.FC<RouteComponentProps<Props>> = () => {
   const { value: journeys } = useAsync(async () => {
-    const { data } = await Api.Client.operations().getMyQueue();
+    const { data } = await Api.Client.operations().UsersController_getMyQueue();
     return data;
   }, []);
 

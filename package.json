@@ -26,11 +26,11 @@
     "build:renderer:i18n:compile": "formatjs compile-folder --ast src/lang/raw src/lang/compiled",
     "build:renderer:webpack": "webpack --config webpack.renderer.config.ts",
     "generate:specs": "run-p generate:specs:*",
-    "generate:specs:gremio-steve": "npx openapi-typescript http://localhost:3010/api-docs/swagger.json --output src/common/typings/api.gremio-steve.d.ts",
-    "dev": "run-p dev:**",
-    "dev:i18n-build": "node runtime-scripts/dev/watch-i18n.js",
-    "dev:renderer": "cross-env NODE_ENV=development DEBUG=true webpack serve --config webpack.renderer.config.ts",
-    "dev:main": "cross-env NODE_ENV=development DEBUG=true electron src/main/index.js",
+    "generate:specs:gremio-steve": "npx openapi-typescript http://localhost:3010/api-json --output src/common/typings/api.gremio-steve.d.ts",
+    "start": "run-p dev:**",
+    "start:i18n-build": "node runtime-scripts/dev/watch-i18n.js",
+    "start:renderer": "cross-env NODE_ENV=development DEBUG=true webpack serve --config webpack.renderer.config.ts",
+    "start:main": "cross-env NODE_ENV=development DEBUG=true electron src/main/index.js",
     "postinstall": "electron-builder install-app-deps"
   },
   "license": "ISC",
@@ -64,7 +64,7 @@
     }
   },
   "dependencies": {
-    "axios": "^0.21.0",
+    "axios": "^0.21.1",
     "config": "^3.3.2",
     "config-webpack": "^1.0.4",
     "consola": "^2.15.3",
@@ -112,6 +112,7 @@
     "@types/overlayscrollbars": "^1.12.0",
     "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.9",
+    "@types/react-helmet": "^6.1.0",
     "@types/react-router-dom": "^5.1.6",
     "@types/string-format": "^2.0.0",
     "@types/styled-components": "^5.1.4",

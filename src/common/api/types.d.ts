@@ -49,22 +49,32 @@ declare namespace ApiTypes {
         responses: {
           [key: number]:
             | {
-                schema: unknown;
+                content: {
+                  ['application/json']: unknown;
+                };
               }
             | unknown;
+        };
+        requestBody?: {
+          content: {
+            ['application/json']: unknown;
+          };
         };
       }
 
       export type Response<Operation extends Structure> = AxiosResponse<
-        Operation['responses'] extends { 200: { schema: unknown } }
-          ? Operation['responses'][200]['schema']
+        Operation['responses'] extends {
+          200: { content: { ['application/json']: unknown } };
+        }
+          ? Operation['responses'][200]['content']['application/json']
           : void
       > & {
         status: keyof Operation['responses'];
       };
 
       export type Request<Operation extends Structure = Structure> = (
-        params?: Operation['parameters']
+        params?: Operation['parameters'],
+        body?: Operation['requestBody']['content']['application/json']
       ) => Promise<Response<Operation>>;
     }
   }

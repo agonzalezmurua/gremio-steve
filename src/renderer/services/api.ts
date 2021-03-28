@@ -1,14 +1,10 @@
-import { definitions } from 'common/typings/api.gremio-steve';
+import { ApiTypes } from 'common/api/types';
+import { createClient } from 'common/api/client';
+import Paths from 'common/api/paths';
+
 import AuthenticationStorage from '_/services/authentication.storage';
 
-import { ApiTypes } from '_/../common/api/types';
-
-import { createClient } from 'common/api/client';
-import history from '_/services/history';
-import Paths from '_/../common/api/paths';
-
-/** This is a re-exported definition from common typings  */
-export type Definitions = definitions;
+// import history from '_/services/history';
 
 const Client = createClient({
   baseURL: CONFIG.renderer.api.uri,
@@ -43,34 +39,34 @@ Client.interceptors.request.use((config) => {
   return config;
 });
 
-Client.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-  async (error) => {
-    const originalRequest = error.config;
-    // Check if JWT is expired when tried to access a protected resource
-    if (error.response.status === 401 && !originalRequest._retry) {
-      try {
-        originalRequest._retry = true;
-        const authentication = await Api.Client.operations().refreshToken();
+// Client.interceptors.response.use(
+//   (response) => {
+//     return response;
+//   },
+//   async (error) => {
+//     const originalRequest = error.config;
+//     // Check if JWT is expired when tried to access a protected resource
+//     if (error.response.status === 401 && !originalRequest._retry) {
+//       try {
+//         originalRequest._retry = true;
+//         const authentication = await Api.Client.operations().refreshToken();
 
-        if (!authentication) {
-          throw 'Refresh token expired';
-        }
+//         if (!authentication) {
+//           throw 'Refresh token expired';
+//         }
 
-        AuthenticationStorage.writeToken(authentication.data.access_token);
+//         AuthenticationStorage.writeToken(authentication.data.access_token);
 
-        return Client(originalRequest);
-      } catch (error) {
-        history.push('/login', { referer: history.location });
-      }
-    } else {
-      // Continue normal rejection flow
-      return Promise.reject(error);
-    }
-  }
-);
+//         return Client(originalRequest);
+//       } catch (error) {
+//         history.push('/login', { referer: history.location });
+//       }
+//     } else {
+//       // Continue normal rejection flow
+//       return Promise.reject(error);
+//     }
+//   }
+// );
 
 /**
  * Api service that handles:

@@ -17,10 +17,7 @@ export type Props = React.HTMLProps<HTMLButtonElement> & {
 
 const Button = styled.button.attrs<Props>((props) => ({
   children: props.loading ? (
-    <span
-      data-loader="true"
-      tw="w-full h-full flex justify-center items-center"
-    >
+    <span data-loader="true" tw="w-full h-full flex justify-center items-center">
       <Spinner tw="h-6 w-6 animate-spin" />
     </span>
   ) : (
@@ -58,7 +55,7 @@ Button.defaultProps = {
   active: false,
   variant: 'default',
   type: 'button',
-  loading: false,
+  loading: undefined,
 };
 
 export default Button;

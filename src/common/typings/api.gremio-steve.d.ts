@@ -4,285 +4,265 @@
  */
 
 export interface paths {
-  '/users': {
-    /** Obtains a list of users, searching based on username */
-    get: operations['searchUsers'];
+  "/users": {
+    get: operations["UsersController_search"];
   };
-  '/users/:id': {
-    /** Obtains a user by id */
-    get: operations['getOneUserById'];
+  "/users/@me": {
+    get: operations["UsersController_getMyself"];
   };
-  '/users/myself': {
-    /** Obtains the current logged user */
-    get: operations['getMyUser'];
+  "/users/@me/activity-feed": {
+    get: operations["UsersController_getMyActivityFeed"];
   };
-  '/journeys': {
-    /** Search a list of journeys based on a string */
-    get: operations['searchJourneys'];
-    /** Create a new journey */
-    post: operations['createOneJourney'];
+  "/users/@me/queue/{journey_id}": {
+    put: operations["UsersController_addJourneyToMyQueue"];
+    delete: operations["UsersController_removeJourneyFromMyQueue"];
   };
-  '/journeys/mine': {
-    /** Get the journeys that were organized by the current user */
-    get: operations['getMyJourneys'];
+  "/users/@me/queue": {
+    get: operations["UsersController_getMyQueue"];
   };
-  '/journeys/queue': {
-    /** Get journeys that were added into the user's queue */
-    get: operations['getMyQueue'];
+  "/users/{id}": {
+    get: operations["UsersController_getOneById"];
+    patch: operations["UsersController_updateOneById"];
   };
-  '/journeys/:id': {
-    /** Find one journey based on ID */
-    get: operations['getOneJourneyById'];
-    /** Delete a journey based on id */
-    delete: operations['deleteOneJourneyById'];
+  "/users/{id}/activity": {
+    get: operations["UsersController_getUserActivity"];
   };
-  '/auth/osu': {
-    /** Redirects to osu oauth flow */
-    get: operations['redirectToOsuOauth'];
+  "/journeys": {
+    get: operations["JourneysController_findAll"];
+    post: operations["JourneysController_createOne"];
   };
-  '/auth/osu/callback': {
-    post: operations['authenticateUser'];
+  "/journeys/{id}": {
+    get: operations["JourneysController_findOneById"];
   };
-  '/auth/refresh': {
-    get: operations['refreshToken'];
+  "/auth/osu": {
+    get: operations["AuthController_osuLogin"];
+  };
+  "/auth/osu/callback": {
+    get: operations["AuthController_osuLoginCallback"];
   };
 }
 
-export interface definitions {
-  'User.Preferences': {
-    std?: boolean;
-    taiko?: boolean;
-    ctb?: boolean;
-    mania?: boolean;
-  };
-  'User.Availability': {
-    mods?: boolean;
-    guest_diffs?: boolean;
-    playtesting?: boolean;
-  };
-  'Journey.Metadata': {
-    genre: string;
-    /** Represents a range of BPM that the song has */
-    bpm: number[];
-    /** ISO String of closure date */
-    closure?: string;
-    duration?: number;
-  };
-  'Journey.Beatmap': {
-    id?: string;
-    name: string;
-    mode: 'std' | 'taiko' | 'ctb' | 'mania';
-    difficulty: 'easy' | 'normal' | 'hard' | 'insane' | 'expert' | 'expert+';
-    status?: 'ready' | 'pending' | 'alert' | 'problem';
-    assignee?: definitions['User'];
-  };
-  'Journey.Covers': {
-    thumbnail?: string;
-    banner?: string;
-  };
-  Journey: {
-    id?: string;
-    title: string;
-    artist: string;
-    organizer?: definitions['User'];
-    covers: definitions['Journey.Covers'];
-    metadata?: definitions['Journey.Metadata'];
-    description?: string;
-    status?: 'pending' | 'open' | 'ready' | 'alert' | 'problem' | 'closed';
-    is_private?: boolean;
-    beatmaps?: definitions['Journey.Beatmap'][];
-    osu_link?: string;
-  };
-  User: {
-    /** User's id (read only) */
-    id?: string;
-    /** Ous user's id (read only) */
-    osu_id?: string;
-    name: string;
-    active?: boolean;
-    avatar_url: string;
-    banner_url: string;
-    availability: definitions['User.Availability'];
-    journeys?: definitions['Journey'][];
-    community_role: string;
-    role: 'admin' | 'user' | 'moderator';
-    preferences: definitions['User.Preferences'];
-    status: 'available' | 'do_not_disturb';
-    description?: string;
-    queue?: definitions['Journey'][];
-  };
-  /** Authentication values for response */
-  'Authentication.Response': {
-    access_token?: string;
-    token_type?: string;
-    expires_in?: number;
-  };
-  /** Result of a image type */
-  'FileUpload.Response': {
-    url?: string;
+export interface components {
+  schemas: {
+    UserData: {
+      /** User's unique id */
+      id: number;
+      /** User's osu id */
+      osu_id: number;
+      name: string;
+      avatar_url: string;
+      banner_url: string;
+      description: string;
+    };
+    CoverData: {
+      banner: string;
+      thumbnail: string;
+    };
+    JourneyData: {
+      /** Journeys unique id */
+      id: number;
+      /** Osu's unique id */
+      osu_id: number;
+      title: string;
+      artist: string;
+      osu_link: string;
+      organizer: components["schemas"]["UserData"];
+      covers: components["schemas"]["CoverData"];
+    };
+    ActivityData: {
+      id: number;
+      created_at: string;
+      kind: "userAddedJourneyToQueue" | "userRemovedJourneyFromQueue";
+      user: components["schemas"]["UserData"] | null;
+      journey: components["schemas"]["JourneyData"] | null;
+    };
+    UserUpdateInput: {
+      name: string;
+      avatar_url: string | null;
+      banner_url: string | null;
+      email: string | null;
+      is_available: boolean | null;
+      description: string | null;
+    };
+    JourneyCreateInput: {
+      osu_link: string;
+    };
+    AuthPayload: {
+      token_type: string;
+      access_token: string;
+      expires_in: number;
+    };
   };
 }
 
 export interface operations {
-  /** Obtains a list of users, searching based on username */
-  searchUsers: {
-    parameters: {
-      query: {
-        /** Can be the username */
-        search?: unknown;
-      };
-    };
+  UsersController_search: {
+    parameters: {};
     responses: {
-      /** Success */
       200: {
-        schema: definitions['User'][];
-      };
-    };
-  };
-  /** Obtains a user by id */
-  getOneUserById: {
-    parameters: {
-      path: {
-        id?: unknown;
-      };
-    };
-    responses: {
-      /** Success */
-      200: {
-        schema: definitions['User'];
-      };
-    };
-  };
-  /** Obtains the current logged user */
-  getMyUser: {
-    responses: {
-      /** Success */
-      200: {
-        schema: definitions['User'];
-      };
-    };
-  };
-  /** Search a list of journeys based on a string */
-  searchJourneys: {
-    parameters: {
-      query: {
-        search?: unknown;
-      };
-    };
-    responses: {
-      /** Success */
-      200: {
-        schema: definitions['Journey'][];
-      };
-    };
-  };
-  /** Create a new journey */
-  createOneJourney: {
-    parameters: {
-      body: {
-        journey?: definitions['Journey'];
-      };
-    };
-    responses: {
-      /** Success */
-      200: {
-        schema: definitions['Journey'];
-      };
-    };
-  };
-  /** Get the journeys that were organized by the current user */
-  getMyJourneys: {
-    parameters: {
-      query: {
-        status?: unknown;
-      };
-    };
-    responses: {
-      /** Success */
-      200: {
-        schema: definitions['Journey'][];
-      };
-    };
-  };
-  /** Get journeys that were added into the user's queue */
-  getMyQueue: {
-    responses: {
-      /** Success */
-      200: {
-        schema: definitions['Journey'][];
-      };
-    };
-  };
-  /** Find one journey based on ID */
-  getOneJourneyById: {
-    parameters: {
-      path: {
-        id?: unknown;
-      };
-    };
-    responses: {
-      /** Success */
-      200: {
-        schema: definitions['Journey'];
-      };
-      /** Client error and Not Found */
-      404: unknown;
-    };
-  };
-  /** Delete a journey based on id */
-  deleteOneJourneyById: {
-    parameters: {
-      path: {
-        /** Journey's id */
-        id?: unknown;
-      };
-    };
-    responses: {
-      /** The journey was deleted succesfully */
-      200: unknown;
-      /** User is not authenticated */
-      401: unknown;
-      /** User cannot perform action */
-      403: unknown;
-      /** The journey could not be found */
-      404: unknown;
-    };
-  };
-  /** Redirects to osu oauth flow */
-  redirectToOsuOauth: {
-    parameters: {
-      query: {
-        state?: unknown;
-      };
-    };
-    responses: {
-      /** Redirects to oauth service */
-      301: never;
-    };
-  };
-  authenticateUser: {
-    parameters: {
-      body: {
-        authentication?: {
-          code?: string;
+        content: {
+          "application/json": components["schemas"]["UserData"][];
         };
       };
     };
+  };
+  UsersController_getMyself: {
+    parameters: {};
     responses: {
-      /** Bearer token response */
       200: {
-        schema: definitions['Authentication.Response'];
+        content: {
+          "application/json": components["schemas"]["UserData"];
+        };
       };
     };
   };
-  refreshToken: {
+  UsersController_getMyActivityFeed: {
+    parameters: {};
     responses: {
-      /** Bearer token response */
       200: {
-        schema: definitions['Authentication.Response'];
+        content: {
+          "application/json": components["schemas"]["ActivityData"][];
+        };
       };
-      /** User is not allowed to refresh */
-      403: unknown;
+    };
+  };
+  UsersController_addJourneyToMyQueue: {
+    parameters: {
+      path: {
+        journey_id: number;
+      };
+    };
+    responses: {
+      200: unknown;
+    };
+  };
+  UsersController_removeJourneyFromMyQueue: {
+    parameters: {
+      path: {
+        journey_id: number;
+      };
+    };
+    responses: {
+      200: unknown;
+    };
+  };
+  UsersController_getMyQueue: {
+    parameters: {};
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["JourneyData"][];
+        };
+      };
+    };
+  };
+  UsersController_getOneById: {
+    parameters: {
+      path: {
+        id: number;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["UserData"];
+        };
+      };
+      404: unknown;
+    };
+  };
+  UsersController_updateOneById: {
+    parameters: {
+      path: {
+        id: number;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["UserData"];
+        };
+      };
+      401: unknown;
+      404: unknown;
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["UserUpdateInput"];
+      };
+    };
+  };
+  UsersController_getUserActivity: {
+    parameters: {
+      path: {
+        id: number;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["ActivityData"][];
+        };
+      };
+    };
+  };
+  JourneysController_findAll: {
+    parameters: {};
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["JourneyData"];
+        };
+      };
+    };
+  };
+  JourneysController_createOne: {
+    parameters: {};
+    responses: {
+      201: {
+        content: {
+          "application/json": components["schemas"]["JourneyData"];
+        };
+      };
+    };
+    requestBody: {
+      content: {
+        "application/json": components["schemas"]["JourneyCreateInput"];
+      };
+    };
+  };
+  JourneysController_findOneById: {
+    parameters: {
+      path: {
+        id: number;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["JourneyData"];
+        };
+      };
+    };
+  };
+  AuthController_osuLogin: {
+    parameters: {};
+    responses: {
+      307: never;
+    };
+  };
+  AuthController_osuLoginCallback: {
+    parameters: {
+      query: {
+        code: string;
+      };
+    };
+    responses: {
+      200: {
+        content: {
+          "application/json": components["schemas"]["AuthPayload"];
+        };
+      };
     };
   };
 }
